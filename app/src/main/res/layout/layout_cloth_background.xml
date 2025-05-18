@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scipath.becomeaking.view.customview.CustomImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:backgroundDrawable="@drawable/bg_cloth2"
+    android:alpha="0.2"
+    android:scaleType="fitXY"
+    android:contentDescription="@string/background" />

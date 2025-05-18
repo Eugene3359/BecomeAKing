@@ -1,0 +1,44 @@
+package com.scipath.becomeaking;
+
+import android.app.Application;
+
+import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.model.Personage;
+
+import java.util.ArrayList;
+
+
+public class BecomeAKing extends Application {
+
+    // Fields
+    private static BecomeAKing instance;
+    private Personage currentPersonage;
+    private ArrayList<Category> currentCategories;
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+    }
+
+    public static BecomeAKing getInstance() {
+        return instance;
+    }
+
+    public Personage getCurrentPersonage() {
+        return currentPersonage;
+    }
+
+    public void setCurrentPersonage(Personage currentPersonage) {
+        this.currentPersonage = currentPersonage;
+    }
+
+    public ArrayList<Category> getCurrentCategories() {
+        return currentCategories;
+    }
+
+    public void setCurrentCategories (ArrayList<Category> categories) {
+        currentCategories = categories;
+    }
+}

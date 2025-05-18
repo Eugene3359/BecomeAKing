@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_layout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginBottom="10dp" >
+
+    <ImageView
+        android:id="@+id/image_view_category"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@color/placeholder"
+        android:contentDescription="@string/placeholder"/>
+
+    <com.scipath.becomeaking.view.customview.CustomLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical">
+
+        <com.scipath.becomeaking.view.customview.CustomTextView
+            android:id="@+id/text_view_category"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingHorizontal="20dp"
+            app:backgroundColor="@color/cloth_dark_brown"
+            app:backgroundDrawable="@drawable/bg_cloth1"
+            android:text="@string/placeholder"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_small"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:backgroundColor="@color/cloth_darkest_brown"
+            app:backgroundDrawable="@drawable/bg_cloth1"
+            android:orientation="vertical"
+            android:gravity="center_vertical" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stats_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                tools:context=".view.activity.GameActivity"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+
+    </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+
+</LinearLayout>

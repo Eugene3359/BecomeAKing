@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown"
+    tools:context=".view.activity.TitleSelectionActivity">
+
+    <include layout="@layout/layout_cloth_background" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="268dp"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_starting_title"
+                android:textColor="@color/light_brown"
+                android:textSize="24sp"
+                android:textAlignment="center" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/titles_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context=".view.activity.TitleSelectionActivity"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+            </RadioGroup>
+
+            <com.scipath.becomeaking.view.customview.CustomButton
+                android:id="@+id/button_continue"
+                android:layout_width="@dimen/view_width"
+                android:layout_height="@dimen/view_height_big"
+                android:layout_marginTop="10dp"
+                app:borderColor="@color/black"
+                app:backgroundColor="@color/cloth_salad"
+                app:backgroundColorPressed="@color/cloth_dark_salad"
+                app:backgroundDrawable="@drawable/bg_cloth1"
+                android:text="@string/cont"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_big"
+                android:textAllCaps="false" />
+
+            <com.scipath.becomeaking.view.customview.CustomButton
+                android:id="@+id/button_back"
+                android:layout_height="@dimen/view_height_big"
+                android:layout_width="@dimen/view_width"
+                android:layout_marginTop="20dp"
+                app:borderColor="@color/black"
+                app:backgroundColor="@color/cloth_light_brown"
+                app:backgroundColorPressed="@color/cloth_brown"
+                app:backgroundDrawable="@drawable/bg_cloth1"
+                android:text="@string/back"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_big"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

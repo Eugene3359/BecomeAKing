@@ -1,0 +1,137 @@
+<resources>
+    <string name="app_name">Become a King</string>
+
+    <string name="background">Фон</string>
+    <string name="placeholder">Placeholder</string>
+
+    <!-- Main Activity -->
+    <string name="new_game">Навая игра</string>
+    <string name="load">Загрузить</string>
+    <string name="language">Язык</string>
+    <string name="img_with_knights">Изображение с рыцарями</string>
+
+    <!-- Sex Selection Activity -->
+    <string name="choose_sex">Выберите пол персонажа</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+    <string name="cont">Продолжить</string>
+    <string name="back">Назад</string>
+
+    <!-- Title Selection Activity -->
+    <string name="choose_starting_title">Выберите начальный титул персонажа. Во время игры вы откроете больше титулов</string>
+    <string name="rogue">Бродяга</string>
+    <string name="villager">Крестьянин</string>
+    <string name="bandit">Разбойник</string>
+    <string name="chose_title">Выберите титул персонажа</string>
+
+    <!-- Naming Personage Activity -->
+    <string name="name_your_personage">Назовите своего персонажа</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="start">Начать</string>
+
+    <!-- Game Activity Main Stats -->
+    <string name="health">Здоровье</string>
+    <string name="reputation">Репутация</string>
+    <string name="money">Деньги</string>
+    <string name="watch">Часы</string>
+    <string name="_0">0</string>
+
+    <!-- Game Activity Menu -->
+    <string name="personage">Персонаж</string>
+    <string name="shop">Лавки</string>
+    <string name="house">Дом</string>
+    <string name="job">Работа</string>
+    <string name="finance">Финансы</string>
+    <string name="battle">Сражение</string>
+
+    <!-- Income and Expenses Layout -->
+    <string name="income_and_expense">Доход и расход</string>
+    <string name="personage_image">Изображение персонажа</string>
+    <string name="frame">Рамка</string>
+
+    <!-- Personage Fragment -->
+    <string name="name">Имя</string>
+    <string name="title">Титул</string>
+    <string name="arrow_image">Изображение стрелы</string>
+    <string name="day">День</string>
+    <string name="absent">Нету</string>
+
+    <!-- Nutrition -->
+    <string name="nutrition">Питание</string>
+    <string name="bread">Хлеб</string>
+    <string name="meat">Мясо</string>
+    <string name="cheese">Сыр</string>
+    <string name="vegetables">Овощи</string>
+    <string name="soup">Суп</string>
+    <string name="nourishing_food">Сытный обед</string>
+    <string name="luxury_food">Роскошная еда</string>
+    <string name="nobleman_food">Дворянская еда</string>
+    <string name="king_food">Королевская еда</string>
+
+    <!-- Clothes -->
+    <string name="clothes">Одежда</string>
+    <string name="poor_man_clothes">Одежда бедняка</string>
+    <string name="peasant_clothes">Одежда крестьянина</string>
+
+    <!-- Entertainment -->
+    <string name="entertainment">Развлечение</string>
+
+    <!-- Housing -->
+    <string name="housing">Жилье</string>
+
+    <!-- Horse -->
+    <string name="horse">Лошадь</string>
+
+    <!-- Business -->
+    <string name="business">Предприятия</string>
+
+    <!-- Domains -->
+    <string name="domains">Владения</string>
+
+    <!-- Ad -->
+    <string name="watch_ad">Смотреть рекламу</string>
+    <string name="_300">+300</string>
+    <string name="_500">+500</string>
+    <string name="_1000">+1000</string>
+
+    <!-- Personage Fragment Buttons -->
+    <string name="level">Уровень</string>
+    <string name="family">Семья</string>
+    <string name="friends">Друзья</string>
+    <string name="caravans">Караваны</string>
+    <string name="setting">Настройки</string>
+    <string name="developer">Разработчик</string>
+    <string name="save_and_exit">Сохранить и выйти</string>
+
+    <!-- Personage Characteristics Fragment -->
+    <string name="age_d">Возраст %d</string>
+    <string name="level_d">Уровень %d</string>
+    <string name="d_d">%d/%d</string>
+    <string name="skill_points">Очки навыков</string>
+    <string name="characteristics">Характеристики</string>
+    <string name="decrease">Уменьшить</string>
+    <string name="increase">Увеличить</string>
+    <string name="strength">Сила</string>
+    <string name="luck">Удача</string>
+    <string name="regeneration">Регенерация</string>
+    <string name="skill_points_d">Очки навыков %d</string>
+    <string name="drop_skills">Скинуть навыки</string>
+    <string name="save">Сохранить</string>
+
+    <!-- Items Fragment -->
+    <string name="previous">Предыдущий</string>
+    <string name="next">Следующий</string>
+
+    <!-- Item -->
+    <string name="buy_d">Купить: %d</string>
+    <string name="bought">Куплено</string>
+    <string name="add_to_ration">Добавить в рацион</string>
+    <string name="in_ration">В рационе</string>
+    <string name="not_enough_money">Недостаточно денег.</string>
+
+    <!-- Item/Category Stats -->
+    <string name="health_per_day">Health per day</string>
+    <string name="plus_d_per_day">+ %d в день</string>
+    <string name="minus_d_per_day">- %d в день</string>
+
+</resources>
