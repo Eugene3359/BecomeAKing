@@ -64,14 +64,19 @@
     <string name="vegetables">Овощи</string>
     <string name="soup">Суп</string>
     <string name="nourishing_food">Сытный обед</string>
-    <string name="luxury_food">Роскошная еда</string>
-    <string name="nobleman_food">Дворянская еда</string>
-    <string name="king_food">Королевская еда</string>
+    <string name="luxurious_food">Роскошная еда</string>
+    <string name="aristocracy_food">Дворянская еда</string>
+    <string name="royal_food">Королевская еда</string>
 
     <!-- Clothes -->
     <string name="clothes">Одежда</string>
     <string name="poor_man_clothes">Одежда бедняка</string>
     <string name="peasant_clothes">Одежда крестьянина</string>
+    <string name="citizen_clothes">Одежда горожанина</string>
+    <string name="luxurious_clothes">Роскошная одежда</string>
+    <string name="aristocracy_clothes">Одежда знати</string>
+    <string name="earl_clothes">Одежда графа</string>
+    <string name="royal_clothes">Королевская одежда</string>
 
     <!-- Entertainment -->
     <string name="entertainment">Развлечение</string>
@@ -127,7 +132,7 @@
     <string name="bought">Куплено</string>
     <string name="add_to_ration">Добавить в рацион</string>
     <string name="in_ration">В рационе</string>
-    <string name="not_enough_money">Недостаточно денег.</string>
+    <string name="not_enough_money">Недостаточно денег</string>
 
     <!-- Item/Category Stats -->
     <string name="health_per_day">Health per day</string>
