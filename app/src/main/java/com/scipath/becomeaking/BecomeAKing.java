@@ -38,6 +38,10 @@ public class BecomeAKing extends Application {
         return currentCategories;
     }
 
+    public ArrayList<Category> getCurrentCategoriesSublist(int fromIndex, int toIndex) {
+        return new ArrayList<>(currentCategories.subList(fromIndex, toIndex));
+    }
+
     public void setCurrentCategories (ArrayList<Category> categories) {
         currentCategories = categories;
     }

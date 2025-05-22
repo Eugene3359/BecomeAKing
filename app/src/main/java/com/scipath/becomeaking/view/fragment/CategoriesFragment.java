@@ -36,8 +36,10 @@ public class CategoriesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting categories from Application
-        ArrayList<Category> categories = BecomeAKing.getInstance().getCurrentCategories();
+        // Getting sublist of categories from Application
+        Bundle args = getArguments();
+        ArrayList<Category> categories = BecomeAKing.getInstance()
+                .getCurrentCategoriesSublist(args.getInt("fromIndex"), args.getInt("toIndex"));
 
         // View
         RecyclerView recyclerView = view.findViewById(R.id.category_list);

@@ -39,7 +39,7 @@
     <!-- Game Activity Menu -->
     <string name="personage">Персонаж</string>
     <string name="shop">Лавки</string>
-    <string name="house">Дом</string>
+    <string name="housing">Жилье</string>
     <string name="job">Работа</string>
     <string name="finance">Финансы</string>
     <string name="battle">Сражение</string>
@@ -81,8 +81,22 @@
     <!-- Entertainment -->
     <string name="entertainment">Развлечение</string>
 
+    <!-- Weapon -->
+    <string name="weapon">Оружие</string>
+
+    <!-- Armor -->
+    <string name="armor">Броня</string>
+
     <!-- Housing -->
-    <string name="housing">Жилье</string>
+
+    <!-- Furniture -->
+    <string name="furniture">Мебель</string>
+
+    <!-- Books -->
+    <string name="books">Книги</string>
+
+    <!-- Artworks -->
+    <string name="artworks">Произведения искусства</string>
 
     <!-- Horse -->
     <string name="horse">Лошадь</string>

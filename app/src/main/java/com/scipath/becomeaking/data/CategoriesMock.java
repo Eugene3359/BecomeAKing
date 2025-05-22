@@ -122,6 +122,30 @@ public class CategoriesMock {
                 .addStatBonus(StatBonus.ReputationPerDay, 200)
                 .addStatBonus(StatBonus.CostPerDay, 400));
 
+        // Entertainment
+        categories.add(new Category(R.string.entertainment));
+
+        // Weapon
+        categories.add(new Category(R.string.weapon));
+
+        // Armor
+        categories.add(new Category(R.string.armor));
+
+        // House
+        categories.add(new Category(R.string.housing));
+
+        // Furniture
+        categories.add(new Category(R.string.furniture));
+
+        // Books
+        categories.add(new Category(R.string.books));
+
+        // Artworks
+        categories.add(new Category(R.string.artworks));
+
+        // Horse
+        categories.add(new Category(R.string.horse));
+
         return categories;
     }
 }
