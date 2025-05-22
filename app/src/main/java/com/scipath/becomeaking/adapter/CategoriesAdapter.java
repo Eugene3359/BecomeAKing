@@ -90,21 +90,24 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         // Setting values to views
         viewHolder.getCategoryNameView().setText(category.getName(context));
-        viewHolder.getCategoryImageView().setImageResource(category.getImageId());
+        if (category.getImageId()!= 0)
+            viewHolder.getCategoryImageView().setImageResource(category.getImageId());
         viewHolder.getCategoryImageView().setContentDescription(category.getName(context));
         viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
         viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(statBonuses, context));
 
         viewHolder.getLayout().setOnClickListener(view -> {
-            Fragment fragment = new ItemsFragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt("categoryId", position);
-            fragment.setArguments(bundle);
-            ((FragmentActivity) context).getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_frame, fragment)
-                    .addToBackStack(null)
-                    .commit();
+            if (!categories.get(position).getItems().isEmpty()) {
+                Fragment fragment = new ItemsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("categoryId", position);
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_frame, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
         });
     }
 

@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     private Personage personage;
 
     // Views variables
+    private ImageButton buttonActive;
     private ImageButton buttonPersonage;
     private ImageButton buttonShop;
     private ImageButton buttonHouse;
@@ -71,6 +72,8 @@ public class GameActivity extends AppCompatActivity {
                 .addToBackStack(null).commit();
 
         // Buttons
+        buttonActive = findViewById(R.id.button_personage);
+
         buttonPersonage = findViewById(R.id.button_personage);
         buttonPersonage.setOnClickListener(view -> {
             switchMenuButton(buttonPersonage, new PersonageFragment());
@@ -78,12 +81,22 @@ public class GameActivity extends AppCompatActivity {
 
         buttonShop = findViewById(R.id.button_shop);
         buttonShop.setOnClickListener(view -> {
-            switchMenuButton(buttonShop, new CategoriesFragment());
+            CategoriesFragment newFragment = new CategoriesFragment();
+            Bundle args = new Bundle();
+            args.putInt("fromIndex", 0);
+            args.putInt("toIndex", 5);
+            newFragment.setArguments(args);
+            switchMenuButton(buttonShop, newFragment);
         });
 
-        buttonHouse = findViewById(R.id.button_house);
+        buttonHouse = findViewById(R.id.button_housing);
         buttonHouse.setOnClickListener(view -> {
-            // TODO: ClickListener
+            CategoriesFragment newFragment = new CategoriesFragment();
+            Bundle args = new Bundle();
+            args.putInt("fromIndex", 5);
+            args.putInt("toIndex", 10);
+            newFragment.setArguments(args);
+            switchMenuButton(buttonHouse, newFragment);
         });
 
         buttonJob = findViewById(R.id.button_job);
@@ -104,15 +117,16 @@ public class GameActivity extends AppCompatActivity {
 
 
     public void switchMenuButton(ImageButton pressedButton, Fragment newFragment) {
-        // Make all buttons brown
-        buttonPersonage.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-        buttonShop.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+        if (buttonActive != pressedButton) {
+            // Make all buttons brown
+            buttonPersonage.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+            buttonShop.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+            buttonHouse.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
 
-        // Make active button green
-        pressedButton.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_button_green));
+            // Make active button green
+            buttonActive = pressedButton;
+            buttonActive.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_button_green));
 
-        // Change or refresh fragment
-        if (!(newFragment.getClass() == fragment.getClass())) {
             fragment = newFragment;
             setFragment();
         } else {
