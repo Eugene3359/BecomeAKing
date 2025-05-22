@@ -91,11 +91,7 @@ public class ItemsFragment extends Fragment {
 
         // Button back
         buttonBack.setOnClickListener(v -> {
-            Fragment fragment = new CategoriesFragment();
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_frame, fragment)
-                    .addToBackStack(null)
-                    .commit();
+            getParentFragmentManager().popBackStack();
         });
     }
 }
