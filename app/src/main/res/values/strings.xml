@@ -101,6 +101,11 @@
     <!-- Horse -->
     <string name="horse">Лошадь</string>
 
+    <!-- Work in a village -->
+    <string name="work_in_a_village">Работа в селе</string>
+    <string name="logging">Лесозаготовка</string>
+    <string name="work_in_a_mine">Работа в шахте</string>
+
     <!-- Business -->
     <string name="business">Предприятия</string>
 
@@ -146,11 +151,11 @@
     <string name="bought">Куплено</string>
     <string name="add_to_ration">Добавить в рацион</string>
     <string name="in_ration">В рационе</string>
+    <string name="started">Начато</string>
     <string name="not_enough_money">Недостаточно денег</string>
 
     <!-- Item/Category Stats -->
     <string name="health_per_day">Health per day</string>
-    <string name="plus_d_per_day">+ %d в день</string>
-    <string name="minus_d_per_day">- %d в день</string>
+    <string name="c_d_per_day">%c %d в день</string>
 
 </resources>

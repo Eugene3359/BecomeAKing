@@ -15,6 +15,8 @@ import java.util.List;
 public class Category implements Serializable {
 
     // Fields
+    private static int counter = -1;
+    private int id;
     private int nameId;
     private int imageId;
     private List<Item> items;
@@ -23,14 +25,20 @@ public class Category implements Serializable {
 
     // Constructor
     public Category(int nameId) {
+        counter ++;
+        this.id = counter;
         this.nameId = nameId;
-        imageId = 0;
+        this.imageId = 0;
         this.items = new ArrayList<>();
-        statBonuses = new StatBonusesMap();
+        this.statBonuses = new StatBonusesMap();
     }
 
 
     // Accessors
+    public int getId() {
+        return id;
+    }
+
     public int getNameId() {
         return nameId;
     }

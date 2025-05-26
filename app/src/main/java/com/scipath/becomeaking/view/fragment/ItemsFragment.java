@@ -19,7 +19,7 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.adapter.OnItemBoughtListener;
-import com.scipath.becomeaking.model.Item;
+import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.viewmodel.PersonageViewModel;
 
@@ -51,7 +51,6 @@ public class ItemsFragment extends Fragment {
         Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
         Bundle args = getArguments();
         int categoryId = args.getInt("categoryId");
-        List<Item> items = BecomeAKing.getInstance().getCurrentCategories().get(categoryId).getItems();
 
         // Getting ViewModel from the Activity
         PersonageViewModel personageViewModel =
@@ -64,7 +63,7 @@ public class ItemsFragment extends Fragment {
         Button buttonBack = view.findViewById(R.id.button_back);
 
         // Adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(items, new OnItemBoughtListener() {
+        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new OnItemBoughtListener() {
             @Override
             public void update() {
                 personageViewModel.setPersonage(personage);

@@ -13,9 +13,9 @@ import java.io.Serializable;
 public enum StatBonus implements Serializable {
 
     // List of stat bonuses
-    HealthPerDay(R.string.health, R.string.plus_d_per_day, R.drawable.icon_heart),
-    ReputationPerDay(R.string.reputation, R.string.plus_d_per_day, R.drawable.icon_civic_crown),
-    CostPerDay(R.string.money, R.string.minus_d_per_day, R.drawable.icon_coin);
+    HealthPerDay(R.string.health, R.string.c_d_per_day, R.drawable.icon_heart),
+    ReputationPerDay(R.string.reputation, R.string.c_d_per_day, R.drawable.icon_civic_crown),
+    CostPerDay(R.string.money, R.string.c_d_per_day, R.drawable.icon_coin);
 
 
     // Individual stat bonus fields
@@ -72,7 +72,8 @@ public enum StatBonus implements Serializable {
      * @return The String that contain stat bonus description
      */
     public String getDescription(int value, Context context) {
-        return context.getString(descriptionId, value);
+        char sign = value < 0 ? '-' : '+';
+        return context.getString(descriptionId, sign, Math.abs(value));
     }
 
     /**

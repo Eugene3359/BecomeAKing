@@ -4,10 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,8 +20,9 @@ import android.widget.Toast;
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.view.activity.GameActivity;
-import com.scipath.becomeaking.view.activity.TitleSelectionActivity;
+import com.scipath.becomeaking.model.StatBonus;
+import com.scipath.becomeaking.model.StatBonusesMap;
+
 
 public class PersonageFragment extends Fragment {
 
@@ -37,14 +40,23 @@ public class PersonageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting Personage from Application
+        // Getting Personage and StatBonuses from Application
         Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
+        StatBonusesMap statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
         TextView textViewName = view.findViewById(R.id.text_view_name);
         TextView textViewTitle = view.findViewById(R.id.text_view_title);
         TextView textViewReputation = view.findViewById(R.id.text_view_reputation2);
         ImageView imageViewPersonageIcon = view.findViewById(R.id.image_view_personage_icon);
+
+        ImageView imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
+        TextView textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
+        ImageView imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
+        TextView textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
+        ImageView imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
+        TextView textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
+
         TextView textViewNutrition = view.findViewById(R.id.text_view_nutrition);
         TextView textViewClothes = view.findViewById(R.id.text_view_clothes);
         TextView textViewHousing = view.findViewById(R.id.text_view_housing);
@@ -55,6 +67,22 @@ public class PersonageFragment extends Fragment {
         textViewTitle.setText(personage.getTitle().getName(getActivity()));
         textViewReputation.setText(Integer.toString(personage.getReputation()));
         imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCurrentCategories().get(1).getImageId());
+
+        int statBonusValue = statBonuses.getStatBonusValue(StatBonus.HealthPerDay);
+        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                        statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewHealthIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = statBonuses.getStatBonusValue(StatBonus.ReputationPerDay);
+        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewReputationIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = statBonuses.getStatBonusValue(StatBonus.CostPerDay);
+        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewMoneyIncome.setText(Integer.toString(statBonusValue));
+
         // TODO: Set possessions values
 
         // Buttons

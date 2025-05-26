@@ -1,3 +1,14 @@
+# Become a King [0.1.3] - 26.05.2025
+
+### Additions
+- Added `Work in a village` job category
+
+### Changes
+- `buttonJob` is now active
+- Daily changes to `Health`, `Reputation`, and `Money` are now displayed
+
+---
+
 # Become a King [0.1.2.1] - 22.05.2025
 
 ### Fixes
@@ -9,13 +20,9 @@
 
 ### Additions
 - Added more categories
-- Added `getCurrentCategoriesSublist` method in `BecomeAKing` class
 
 ### Changes
-- `HousingButton` is now active
-- `GameActivity` now passes bounds of `currentCategories` to `CategoriesFragment`
-- `CategoriesFragment` now works with a sublist of `currentCategories`
-- Renamed some variables and string resources
+- `buttonHousing` is now active
 
 ### Fixes
 - Fixed `CategoryAdapter` incorrectly replacing a placeholder on `CategoryImageView` when `imageId` equals `0`
@@ -26,9 +33,6 @@
 
 ### Additions
 - Added more clothes
-
-### Changes
-- Renamed some string resources and images
 
 ---
 

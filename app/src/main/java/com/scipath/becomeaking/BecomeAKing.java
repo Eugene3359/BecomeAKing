@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.StatBonus;
+import com.scipath.becomeaking.model.StatBonusesMap;
 
 import java.util.ArrayList;
 
@@ -44,5 +46,19 @@ public class BecomeAKing extends Application {
 
     public void setCurrentCategories (ArrayList<Category> categories) {
         currentCategories = categories;
+    }
+
+    public StatBonusesMap getCurrentStatBonuses () {
+        StatBonusesMap statBonuses = new StatBonusesMap();
+        for (Category category : currentCategories) {
+            category.recalculateStats();
+            StatBonusesMap categoryStatBonuses = category.getStatBonuses();
+            for (StatBonus statBonusKey : categoryStatBonuses.getStatBonusesMap().keySet()) {
+                statBonuses.addStatBonus(statBonusKey,
+                        statBonuses.getStatBonusValue(statBonusKey)
+                                + categoryStatBonuses.getStatBonusValue(statBonusKey));
+            }
+        }
+        return statBonuses;
     }
 }

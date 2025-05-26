@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
@@ -26,14 +27,16 @@ import java.util.List;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     // Variables
-    private List<Item> items;
+    private int categoryId;
+    private Category category;
     private OnItemBoughtListener onItemBoughtListener;
     private Context context;
 
 
     // Constructor
-    public ItemsAdapter(List<Item> items, OnItemBoughtListener onItemBoughtListener, Context context) {
-        this.items = items;
+    public ItemsAdapter(int categoryId, OnItemBoughtListener onItemBoughtListener, Context context) {
+        this.categoryId = categoryId;
+        this.category = BecomeAKing.getInstance().getCurrentCategories().get(categoryId);
         this.onItemBoughtListener = onItemBoughtListener;
         this.context = context;
     }
@@ -70,12 +73,15 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             return layout.findViewById(R.id.buy);
         }
 
-        public void setItemButtonBuyNotEnabled(boolean isFood, Context context) {
+        public void setItemButtonBuyNotEnabled(int categoryId, Context context) {
             Button button = getItemButtonBuyView();
-            if (!isFood) {
-                button.setText(context.getString(R.string.bought));
-            } else {
+            if (categoryId == 0) {
                 button.setText(context.getString(R.string.in_ration));
+            } else if (categoryId >= 10) {
+                button.setText(context.getString(R.string.started));
+            }
+            else {
+                button.setText(context.getString(R.string.bought));
             }
             button.setBackgroundColor(context.getColor(R.color.transparent_red));
             button.setEnabled(false);
@@ -101,8 +107,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
-        Item item = items.get(position);
-        boolean isFood = item.getCost() == 0;
+        Item item = category.getItems().get(position);
 
         // Setting values to views
         viewHolder.getItemNameView().setText(item.getNameId());
@@ -111,23 +116,25 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
         viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStatBonuses(), context));
         if (!item.isBought()) {
-            if (!isFood) {
-                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.buy_d, item.getCost()));
-            } else {
+            if (categoryId == 0) {
                 viewHolder.getItemButtonBuyView().setText(context.getString(R.string.add_to_ration));
+            } else if (categoryId >= 10) {
+                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.start));
+            } else {
+                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.buy_d, item.getCost()));
             }
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
                 if (personage.getMoney() >= item.getCost()) {
                     personage.setMoney(personage.getMoney() - item.getCost());
                     item.setBought(true);
-                    viewHolder.setItemButtonBuyNotEnabled(isFood, context);
+                    viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
                     onItemBoughtListener.update();
                 } else {
                     Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            viewHolder.setItemButtonBuyNotEnabled(isFood, context);
+            viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
         }
     }
 
@@ -135,6 +142,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return items.size();
+        return category.getItems().size();
     }
 }

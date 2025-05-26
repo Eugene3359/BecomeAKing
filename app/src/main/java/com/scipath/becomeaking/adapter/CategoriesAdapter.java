@@ -100,7 +100,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             if (!categories.get(position).getItems().isEmpty()) {
                 Fragment fragment = new ItemsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putInt("categoryId", position);
+                bundle.putInt("categoryId", categories.get(position).getId());
                 fragment.setArguments(bundle);
                 ((FragmentActivity) context).getSupportFragmentManager()
                         .beginTransaction()
