@@ -153,14 +153,14 @@ public class CategoriesMock {
                 .addItem(new Item(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0));
         // Logging
         categories.get(10).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, -10)
-                .addStatBonus(StatBonus.ReputationPerDay, 5)
-                .addStatBonus(StatBonus.CostPerDay, 5));
+                .addStatBonus(StatBonus.HealthImpact, -10)
+                .addStatBonus(StatBonus.ReputationImpact, 5)
+                .addStatBonus(StatBonus.MoneyPerClick, 1));
         // Work in a mine
         categories.get(10).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, -20)
-                .addStatBonus(StatBonus.ReputationPerDay, 10)
-                .addStatBonus(StatBonus.CostPerDay, 10));
+                .addStatBonus(StatBonus.HealthImpact, -20)
+                .addStatBonus(StatBonus.ReputationImpact, 10)
+                .addStatBonus(StatBonus.MoneyPerClick, 2));
 
         return categories;
     }

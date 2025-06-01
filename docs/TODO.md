@@ -1,7 +1,7 @@
 # Project Tasks
 
 ## In Progress
-- Job
+- ClickerMiniGame
 
 ## In Queue
 

@@ -27,6 +27,9 @@ public class GameActivity extends AppCompatActivity {
     // Models variables
     private Personage personage;
 
+    // ViewModels variables
+    PersonageViewModel personageViewModel;
+
     // Views variables
     private ImageButton buttonActive;
     private ImageButton buttonPersonage;
@@ -57,7 +60,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // ViewModels
-        PersonageViewModel personageViewModel = new ViewModelProvider(this).get(PersonageViewModel.class);
+        personageViewModel = new ViewModelProvider(this).get(PersonageViewModel.class);
         personageViewModel.setPersonage(personage);
         personageViewModel.getPersonage().observe(this, personage -> {
             binding.textViewHealth.setText(Integer.toString(personage.getHealth()));
@@ -118,6 +121,13 @@ public class GameActivity extends AppCompatActivity {
         buttonBattle.setOnClickListener(view -> {
             // TODO: ClickListener
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        personageViewModel.updateMoney(personage.getMoney());
     }
 
 

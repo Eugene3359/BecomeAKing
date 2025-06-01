@@ -18,12 +18,9 @@ import android.widget.ImageView;
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
-import com.scipath.becomeaking.adapter.OnItemBoughtListener;
-import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.adapter.Callback;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.viewmodel.PersonageViewModel;
-
-import java.util.List;
 
 
 public class ItemsFragment extends Fragment {
@@ -63,9 +60,9 @@ public class ItemsFragment extends Fragment {
         Button buttonBack = view.findViewById(R.id.button_back);
 
         // Adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new OnItemBoughtListener() {
+        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new Callback() {
             @Override
-            public void update() {
+            public void call() {
                 personageViewModel.setPersonage(personage);
             }
         }, view.getContext());

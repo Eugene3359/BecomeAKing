@@ -17,6 +17,9 @@ import com.scipath.becomeaking.util.DrawableUtility;
 
 public class CustomImageView extends AppCompatImageView {
 
+    // Fields
+    private boolean isSquare;
+
     // Constructor
     public CustomImageView(@NonNull Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,6 +30,7 @@ public class CustomImageView extends AppCompatImageView {
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomImageView);
 
+        isSquare = typedArray.getBoolean(R.styleable.CustomLinearLayout_isSquare, false); // Default: false
         int borderColor = typedArray.getColor(R.styleable.CustomImageView_borderColor, 0x00000000); // Default: null
         int backgroundColor = typedArray.getColor(R.styleable.CustomImageView_backgroundColor, 0x00000000); // Default: null
         Drawable backgroundDrawable = typedArray.getDrawable(R.styleable.CustomImageView_backgroundDrawable);
@@ -44,5 +48,15 @@ public class CustomImageView extends AppCompatImageView {
 
         // Set the background to the layered drawable
         setBackground(background);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (isSquare) {
+            int size = Math.max(widthMeasureSpec, heightMeasureSpec);
+            super.onMeasure(size, size);
+        } else {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
     }
 }

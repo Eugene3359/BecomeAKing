@@ -155,7 +155,12 @@
     <string name="not_enough_money">Недостаточно денег</string>
 
     <!-- Item/Category Stats -->
-    <string name="health_per_day">Health per day</string>
     <string name="c_d_per_day">%c %d в день</string>
+    <string name="c_d">%c %d</string>
+    <string name="c_d_per_click">%c %d за нажатие</string>
+
+    <!-- Clicker MiniGame Activity -->
+    <string name="exit">Выйти</string>
+    <string name="instruction">Жми как можно быстрее — от этого зависит твой доход!</string>
 
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="isSquare" format="boolean" />
     <attr name="borderColor" format="color" />
     <attr name="backgroundColor" format="color" />
     <attr name="backgroundDrawable" format="reference" />
@@ -27,12 +28,14 @@
     </declare-styleable>
 
     <declare-styleable name="CustomLinearLayout">
+        <attr name="isSquare" />
         <attr name="borderColor" />
         <attr name="backgroundColor" />
         <attr name="backgroundDrawable" />
     </declare-styleable>
 
     <declare-styleable name="CustomImageView">
+        <attr name="isSquare" />
         <attr name="borderColor" />
         <attr name="backgroundColor" />
         <attr name="backgroundDrawable" />

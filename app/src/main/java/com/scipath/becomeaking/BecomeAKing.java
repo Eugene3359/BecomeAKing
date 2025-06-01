@@ -14,6 +14,7 @@ public class BecomeAKing extends Application {
 
     // Fields
     private static BecomeAKing instance;
+    private boolean isDebug = false;
     private Personage currentPersonage;
     private ArrayList<Category> currentCategories;
 
@@ -28,12 +29,12 @@ public class BecomeAKing extends Application {
         return instance;
     }
 
-    public Personage getCurrentPersonage() {
-        return currentPersonage;
+    public boolean isDebug() {
+        return isDebug;
     }
 
-    public void setCurrentPersonage(Personage currentPersonage) {
-        this.currentPersonage = currentPersonage;
+    public Personage getCurrentPersonage() {
+        return currentPersonage;
     }
 
     public ArrayList<Category> getCurrentCategories() {
@@ -42,10 +43,6 @@ public class BecomeAKing extends Application {
 
     public ArrayList<Category> getCurrentCategoriesSublist(int fromIndex, int toIndex) {
         return new ArrayList<>(currentCategories.subList(fromIndex, toIndex));
-    }
-
-    public void setCurrentCategories (ArrayList<Category> categories) {
-        currentCategories = categories;
     }
 
     public StatBonusesMap getCurrentStatBonuses () {
@@ -60,5 +57,13 @@ public class BecomeAKing extends Application {
             }
         }
         return statBonuses;
+    }
+
+    public void setCurrentPersonage(Personage currentPersonage) {
+        this.currentPersonage = currentPersonage;
+    }
+
+    public void setCurrentCategories (ArrayList<Category> categories) {
+        currentCategories = categories;
     }
 }

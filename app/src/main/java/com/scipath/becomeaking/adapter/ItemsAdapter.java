@@ -2,6 +2,7 @@ package com.scipath.becomeaking.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
+import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
-
-import java.util.List;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
@@ -29,15 +29,15 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     // Variables
     private int categoryId;
     private Category category;
-    private OnItemBoughtListener onItemBoughtListener;
+    private Callback callback;
     private Context context;
 
 
     // Constructor
-    public ItemsAdapter(int categoryId, OnItemBoughtListener onItemBoughtListener, Context context) {
+    public ItemsAdapter(int categoryId, Callback callback, Context context) {
         this.categoryId = categoryId;
         this.category = BecomeAKing.getInstance().getCurrentCategories().get(categoryId);
-        this.onItemBoughtListener = onItemBoughtListener;
+        this.callback = callback;
         this.context = context;
     }
 
@@ -71,6 +71,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         public Button getItemButtonBuyView() {
             return layout.findViewById(R.id.buy);
+        }
+
+        public void resetItemButtonBuyState(Item item, int categoryId, Context context) {
+            Button button = getItemButtonBuyView();
+            button.setEnabled(true);
+            button.setBackgroundColor(context.getColor(R.color.transparent_green));
+
+            if (categoryId == 0) {
+                button.setText(context.getString(R.string.add_to_ration));
+            } else if (categoryId >= 10) {
+                button.setText(context.getString(R.string.start));
+            } else {
+                button.setText(context.getString(R.string.buy_d, item.getCost()));
+            }
         }
 
         public void setItemButtonBuyNotEnabled(int categoryId, Context context) {
@@ -116,21 +130,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
         viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStatBonuses(), context));
         if (!item.isBought()) {
-            if (categoryId == 0) {
-                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.add_to_ration));
-            } else if (categoryId >= 10) {
-                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.start));
-            } else {
-                viewHolder.getItemButtonBuyView().setText(context.getString(R.string.buy_d, item.getCost()));
-            }
+            viewHolder.resetItemButtonBuyState(item, categoryId, context);
+
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
-                if (personage.getMoney() >= item.getCost()) {
-                    personage.setMoney(personage.getMoney() - item.getCost());
-                    item.setBought(true);
-                    viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
-                    onItemBoughtListener.update();
+                if (categoryId < 10) {
+                    if (personage.getMoney() >= item.getCost()) {
+                        personage.setMoney(personage.getMoney() - item.getCost());
+                        item.setBought(true);
+                        viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
+                        callback.call();
+                    } else {
+                        Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ClickerMiniGameActivity.class);
+                    intent.putExtra("item", item);
+                    context.startActivity(intent);
                 }
             });
         } else {

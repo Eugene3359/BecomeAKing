@@ -15,7 +15,11 @@ public enum StatBonus implements Serializable {
     // List of stat bonuses
     HealthPerDay(R.string.health, R.string.c_d_per_day, R.drawable.icon_heart),
     ReputationPerDay(R.string.reputation, R.string.c_d_per_day, R.drawable.icon_civic_crown),
-    CostPerDay(R.string.money, R.string.c_d_per_day, R.drawable.icon_coin);
+    CostPerDay(R.string.money, R.string.c_d_per_day, R.drawable.icon_coin),
+    HealthImpact(R.string.health, R.string.c_d, R.drawable.icon_heart),
+    ReputationImpact(R.string.reputation, R.string.c_d, R.drawable.icon_civic_crown),
+    MoneyPerClick(R.string.money, R.string.c_d_per_click, R.drawable.icon_coin);
+
 
 
     // Individual stat bonus fields

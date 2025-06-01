@@ -99,6 +99,9 @@ public class Category implements Serializable {
      * marked as bought.
      */
     public void recalculateStats() {
+        if (!items.isEmpty()) {
+            imageId = items.get(0).getImageId();
+        }
         statBonuses = new StatBonusesMap();
 
         for (Item item : items) {

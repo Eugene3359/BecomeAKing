@@ -1,11 +1,16 @@
-# Become a King [0.1.3] - 26.05.2025
+# Become a King [0.1.3] - 01.06.2025
 
 ### Additions
 - Added `Work in a village` job category
+- Added `ClickerMiniGame`
 
 ### Changes
 - `buttonJob` is now active
 - Daily changes to `Health`, `Reputation`, and `Money` are now displayed
+
+### Fixes
+- Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ 
+  `buttonBuy` appeared disabled even though they hadn't been purchased
 
 ---
 

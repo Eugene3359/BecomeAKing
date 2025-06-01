@@ -13,7 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.data.CategoriesMock;
+import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.Sex;
+import com.scipath.becomeaking.model.Title;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +47,19 @@ public class MainActivity extends AppCompatActivity {
         // Button new game
         Button buttonNewGame = findViewById(R.id.button_new_game);
         buttonNewGame.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SexSelectionActivity.class);
+            Intent intent;
+            if (!BecomeAKing.getInstance().isDebug()) {
+                intent = new Intent(MainActivity.this, SexSelectionActivity.class);
+            } else {
+                Personage personage = new Personage("Hero", Sex.Male, Title.Bandit);
+                ArrayList<Category> categories = CategoriesMock.getCategories(true);
+                categories.get(1).recalculateStats(); // To set cloth image
+                BecomeAKing.getInstance().setCurrentPersonage(personage);
+                BecomeAKing.getInstance().setCurrentCategories(categories);
+                BecomeAKing.getInstance().setCurrentPersonage(personage);
+                intent = new Intent(MainActivity.this, GameActivity.class);
+            }
+
             startActivity(intent);
         });
 
