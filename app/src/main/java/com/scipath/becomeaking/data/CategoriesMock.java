@@ -124,6 +124,43 @@ public class CategoriesMock {
 
         // Entertainment
         categories.add(new Category(R.string.entertainment));
+        categories.get(2)
+                .addItem(new Item(R.string.have_a_drink_at_the_tavern, R.drawable.img_tavern, 20))
+                .addItem(new Item(R.string.walk_around_the_fair, R.drawable.img_fair, 200))
+                .addItem(new Item(R.string.watch_the_tournament, R.drawable.img_tournament, 500))
+                .addItem(new Item(R.string.visit_the_theatre, R.drawable.img_theatre, 1200))
+                .addItem(new Item(R.string.organize_a_hunt, R.drawable.img_hunt, 4500))
+                .addItem(new Item(R.string.throw_a_feast, R.drawable.img_feast, 30000));
+        // Tavern
+        categories.get(2).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 10)
+                .addStatBonus(StatBonus.ReputationPerDay, 5)
+                .addStatBonus(StatBonus.CostPerDay, -5));
+        // Fair
+        categories.get(2).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 20)
+                .addStatBonus(StatBonus.ReputationPerDay, 15)
+                .addStatBonus(StatBonus.CostPerDay, -20));
+        // Tournament
+        categories.get(2).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 30)
+                .addStatBonus(StatBonus.ReputationPerDay, 30)
+                .addStatBonus(StatBonus.CostPerDay, -30));
+        // Theatre
+        categories.get(2).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 50)
+                .addStatBonus(StatBonus.ReputationPerDay, 40)
+                .addStatBonus(StatBonus.CostPerDay, -40));
+        // Hunt
+        categories.get(2).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 70)
+                .addStatBonus(StatBonus.ReputationPerDay, 60)
+                .addStatBonus(StatBonus.CostPerDay, -60));
+        // Feast
+        categories.get(2).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .addStatBonus(StatBonus.HealthPerDay, 100)
+                .addStatBonus(StatBonus.ReputationPerDay, 150)
+                .addStatBonus(StatBonus.CostPerDay, -300));
 
         // Weapon
         categories.add(new Category(R.string.weapon));

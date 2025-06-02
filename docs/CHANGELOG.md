@@ -1,3 +1,10 @@
+# Become a King [0.1.4] - 02.06.2025
+
+### Additions
+- Added `Entertainment` category
+
+---
+
 # Become a King [0.1.3] - 01.06.2025
 
 ### Additions

@@ -80,6 +80,12 @@
 
     <!-- Entertainment -->
     <string name="entertainment">Развлечение</string>
+    <string name="have_a_drink_at_the_tavern">Выпить в таверне</string>
+    <string name="walk_around_the_fair">Пройтись по ярмарку</string>
+    <string name="watch_the_tournament">Посмотреть на турнир</string>
+    <string name="visit_the_theatre">Посетить театр</string>
+    <string name="organize_a_hunt">Организовать охоту</string>
+    <string name="throw_a_feast">Устроить пир</string>
 
     <!-- Weapon -->
     <string name="weapon">Оружие</string>
