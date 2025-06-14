@@ -19,6 +19,7 @@ import com.scipath.becomeaking.adapter.Callback;
 public class DialogueFragment extends DialogFragment {
 
     private int messageId;
+    private String message;
     private int buttonTextId;
     private Callback callback;
 
@@ -31,11 +32,21 @@ public class DialogueFragment extends DialogFragment {
         return fragment;
     }
 
+    public static DialogueFragment newInstance(String message, int buttonTextId) {
+        DialogueFragment fragment = new DialogueFragment();
+        Bundle args = new Bundle();
+        args.putString("message", message);
+        args.putInt("buttonTextId", buttonTextId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             messageId = getArguments().getInt("messageId");
+            message = getArguments().getString("message");
             buttonTextId = getArguments().getInt("buttonTextId");
         }
         setCancelable(false);
@@ -53,7 +64,13 @@ public class DialogueFragment extends DialogFragment {
 
         // Message TextView
         TextView textViewMessage = view.findViewById(R.id.text_view_message);
-        textViewMessage.setText(messageId);
+        if(message != null) {
+            textViewMessage.setText(message);
+        }
+        else {
+            textViewMessage.setText(messageId);
+        }
+
 
         // Button
         Button button = view.findViewById(R.id.button_end_dialogue);

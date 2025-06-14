@@ -1,3 +1,12 @@
+# Become a King [0.1.5] - 14.06.2025
+
+### Additions
+- Implemented `Next Day` logic
+- Implemented `Game Over` logic
+- `buttonNextDay` is now active
+
+---
+
 # Become a King [0.1.4] - 02.06.2025
 
 ### Additions

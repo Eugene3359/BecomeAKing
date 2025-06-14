@@ -2,6 +2,7 @@ package com.scipath.becomeaking.view.activity;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,15 +12,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.databinding.ActivityGameBinding;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.fragment.CategoriesFragment;
 import com.scipath.becomeaking.view.fragment.PersonageFragment;
-import com.scipath.becomeaking.viewmodel.PersonageViewModel;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -27,10 +25,10 @@ public class GameActivity extends AppCompatActivity {
     // Models variables
     private Personage personage;
 
-    // ViewModels variables
-    PersonageViewModel personageViewModel;
-
     // Views variables
+    private TextView textViewHealth;
+    private TextView textViewReputation;
+    private TextView textViewMoney;
     private ImageButton buttonActive;
     private ImageButton buttonPersonage;
     private ImageButton buttonShop;
@@ -55,18 +53,12 @@ public class GameActivity extends AppCompatActivity {
         // Getting Personage from Application
         personage = BecomeAKing.getInstance().getCurrentPersonage();
 
-        // Binding
-        ActivityGameBinding binding = ActivityGameBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        // Views
+        textViewHealth = findViewById(R.id.text_view_health);
+        textViewReputation = findViewById(R.id.text_view_reputation);
+        textViewMoney = findViewById(R.id.text_view_money);
 
-        // ViewModels
-        personageViewModel = new ViewModelProvider(this).get(PersonageViewModel.class);
-        personageViewModel.setPersonage(personage);
-        personageViewModel.getPersonage().observe(this, personage -> {
-            binding.textViewHealth.setText(Integer.toString(personage.getHealth()));
-            binding.textViewReputation.setText(Integer.toString(personage.getReputation()));
-            binding.textViewMoney.setText(Integer.toString(personage.getMoney()));
-        });
+        updateViews();
 
         // Setting Fragment
         fragment = new PersonageFragment();
@@ -121,13 +113,23 @@ public class GameActivity extends AppCompatActivity {
         buttonBattle.setOnClickListener(view -> {
             // TODO: ClickListener
         });
+
+        ImageButton imageButtonNextDay = findViewById(R.id.image_button_next_day);
+        imageButtonNextDay.setOnClickListener(view -> {
+            BecomeAKing.getInstance().nextDay();
+            updateViews();
+            if(fragment.getClass() == PersonageFragment.class) {
+                ((PersonageFragment)fragment).updateViews();
+            }
+            BecomeAKing.getInstance().checkPersonageForNegativeValues(this);
+        });
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        personageViewModel.updateMoney(personage.getMoney());
+        updateViews();
     }
 
 
@@ -162,5 +164,11 @@ public class GameActivity extends AppCompatActivity {
                 .detach(fragment) // Detach to refresh the view
                 .attach(fragment) // Reattach to force a refresh
                 .commit();
+    }
+
+    public void updateViews() {
+        textViewHealth.setText(Integer.toString(personage.getHealth()));
+        textViewReputation.setText(Integer.toString(personage.getReputation()));
+        textViewMoney.setText(Integer.toString(personage.getMoney()));
     }
 }

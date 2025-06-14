@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +19,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.adapter.Callback;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.viewmodel.PersonageViewModel;
+import com.scipath.becomeaking.view.activity.GameActivity;
 
 
 public class ItemsFragment extends Fragment {
@@ -49,10 +48,6 @@ public class ItemsFragment extends Fragment {
         Bundle args = getArguments();
         int categoryId = args.getInt("categoryId");
 
-        // Getting ViewModel from the Activity
-        PersonageViewModel personageViewModel =
-                new ViewModelProvider(requireActivity()).get(PersonageViewModel.class);
-
         // Views
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
         ImageView arrowLeft = view.findViewById(R.id.arrow_left);
@@ -63,7 +58,7 @@ public class ItemsFragment extends Fragment {
         ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new Callback() {
             @Override
             public void call() {
-                personageViewModel.setPersonage(personage);
+                ((GameActivity)requireActivity()).updateViews();
             }
         }, view.getContext());
 

@@ -60,7 +60,6 @@ public class ClickerMiniGameActivity extends AppCompatActivity {
 
         // Setting Dialog
         DialogueFragment dialogueFragmentStart = DialogueFragment.newInstance(R.string.instruction, R.string.start);
-        dialogueFragmentStart.show(getSupportFragmentManager(), "dialogue");
         dialogueFragmentStart.setCallback(() ->
         {
             new CountDownTimer(10000, 1000) {
@@ -73,14 +72,13 @@ public class ClickerMiniGameActivity extends AppCompatActivity {
                     DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(R.string.exit, R.string.exit);
                     dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
                     dialogueFragmentResult.setCallback(() -> {
-                        BecomeAKing.getInstance().getCurrentPersonage().setMoney(
-                                BecomeAKing.getInstance().getCurrentPersonage().getMoney() + moneyEarned
-                        );
+                        BecomeAKing.getInstance().getCurrentPersonage().affectMoney(moneyEarned);
                         finish();
                     });
                 }
             }.start();
         });
+        dialogueFragmentStart.show(getSupportFragmentManager(), "dialogue");
 
         // Clicker
         CustomLinearLayout linearLayoutClick = findViewById(R.id.linear_layout_click);

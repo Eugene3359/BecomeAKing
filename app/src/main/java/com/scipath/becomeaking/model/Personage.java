@@ -96,12 +96,24 @@ public class Personage implements Serializable {
         this.health = health;
     }
 
+    public void affectHealth(int health) {
+        this.health += health;
+    }
+
     public void setReputation(int reputation) {
         this.reputation = reputation;
     }
 
+    public void affectReputation(int reputation) {
+        this.reputation += reputation;
+    }
+
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public void affectMoney(int money) {
+        this.money += money;
     }
 
     public void setRegeneration(int regeneration) {

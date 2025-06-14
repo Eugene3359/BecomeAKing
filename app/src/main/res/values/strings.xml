@@ -33,7 +33,7 @@
     <string name="health">Здоровье</string>
     <string name="reputation">Репутация</string>
     <string name="money">Деньги</string>
-    <string name="watch">Часы</string>
+    <string name="next_day">Следующий день</string>
     <string name="_0">0</string>
 
     <!-- Game Activity Menu -->
@@ -135,6 +135,7 @@
 
     <!-- Personage Characteristics Fragment -->
     <string name="age_d">Возраст %d</string>
+    <string name="watch">Часы</string>
     <string name="level_d">Уровень %d</string>
     <string name="d_d">%d/%d</string>
     <string name="skill_points">Очки навыков</string>
@@ -168,5 +169,12 @@
     <!-- Clicker MiniGame Activity -->
     <string name="exit">Выйти</string>
     <string name="instruction">Жми как можно быстрее — от этого зависит твой доход!</string>
+    <string name="ok">Понятно</string>
+
+    <!-- Game Ended -->
+    <string name="game_over">Игра закончилась.</string>
+    <string name="negative_health">Потеряно все здоровье. Вы погибли.</string>
+    <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>
+    <string name="negative_money">Вы задолжали денег не тем людям. Вас продали в рабство.</string>
 
 </resources>

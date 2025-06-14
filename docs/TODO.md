@@ -1,7 +1,9 @@
 # Project Tasks
 
 ## In Progress
-- ClickerMiniGame
+
+### LoadActivity
+- Implement save/load game logic
 
 ## In Queue
 
@@ -26,9 +28,6 @@
 ### TitleSelectionActivity
 - Add more titles
 - Generate titles array based on player achievements
-
-### LoadActivity
-- Implement save/load game logic
 
 ### LanguageActivity
 - Add support for multiple languages (localization)

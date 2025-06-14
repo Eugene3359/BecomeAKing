@@ -135,7 +135,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
                 if (categoryId < 10) {
                     if (personage.getMoney() >= item.getCost()) {
-                        personage.setMoney(personage.getMoney() - item.getCost());
+                        personage.affectMoney(-item.getCost());
                         item.setBought(true);
                         viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
                         callback.call();
