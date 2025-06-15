@@ -3,8 +3,9 @@ package com.scipath.becomeaking;
 import android.app.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
+import com.scipath.becomeaking.data.GameState;
+import com.scipath.becomeaking.data.SaveManager;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
@@ -18,10 +19,11 @@ public class BecomeAKing extends Application {
 
     // Fields
     private static BecomeAKing instance;
-    private boolean isDebug = true;
     private int day;
     private Personage currentPersonage;
     private ArrayList<Category> currentCategories;
+    private boolean isLoaded = false;
+    private boolean isDebug = false;
 
 
     @Override
@@ -39,6 +41,10 @@ public class BecomeAKing extends Application {
     // Accessors
     public boolean isDebug() {
         return isDebug;
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
     }
 
     public int getDay() {
@@ -117,11 +123,49 @@ public class BecomeAKing extends Application {
         message += " " + getApplicationContext().getString(R.string.game_over);
 
         // Showing dialogue
-        DialogueFragment dialogueFragmentStart = DialogueFragment.newInstance(message, R.string.ok);
-        dialogueFragmentStart.show(activity.getSupportFragmentManager(), "dialogue");
-        dialogueFragmentStart.setCallback(() ->
+        DialogueFragment dialogueFragment = DialogueFragment.newInstance(message, R.string.ok);
+        dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
+        dialogueFragment.setCallback(() ->
         {
+            SaveManager.deleteSave(getApplicationContext());
             activity.finish();
         });
+    }
+
+    private GameState packGameState() {
+        return new GameState(day, currentPersonage, currentCategories);
+    }
+
+    private void unpackGameState(GameState gameState) {
+        day = gameState.day;
+        currentPersonage = gameState.personage;
+        currentCategories = gameState.categories;
+    }
+
+    public void saveGame() {
+        SaveManager.saveGame(getApplicationContext(), packGameState());
+    }
+
+    public void loadGame(AppCompatActivity activity) {
+        if (SaveManager.saveExists(getApplicationContext())) {
+            GameState gameState = SaveManager.loadGame(getApplicationContext());
+            if(gameState != null) {
+                unpackGameState(gameState);
+                isLoaded = true;
+            } else {
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.something_went_wrong, R.string.ok);
+                dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
+            }
+        } else {
+            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.save_not_found, R.string.ok);
+            dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
+        }
+    }
+
+    public void clearGameState() {
+        day = 0;
+        currentPersonage = null;
+        currentCategories = null;
+        isLoaded = false;
     }
 }

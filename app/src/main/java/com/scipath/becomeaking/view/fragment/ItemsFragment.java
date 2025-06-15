@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,7 +59,11 @@ public class ItemsFragment extends Fragment {
         ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new Callback() {
             @Override
             public void call() {
-                ((GameActivity)requireActivity()).updateViews();
+                GameActivity activity = (GameActivity)requireActivity();
+                if (categoryId >= 10) {
+                    activity.switchMenuButton(activity.findViewById(R.id.button_personage) , new PersonageFragment());
+                }
+                activity.updateViews();
             }
         }, view.getContext());
 

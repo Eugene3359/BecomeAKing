@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
+import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Category;
@@ -143,9 +144,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    // Work started
+                    personage.affectHealth(item.getStatBonuses().getStatBonusValue(StatBonus.HealthImpact));
                     Intent intent = new Intent(context, ClickerMiniGameActivity.class);
                     intent.putExtra("item", item);
                     context.startActivity(intent);
+                    callback.call();
                 }
             });
         } else {

@@ -117,6 +117,7 @@ public class GameActivity extends AppCompatActivity {
         ImageButton imageButtonNextDay = findViewById(R.id.image_button_next_day);
         imageButtonNextDay.setOnClickListener(view -> {
             BecomeAKing.getInstance().nextDay();
+            BecomeAKing.getInstance().saveGame();
             updateViews();
             if(fragment.getClass() == PersonageFragment.class) {
                 ((PersonageFragment)fragment).updateViews();
@@ -129,9 +130,16 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateViews();
+        // updateViews();
+        BecomeAKing.getInstance().checkPersonageForNegativeValues(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        BecomeAKing.getInstance().saveGame();
+        BecomeAKing.getInstance().clearGameState();
+        super.onDestroy();
+    }
 
     public void switchMenuButton(ImageButton pressedButton, Fragment newFragment) {
         if (buttonActive != pressedButton) {
@@ -145,18 +153,18 @@ public class GameActivity extends AppCompatActivity {
             buttonActive = pressedButton;
             buttonActive.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_button_green));
 
-            fragment = newFragment;
-            setFragment();
+            setFragment(newFragment);
         } else {
             refreshFragmentData();
         }
     }
 
-    public void setFragment() {
+    public void setFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_frame, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
+        this.fragment = fragment;
     }
 
     private void refreshFragmentData() {

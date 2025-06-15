@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.data.GameState;
+import com.scipath.becomeaking.data.SaveManager;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
@@ -140,7 +142,6 @@ public class PersonageFragment extends Fragment {
 
         Button buttonExit = view.findViewById(R.id.button_exit);
         buttonExit.setOnClickListener(v -> {
-            // TODO: Handler
             getActivity().finish();
         });
 

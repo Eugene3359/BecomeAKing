@@ -1,3 +1,17 @@
+# Become a King [0.1.6] - 15.06.2025
+
+### Additions
+- Implemented `Save/Load Game` logic
+- `buttonLoad` is now active
+
+### Changes
+- Changed click zone in `Clicker Mini-Game`  
+
+### Fixes
+- Fixed a bug when health wasn't affected by starting a work
+
+---
+
 # Become a King [0.1.5] - 14.06.2025
 
 ### Additions
@@ -17,8 +31,8 @@
 # Become a King [0.1.3] - 01.06.2025
 
 ### Additions
-- Added `Work in a village` job category
-- Added `ClickerMiniGame`
+- Added `Work in a Village` work category
+- Added `Clicker Mini-Game`
 
 ### Changes
 - `buttonJob` is now active

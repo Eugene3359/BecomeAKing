@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -66,7 +67,11 @@ public class MainActivity extends AppCompatActivity {
         // Button load
         Button buttonLoad = findViewById(R.id.button_load);
         buttonLoad.setOnClickListener(view -> {
-            // TODO: move to new LoadActivity
+            BecomeAKing.getInstance().loadGame(this);
+            if (BecomeAKing.getInstance().isLoaded()) {
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(intent);
+            }
         });
 
         // Button language

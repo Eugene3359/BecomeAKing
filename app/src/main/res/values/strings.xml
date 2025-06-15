@@ -9,6 +9,9 @@
     <string name="load">Загрузить</string>
     <string name="language">Язык</string>
     <string name="img_with_knights">Изображение с рыцарями</string>
+    <string name="save_not_found">Сохранение не найдено.</string>
+    <string name="something_went_wrong">Что-то пошло не так.</string>
+    <string name="ok">Понятно</string>
 
     <!-- Sex Selection Activity -->
     <string name="choose_sex">Выберите пол персонажа</string>
@@ -169,9 +172,8 @@
     <!-- Clicker MiniGame Activity -->
     <string name="exit">Выйти</string>
     <string name="instruction">Жми как можно быстрее — от этого зависит твой доход!</string>
-    <string name="ok">Понятно</string>
 
-    <!-- Game Ended -->
+    <!-- Game Over -->
     <string name="game_over">Игра закончилась.</string>
     <string name="negative_health">Потеряно все здоровье. Вы погибли.</string>
     <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>

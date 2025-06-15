@@ -1,9 +1,7 @@
 # Project Tasks
 
 ## In Progress
-
-### LoadActivity
-- Implement save/load game logic
+- Add more categories
 
 ## In Queue
 
