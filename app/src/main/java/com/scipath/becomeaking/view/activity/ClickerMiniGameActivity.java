@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Item;
+import com.scipath.becomeaking.model.item.IItem;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
@@ -40,8 +40,8 @@ public class ClickerMiniGameActivity extends AppCompatActivity {
         });
 
         // Getting item
-        Item item = (Item)getIntent().getSerializableExtra("item");
-        int moneyPerClick = item.getStatBonuses().getStatBonusValue(StatBonus.MoneyPerClick);
+        IItem item = (IItem) getIntent().getSerializableExtra("item");
+        int moneyPerClick = item.getStatBonuses().get(StatBonus.MoneyPerClick);
 
         // Views
         TextView textViewWork = findViewById(R.id.text_view_work);
@@ -72,7 +72,7 @@ public class ClickerMiniGameActivity extends AppCompatActivity {
                     DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(R.string.exit, R.string.exit);
                     dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
                     dialogueFragmentResult.setCallback(() -> {
-                        BecomeAKing.getInstance().getCurrentPersonage().affectMoney(moneyEarned);
+                        BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
                         finish();
                     });
                 }

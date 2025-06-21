@@ -51,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
         // Getting Personage from Application
-        personage = BecomeAKing.getInstance().getCurrentPersonage();
+        personage = BecomeAKing.getInstance().getPersonage();
 
         // Views
         textViewHealth = findViewById(R.id.text_view_health);
@@ -130,7 +130,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // updateViews();
+        updateViews();
         BecomeAKing.getInstance().checkPersonageForNegativeValues(this);
     }
 

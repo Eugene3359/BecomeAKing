@@ -79,7 +79,7 @@
                 android:text="@string/language"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_big"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
         </LinearLayout>
 

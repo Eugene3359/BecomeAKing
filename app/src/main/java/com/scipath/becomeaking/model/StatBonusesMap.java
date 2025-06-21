@@ -1,52 +1,26 @@
 package com.scipath.becomeaking.model;
 
-import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 
-public class StatBonusesMap implements Serializable {
+public class StatBonusesMap extends HashMap<StatBonus, Integer> {
 
-    // StatBonuses map
-    private HashMap<StatBonus, Integer> statBonuses;
-
-
-    // Constructor
-    public StatBonusesMap() {
-        statBonuses = new HashMap<>();
+    @Override
+    public Integer get(Object statBonus) {
+        if (statBonus == null) return 0;
+        if (!(statBonus instanceof StatBonus)) return 0;
+        return getOrDefault(statBonus, 0);
     }
 
-
-    // Accessors
-    /***
-     * Stat bonuses map accessor
-     *
-     * @return Map<StatBonus, Integer> that contains all stat bonuses
-     */
-    public HashMap<StatBonus, Integer> getStatBonusesMap() {
-        return statBonuses;
-    }
-
-    /***
-     * Stat bonus value accessor
-     *
-     * @param statBonus The StatBonus which value must be returned
-     * @return The int that contains the stat bonus value
-     */
-    public int getStatBonusValue (StatBonus statBonus) {
-        if(statBonus == null) return 0;
-        else return statBonuses.getOrDefault(statBonus, 0);
-    }
-
-
-    // Mutators
-    /***
-     * Add stat bonus to the StatBonusesMap
-     *
-     * @param statBonus The StatBonus which value must be added
-     * @param value     The int that contains the value of the stat bonus
-     */
-    public StatBonusesMap addStatBonus (StatBonus statBonus, int value) {
-        statBonuses.put(statBonus, value);
+    public StatBonusesMap put(StatBonus statBonus, int value) {
+        super.put(statBonus, value);
         return this;
+    }
+
+    public void sum(StatBonusesMap statBonuses) {
+        for (Map.Entry<StatBonus, Integer> entry : statBonuses.entrySet()) {
+            this.merge(entry.getKey(), entry.getValue(), Integer::sum);
+        }
     }
 }

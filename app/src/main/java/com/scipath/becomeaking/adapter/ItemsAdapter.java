@@ -16,11 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
-import com.scipath.becomeaking.model.StatBonus;
+import com.scipath.becomeaking.model.item.IItem;
+import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Category;
-import com.scipath.becomeaking.model.Item;
+import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 
@@ -30,14 +31,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     // Variables
     private int categoryId;
     private Category category;
-    private Callback callback;
+    private ItemCallback callback;
     private Context context;
 
 
     // Constructor
-    public ItemsAdapter(int categoryId, Callback callback, Context context) {
+    public ItemsAdapter(int categoryId, ItemCallback callback, Context context) {
         this.categoryId = categoryId;
-        this.category = BecomeAKing.getInstance().getCurrentCategories().get(categoryId);
+        this.category = BecomeAKing.getInstance().getCategories().get(categoryId);
         this.callback = callback;
         this.context = context;
     }
@@ -74,7 +75,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             return layout.findViewById(R.id.buy);
         }
 
-        public void resetItemButtonBuyState(Item item, int categoryId, Context context) {
+        public void resetItemButtonBuyState(IItem item, int categoryId, Context context) {
             Button button = getItemButtonBuyView();
             button.setEnabled(true);
             button.setBackgroundColor(context.getColor(R.color.transparent_green));
@@ -121,8 +122,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ItemsAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
-        Item item = category.getItems().get(position);
+        Personage personage = BecomeAKing.getInstance().getPersonage();
+        IItem item = category.getItems().get(position);
 
         // Setting values to views
         viewHolder.getItemNameView().setText(item.getNameId());
@@ -134,22 +135,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             viewHolder.resetItemButtonBuyState(item, categoryId, context);
 
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
-                if (categoryId < 10) {
-                    if (personage.getMoney() >= item.getCost()) {
-                        personage.affectMoney(-item.getCost());
-                        item.setBought(true);
+                if (item instanceof Item) {
+                    if (item.interact(personage)) {
                         viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
-                        callback.call();
+                        callback.call(item);
                     } else {
                         Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
                     }
-                } else {
+                } else if (item instanceof Work) {
                     // Work started
-                    personage.affectHealth(item.getStatBonuses().getStatBonusValue(StatBonus.HealthImpact));
-                    Intent intent = new Intent(context, ClickerMiniGameActivity.class);
-                    intent.putExtra("item", item);
-                    context.startActivity(intent);
-                    callback.call();
+                    item.interact(personage);
+                    callback.call(item);
                 }
             });
         } else {

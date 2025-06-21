@@ -18,8 +18,6 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
 
-import org.w3c.dom.Text;
-
 
 public class PersonageCharacteristicsFragment extends Fragment {
 
@@ -38,7 +36,7 @@ public class PersonageCharacteristicsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Getting Personage from Application
-        Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
+        Personage personage = BecomeAKing.getInstance().getPersonage();
 
         // Views
         TextView textViewAge = view.findViewById(R.id.text_view_age);
@@ -57,7 +55,7 @@ public class PersonageCharacteristicsFragment extends Fragment {
                 personage.getLevel().getCurrentExperience(),
                 personage.getLevel().getNeededExperience()));
         imageViewPersonageIcon.setImageResource(
-                BecomeAKing.getInstance().getCurrentCategories().get(1).getImageId());
+                BecomeAKing.getInstance().getCategories().get(1).getImageId());
 
         // Buttons
         Button buttonBack = view.findViewById(R.id.button_back);

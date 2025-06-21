@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.model.item.IItem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Category implements Serializable {
     private int id;
     private int nameId;
     private int imageId;
-    private List<Item> items;
+    private List<IItem> items;
     private StatBonusesMap statBonuses;
 
 
@@ -47,7 +48,7 @@ public class Category implements Serializable {
         return imageId;
     }
 
-    public List<Item> getItems() {
+    public List<IItem> getItems() {
         return items;
     }
 
@@ -57,7 +58,7 @@ public class Category implements Serializable {
 
 
     // Mutators
-    public void setItems(List<Item> items) {
+    public void setItems(List<IItem> items) {
         this.items = items;
         recalculateStats();
     }
@@ -67,7 +68,7 @@ public class Category implements Serializable {
      *
      * @param item The Item to be added to the category
      */
-    public Category addItem(Item item) {
+    public Category addItem(IItem item) {
         this.items.add(item);
         recalculateStats();
         return this;
@@ -93,33 +94,37 @@ public class Category implements Serializable {
         return AppCompatResources.getDrawable(context, imageId);
     }
 
+    public IItem getLastBoughtItem() {
+        IItem item;
+        for (int i = items.size()-1; i >= 0; i--) {
+            item = items.get(i);
+            if (item.isBought()) return item;
+        }
+        return null;
+    }
+
     /***
      * Updates the category-level stats based on the values of all items.
      * This method recalculates stats and sets the image from the last item
      * marked as bought.
      */
     public void recalculateStats() {
-        if (!items.isEmpty()) {
-            imageId = items.get(0).getImageId();
-        }
+        if (items.isEmpty()) return;
+
+        imageId = getLastBoughtItem() == null ?
+                items.get(0).getImageId() :
+                getLastBoughtItem().getImageId();
         statBonuses = new StatBonusesMap();
 
-        for (Item item : items) {
-            if (item.isBought()) {
-                imageId = item.getImageId();
-
-                for (StatBonus statBonus : StatBonus.values()) {
-                    if (item.getStatBonuses().getStatBonusValue(statBonus) != 0) {
-                        if (nameId == R.string.nutrition) {
-                            statBonuses.addStatBonus(statBonus,
-                                    statBonuses.getStatBonusValue(statBonus)
-                                            + item.getStatBonuses().getStatBonusValue(statBonus));
-                        } else {
-                            statBonuses.addStatBonus(statBonus, item.getStatBonuses().getStatBonusValue(statBonus));
-                        }
-                    }
+        if (nameId == R.string.nutrition) {
+            for (IItem item : items) {
+                if (item.isBought()) {
+                    statBonuses.sum(item.getStatBonuses());
                 }
             }
+        } else {
+            IItem item = getLastBoughtItem();
+            if (item != null) statBonuses = item.getStatBonuses();
         }
     }
 }

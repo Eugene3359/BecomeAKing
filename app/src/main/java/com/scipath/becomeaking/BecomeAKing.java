@@ -19,18 +19,17 @@ public class BecomeAKing extends Application {
 
     // Fields
     private static BecomeAKing instance;
-    private int day;
-    private Personage currentPersonage;
-    private ArrayList<Category> currentCategories;
-    private boolean isLoaded = false;
-    private boolean isDebug = false;
+    private GameState gameState;
+    private boolean isLoaded;
+    private final boolean isDebug = false;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        day = 0;
+        gameState = null;
+        isLoaded = false;
     }
 
     public static BecomeAKing getInstance() {
@@ -47,65 +46,64 @@ public class BecomeAKing extends Application {
         return isLoaded;
     }
 
+    public GameState getGameState() {
+        return gameState;
+    }
+
     public int getDay() {
-        return day;
+        return gameState.day;
     }
 
-    public Personage getCurrentPersonage() {
-        return currentPersonage;
+    public Personage getPersonage() {
+        return gameState.personage;
     }
 
-    public ArrayList<Category> getCurrentCategories() {
-        return currentCategories;
+    public ArrayList<Category> getCategories() {
+        return gameState.categories;
     }
 
-    public ArrayList<Category> getCurrentCategoriesSublist(int fromIndex, int toIndex) {
-        return new ArrayList<>(currentCategories.subList(fromIndex, toIndex));
+    public ArrayList<Category> getCategoriesSublist(int fromIndex, int toIndex) {
+        return new ArrayList<>(gameState.categories.subList(fromIndex, toIndex));
     }
 
+
+    // Mutators
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+
+    // Methods
     public StatBonusesMap getCurrentStatBonuses () {
         StatBonusesMap statBonuses = new StatBonusesMap();
-        for (Category category : currentCategories) {
+        for (Category category : gameState.categories) {
             category.recalculateStats();
             StatBonusesMap categoryStatBonuses = category.getStatBonuses();
-            for (StatBonus statBonusKey : categoryStatBonuses.getStatBonusesMap().keySet()) {
-                statBonuses.addStatBonus(statBonusKey,
-                        statBonuses.getStatBonusValue(statBonusKey)
-                                + categoryStatBonuses.getStatBonusValue(statBonusKey));
+            for (StatBonus statBonus : categoryStatBonuses.keySet()) {
+                statBonuses.put(statBonus,
+                        statBonuses.get(statBonus)
+                                + categoryStatBonuses.get(statBonus));
             }
         }
         return statBonuses;
     }
 
-
-    // Mutators
-    public void setCurrentPersonage(Personage currentPersonage) {
-        this.currentPersonage = currentPersonage;
-    }
-
-    public void setCurrentCategories (ArrayList<Category> categories) {
-        currentCategories = categories;
-    }
-
-
-    // Methods
     public void nextDay() {
-        day++;
+        gameState.day++;
         StatBonusesMap statBonuses = getCurrentStatBonuses();
-        currentPersonage.affectHealth(statBonuses.getStatBonusValue(StatBonus.HealthPerDay));
-        currentPersonage.affectReputation(statBonuses.getStatBonusValue(StatBonus.ReputationPerDay));
-        currentPersonage.affectMoney(statBonuses.getStatBonusValue(StatBonus.CostPerDay));
+        gameState.personage.affectHealth(statBonuses.get(StatBonus.HealthPerDay));
+        gameState.personage.affectReputation(statBonuses.get(StatBonus.ReputationPerDay));
+        gameState.personage.affectMoney(statBonuses.get(StatBonus.CostPerDay));
     }
 
     public void checkPersonageForNegativeValues(AppCompatActivity activity) {
-
-        if (currentPersonage.getHealth() <= 0) gameOver(0, activity);
-        if (currentPersonage.getReputation() < 0) gameOver(1, activity);
-        if (currentPersonage.getMoney() < 0) gameOver(2, activity);
+        if (gameState.personage.getHealth() == 0) gameOver(0, activity);
+        if (gameState.personage.getReputation() < 0) gameOver(1, activity);
+        if (gameState.personage.getMoney() < 0) gameOver(2, activity);
     }
 
     public void gameOver(int code, AppCompatActivity activity) {
-        // Forming message
+        // Forming game-over message
         String message;
         switch (code) {
             case 0:
@@ -118,6 +116,7 @@ public class BecomeAKing extends Application {
                 message = getApplicationContext().getString(R.string.negative_money);
                 break;
             default:
+                // Game Over from unknown reason
                 message = "";
         }
         message += " " + getApplicationContext().getString(R.string.game_over);
@@ -127,45 +126,39 @@ public class BecomeAKing extends Application {
         dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         dialogueFragment.setCallback(() ->
         {
+            // Deleting save file
             SaveManager.deleteSave(getApplicationContext());
+            clearGameState();
             activity.finish();
         });
     }
 
-    private GameState packGameState() {
-        return new GameState(day, currentPersonage, currentCategories);
-    }
-
-    private void unpackGameState(GameState gameState) {
-        day = gameState.day;
-        currentPersonage = gameState.personage;
-        currentCategories = gameState.categories;
-    }
-
     public void saveGame() {
-        SaveManager.saveGame(getApplicationContext(), packGameState());
+        SaveManager.saveGame(getApplicationContext(), gameState);
     }
 
     public void loadGame(AppCompatActivity activity) {
         if (SaveManager.saveExists(getApplicationContext())) {
+            // Save file exists
             GameState gameState = SaveManager.loadGame(getApplicationContext());
             if(gameState != null) {
-                unpackGameState(gameState);
+                // Successful load
+                this.gameState = gameState;
                 isLoaded = true;
             } else {
+                // Load error
                 DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.something_went_wrong, R.string.ok);
                 dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
             }
         } else {
+            // No save file
             DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.save_not_found, R.string.ok);
             dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         }
     }
 
     public void clearGameState() {
-        day = 0;
-        currentPersonage = null;
-        currentCategories = null;
+        gameState = null;
         isLoaded = false;
     }
 }

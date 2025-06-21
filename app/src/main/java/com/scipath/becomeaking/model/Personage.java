@@ -1,5 +1,7 @@
 package com.scipath.becomeaking.model;
 
+import com.scipath.becomeaking.BecomeAKing;
+
 import java.io.Serializable;
 
 
@@ -15,7 +17,7 @@ public class Personage implements Serializable {
     private int reputation;
     private int money;
     private int regeneration;
-    private int strength;
+    private int might;
 
 
     // Constructor
@@ -29,7 +31,7 @@ public class Personage implements Serializable {
         reputation = 0;
         money = 100;
         regeneration = 0;
-        strength = 0;
+        might = 0;
     }
 
 
@@ -70,8 +72,8 @@ public class Personage implements Serializable {
         return regeneration;
     }
 
-    public int getStrength() {
-        return strength;
+    public int getMight() {
+        return might;
     }
 
 
@@ -93,11 +95,14 @@ public class Personage implements Serializable {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        // Health can't be bellow zero
+        this.health = Math.max(health, 0);
     }
 
     public void affectHealth(int health) {
         this.health += health;
+        // Health can't drop bellow zero
+        if (this.health < 0) this.health = 0;
     }
 
     public void setReputation(int reputation) {
@@ -120,7 +125,18 @@ public class Personage implements Serializable {
         this.regeneration = regeneration;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setMight(int might) {
+        this.might = might;
+    }
+
+    public void affectMight(int might) {
+        this.might += might;
+    }
+
+
+    // Methods
+    public void recalculateStats() {
+        StatBonusesMap statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
+        might = statBonuses.get(StatBonus.Might);
     }
 }

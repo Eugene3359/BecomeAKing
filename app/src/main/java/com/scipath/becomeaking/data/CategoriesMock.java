@@ -2,9 +2,10 @@ package com.scipath.becomeaking.data;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Category;
-import com.scipath.becomeaking.model.Item;
+import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
+import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
 
@@ -26,49 +27,49 @@ public class CategoriesMock {
                 .addItem(new Item(R.string.royal_food, R.drawable.img_king_food, 0));
         // Bread
         categories.get(0).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 5)
-                .addStatBonus(StatBonus.CostPerDay, -1));
+                .put(StatBonus.HealthPerDay, 5)
+                .put(StatBonus.CostPerDay, -1));
         categories.get(0).getItems().get(0).setBought(true);
         // Meat
         categories.get(0).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 10)
-                .addStatBonus(StatBonus.ReputationPerDay, 5)
-                .addStatBonus(StatBonus.CostPerDay, -5));
+                .put(StatBonus.HealthPerDay, 10)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, -5));
         // Cheese
         categories.get(0).getItems().get(2).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 15)
-                .addStatBonus(StatBonus.ReputationPerDay, 15)
-                .addStatBonus(StatBonus.CostPerDay, -10));
+                .put(StatBonus.HealthPerDay, 15)
+                .put(StatBonus.ReputationPerDay, 15)
+                .put(StatBonus.CostPerDay, -10));
         // Vegetables
         categories.get(0).getItems().get(3).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 20)
-                .addStatBonus(StatBonus.ReputationPerDay, 20)
-                .addStatBonus(StatBonus.CostPerDay, -15));
+                .put(StatBonus.HealthPerDay, 20)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, -15));
         // Soup
         categories.get(0).getItems().get(4).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 30)
-                .addStatBonus(StatBonus.ReputationPerDay, 20)
-                .addStatBonus(StatBonus.CostPerDay, -30));
+                .put(StatBonus.HealthPerDay, 30)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, -30));
         // Nourishing food
         categories.get(0).getItems().get(5).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 40)
-                .addStatBonus(StatBonus.ReputationPerDay, 30)
-                .addStatBonus(StatBonus.CostPerDay, -40));
+                .put(StatBonus.HealthPerDay, 40)
+                .put(StatBonus.ReputationPerDay, 30)
+                .put(StatBonus.CostPerDay, -40));
         // Luxurious food
         categories.get(0).getItems().get(6).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 50)
-                .addStatBonus(StatBonus.ReputationPerDay, 40)
-                .addStatBonus(StatBonus.CostPerDay, -45));
+                .put(StatBonus.HealthPerDay, 50)
+                .put(StatBonus.ReputationPerDay, 40)
+                .put(StatBonus.CostPerDay, -45));
         // Aristocracy food
         categories.get(0).getItems().get(7).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 70)
-                .addStatBonus(StatBonus.ReputationPerDay, 50)
-                .addStatBonus(StatBonus.CostPerDay, -60));
+                .put(StatBonus.HealthPerDay, 70)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, -60));
         // Royal food
         categories.get(0).getItems().get(8).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 100)
-                .addStatBonus(StatBonus.ReputationPerDay, 300)
-                .addStatBonus(StatBonus.CostPerDay, -500));
+                .put(StatBonus.HealthPerDay, 100)
+                .put(StatBonus.ReputationPerDay, 300)
+                .put(StatBonus.CostPerDay, -500));
 
         // Clothes
         categories.add(new Category(R.string.clothes));
@@ -89,38 +90,38 @@ public class CategoriesMock {
                         R.drawable.img_royal_clothes_m : R.drawable.img_royal_clothes_w, 40000));
         // Poor man/woman clothes
         categories.get(1).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 5));
+                .put(StatBonus.HealthPerDay, 5));
         categories.get(1).getItems().get(0).setBought(true);
         // Peasant clothes
         categories.get(1).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 10)
-                .addStatBonus(StatBonus.ReputationPerDay, 5)
-                .addStatBonus(StatBonus.CostPerDay, -5));
+                .put(StatBonus.HealthPerDay, 10)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, -5));
         // Citizen clothes
         categories.get(1).getItems().get(2).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 15)
-                .addStatBonus(StatBonus.ReputationPerDay, 15)
-                .addStatBonus(StatBonus.CostPerDay, -10));
+                .put(StatBonus.HealthPerDay, 15)
+                .put(StatBonus.ReputationPerDay, 15)
+                .put(StatBonus.CostPerDay, -10));
         // Luxurious clothes
         categories.get(1).getItems().get(3).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 30)
-                .addStatBonus(StatBonus.ReputationPerDay, 20)
-                .addStatBonus(StatBonus.CostPerDay, -30));
+                .put(StatBonus.HealthPerDay, 30)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, -30));
         // Aristocracy clothes
         categories.get(1).getItems().get(4).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 40)
-                .addStatBonus(StatBonus.ReputationPerDay, 30)
-                .addStatBonus(StatBonus.CostPerDay, -40));
+                .put(StatBonus.HealthPerDay, 40)
+                .put(StatBonus.ReputationPerDay, 30)
+                .put(StatBonus.CostPerDay, -40));
         // Earl clothes
         categories.get(1).getItems().get(5).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 70)
-                .addStatBonus(StatBonus.ReputationPerDay, 50)
-                .addStatBonus(StatBonus.CostPerDay, -60));
+                .put(StatBonus.HealthPerDay, 70)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, -60));
         // Royal clothes
         categories.get(1).getItems().get(6).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 100)
-                .addStatBonus(StatBonus.ReputationPerDay, 200)
-                .addStatBonus(StatBonus.CostPerDay, -400));
+                .put(StatBonus.HealthPerDay, 100)
+                .put(StatBonus.ReputationPerDay, 200)
+                .put(StatBonus.CostPerDay, -400));
 
         // Entertainment
         categories.add(new Category(R.string.entertainment));
@@ -133,37 +134,80 @@ public class CategoriesMock {
                 .addItem(new Item(R.string.throw_a_feast, R.drawable.img_feast, 30000));
         // Tavern
         categories.get(2).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 10)
-                .addStatBonus(StatBonus.ReputationPerDay, 5)
-                .addStatBonus(StatBonus.CostPerDay, -5));
+                .put(StatBonus.HealthPerDay, 10)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, -5));
         // Fair
         categories.get(2).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 20)
-                .addStatBonus(StatBonus.ReputationPerDay, 15)
-                .addStatBonus(StatBonus.CostPerDay, -20));
+                .put(StatBonus.HealthPerDay, 20)
+                .put(StatBonus.ReputationPerDay, 15)
+                .put(StatBonus.CostPerDay, -20));
         // Tournament
         categories.get(2).getItems().get(2).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 30)
-                .addStatBonus(StatBonus.ReputationPerDay, 30)
-                .addStatBonus(StatBonus.CostPerDay, -30));
+                .put(StatBonus.HealthPerDay, 30)
+                .put(StatBonus.ReputationPerDay, 30)
+                .put(StatBonus.CostPerDay, -30));
         // Theatre
         categories.get(2).getItems().get(3).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 50)
-                .addStatBonus(StatBonus.ReputationPerDay, 40)
-                .addStatBonus(StatBonus.CostPerDay, -40));
+                .put(StatBonus.HealthPerDay, 50)
+                .put(StatBonus.ReputationPerDay, 40)
+                .put(StatBonus.CostPerDay, -40));
         // Hunt
         categories.get(2).getItems().get(4).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 70)
-                .addStatBonus(StatBonus.ReputationPerDay, 60)
-                .addStatBonus(StatBonus.CostPerDay, -60));
+                .put(StatBonus.HealthPerDay, 70)
+                .put(StatBonus.ReputationPerDay, 60)
+                .put(StatBonus.CostPerDay, -60));
         // Feast
         categories.get(2).getItems().get(5).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthPerDay, 100)
-                .addStatBonus(StatBonus.ReputationPerDay, 150)
-                .addStatBonus(StatBonus.CostPerDay, -300));
+                .put(StatBonus.HealthPerDay, 100)
+                .put(StatBonus.ReputationPerDay, 150)
+                .put(StatBonus.CostPerDay, -300));
 
         // Weapon
         categories.add(new Category(R.string.weapon));
+        categories.get(3)
+                .addItem(new Item(R.string.ax, R.drawable.img_ax, 100))
+                .addItem(new Item(R.string.rusty_sword, R.drawable.img_rusty_sword, 300))
+                .addItem(new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000))
+                .addItem(new Item(R.string.two_blades, R.drawable.img_two_blades, 3000))
+                .addItem(new Item(R.string.ax_and_shield, R.drawable.img_ax_and_shield, 8000))
+                .addItem(new Item(R.string.sword_and_shield, R.drawable.img_sword_and_shield, 15000))
+                .addItem(new Item(R.string.ancient_artifacts, R.drawable.img_ax_and_shield, 30000));
+        // Ax
+        categories.get(3).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 10)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, 5));
+        // Rusty sword
+        categories.get(3).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 20)
+                .put(StatBonus.ReputationPerDay, 10)
+                .put(StatBonus.CostPerDay, 10));
+        // Steel sword
+        categories.get(3).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 40)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, 20));
+        // Two blades
+        categories.get(3).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 80)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, 40));
+        // Ax and shield
+        categories.get(3).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 100)
+                .put(StatBonus.ReputationPerDay, 60)
+                .put(StatBonus.CostPerDay, 50));
+        // Sword and shield
+        categories.get(3).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 150)
+                .put(StatBonus.ReputationPerDay, 80)
+                .put(StatBonus.CostPerDay, 70));
+        // Ancient artifacts
+        categories.get(3).getItems().get(6).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 200)
+                .put(StatBonus.ReputationPerDay, 100)
+                .put(StatBonus.CostPerDay, 200));
 
         // Armor
         categories.add(new Category(R.string.armor));
@@ -186,18 +230,18 @@ public class CategoriesMock {
         // Work in village
         categories.add(new Category(R.string.work_in_a_village));
         categories.get(10)
-                .addItem(new Item(R.string.logging, R.drawable.img_logging, 0))
-                .addItem(new Item(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0));
+                .addItem(new Work(R.string.logging, R.drawable.img_logging, 0))
+                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0));
         // Logging
         categories.get(10).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthImpact, -10)
-                .addStatBonus(StatBonus.ReputationImpact, 5)
-                .addStatBonus(StatBonus.MoneyPerClick, 1));
+                .put(StatBonus.HealthImpact, -10)
+                .put(StatBonus.ReputationImpact, 5)
+                .put(StatBonus.MoneyPerClick, 1));
         // Work in a mine
         categories.get(10).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .addStatBonus(StatBonus.HealthImpact, -20)
-                .addStatBonus(StatBonus.ReputationImpact, 10)
-                .addStatBonus(StatBonus.MoneyPerClick, 2));
+                .put(StatBonus.HealthImpact, -20)
+                .put(StatBonus.ReputationImpact, 10)
+                .put(StatBonus.MoneyPerClick, 2));
 
         return categories;
     }

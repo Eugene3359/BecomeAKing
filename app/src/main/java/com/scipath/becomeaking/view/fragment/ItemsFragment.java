@@ -1,10 +1,10 @@
 package com.scipath.becomeaking.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +17,14 @@ import android.widget.ImageView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.adapter.ItemCallback;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.adapter.Callback;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.item.IItem;
+import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.Work;
+import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
 import com.scipath.becomeaking.view.activity.GameActivity;
 
 
@@ -45,7 +50,7 @@ public class ItemsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Getting personage and items from Application
-        Personage personage = BecomeAKing.getInstance().getCurrentPersonage();
+        Personage personage = BecomeAKing.getInstance().getPersonage();
         Bundle args = getArguments();
         int categoryId = args.getInt("categoryId");
 
@@ -56,14 +61,16 @@ public class ItemsFragment extends Fragment {
         Button buttonBack = view.findViewById(R.id.button_back);
 
         // Adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new Callback() {
+        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new ItemCallback() {
             @Override
-            public void call() {
+            public void call(IItem item) {
                 GameActivity activity = (GameActivity)requireActivity();
-                if (categoryId >= 10) {
+                if (item instanceof Item) {
+                    activity.updateViews();
+                } else if (item instanceof Work){
                     activity.switchMenuButton(activity.findViewById(R.id.button_personage) , new PersonageFragment());
+                    startClickerMiniGamer(item);
                 }
-                activity.updateViews();
             }
         }, view.getContext());
 
@@ -89,5 +96,12 @@ public class ItemsFragment extends Fragment {
         buttonBack.setOnClickListener(v -> {
             getParentFragmentManager().popBackStack();
         });
+    }
+
+
+    public void startClickerMiniGamer(IItem item) {
+        Intent intent = new Intent(getContext(), ClickerMiniGameActivity.class);
+        intent.putExtra("item", item);
+        getContext().startActivity(intent);
     }
 }

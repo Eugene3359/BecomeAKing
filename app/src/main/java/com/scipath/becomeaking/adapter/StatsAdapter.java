@@ -36,7 +36,7 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
         this.context = context;
 
         statBonusesList = new ArrayList<>();
-        for (Map.Entry<StatBonus, Integer> entry : statBonuses.getStatBonusesMap().entrySet()) {
+        for (Map.Entry<StatBonus, Integer> entry : statBonuses.entrySet()) {
             statBonusesList.add(new Pair<>(entry.getKey(), entry.getValue()));
         }
     }
@@ -95,6 +95,6 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return statBonuses.getStatBonusesMap().size();
+        return statBonuses.size();
     }
 }

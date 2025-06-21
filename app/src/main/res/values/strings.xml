@@ -92,6 +92,13 @@
 
     <!-- Weapon -->
     <string name="weapon">Оружие</string>
+    <string name="ax">Секира</string>
+    <string name="rusty_sword">Ржавый меч</string>
+    <string name="steel_sword">Стальной меч</string>
+    <string name="two_blades">Клинки</string>
+    <string name="ax_and_shield">Топор и щит</string>
+    <string name="sword_and_shield">Меч и щит</string>
+    <string name="ancient_artifacts">Древние артефакты</string>
 
     <!-- Armor -->
     <string name="armor">Броня</string>
@@ -120,6 +127,9 @@
 
     <!-- Domains -->
     <string name="domains">Владения</string>
+
+    <!-- Personage Fragment Stats -->
+    <string name="might">Мощь</string>
 
     <!-- Ad -->
     <string name="watch_ad">Смотреть рекламу</string>

@@ -39,7 +39,7 @@ public class CategoriesFragment extends Fragment {
         // Getting sublist of categories from Application
         Bundle args = getArguments();
         ArrayList<Category> categories = BecomeAKing.getInstance()
-                .getCurrentCategoriesSublist(args.getInt("fromIndex"), args.getInt("toIndex"));
+                .getCategoriesSublist(args.getInt("fromIndex"), args.getInt("toIndex"));
 
         // View
         RecyclerView recyclerView = view.findViewById(R.id.category_list);

@@ -362,42 +362,6 @@
                         android:textAlignment="center" />
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/might_display"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50dp"
-                    android:gravity="center_vertical" >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/might"
-                        android:textColor="@color/light_brown"
-                        android:textSize="24sp"
-                        android:textAlignment="center" />
-
-                    <ImageView
-                        android:layout_width="29dp"
-                        android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
-                        android:rotation="45"
-                        android:scaleType="fitXY"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/_0"
-                        android:textColor="@color/light_brown"
-                        android:textSize="24sp"
-                        android:textAlignment="center" />
-
-                </LinearLayout>
                 -->
 
                 <LinearLayout
@@ -462,6 +426,42 @@
                         android:contentDescription="@string/arrow_image"/>
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/_0"
+                        android:textColor="@color/light_brown"
+                        android:textSize="24sp"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/might"
+                        android:textColor="@color/light_brown"
+                        android:textSize="24sp"
+                        android:textAlignment="center" />
+
+                    <ImageView
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:src="@drawable/icon_airbrush"
+                        android:rotation="45"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/arrow_image"/>
+
+                    <TextView
+                        android:id="@+id/text_view_might"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

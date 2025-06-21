@@ -18,17 +18,19 @@ import android.widget.Toast;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.data.GameState;
-import com.scipath.becomeaking.data.SaveManager;
+import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
+
+import java.util.ArrayList;
 
 
 public class PersonageFragment extends Fragment {
 
     // Models variables
     Personage personage;
+    ArrayList<Category> categories;
     StatBonusesMap statBonuses;
 
     // Views variables
@@ -57,7 +59,8 @@ public class PersonageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Getting Personage and StatBonuses from Application
-        personage = BecomeAKing.getInstance().getCurrentPersonage();
+        personage = BecomeAKing.getInstance().getPersonage();
+        categories = BecomeAKing.getInstance().getCategories();
         statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
@@ -79,31 +82,34 @@ public class PersonageFragment extends Fragment {
         TextView textViewClothes = view.findViewById(R.id.text_view_clothes);
         TextView textViewHousing = view.findViewById(R.id.text_view_housing);
         TextView textViewHorse = view.findViewById(R.id.text_view_horse);
+        TextView textViewMight = view.findViewById(R.id.text_view_might);
 
         // Setting Views values
         textViewName.setText(personage.getName());
         textViewTitle.setText(personage.getTitle().getName(getActivity()));
-        imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCurrentCategories().get(1).getImageId());
+        imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCategories().get(1).getImageId());
 
         // Stat bonuses
-        int statBonusValue = statBonuses.getStatBonusValue(StatBonus.HealthPerDay);
+        int statBonusValue = statBonuses.get(StatBonus.HealthPerDay);
         imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewHealthIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.getStatBonusValue(StatBonus.ReputationPerDay);
+        statBonusValue = statBonuses.get(StatBonus.ReputationPerDay);
         imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewReputationIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.getStatBonusValue(StatBonus.CostPerDay);
+        statBonusValue = statBonuses.get(StatBonus.CostPerDay);
         imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewMoneyIncome.setText(Integer.toString(statBonusValue));
 
         updateViews();
 
-        // TODO: Set possessions values
+        textViewNutrition.setText(categories.get(0).getLastBoughtItem().getNameId());
+        textViewClothes.setText(categories.get(1).getLastBoughtItem().getNameId());
+        textViewMight.setText(Integer.toString(personage.getMight()));
 
         // Buttons
         Button buttonLevel = view.findViewById(R.id.button_level);

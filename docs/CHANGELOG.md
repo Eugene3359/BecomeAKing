@@ -1,3 +1,15 @@
+# Become a King [0.1.7] - 22.06.2025
+
+### Additions
+- Added `Weapon` category
+- Added `Might` stat
+
+### Fixes
+- Fixed a bug when reputation wasn't affected by starting a work
+- Fixed a bug when money didn't update after finishing a work
+
+---
+
 # Become a King [0.1.6] - 15.06.2025
 
 ### Additions
@@ -6,6 +18,7 @@
 
 ### Changes
 - Changed click zone in `Clicker Mini-Game`  
+- Personage health can't anymore drop bellow zero
 
 ### Fixes
 - Fixed a bug when health wasn't affected by starting a work
