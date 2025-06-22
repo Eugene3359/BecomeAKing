@@ -36,12 +36,6 @@ public class PersonageFragment extends Fragment {
     // Views variables
     TextView textViewReputation;
     TextView textViewDay;
-    ImageView imageViewHealthIncome;
-    TextView textViewHealthIncome;
-    ImageView imageViewReputationIncome;
-    TextView textViewReputationIncome;
-    ImageView imageViewMoneyIncome;
-    TextView textViewMoneyIncome;
 
 
     public static PersonageFragment newInstance() {
@@ -58,7 +52,7 @@ public class PersonageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting Personage and StatBonuses from Application
+        // Getting Personage, Categories and StatBonuses from Application
         personage = BecomeAKing.getInstance().getPersonage();
         categories = BecomeAKing.getInstance().getCategories();
         statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
@@ -71,12 +65,12 @@ public class PersonageFragment extends Fragment {
         textViewDay = view.findViewById(R.id.text_view_day);
         textViewReputation = view.findViewById(R.id.text_view_reputation2);
 
-        imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
-        textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
-        imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
-        textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
-        imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
-        textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
+        ImageView imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
+        TextView textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
+        ImageView imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
+        TextView textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
+        ImageView imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
+        TextView textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
 
         TextView textViewNutrition = view.findViewById(R.id.text_view_nutrition);
         TextView textViewClothes = view.findViewById(R.id.text_view_clothes);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,10 +17,20 @@ import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.StatBonus;
+import com.scipath.becomeaking.model.StatBonusesMap;
+
+import java.util.ArrayList;
 
 
 public class PersonageCharacteristicsFragment extends Fragment {
+
+    // Models variables
+    Personage personage;
+    StatBonusesMap statBonuses;
+
 
     public static PersonageCharacteristicsFragment newInstance() {
         return new PersonageCharacteristicsFragment();
@@ -36,16 +47,26 @@ public class PersonageCharacteristicsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Getting Personage from Application
-        Personage personage = BecomeAKing.getInstance().getPersonage();
+        personage = BecomeAKing.getInstance().getPersonage();
+        statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
+        ImageView imageViewPersonageIcon = view.findViewById(R.id.image_view_personage_icon);
         TextView textViewAge = view.findViewById(R.id.text_view_age);
         TextView textViewLevel = view.findViewById(R.id.text_view_level);
         TextView textViewExperience = view.findViewById(R.id.text_view_experience);
         TextView textViewSkillPoints = view.findViewById(R.id.text_view_skill_points);
-        ImageView imageViewPersonageIcon = view.findViewById(R.id.image_view_personage_icon);
+
+        ImageView imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
+        TextView textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
+        ImageView imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
+        TextView textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
+        ImageView imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
+        TextView textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
 
         // Setting Views values
+        imageViewPersonageIcon.setImageResource(
+                BecomeAKing.getInstance().getCategories().get(1).getImageId());
         textViewAge.setText(getActivity().getString(R.string.age_d, personage.getAge()));
         textViewLevel.setText(getActivity().getString(
                 R.string.level_d,
@@ -54,8 +75,22 @@ public class PersonageCharacteristicsFragment extends Fragment {
                 R.string.d_d,
                 personage.getLevel().getCurrentExperience(),
                 personage.getLevel().getNeededExperience()));
-        imageViewPersonageIcon.setImageResource(
-                BecomeAKing.getInstance().getCategories().get(1).getImageId());
+
+        // Stat bonuses
+        int statBonusValue = statBonuses.get(StatBonus.HealthPerDay);
+        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewHealthIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = statBonuses.get(StatBonus.ReputationPerDay);
+        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewReputationIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = statBonuses.get(StatBonus.CostPerDay);
+        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewMoneyIncome.setText(Integer.toString(statBonusValue));
 
         // Buttons
         Button buttonBack = view.findViewById(R.id.button_back);

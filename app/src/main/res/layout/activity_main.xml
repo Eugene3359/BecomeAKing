@@ -81,6 +81,22 @@
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false" />
 
+            <!-- Test button -->
+            <com.scipath.becomeaking.view.customview.CustomButton
+                android:id="@+id/button_test"
+                android:layout_width="@dimen/view_width"
+                android:layout_height="@dimen/view_height_big"
+                android:layout_marginTop="30dp"
+                app:borderColor="@color/black"
+                app:backgroundColor="@color/cloth_light_brown"
+                app:backgroundColorPressed="@color/cloth_brown"
+                app:backgroundDrawable="@drawable/bg_cloth1"
+                android:text="Test"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_big"
+                android:textAllCaps="false"
+                android:visibility="gone" />
+
         </LinearLayout>
 
     </ScrollView>

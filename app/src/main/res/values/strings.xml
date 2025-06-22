@@ -102,6 +102,13 @@
 
     <!-- Armor -->
     <string name="armor">Броня</string>
+    <string name="leather_armor">Кожаная броня</string>
+    <string name="rusty_armor">Ржавая броня</string>
+    <string name="old_armor">Старая броня</string>
+    <string name="heavy_armor">Тяжелая броня</string>
+    <string name="good_armor">Качественная броня</string>
+    <string name="luxurious_armor">Роскошная броня</string>
+    <string name="king_armor">Броня короля</string>
 
     <!-- Housing -->
 

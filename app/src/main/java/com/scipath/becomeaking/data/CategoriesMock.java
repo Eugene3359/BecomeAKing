@@ -24,7 +24,7 @@ public class CategoriesMock {
                 .addItem(new Item(R.string.nourishing_food, R.drawable.img_nourishing_food, 0))
                 .addItem(new Item(R.string.luxurious_food, R.drawable.img_luxury_food, 0))
                 .addItem(new Item(R.string.aristocracy_food, R.drawable.img_nobleman_food, 0))
-                .addItem(new Item(R.string.royal_food, R.drawable.img_king_food, 0));
+                .addItem(new Item(R.string.royal_food, R.drawable.img_royal_food, 0));
         // Bread
         categories.get(0).getItems().get(0).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.HealthPerDay, 5)
@@ -211,6 +211,49 @@ public class CategoriesMock {
 
         // Armor
         categories.add(new Category(R.string.armor));
+        categories.get(4)
+                .addItem(new Item(R.string.leather_armor, R.drawable.img_leather_armor, 100))
+                .addItem(new Item(R.string.rusty_armor, R.drawable.img_rusty_armor, 300))
+                .addItem(new Item(R.string.old_armor, R.drawable.img_old_armor, 1000))
+                .addItem(new Item(R.string.heavy_armor, R.drawable.img_heavy_armor, 3000))
+                .addItem(new Item(R.string.good_armor, R.drawable.img_good_armor, 8000))
+                .addItem(new Item(R.string.luxurious_armor, R.drawable.img_luxury_armor, 15000))
+                .addItem(new Item(R.string.king_armor, R.drawable.img_king_armor, 30000));
+        // Leather armor
+        categories.get(4).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 10)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, 5));
+        // Rusty armor
+        categories.get(4).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 30)
+                .put(StatBonus.ReputationPerDay, 15)
+                .put(StatBonus.CostPerDay, 10));
+        // Old armor
+        categories.get(4).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 40)
+                .put(StatBonus.ReputationPerDay, 25)
+                .put(StatBonus.CostPerDay, 15));
+        // Heavy armor
+        categories.get(4).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 80)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, 40));
+        // Good armor
+        categories.get(4).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 120)
+                .put(StatBonus.ReputationPerDay, 80)
+                .put(StatBonus.CostPerDay, 60));
+        // Luxurious armor
+        categories.get(4).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 140)
+                .put(StatBonus.ReputationPerDay, 90)
+                .put(StatBonus.CostPerDay, 65));
+        // King armor
+        categories.get(4).getItems().get(6).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 200)
+                .put(StatBonus.ReputationPerDay, 110)
+                .put(StatBonus.CostPerDay, 200));
 
         // House
         categories.add(new Category(R.string.housing));

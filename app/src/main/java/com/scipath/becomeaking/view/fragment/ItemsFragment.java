@@ -65,11 +65,11 @@ public class ItemsFragment extends Fragment {
             @Override
             public void call(IItem item) {
                 GameActivity activity = (GameActivity)requireActivity();
-                if (item instanceof Item) {
-                    activity.updateViews();
-                } else if (item instanceof Work){
+                if (item instanceof Work) {
                     activity.switchMenuButton(activity.findViewById(R.id.button_personage) , new PersonageFragment());
                     startClickerMiniGamer(item);
+                } else if (item instanceof Item){
+                    activity.updateViews();
                 }
             }
         }, view.getContext());

@@ -1,3 +1,10 @@
+# Become a King [0.1.8] - 22.06.2025
+
+### Additions
+- Added `Armor` category
+
+---
+
 # Become a King [0.1.7] - 22.06.2025
 
 ### Additions

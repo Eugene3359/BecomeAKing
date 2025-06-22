@@ -21,7 +21,7 @@ public class BecomeAKing extends Application {
     private static BecomeAKing instance;
     private GameState gameState;
     private boolean isLoaded;
-    private final boolean isDebug = false;
+    private final boolean isTest = true;
 
 
     @Override
@@ -38,8 +38,8 @@ public class BecomeAKing extends Application {
 
 
     // Accessors
-    public boolean isDebug() {
-        return isDebug;
+    public boolean isTest() {
+        return isTest;
     }
 
     public boolean isLoaded() {

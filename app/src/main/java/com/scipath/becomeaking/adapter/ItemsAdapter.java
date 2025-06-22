@@ -135,17 +135,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             viewHolder.resetItemButtonBuyState(item, categoryId, context);
 
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
-                if (item instanceof Item) {
+                if (item instanceof Work) {
+                    // Work started
+                    item.interact(personage);
+                    callback.call(item);
+                } else if (item instanceof Item) {
                     if (item.interact(personage)) {
                         viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
                         callback.call(item);
                     } else {
                         Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
                     }
-                } else if (item instanceof Work) {
-                    // Work started
-                    item.interact(personage);
-                    callback.call(item);
                 }
             });
         } else {
