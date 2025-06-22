@@ -76,6 +76,7 @@ public class PersonageFragment extends Fragment {
         TextView textViewClothes = view.findViewById(R.id.text_view_clothes);
         TextView textViewHousing = view.findViewById(R.id.text_view_housing);
         TextView textViewHorse = view.findViewById(R.id.text_view_horse);
+        TextView textViewMaxHealth = view.findViewById(R.id.text_view_max_health);
         TextView textViewMight = view.findViewById(R.id.text_view_might);
 
         // Setting Views values
@@ -103,6 +104,11 @@ public class PersonageFragment extends Fragment {
 
         textViewNutrition.setText(categories.get(0).getLastBoughtItem().getNameId());
         textViewClothes.setText(categories.get(1).getLastBoughtItem().getNameId());
+        // TODO: remove condition after adding default housing
+        if (categories.get(5).getLastBoughtItem() != null) {
+            textViewHousing.setText(categories.get(5).getLastBoughtItem().getNameId());
+        }
+        textViewMaxHealth.setText(Integer.toString(personage.getMaxHealth()));
         textViewMight.setText(Integer.toString(personage.getMight()));
 
         // Buttons

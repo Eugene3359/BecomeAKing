@@ -14,9 +14,10 @@ public class Personage implements Serializable {
     private Level level;
     private int age;
     private int health;
+    private int maxHealth;
+    private int regeneration;
     private int reputation;
     private int money;
-    private int regeneration;
     private int might;
 
 
@@ -28,9 +29,10 @@ public class Personage implements Serializable {
         level = new Level();
         age = 16;
         health = 100;
+        maxHealth = 100;
+        regeneration = 0;
         reputation = 0;
         money = 100;
-        regeneration = 0;
         might = 0;
     }
 
@@ -60,16 +62,20 @@ public class Personage implements Serializable {
         return health;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getRegeneration() {
+        return regeneration;
+    }
+
     public int getReputation() {
         return reputation;
     }
 
     public int getMoney() {
         return money;
-    }
-
-    public int getRegeneration() {
-        return regeneration;
     }
 
     public int getMight() {
@@ -95,14 +101,19 @@ public class Personage implements Serializable {
     }
 
     public void setHealth(int health) {
-        // Health can't be bellow zero
-        this.health = Math.max(health, 0);
+        this.health = restrictHealth(health);
     }
 
     public void affectHealth(int health) {
-        this.health += health;
-        // Health can't drop bellow zero
-        if (this.health < 0) this.health = 0;
+        this.health = restrictHealth(this.health + health);
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public void setRegeneration(int regeneration) {
+        this.regeneration = regeneration;
     }
 
     public void setReputation(int reputation) {
@@ -121,22 +132,20 @@ public class Personage implements Serializable {
         this.money += money;
     }
 
-    public void setRegeneration(int regeneration) {
-        this.regeneration = regeneration;
-    }
-
     public void setMight(int might) {
         this.might = might;
     }
 
-    public void affectMight(int might) {
-        this.might += might;
-    }
-
 
     // Methods
+    private int restrictHealth(int health) {
+        // Health can't be bellow zero or above maximum health
+        return Math.max(0, Math.min(health, maxHealth));
+    }
+
     public void recalculateStats() {
         StatBonusesMap statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
+        maxHealth = statBonuses.get(StatBonus.MaxHealth);
         might = statBonuses.get(StatBonus.Might);
     }
 }

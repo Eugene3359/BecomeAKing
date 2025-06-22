@@ -13,6 +13,7 @@ public class CategoriesMock {
     public static ArrayList<Category> getCategories(boolean isMale) {
         ArrayList<Category> categories = new ArrayList<>();
 
+
         // Nutrition
         categories.add(new Category(R.string.nutrition));
         categories.get(0)
@@ -71,6 +72,7 @@ public class CategoriesMock {
                 .put(StatBonus.ReputationPerDay, 300)
                 .put(StatBonus.CostPerDay, -500));
 
+
         // Clothes
         categories.add(new Category(R.string.clothes));
         categories.get(1)
@@ -123,6 +125,7 @@ public class CategoriesMock {
                 .put(StatBonus.ReputationPerDay, 200)
                 .put(StatBonus.CostPerDay, -400));
 
+
         // Entertainment
         categories.add(new Category(R.string.entertainment));
         categories.get(2)
@@ -163,6 +166,7 @@ public class CategoriesMock {
                 .put(StatBonus.ReputationPerDay, 150)
                 .put(StatBonus.CostPerDay, -300));
 
+
         // Weapon
         categories.add(new Category(R.string.weapon));
         categories.get(3)
@@ -172,42 +176,43 @@ public class CategoriesMock {
                 .addItem(new Item(R.string.two_blades, R.drawable.img_two_blades, 3000))
                 .addItem(new Item(R.string.ax_and_shield, R.drawable.img_ax_and_shield, 8000))
                 .addItem(new Item(R.string.sword_and_shield, R.drawable.img_sword_and_shield, 15000))
-                .addItem(new Item(R.string.ancient_artifacts, R.drawable.img_ax_and_shield, 30000));
+                .addItem(new Item(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000));
         // Ax
         categories.get(3).getItems().get(0).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 10)
                 .put(StatBonus.ReputationPerDay, 5)
-                .put(StatBonus.CostPerDay, 5));
+                .put(StatBonus.CostPerDay, -5));
         // Rusty sword
         categories.get(3).getItems().get(1).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 20)
                 .put(StatBonus.ReputationPerDay, 10)
-                .put(StatBonus.CostPerDay, 10));
+                .put(StatBonus.CostPerDay, -10));
         // Steel sword
         categories.get(3).getItems().get(2).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 40)
                 .put(StatBonus.ReputationPerDay, 20)
-                .put(StatBonus.CostPerDay, 20));
+                .put(StatBonus.CostPerDay, -20));
         // Two blades
         categories.get(3).getItems().get(3).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 80)
                 .put(StatBonus.ReputationPerDay, 50)
-                .put(StatBonus.CostPerDay, 40));
+                .put(StatBonus.CostPerDay, -40));
         // Ax and shield
         categories.get(3).getItems().get(4).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 100)
                 .put(StatBonus.ReputationPerDay, 60)
-                .put(StatBonus.CostPerDay, 50));
+                .put(StatBonus.CostPerDay, -50));
         // Sword and shield
         categories.get(3).getItems().get(5).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 150)
                 .put(StatBonus.ReputationPerDay, 80)
-                .put(StatBonus.CostPerDay, 70));
+                .put(StatBonus.CostPerDay, -70));
         // Ancient artifacts
         categories.get(3).getItems().get(6).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 200)
                 .put(StatBonus.ReputationPerDay, 100)
-                .put(StatBonus.CostPerDay, 200));
+                .put(StatBonus.CostPerDay, -200));
+
 
         // Armor
         categories.add(new Category(R.string.armor));
@@ -223,52 +228,94 @@ public class CategoriesMock {
         categories.get(4).getItems().get(0).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 10)
                 .put(StatBonus.ReputationPerDay, 5)
-                .put(StatBonus.CostPerDay, 5));
+                .put(StatBonus.CostPerDay, -5));
         // Rusty armor
         categories.get(4).getItems().get(1).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 30)
                 .put(StatBonus.ReputationPerDay, 15)
-                .put(StatBonus.CostPerDay, 10));
+                .put(StatBonus.CostPerDay, -10));
         // Old armor
         categories.get(4).getItems().get(2).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 40)
                 .put(StatBonus.ReputationPerDay, 25)
-                .put(StatBonus.CostPerDay, 15));
+                .put(StatBonus.CostPerDay, -15));
         // Heavy armor
         categories.get(4).getItems().get(3).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 80)
                 .put(StatBonus.ReputationPerDay, 50)
-                .put(StatBonus.CostPerDay, 40));
+                .put(StatBonus.CostPerDay, -40));
         // Good armor
         categories.get(4).getItems().get(4).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 120)
                 .put(StatBonus.ReputationPerDay, 80)
-                .put(StatBonus.CostPerDay, 60));
+                .put(StatBonus.CostPerDay, -60));
         // Luxurious armor
         categories.get(4).getItems().get(5).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 140)
                 .put(StatBonus.ReputationPerDay, 90)
-                .put(StatBonus.CostPerDay, 65));
+                .put(StatBonus.CostPerDay, -65));
         // King armor
         categories.get(4).getItems().get(6).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 200)
                 .put(StatBonus.ReputationPerDay, 110)
-                .put(StatBonus.CostPerDay, 200));
+                .put(StatBonus.CostPerDay, -200));
+
 
         // House
         categories.add(new Category(R.string.housing));
+        categories.get(5)
+                .addItem(new Item(R.string.hut, R.drawable.img_hut, 1000))
+                .addItem(new Item(R.string.old_house, R.drawable.img_old_house, 3000))
+                .addItem(new Item(R.string.stone_house, R.drawable.img_stone_house, 6000))
+                .addItem(new Item(R.string.country_house, R.drawable.img_country_house, 12000))
+                .addItem(new Item(R.string.small_mansion, R.drawable.img_small_mansion, 30000))
+                .addItem(new Item(R.string.medium_mansion, R.drawable.img_medium_mansion, 45000))
+                .addItem(new Item(R.string.large_mansion, R.drawable.img_large_mansion, 60000));
+        // Hut
+        categories.get(5).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 200)
+                .put(StatBonus.CostPerDay, -10));
+        // Old house
+        categories.get(5).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 500)
+                .put(StatBonus.CostPerDay, -20));
+        // Stone house
+        categories.get(5).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 1000)
+                .put(StatBonus.CostPerDay, -300));
+        // Country house
+        categories.get(5).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 1500)
+                .put(StatBonus.CostPerDay, -500));
+        // Small mansion
+        categories.get(5).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 2000)
+                .put(StatBonus.CostPerDay, -1000));
+        // Medium mansion
+        categories.get(5).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 3500)
+                .put(StatBonus.CostPerDay, -2500));
+        // Large mansion
+        categories.get(5).getItems().get(6).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.MaxHealth, 5000)
+                .put(StatBonus.CostPerDay, -6000));
+
 
         // Furniture
         categories.add(new Category(R.string.furniture));
 
+
         // Books
         categories.add(new Category(R.string.books));
+
 
         // Artworks
         categories.add(new Category(R.string.artworks));
 
+
         // Horse
         categories.add(new Category(R.string.horse));
+
 
         // Work in village
         categories.add(new Category(R.string.work_in_a_village));

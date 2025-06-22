@@ -3,6 +3,7 @@
 
     <string name="background">Фон</string>
     <string name="placeholder">Placeholder</string>
+    <string name="test">Тест</string>
 
     <!-- Main Activity -->
     <string name="new_game">Навая игра</string>
@@ -42,7 +43,7 @@
     <!-- Game Activity Menu -->
     <string name="personage">Персонаж</string>
     <string name="shop">Лавки</string>
-    <string name="housing">Жилье</string>
+    <string name="property">Имущество</string>
     <string name="job">Работа</string>
     <string name="finance">Финансы</string>
     <string name="battle">Сражение</string>
@@ -111,6 +112,14 @@
     <string name="king_armor">Броня короля</string>
 
     <!-- Housing -->
+    <string name="housing">Жилье</string>
+    <string name="hut">Хижина</string>
+    <string name="old_house">Старый дом</string>
+    <string name="stone_house">Каменный дом</string>
+    <string name="country_house">Загородний дом</string>
+    <string name="small_mansion">Малый особняк</string>
+    <string name="medium_mansion">Средний особняк</string>
+    <string name="large_mansion">Большой особняк</string>
 
     <!-- Furniture -->
     <string name="furniture">Мебель</string>
@@ -136,6 +145,7 @@
     <string name="domains">Владения</string>
 
     <!-- Personage Fragment Stats -->
+    <string name="max_health">Запас здоровья</string>
     <string name="might">Мощь</string>
 
     <!-- Ad -->
@@ -185,6 +195,8 @@
     <string name="c_d_per_day">%c %d в день</string>
     <string name="c_d">%c %d</string>
     <string name="c_d_per_click">%c %d за нажатие</string>
+    <string name="maximum_amount_d">Запас %d</string>
+
 
     <!-- Clicker MiniGame Activity -->
     <string name="exit">Выйти</string>

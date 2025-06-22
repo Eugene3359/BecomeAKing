@@ -155,7 +155,7 @@
                     android:src="@drawable/icon_house"
                     android:scaleType="fitCenter"
                     android:background="@color/game_menu_brown"
-                    android:contentDescription="@string/housing" />
+                    android:contentDescription="@string/property" />
 
                 <ImageButton
                     android:id="@+id/button_job"

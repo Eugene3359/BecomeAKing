@@ -91,7 +91,7 @@
                 app:backgroundColor="@color/cloth_light_brown"
                 app:backgroundColorPressed="@color/cloth_brown"
                 app:backgroundDrawable="@drawable/bg_cloth1"
-                android:text="Test"
+                android:text="@string/test"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false"

@@ -19,6 +19,7 @@ public enum StatBonus implements Serializable {
     HealthImpact(R.string.health, R.string.c_d, R.drawable.icon_heart),
     ReputationImpact(R.string.reputation, R.string.c_d, R.drawable.icon_civic_crown),
     MoneyPerClick(R.string.money, R.string.c_d_per_click, R.drawable.icon_coin),
+    MaxHealth(R.string.health, R.string.maximum_amount_d, R.drawable.icon_heart),
     Might(R.string.might, R.string.c_d, R.drawable.icon_might);
 
 
@@ -76,8 +77,15 @@ public enum StatBonus implements Serializable {
      * @return The String that contain stat bonus description
      */
     public String getDescription(int value, Context context) {
-        char sign = value < 0 ? '-' : '+';
-        return context.getString(descriptionId, sign, Math.abs(value));
+        try{
+            char sign = value < 0 ? '-' : '+';
+            return context.getString(descriptionId, sign, Math.abs(value));
+        } catch (Exception e1) {
+            try {
+                return context.getString(descriptionId, value);
+            } catch (Exception e2) {}
+        }
+        return "";
     }
 
     /**

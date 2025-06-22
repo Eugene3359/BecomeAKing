@@ -1,3 +1,15 @@
+# Become a King [0.1.9] - 23.06.2025
+
+### Additions
+- Added `Housing` category
+- Added `Maximum Health` stat 
+
+### Fixes
+- Fixed a bug with wrong `Ancient Artifacts` image
+- Fixed a bug when cost of weapon and armor care was a positive value
+
+---
+
 # Become a King [0.1.8] - 22.06.2025
 
 ### Additions
