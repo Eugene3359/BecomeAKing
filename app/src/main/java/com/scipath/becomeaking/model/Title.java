@@ -9,24 +9,30 @@ import java.io.Serializable;
 public enum Title implements Serializable {
 
     // Titles
-    Rogue(R.string.rogue),
-    Villager(R.string.villager),
-    Bandit(R.string.bandit);
+    Rogue(R.string.rogue, 75),
+    Villager(R.string.villager, 100),
+    Bandit(R.string.bandit, 150);
 
 
     // Individual title fields
     private final int nameId;
+    private final int maxHealth;
 
 
     // Constructor
-    private Title(int nameId) {
+    private Title(int nameId, int maxHealth) {
         this.nameId = nameId;
+        this.maxHealth = maxHealth;
     }
 
 
     // Accessors
     public int getNameId() {
         return nameId;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
 

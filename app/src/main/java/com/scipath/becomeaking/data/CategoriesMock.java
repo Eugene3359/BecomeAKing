@@ -303,6 +303,37 @@ public class CategoriesMock {
 
         // Furniture
         categories.add(new Category(R.string.furniture));
+        categories.get(6)
+                .addItem(new Item(R.string.old_furniture, R.drawable.img_old_furniture, 100))
+                .addItem(new Item(R.string.ordinary_furniture, R.drawable.img_ordinary_furniture, 500))
+                .addItem(new Item(R.string.new_furniture, R.drawable.img_new_furniture, 1500))
+                .addItem(new Item(R.string.luxurious_furniture, R.drawable.img_luxurious_furniture, 3000))
+                .addItem(new Item(R.string.royal_furniture, R.drawable.img_royal_furniture, 10000));
+        // Old furniture
+        categories.get(6).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthPerDay, 5)
+                .put(StatBonus.ReputationPerDay, 5)
+                .put(StatBonus.CostPerDay, -2));
+        // Ordinary furniture
+        categories.get(6).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthPerDay, 10)
+                .put(StatBonus.ReputationPerDay, 10)
+                .put(StatBonus.CostPerDay, -5));
+        // New furniture
+        categories.get(6).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthPerDay, 20)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, -10));
+        // Luxurious furniture
+        categories.get(6).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthPerDay, 30)
+                .put(StatBonus.ReputationPerDay, 30)
+                .put(StatBonus.CostPerDay, -50));
+        // Royal furniture
+        categories.get(6).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthPerDay, 60)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, -20));
 
 
         // Books

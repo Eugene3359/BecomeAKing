@@ -123,6 +123,11 @@
 
     <!-- Furniture -->
     <string name="furniture">Мебель</string>
+    <string name="old_furniture">Старая мебель</string>
+    <string name="ordinary_furniture">Обычная мебель</string>
+    <string name="new_furniture">Новая мебель</string>
+    <string name="luxurious_furniture">Роскошная мебель</string>
+    <string name="royal_furniture">Королевская мебель</string>
 
     <!-- Books -->
     <string name="books">Книги</string>

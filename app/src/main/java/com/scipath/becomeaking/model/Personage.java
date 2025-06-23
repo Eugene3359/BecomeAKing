@@ -13,8 +13,8 @@ public class Personage implements Serializable {
     private Title title;
     private Level level;
     private int age;
-    private int health;
     private int maxHealth;
+    private int health;
     private int regeneration;
     private int reputation;
     private int money;
@@ -28,8 +28,8 @@ public class Personage implements Serializable {
         this.title = title;
         level = new Level();
         age = 16;
-        health = 100;
-        maxHealth = 100;
+        maxHealth = title.getMaxHealth();
+        health = maxHealth;
         regeneration = 0;
         reputation = 0;
         money = 100;
@@ -58,12 +58,12 @@ public class Personage implements Serializable {
         return age;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public int getMaxHealth() {
         return maxHealth;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public int getRegeneration() {
@@ -100,16 +100,16 @@ public class Personage implements Serializable {
         this.age = age;
     }
 
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public void setHealth(int health) {
         this.health = restrictHealth(health);
     }
 
     public void affectHealth(int health) {
         this.health = restrictHealth(this.health + health);
-    }
-
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
     }
 
     public void setRegeneration(int regeneration) {
@@ -145,7 +145,7 @@ public class Personage implements Serializable {
 
     public void recalculateStats() {
         StatBonusesMap statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
-        maxHealth = statBonuses.get(StatBonus.MaxHealth);
+        maxHealth = Math.max(title.getMaxHealth(), statBonuses.get(StatBonus.MaxHealth));
         might = statBonuses.get(StatBonus.Might);
     }
 }

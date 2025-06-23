@@ -1,3 +1,13 @@
+# Become a King [0.1.10] - 23.06.2025
+
+### Additions
+- Added `Furniture` category
+
+### Fixes
+- Fixed a bug where at the end of a day, maximum health would drop to 0 if you didn’t own a house
+
+---
+
 # Become a King [0.1.9] - 23.06.2025
 
 ### Additions
