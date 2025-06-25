@@ -338,6 +338,37 @@ public class CategoriesMock {
 
         // Books
         categories.add(new Category(R.string.books));
+        categories.get(7)
+                .addItem(new Item(R.string.old_book, R.drawable.img_old_book, 200))
+                .addItem(new Item(R.string.new_book, R.drawable.img_new_book, 600))
+                .addItem(new Item(R.string.science_book, R.drawable.img_science_book, 1200))
+                .addItem(new Item(R.string.military_strategy_books, R.drawable.img_military_strategy_books, 8000))
+                .addItem(new Item(R.string.small_library, R.drawable.img_small_library, 12000))
+                .addItem(new Item(R.string.medium_library, R.drawable.img_medium_library, 20000))
+                .addItem(new Item(R.string.huge_library, R.drawable.img_huge_library, 50000))
+                .addItem(new Item(R.string.royal_library, R.drawable.img_royal_library, 100000));
+        // Old book
+        categories.get(7).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 10));
+        // New book
+        categories.get(7).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 30));
+        // Science book
+        categories.get(7).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 10)
+                .put(StatBonus.ReputationImpact, 50));
+        // Military strategy books
+        // TODO: add stat bonuses
+        // Small library
+        categories.get(7).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 40)
+                .put(StatBonus.ReputationImpact, 100));
+        // Medium library
+        // TODO: add stat bonuses
+        // Huge library
+        // TODO: add stat bonuses
+        // Royal library
+        // TODO: add stat bonuses
 
 
         // Artworks

@@ -1,7 +1,17 @@
+# Become a King [0.1.11] - 25.06.2025
+
+### Additions
+- Added `Books` category
+
+---
+
 # Become a King [0.1.10] - 23.06.2025
 
 ### Additions
 - Added `Furniture` category
+
+### Changes
+- Starting maximum health depends on starting title
 
 ### Fixes
 - Fixed a bug where at the end of a day, maximum health would drop to 0 if you didn’t own a house

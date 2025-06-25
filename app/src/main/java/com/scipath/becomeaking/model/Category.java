@@ -116,7 +116,7 @@ public class Category implements Serializable {
                 getLastBoughtItem().getImageId();
         statBonuses = new StatBonusesMap();
 
-        if (nameId == R.string.nutrition) {
+        if (nameId == R.string.nutrition | nameId == R.string.books) {
             for (IItem item : items) {
                 if (item.isBought()) {
                     statBonuses.sum(item.getStatBonuses());

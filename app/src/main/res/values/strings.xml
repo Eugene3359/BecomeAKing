@@ -131,6 +131,14 @@
 
     <!-- Books -->
     <string name="books">Книги</string>
+    <string name="old_book">Старая книга</string>
+    <string name="new_book">Новая книга</string>
+    <string name="science_book">Научная книга</string>
+    <string name="military_strategy_books">Книги о военной стратегии</string>
+    <string name="small_library">Небольшая библиотека</string>
+    <string name="medium_library">Средняя библиотека</string>
+    <string name="huge_library">Огромная библиотека</string>
+    <string name="royal_library">Королевская библиотека</string>
 
     <!-- Artworks -->
     <string name="artworks">Произведения искусства</string>
