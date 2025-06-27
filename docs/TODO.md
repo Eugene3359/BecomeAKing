@@ -1,27 +1,22 @@
 # Project Tasks
 
 ## In Progress
-- Add more categories
+- Implement skill points logic
 
 ## In Queue
 
 ### PersonageFragment
-- Bind character possessions
 - Handle bottom button actions
 - Integrate ad handlers
 
-### FragmentPersonageCharacteristics
+### FragmentPersonageStats
 - Implement skill points logic
 - Add handler to save skill points
 - Add handler to reset skill points
-- Add more characteristics
-- Bind characteristics data
+- Add more stats
 
 ### Categories
 - Populate `CategoriesMock`
-
-### Items
-- Generate item images algorithmically
 
 ### TitleSelectionActivity
 - Add more titles

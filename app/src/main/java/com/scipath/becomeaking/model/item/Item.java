@@ -7,6 +7,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
 
 import java.io.Serializable;
@@ -127,8 +128,9 @@ public class Item implements IItem, Serializable {
     public boolean interact(Personage personage) {
         if (personage.getMoney() >= cost) {
             personage.affectMoney(-cost);
-            bought = true;
+            personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
             personage.recalculateStats();
+            bought = true;
         }
         return bought;
     }

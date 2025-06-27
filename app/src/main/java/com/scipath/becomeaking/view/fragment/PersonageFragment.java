@@ -104,9 +104,11 @@ public class PersonageFragment extends Fragment {
 
         textViewNutrition.setText(categories.get(0).getLastBoughtItem().getNameId());
         textViewClothes.setText(categories.get(1).getLastBoughtItem().getNameId());
-        // TODO: remove condition after adding default housing
         if (categories.get(5).getLastBoughtItem() != null) {
             textViewHousing.setText(categories.get(5).getLastBoughtItem().getNameId());
+        }
+        if (categories.get(9).getLastBoughtItem() != null) {
+            textViewHorse.setText(categories.get(9).getLastBoughtItem().getNameId());
         }
         textViewMaxHealth.setText(Integer.toString(personage.getMaxHealth()));
         textViewMight.setText(Integer.toString(personage.getMight()));
@@ -114,7 +116,7 @@ public class PersonageFragment extends Fragment {
         // Buttons
         Button buttonLevel = view.findViewById(R.id.button_level);
         buttonLevel.setOnClickListener(v -> {
-            Fragment fragment = new PersonageCharacteristicsFragment();
+            Fragment fragment = new PersonageStatsFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_frame, fragment)
                     .addToBackStack(null)

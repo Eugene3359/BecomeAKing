@@ -9,7 +9,7 @@ import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
 
-public class CategoriesMock {
+public class CategoriesList {
     public static ArrayList<Category> getCategories(boolean isMale) {
         ArrayList<Category> categories = new ArrayList<>();
 
@@ -373,10 +373,68 @@ public class CategoriesMock {
 
         // Artworks
         categories.add(new Category(R.string.artworks));
+        categories.get(8)
+                .addItem(new Item(R.string.figurine_from_the_workshop, R.drawable.img_figurine_from_the_workshop, 300))
+                .addItem(new Item(R.string.local_painting, R.drawable.img_local_painting, 800))
+                .addItem(new Item(R.string.painting_by_a_famous_artist, R.drawable.img_painting_by_a_famous_artist, 1500))
+                .addItem(new Item(R.string.marble_statue, R.drawable.img_marble_statue, 4000))
+                .addItem(new Item(R.string.private_museum, R.drawable.img_private_museum, 15000));
+        // Figurine from the workshop
+        categories.get(8).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 30));
+        // Local painting
+        categories.get(8).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 60));
+        // Painting by a famous artist
+        categories.get(8).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 100));
+        // Marble statue
+        categories.get(8).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 150));
+        // Private museum
+        categories.get(8).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.ReputationImpact, 250));
 
 
         // Horse
         categories.add(new Category(R.string.horse));
+        categories.get(9)
+                .addItem(new Item(R.string.lame_horse, R.drawable.img_lame_horse, 1500))
+                .addItem(new Item(R.string.young_horse, R.drawable.img_young_horse, 5000))
+                .addItem(new Item(R.string.fast_horse, R.drawable.img_fast_horse, 10000))
+                .addItem(new Item(R.string.light_armored_horse, R.drawable.img_light_armored_horse, 20000))
+                .addItem(new Item(R.string.medium_armored_horse, R.drawable.img_medium_armored_horse, 30000))
+                .addItem(new Item(R.string.heavy_armored_horse, R.drawable.img_heavy_armored_horse, 50000));
+        // Lame horse
+        categories.get(9).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 10)
+                .put(StatBonus.ReputationPerDay, 10)
+                .put(StatBonus.CostPerDay, -5));
+        // Young horse
+        categories.get(9).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 20)
+                .put(StatBonus.ReputationPerDay, 20)
+                .put(StatBonus.CostPerDay, -10));
+        // Fast horse
+        categories.get(9).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 40)
+                .put(StatBonus.ReputationPerDay, 25)
+                .put(StatBonus.CostPerDay, -20));
+        // Light armored horse
+        categories.get(9).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 80)
+                .put(StatBonus.ReputationPerDay, 40)
+                .put(StatBonus.CostPerDay, -30));
+        // Medium armored horse
+        categories.get(9).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 120)
+                .put(StatBonus.ReputationPerDay, 40)
+                .put(StatBonus.CostPerDay, -50));
+        // Heavy armored horse
+        categories.get(9).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.Might, 160)
+                .put(StatBonus.ReputationPerDay, 50)
+                .put(StatBonus.CostPerDay, -250));
 
 
         // Work in village

@@ -1,27 +1,38 @@
+# Become a King [0.2.0] - 27.06.2025
+
+### Additions
+- Added items to `Artworks` category
+- Added items to `Horse` category
+
+### Fixes
+- Fixed a bug when after buying an item from `Books` category reputation remained the same
+
+---
+
 # Become a King [0.1.11] - 25.06.2025
 
 ### Additions
-- Added `Books` category
+- Added items to `Books` category
 
 ---
 
 # Become a King [0.1.10] - 23.06.2025
 
 ### Additions
-- Added `Furniture` category
+- Added items to `Furniture` category
 
 ### Changes
 - Starting maximum health depends on starting title
 
 ### Fixes
-- Fixed a bug where at the end of a day, maximum health would drop to 0 if you didn’t own a house
+- Fixed a bug when at the end of a day, maximum health would drop to 0 if you didn’t own a house
 
 ---
 
 # Become a King [0.1.9] - 23.06.2025
 
 ### Additions
-- Added `Housing` category
+- Added items to `Housing` category
 - Added `Maximum Health` stat 
 
 ### Fixes
@@ -33,14 +44,14 @@
 # Become a King [0.1.8] - 22.06.2025
 
 ### Additions
-- Added `Armor` category
+- Added items to `Armor` category
 
 ---
 
 # Become a King [0.1.7] - 22.06.2025
 
 ### Additions
-- Added `Weapon` category
+- Added items to `Weapon` category
 - Added `Might` stat
 
 ### Fixes
@@ -76,7 +87,7 @@
 # Become a King [0.1.4] - 02.06.2025
 
 ### Additions
-- Added `Entertainment` category
+- Added items to `Entertainment` category
 
 ---
 
@@ -106,7 +117,7 @@
 # Become a King [0.1.2] - 22.05.2025
 
 ### Additions
-- Added more categories
+- Added empty categories
 
 ### Changes
 - `buttonHousing` is now active

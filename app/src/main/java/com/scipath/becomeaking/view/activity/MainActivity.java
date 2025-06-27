@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.data.CategoriesMock;
+import com.scipath.becomeaking.data.CategoriesList;
 import com.scipath.becomeaking.data.GameState;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         buttonTest.setOnClickListener(view -> {
             Personage personage = new Personage("Hero", Sex.Male, Title.Bandit);
             personage.setMoney(100000);
-            ArrayList<Category> categories = CategoriesMock.getCategories(true);
+            ArrayList<Category> categories = CategoriesList.getCategories(true);
             categories.get(1).recalculateStats(); // To set cloth image
             BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
             Intent intent = new Intent(MainActivity.this, GameActivity.class);

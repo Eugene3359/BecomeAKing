@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.data.CategoriesMock;
+import com.scipath.becomeaking.data.CategoriesList;
 import com.scipath.becomeaking.data.GameState;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
@@ -50,7 +50,7 @@ public class NamingPersonageActivity extends AppCompatActivity {
                 Sex sex = (Sex)thisIntent.getSerializableExtra("sex");
                 Title title = (Title)thisIntent.getSerializableExtra("title");
                 Personage personage = new Personage(personageName, sex, title);
-                ArrayList<Category> categories = CategoriesMock.getCategories(sex == Sex.Male);
+                ArrayList<Category> categories = CategoriesList.getCategories(sex == Sex.Male);
                 categories.get(1).recalculateStats(); // To set cloth image
                 BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
 

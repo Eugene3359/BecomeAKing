@@ -142,9 +142,20 @@
 
     <!-- Artworks -->
     <string name="artworks">Произведения искусства</string>
+    <string name="figurine_from_the_workshop">Фигурка из мастерской</string>
+    <string name="local_painting">Местная картина</string>
+    <string name="painting_by_a_famous_artist">Картина известного художника</string>
+    <string name="marble_statue">Мраморная статуя</string>
+    <string name="private_museum">Собственный музей</string>
 
     <!-- Horse -->
     <string name="horse">Лошадь</string>
+    <string name="lame_horse">Хромой конь</string>
+    <string name="young_horse">Молодой конь</string>
+    <string name="fast_horse">Быстрый конь</string>
+    <string name="light_armored_horse">Конь в легкой броне</string>
+    <string name="medium_armored_horse">Конь в средней броне</string>
+    <string name="heavy_armored_horse">Конь в тяжелой броне</string>
 
     <!-- Work in a village -->
     <string name="work_in_a_village">Работа в селе</string>

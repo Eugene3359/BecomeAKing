@@ -17,29 +17,26 @@ import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
 
-import java.util.ArrayList;
 
-
-public class PersonageCharacteristicsFragment extends Fragment {
+public class PersonageStatsFragment extends Fragment {
 
     // Models variables
     Personage personage;
     StatBonusesMap statBonuses;
 
 
-    public static PersonageCharacteristicsFragment newInstance() {
-        return new PersonageCharacteristicsFragment();
+    public static PersonageStatsFragment newInstance() {
+        return new PersonageStatsFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_personage_characteristics, container, false);
+        return inflater.inflate(R.layout.fragment_personage_stats, container, false);
     }
 
     @Override
