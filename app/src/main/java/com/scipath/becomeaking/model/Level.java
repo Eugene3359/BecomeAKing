@@ -1,14 +1,20 @@
 package com.scipath.becomeaking.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
-public class Level implements Serializable {
+public class Level implements Serializable, Cloneable {
 
     // Fields
     private int value;
     private int currentExperience;
     private int neededExperience;
+    private int availableSkillPoints;
+    private int strength;
+    public int luck;
 
+    private final int skillPointsPerLevel = 2;
     private final int[] levelUpDemands = { 100, 200, 500, 1000 };
 
 
@@ -17,6 +23,9 @@ public class Level implements Serializable {
         value = 1;
         currentExperience = 0;
         neededExperience = levelUpDemands[0];
+        availableSkillPoints = skillPointsPerLevel;
+        strength = 0;
+        luck = 0;
     }
 
 
@@ -31,6 +40,32 @@ public class Level implements Serializable {
 
     public int getNeededExperience() {
         return neededExperience;
+    }
+
+    public int getAvailableSkillPoints() {
+        return availableSkillPoints;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
+
+
+    // Mutators
+    public void affectStrength(int value) {
+        if (availableSkillPoints < value) return;
+        strength += value;
+        availableSkillPoints -= value;
+    }
+
+    public void affectLuck(int value) {
+        if (availableSkillPoints < value) return;
+        luck += value;
+        availableSkillPoints -= value;
     }
 
 
@@ -63,5 +98,16 @@ public class Level implements Serializable {
         currentExperience -= neededExperience;
         neededExperience = levelUpDemands[value];
         value++;
+        availableSkillPoints += skillPointsPerLevel;
+    }
+
+    @NonNull
+    @Override
+    public Level clone() {
+        try {
+            return (Level) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -15,7 +15,6 @@ public class Personage implements Serializable {
     private int age;
     private int maxHealth;
     private int health;
-    private int regeneration;
     private int reputation;
     private int money;
     private int might;
@@ -30,7 +29,6 @@ public class Personage implements Serializable {
         age = 16;
         maxHealth = title.getMaxHealth();
         health = maxHealth;
-        regeneration = 0;
         reputation = 0;
         money = 100;
         might = 0;
@@ -66,10 +64,6 @@ public class Personage implements Serializable {
         return health;
     }
 
-    public int getRegeneration() {
-        return regeneration;
-    }
-
     public int getReputation() {
         return reputation;
     }
@@ -96,6 +90,10 @@ public class Personage implements Serializable {
         this.title = title;
     }
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -110,10 +108,6 @@ public class Personage implements Serializable {
 
     public void affectHealth(int health) {
         this.health = restrictHealth(this.health + health);
-    }
-
-    public void setRegeneration(int regeneration) {
-        this.regeneration = regeneration;
     }
 
     public void setReputation(int reputation) {

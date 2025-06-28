@@ -1,3 +1,12 @@
+# Become a King [0.2.1] - 28.06.2025
+
+### Additions
+- Implemented `Skill Points` logic
+- Added `Strength` stat
+- Added `Luck` stat
+
+---
+
 # Become a King [0.2.0] - 27.06.2025
 
 ### Additions

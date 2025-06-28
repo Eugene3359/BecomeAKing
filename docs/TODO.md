@@ -1,22 +1,20 @@
 # Project Tasks
 
 ## In Progress
-- Implement skill points logic
+- Implement `Reset Skill Points` logic
+- Make minimum `Strength` requirement for some items
 
 ## In Queue
 
 ### PersonageFragment
 - Handle bottom button actions
-- Integrate ad handlers
+- Implement ad handlers
 
-### FragmentPersonageStats
-- Implement skill points logic
-- Add handler to save skill points
-- Add handler to reset skill points
+### PersonageStatsFragment
 - Add more stats
 
 ### Categories
-- Populate `CategoriesMock`
+- Add more `Work`
 
 ### TitleSelectionActivity
 - Add more titles
