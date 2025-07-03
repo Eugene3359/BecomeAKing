@@ -1,3 +1,11 @@
+# Become a King [0.2.2] - 03.07.2025
+
+### Additions
+- Implemented `Drop Skill Points` logic
+- Added minimum `Strength` requirement for `Weapon` and `Armor`
+
+---
+
 # Become a King [0.2.1] - 28.06.2025
 
 ### Additions
@@ -111,8 +119,7 @@
 - Daily changes to `Health`, `Reputation`, and `Money` are now displayed
 
 ### Fixes
-- Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ 
-  `buttonBuy` appeared disabled even though they hadn't been purchased
+- Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ `buttonBuy` appeared disabled even though they hadn't been purchased
 
 ---
 

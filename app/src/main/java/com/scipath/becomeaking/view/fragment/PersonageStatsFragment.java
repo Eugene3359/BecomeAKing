@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.manager.AdManagerMock;
 import com.scipath.becomeaking.model.Level;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
@@ -169,7 +171,13 @@ public class PersonageStatsFragment extends Fragment {
 
         LinearLayout layoutDropSkillPoints = view.findViewById(R.id.layout_drop_skill_points);
         layoutDropSkillPoints.setOnClickListener(v -> {
-            // TODO: Handler
+            level.dropSkillPoints();
+            textViewStrength.setText(Integer.toString(level.getStrength()));
+            textViewLuck.setText(Integer.toString(level.getLuck()));
+            textViewSkillPoints.setText(getActivity().getString(
+                    R.string.skill_points_d,
+                    level.getAvailableSkillPoints()));
+            AdManagerMock.showAd((AppCompatActivity) getActivity());
         });
     }
 }

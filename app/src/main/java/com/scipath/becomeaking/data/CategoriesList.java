@@ -186,32 +186,38 @@ public class CategoriesList {
         categories.get(3).getItems().get(1).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 20)
                 .put(StatBonus.ReputationPerDay, 10)
-                .put(StatBonus.CostPerDay, -10));
+                .put(StatBonus.CostPerDay, -10)
+                .put(StatBonus.StrengthRequired, 1));
         // Steel sword
         categories.get(3).getItems().get(2).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 40)
                 .put(StatBonus.ReputationPerDay, 20)
-                .put(StatBonus.CostPerDay, -20));
+                .put(StatBonus.CostPerDay, -20)
+                .put(StatBonus.StrengthRequired, 2));
         // Two blades
         categories.get(3).getItems().get(3).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 80)
                 .put(StatBonus.ReputationPerDay, 50)
-                .put(StatBonus.CostPerDay, -40));
+                .put(StatBonus.CostPerDay, -40)
+                .put(StatBonus.StrengthRequired, 2));
         // Ax and shield
         categories.get(3).getItems().get(4).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 100)
                 .put(StatBonus.ReputationPerDay, 60)
-                .put(StatBonus.CostPerDay, -50));
+                .put(StatBonus.CostPerDay, -50)
+                .put(StatBonus.StrengthRequired, 3));
         // Sword and shield
         categories.get(3).getItems().get(5).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 150)
                 .put(StatBonus.ReputationPerDay, 80)
-                .put(StatBonus.CostPerDay, -70));
+                .put(StatBonus.CostPerDay, -70)
+                .put(StatBonus.StrengthRequired, 3));
         // Ancient artifacts
         categories.get(3).getItems().get(6).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 200)
                 .put(StatBonus.ReputationPerDay, 100)
-                .put(StatBonus.CostPerDay, -200));
+                .put(StatBonus.CostPerDay, -200)
+                .put(StatBonus.StrengthRequired, 4));
 
 
         // Armor
@@ -233,32 +239,38 @@ public class CategoriesList {
         categories.get(4).getItems().get(1).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 30)
                 .put(StatBonus.ReputationPerDay, 15)
-                .put(StatBonus.CostPerDay, -10));
+                .put(StatBonus.CostPerDay, -10)
+                .put(StatBonus.StrengthRequired, 1));
         // Old armor
         categories.get(4).getItems().get(2).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 40)
                 .put(StatBonus.ReputationPerDay, 25)
-                .put(StatBonus.CostPerDay, -15));
+                .put(StatBonus.CostPerDay, -15)
+                .put(StatBonus.StrengthRequired, 2));
         // Heavy armor
         categories.get(4).getItems().get(3).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 80)
                 .put(StatBonus.ReputationPerDay, 50)
-                .put(StatBonus.CostPerDay, -40));
+                .put(StatBonus.CostPerDay, -40)
+                .put(StatBonus.StrengthRequired, 2));
         // Good armor
         categories.get(4).getItems().get(4).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 120)
                 .put(StatBonus.ReputationPerDay, 80)
-                .put(StatBonus.CostPerDay, -60));
+                .put(StatBonus.CostPerDay, -60)
+                .put(StatBonus.StrengthRequired, 3));
         // Luxurious armor
         categories.get(4).getItems().get(5).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 140)
                 .put(StatBonus.ReputationPerDay, 90)
-                .put(StatBonus.CostPerDay, -65));
+                .put(StatBonus.CostPerDay, -65)
+                .put(StatBonus.StrengthRequired, 3));
         // King armor
         categories.get(4).getItems().get(6).setStatBonuses(new StatBonusesMap()
                 .put(StatBonus.Might, 200)
                 .put(StatBonus.ReputationPerDay, 110)
-                .put(StatBonus.CostPerDay, -200));
+                .put(StatBonus.CostPerDay, -200)
+                .put(StatBonus.StrengthRequired, 4));
 
 
         // House

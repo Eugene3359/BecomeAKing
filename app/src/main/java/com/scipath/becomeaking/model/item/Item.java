@@ -125,13 +125,17 @@ public class Item implements IItem, Serializable {
     }
 
     @Override
-    public boolean interact(Personage personage) {
-        if (personage.getMoney() >= cost) {
-            personage.affectMoney(-cost);
-            personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
-            personage.recalculateStats();
-            bought = true;
-        }
-        return bought;
+    public int interact(Personage personage) {
+        if (personage.getMoney() < cost) return -1; // Not enough money
+
+        int personageStrength = personage.getLevel().getStrength();
+        int strengthRequired = statBonuses.get(StatBonus.StrengthRequired);
+        if (personageStrength < strengthRequired) return -2; // Not enough strength
+
+        personage.affectMoney(-cost);
+        personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
+        personage.recalculateStats();
+        bought = true;
+        return 0; // Item bought
     }
 }

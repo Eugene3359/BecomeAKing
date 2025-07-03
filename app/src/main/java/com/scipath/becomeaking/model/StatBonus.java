@@ -20,7 +20,8 @@ public enum StatBonus implements Serializable {
     ReputationImpact(R.string.reputation, R.string.c_d, R.drawable.icon_civic_crown),
     MoneyPerClick(R.string.money, R.string.c_d_per_click, R.drawable.icon_coin),
     MaxHealth(R.string.health, R.string.maximum_amount_d, R.drawable.icon_heart),
-    Might(R.string.might, R.string.c_d, R.drawable.icon_might);
+    Might(R.string.might, R.string.c_d, R.drawable.icon_might),
+    StrengthRequired(R.string.strength, R.string.required_d_strength_skill_points, 0);
 
 
     // Individual stat bonus fields

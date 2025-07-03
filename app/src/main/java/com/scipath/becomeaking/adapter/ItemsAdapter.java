@@ -2,28 +2,27 @@ package com.scipath.becomeaking.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
+import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.item.IItem;
-import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
@@ -61,6 +60,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         public TextView getItemNameView() {
             return layout.findViewById(R.id.text_view_item);
+        }
+
+        public TextView getItemRequirementView() {
+            return layout.findViewById(R.id.text_view_requirement);
         }
 
         public ImageView getItemImageView() {
@@ -127,6 +130,15 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         // Setting values to views
         viewHolder.getItemNameView().setText(item.getNameId());
+        TextView textViewRequirement = viewHolder.getItemRequirementView();
+        if(item.getStatBonuses().get(StatBonus.StrengthRequired) == 0) {
+            textViewRequirement.setVisibility(View.GONE);
+            textViewRequirement.setText("");
+        } else {
+            textViewRequirement.setVisibility(View.VISIBLE);
+            textViewRequirement.setText(StatBonus.StrengthRequired
+                    .getDescription(item.getStatBonuses().get(StatBonus.StrengthRequired), context));
+        }
         viewHolder.getItemImageView().setImageResource(item.getImageId());
         viewHolder.getItemImageView().setContentDescription(item.getName(context));
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
@@ -135,19 +147,24 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             viewHolder.resetItemButtonBuyState(item, categoryId, context);
 
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
-                if (item instanceof Work) {
-                    // Work started
-                    item.interact(personage);
-                    callback.call(item);
-                } else if (item instanceof Item) {
-                    if (item.interact(personage)) {
-                        viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
+                int code = item.interact(personage);
+
+                switch (code) {
+                    case 0:
                         callback.call(item);
-                    } else {
-                        Toast.makeText(context, context.getText(R.string.not_enough_money), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                        if (item instanceof Item) {
+                            viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
+                        }
+                        break;
+                    case -1:
+                        DialogueFragment.newInstance(R.string.not_enough_money, R.string.ok)
+                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                        break;
+                    case -2:
+                        DialogueFragment.newInstance(R.string.not_enough_strength_skill_points, R.string.ok)
+                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                        break;
+                }});
         } else {
             viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
         }

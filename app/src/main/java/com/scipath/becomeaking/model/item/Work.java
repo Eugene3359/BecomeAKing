@@ -19,9 +19,9 @@ public class Work extends Item {
 
     // Methods
     @Override
-    public boolean interact(Personage personage) {
+    public int interact(Personage personage) {
         personage.affectHealth(statBonuses.get(StatBonus.HealthImpact));
         personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
-        return true;
+        return 0;
     }
 }

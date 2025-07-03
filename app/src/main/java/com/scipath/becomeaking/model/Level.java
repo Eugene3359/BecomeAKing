@@ -101,6 +101,12 @@ public class Level implements Serializable, Cloneable {
         availableSkillPoints += skillPointsPerLevel;
     }
 
+    public void dropSkillPoints() {
+        availableSkillPoints = value * skillPointsPerLevel;
+        strength = 0;
+        luck = 0;
+    }
+
     @NonNull
     @Override
     public Level clone() {

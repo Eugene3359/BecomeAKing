@@ -1,7 +1,4 @@
-package com.scipath.becomeaking.data;
-
-import com.scipath.becomeaking.model.Category;
-import com.scipath.becomeaking.model.Personage;
+package com.scipath.becomeaking.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -52,5 +52,5 @@ public interface IItem extends Serializable {
      */
     public Drawable getImage(Context context);
 
-    public boolean interact(Personage personage);
+    public int interact(Personage personage);
 }

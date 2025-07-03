@@ -1,9 +1,10 @@
-package com.scipath.becomeaking.data;
+package com.scipath.becomeaking.manager;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.model.item.IItem;
 import com.scipath.becomeaking.model.item.IItemSerializer;
 

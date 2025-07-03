@@ -4,6 +4,7 @@
     <string name="background">Фон</string>
     <string name="placeholder">Placeholder</string>
     <string name="test">Тест</string>
+    <string name="ad">Реклама</string>
 
     <!-- Main Activity -->
     <string name="new_game">Навая игра</string>
@@ -214,12 +215,14 @@
     <string name="in_ration">В рационе</string>
     <string name="started">Начато</string>
     <string name="not_enough_money">Недостаточно денег</string>
+    <string name="not_enough_strength_skill_points">Недостаточно очков силы</string>
 
     <!-- Item/Category Stats -->
     <string name="c_d_per_day">%c %d в день</string>
     <string name="c_d">%c %d</string>
     <string name="c_d_per_click">%c %d за нажатие</string>
     <string name="maximum_amount_d">Запас %d</string>
+    <string name="required_d_strength_skill_points">Нужно %d очка силы</string>
 
 
     <!-- Clicker MiniGame Activity -->

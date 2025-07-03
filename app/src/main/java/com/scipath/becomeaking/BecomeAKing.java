@@ -4,8 +4,8 @@ import android.app.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.scipath.becomeaking.data.GameState;
-import com.scipath.becomeaking.data.SaveManager;
+import com.scipath.becomeaking.model.GameState;
+import com.scipath.becomeaking.manager.SaveManager;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;

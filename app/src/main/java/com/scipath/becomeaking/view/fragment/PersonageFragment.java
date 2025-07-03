@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -18,10 +19,13 @@ import android.widget.Toast;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.manager.AdManagerMock;
 import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.StatBonus;
 import com.scipath.becomeaking.model.StatBonusesMap;
+import com.scipath.becomeaking.view.activity.GameActivity;
 
 import java.util.ArrayList;
 
@@ -156,23 +160,24 @@ public class PersonageFragment extends Fragment {
         // Ad
         LinearLayout layoutHealthForAd = view.findViewById(R.id.layout_health_for_ad);
         layoutHealthForAd.setOnClickListener(v -> {
-            // TODO: Handler
-            Toast.makeText(view.getContext(), "Now you should see an ad",
-                    Toast.LENGTH_SHORT).show();
+            personage.affectHealth(300);
+            ((GameActivity)getActivity()).updateViews();
+            AdManagerMock.showAd((AppCompatActivity) getActivity());
         });
 
         LinearLayout layoutReputationForAd = view.findViewById(R.id.layout_reputation_for_ad);
         layoutReputationForAd.setOnClickListener(v -> {
-            // TODO: Handler
-            Toast.makeText(view.getContext(), "Now you should see an ad",
-                    Toast.LENGTH_SHORT).show();
+            personage.affectReputation(500);
+            ((GameActivity)getActivity()).updateViews();
+            textViewReputation.setText(Integer.toString(personage.getReputation()));
+            AdManagerMock.showAd((AppCompatActivity) getActivity());
         });
 
         LinearLayout layoutMoneyForAd = view.findViewById(R.id.layout_money_for_ad);
         layoutMoneyForAd.setOnClickListener(v -> {
-            // TODO: Handler
-            Toast.makeText(view.getContext(), "Now you should see an ad",
-                    Toast.LENGTH_SHORT).show();
+            personage.affectMoney(1000);
+            ((GameActivity)getActivity()).updateViews();
+            AdManagerMock.showAd((AppCompatActivity) getActivity());
         });
     }
 

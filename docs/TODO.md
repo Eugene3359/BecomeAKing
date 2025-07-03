@@ -1,20 +1,14 @@
 # Project Tasks
 
 ## In Progress
-- Implement `Reset Skill Points` logic
-- Make minimum `Strength` requirement for some items
+- Add more `Work`
+- Add Second ClickerMiniGame
 
 ## In Queue
 
 ### PersonageFragment
 - Handle bottom button actions
 - Implement ad handlers
-
-### PersonageStatsFragment
-- Add more stats
-
-### Categories
-- Add more `Work`
 
 ### TitleSelectionActivity
 - Add more titles
