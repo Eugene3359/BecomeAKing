@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,11 +67,9 @@ public class DialogueFragment extends DialogFragment {
         TextView textViewMessage = view.findViewById(R.id.text_view_message);
         if(message != null) {
             textViewMessage.setText(message);
-        }
-        else {
+        } else {
             textViewMessage.setText(messageId);
         }
-
 
         // Button
         Button button = view.findViewById(R.id.button_end_dialogue);

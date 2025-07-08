@@ -20,6 +20,10 @@ public class Work extends Item {
     // Methods
     @Override
     public int interact(Personage personage) {
+        int personageReputation = personage.getReputation();
+        int reputationRequired = statBonuses.get(StatBonus.ReputationRequired);
+        if (personageReputation < reputationRequired) return -3; // Not enough reputation
+
         personage.affectHealth(statBonuses.get(StatBonus.HealthImpact));
         personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
         return 0;

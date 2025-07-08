@@ -1,7 +1,6 @@
 # Project Tasks
 
 ## In Progress
-- Add more `Work`
 - Add Second ClickerMiniGame
 
 ## In Queue

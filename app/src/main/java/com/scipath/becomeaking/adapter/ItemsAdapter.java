@@ -131,13 +131,18 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         // Setting values to views
         viewHolder.getItemNameView().setText(item.getNameId());
         TextView textViewRequirement = viewHolder.getItemRequirementView();
-        if(item.getStatBonuses().get(StatBonus.StrengthRequired) == 0) {
+
+        int strengthRequired = item.getStatBonuses().get(StatBonus.StrengthRequired);
+        int reputationRequired = item.getStatBonuses().get(StatBonus.ReputationRequired);
+        if(strengthRequired == 0 && reputationRequired == 0) {
             textViewRequirement.setVisibility(View.GONE);
             textViewRequirement.setText("");
         } else {
+            String requirement = (strengthRequired == 0) ?
+                    StatBonus.ReputationRequired.getDescription(reputationRequired, context) :
+                    StatBonus.StrengthRequired.getDescription(strengthRequired, context);
             textViewRequirement.setVisibility(View.VISIBLE);
-            textViewRequirement.setText(StatBonus.StrengthRequired
-                    .getDescription(item.getStatBonuses().get(StatBonus.StrengthRequired), context));
+            textViewRequirement.setText(requirement);
         }
         viewHolder.getItemImageView().setImageResource(item.getImageId());
         viewHolder.getItemImageView().setContentDescription(item.getName(context));
@@ -148,6 +153,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
             viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
                 int code = item.interact(personage);
+                int messageId = 0;
 
                 switch (code) {
                     case 0:
@@ -157,14 +163,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         }
                         break;
                     case -1:
-                        DialogueFragment.newInstance(R.string.not_enough_money, R.string.ok)
-                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                        messageId = R.string.not_enough_money;
                         break;
                     case -2:
-                        DialogueFragment.newInstance(R.string.not_enough_strength_skill_points, R.string.ok)
-                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                        messageId = R.string.not_enough_strength_skill_points;
                         break;
-                }});
+                    case -3:
+                        messageId = R.string.not_enough_reputation;
+                        break;
+                }
+                if (messageId != 0) {
+                    DialogueFragment.newInstance(messageId, R.string.ok)
+                            .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                }
+            });
         } else {
             viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
         }

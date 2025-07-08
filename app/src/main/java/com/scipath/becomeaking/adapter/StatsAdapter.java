@@ -37,9 +37,9 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
 
         statBonusesList = new ArrayList<>();
         for (Map.Entry<StatBonus, Integer> entry : statBonuses.entrySet()) {
-            if (entry.getKey() != StatBonus.StrengthRequired) {
-                statBonusesList.add(new Pair<>(entry.getKey(), entry.getValue()));
-            }
+            if (entry.getKey() == StatBonus.StrengthRequired ||
+                    entry.getKey() == StatBonus.ReputationRequired) continue;
+            statBonusesList.add(new Pair<>(entry.getKey(), entry.getValue()));
         }
     }
 

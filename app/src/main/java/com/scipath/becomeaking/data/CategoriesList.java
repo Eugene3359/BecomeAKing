@@ -452,18 +452,40 @@ public class CategoriesList {
         // Work in village
         categories.add(new Category(R.string.work_in_a_village));
         categories.get(10)
+                .addItem(new Work(R.string.to_graze_animals, R.drawable.img_to_graze_animals, 0))
+                .addItem(new Work(R.string.harvesting, R.drawable.img_harvesting, 0))
                 .addItem(new Work(R.string.logging, R.drawable.img_logging, 0))
-                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0));
-        // Logging
+                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0))
+                .addItem(new Work(R.string.unloading_ships, R.drawable.img_unloading_ships, 0));
+        // To graze animals
         categories.get(10).getItems().get(0).setStatBonuses(new StatBonusesMap()
-                .put(StatBonus.HealthImpact, -10)
+                .put(StatBonus.HealthImpact, -20)
                 .put(StatBonus.ReputationImpact, 5)
                 .put(StatBonus.MoneyPerClick, 1));
-        // Work in a mine
+        // Harvesting
         categories.get(10).getItems().get(1).setStatBonuses(new StatBonusesMap()
-                .put(StatBonus.HealthImpact, -20)
+                .put(StatBonus.HealthImpact, -40)
                 .put(StatBonus.ReputationImpact, 10)
-                .put(StatBonus.MoneyPerClick, 2));
+                .put(StatBonus.MoneyPerClick, 2)
+                .put(StatBonus.ReputationRequired, 500));
+        // Logging
+        categories.get(10).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -60)
+                .put(StatBonus.ReputationImpact, 20)
+                .put(StatBonus.MoneyPerClick, 3)
+                .put(StatBonus.ReputationRequired, 2000));
+        // Work in a mine
+        categories.get(10).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -80)
+                .put(StatBonus.ReputationImpact, 40)
+                .put(StatBonus.MoneyPerClick, 4)
+                .put(StatBonus.ReputationRequired, 4000));
+        // Unloading ships
+        categories.get(10).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -100)
+                .put(StatBonus.ReputationImpact, 60)
+                .put(StatBonus.MoneyPerClick, 5)
+                .put(StatBonus.ReputationRequired, 8000));
 
         return categories;
     }

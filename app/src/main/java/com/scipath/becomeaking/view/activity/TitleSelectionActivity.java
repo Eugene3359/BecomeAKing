@@ -3,7 +3,6 @@ package com.scipath.becomeaking.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +16,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.TitlesAdapter;
 import com.scipath.becomeaking.model.Title;
 import com.scipath.becomeaking.adapter.ObjectClickListener;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
 public class TitleSelectionActivity extends AppCompatActivity {
@@ -77,8 +77,8 @@ public class TitleSelectionActivity extends AppCompatActivity {
                 intent.putExtra("title", currentTitle);
                 startActivity(intent);
             } else {
-                Toast.makeText(TitleSelectionActivity.this, getString(R.string.chose_title),
-                        Toast.LENGTH_SHORT).show();
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.chose_title, R.string.ok);
+                dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });
 

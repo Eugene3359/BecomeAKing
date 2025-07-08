@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.Sex;
 import com.scipath.becomeaking.model.Title;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
 
@@ -57,8 +57,8 @@ public class NamingPersonageActivity extends AppCompatActivity {
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);
             } else {
-                Toast.makeText(NamingPersonageActivity.this, getString(R.string.enter_name),
-                        Toast.LENGTH_SHORT).show();
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.enter_name, R.string.ok);
+                dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });
 

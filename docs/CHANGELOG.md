@@ -1,3 +1,11 @@
+# Become a King [0.2.3] - 08.07.2025
+
+### Additions
+- Added more `Work`
+- Added minimum `Reputation` requirement for `Work` items
+
+---
+
 # Become a King [0.2.2] - 03.07.2025
 
 ### Additions
