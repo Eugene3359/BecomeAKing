@@ -166,6 +166,15 @@
     <string name="work_in_a_mine">Работа в шахте</string>
     <string name="unloading_ships">Разгрузка кораблей</string>
 
+    <!-- Work in a town -->
+    <string name="work_in_a_town">Работа в городе</string>
+    <string name="cart_repair">Ремонт телег</string>
+    <string name="architects_apprentice">Ученик архитектора</string>
+    <string name="weavers_apprentice">Ученик ткача </string>
+    <string name="craftsmans_apprentice">Ученик ремесленика</string>
+    <string name="blacksmiths_apprentice">Ученик кузнеца</string>
+    <string name="lords_courtier">Придворный лорда</string>
+
     <!-- Business -->
     <string name="business">Предприятия</string>
 
@@ -232,7 +241,8 @@
 
     <!-- Clicker MiniGame Activity -->
     <string name="exit">Выйти</string>
-    <string name="instruction">Жми как можно быстрее — от этого зависит твой доход!</string>
+    <string name="instruction1">Жми как можно быстрее — от этого зависит твой доход!</string>
+    <string name="instruction2">Нажимай кнопки в правильном порядке!</string>
 
     <!-- Game Over -->
     <string name="game_over">Игра закончилась.</string>

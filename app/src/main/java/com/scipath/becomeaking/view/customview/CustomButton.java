@@ -24,6 +24,8 @@ public class CustomButton extends AppCompatButton {
 
     // Custom attributes initialization
     private void init(Context context, AttributeSet attrs) {
+        setIncludeFontPadding(false);
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomButton);
 
         int borderColor = typedArray.getColor(R.styleable.CustomButton_borderColor, 0x00000000); // Default: null

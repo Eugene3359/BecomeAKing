@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,12 +20,12 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.ItemCallback;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
-import com.scipath.becomeaking.adapter.Callback;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.item.IItem;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.activity.ClickerMiniGameActivity;
+import com.scipath.becomeaking.view.activity.Clicker1Activity;
+import com.scipath.becomeaking.view.activity.Clicker2Activity;
 import com.scipath.becomeaking.view.activity.GameActivity;
 
 
@@ -100,7 +101,12 @@ public class ItemsFragment extends Fragment {
 
 
     public void startClickerMiniGamer(IItem item) {
-        Intent intent = new Intent(getContext(), ClickerMiniGameActivity.class);
+        Intent intent;
+        if(item.getCost() == 0) {
+            intent = new Intent(getContext(), Clicker1Activity.class);
+        } else {
+            intent = new Intent(getContext(), Clicker2Activity.class);
+        }
         intent.putExtra("item", item);
         getContext().startActivity(intent);
     }

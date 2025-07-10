@@ -1,3 +1,11 @@
+# Become a King [0.3.0] - 10.07.2025
+
+### Additions
+- Added `Work in a Town` work category with its items
+- Added `Clicker2` mini-game
+
+---
+
 # Become a King [0.2.3] - 08.07.2025
 
 ### Additions
@@ -92,7 +100,7 @@
 - `buttonLoad` is now active
 
 ### Changes
-- Changed click zone in `Clicker Mini-Game`  
+- Changed click zone in `Clicker1` mini-game`  
 - Personage health can't anymore drop bellow zero
 
 ### Fixes
@@ -120,7 +128,7 @@
 
 ### Additions
 - Added `Work in a Village` work category
-- Added `Clicker Mini-Game`
+- Added `Clicker1` mini-game
 
 ### Changes
 - `buttonJob` is now active
@@ -158,7 +166,7 @@
 
 ---
 
-# Become a King [0.1] - 18.05.2025
+# Become a King [0.1.0] - 18.05.2025
 
 ### Additions
 - Added documentation

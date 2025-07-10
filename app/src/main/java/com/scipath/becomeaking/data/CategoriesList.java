@@ -487,6 +487,53 @@ public class CategoriesList {
                 .put(StatBonus.MoneyPerClick, 5)
                 .put(StatBonus.ReputationRequired, 8000));
 
+
+        // Work in town
+        categories.add(new Category(R.string.work_in_a_town));
+        categories.get(11)
+                .addItem(new Work(R.string.cart_repair, R.drawable.img_cart_repair, -1))
+                .addItem(new Work(R.string.architects_apprentice, R.color.placeholder, -1))
+                .addItem(new Work(R.string.weavers_apprentice, R.drawable.img_weavers_apprentice, -1))
+                .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, -1))
+                .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.img_blacksmiths_apprentice, -1))
+                .addItem(new Work(R.string.lords_courtier, R.drawable.img_lords_courtier, -1));
+        // Cart repair
+        categories.get(11).getItems().get(0).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -20)
+                .put(StatBonus.ReputationImpact, 60)
+                .put(StatBonus.MoneyPerClick, 6)
+                .put(StatBonus.ReputationRequired, 8000));
+        // Architect's apprentice
+        categories.get(11).getItems().get(1).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -10)
+                .put(StatBonus.ReputationImpact, 80)
+                .put(StatBonus.MoneyPerClick, 8)
+                .put(StatBonus.ReputationRequired, 10000));
+        // Weaver's apprentice
+        categories.get(11).getItems().get(2).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -15)
+                .put(StatBonus.ReputationImpact, 100)
+                .put(StatBonus.MoneyPerClick, 10)
+                .put(StatBonus.ReputationRequired, 12000));
+        // Craftsman's apprentice
+        categories.get(11).getItems().get(3).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -15)
+                .put(StatBonus.ReputationImpact, 150)
+                .put(StatBonus.MoneyPerClick, 15)
+                .put(StatBonus.ReputationRequired, 30000));
+        // Blacksmith's apprentice
+        categories.get(11).getItems().get(4).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -20)
+                .put(StatBonus.ReputationImpact, 200)
+                .put(StatBonus.MoneyPerClick, 20)
+                .put(StatBonus.ReputationRequired, 60000));
+        // Lord's courtier
+        categories.get(11).getItems().get(5).setStatBonuses(new StatBonusesMap()
+                .put(StatBonus.HealthImpact, -10)
+                .put(StatBonus.ReputationImpact, 500)
+                .put(StatBonus.MoneyPerClick, 50)
+                .put(StatBonus.ReputationRequired, 100000));
+
         return categories;
     }
 }

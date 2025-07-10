@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if (BecomeAKing.getInstance().isTest()) buttonTest.setVisibility(View.VISIBLE);
         buttonTest.setOnClickListener(view -> {
             Personage personage = new Personage("Hero", Sex.Male, Title.Bandit);
+            personage.setReputation(8000);
             personage.setMoney(100000);
             ArrayList<Category> categories = CategoriesList.getCategories(true);
             categories.get(1).recalculateStats(); // To set cloth image
