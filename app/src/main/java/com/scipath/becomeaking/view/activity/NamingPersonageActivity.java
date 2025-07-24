@@ -13,12 +13,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.data.CategoriesList;
 import com.scipath.becomeaking.model.GameState;
-import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.Sex;
-import com.scipath.becomeaking.model.Title;
+import com.scipath.becomeaking.model.enums.Sex;
+import com.scipath.becomeaking.model.enums.Title;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
@@ -50,8 +50,7 @@ public class NamingPersonageActivity extends AppCompatActivity {
                 Sex sex = (Sex)thisIntent.getSerializableExtra("sex");
                 Title title = (Title)thisIntent.getSerializableExtra("title");
                 Personage personage = new Personage(personageName, sex, title);
-                ArrayList<Category> categories = CategoriesList.getCategories(sex == Sex.Male);
-                categories.get(1).recalculateStats(); // To set cloth image
+                ArrayList<ICategory> categories = CategoriesList.getCategories(sex == Sex.Male);
                 BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
 
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);

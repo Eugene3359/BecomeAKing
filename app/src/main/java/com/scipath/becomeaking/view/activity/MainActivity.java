@@ -16,12 +16,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.data.CategoriesList;
 import com.scipath.becomeaking.model.GameState;
-import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.Sex;
-import com.scipath.becomeaking.model.Title;
+import com.scipath.becomeaking.model.enums.Sex;
+import com.scipath.becomeaking.model.enums.Title;
 
 import java.util.ArrayList;
 
@@ -76,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
             Personage personage = new Personage("Hero", Sex.Male, Title.Bandit);
             personage.setReputation(8000);
             personage.setMoney(100000);
-            ArrayList<Category> categories = CategoriesList.getCategories(true);
-            categories.get(1).recalculateStats(); // To set cloth image
+            ArrayList<ICategory> categories = CategoriesList.getCategories(true);
             BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             startActivity(intent);

@@ -1,11 +1,10 @@
 package com.scipath.becomeaking.manager;
 
-import android.app.Activity;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
+
 
 public class AdManagerMock {
 

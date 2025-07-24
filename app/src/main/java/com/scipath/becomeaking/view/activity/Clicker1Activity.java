@@ -13,8 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.item.IItem;
-import com.scipath.becomeaking.model.StatBonus;
+import com.scipath.becomeaking.contract.model.IItem;
+import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
@@ -37,7 +37,7 @@ public class Clicker1Activity extends AppCompatActivity {
 
         // Getting item
         IItem item = (IItem) getIntent().getSerializableExtra("item");
-        int moneyPerClick = item.getStatBonuses().get(StatBonus.MoneyPerClick);
+        int moneyPerClick = item.getStats().get(Stat.MoneyPerClick);
 
         // Views
         TextView textViewWork = findViewById(R.id.text_view_work);

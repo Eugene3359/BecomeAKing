@@ -19,19 +19,19 @@ import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.manager.AdManagerMock;
-import com.scipath.becomeaking.model.Level;
+import com.scipath.becomeaking.contract.model.ILevel;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.StatBonus;
-import com.scipath.becomeaking.model.StatBonusesMap;
+import com.scipath.becomeaking.model.enums.Stat;
 
 
 public class PersonageStatsFragment extends Fragment {
 
     // Models variables
     Personage personage;
-    Level level;
-    StatBonusesMap statBonuses;
+    ILevel ILevel;
+    IStats statBonuses;
 
 
     public static PersonageStatsFragment newInstance() {
@@ -50,7 +50,7 @@ public class PersonageStatsFragment extends Fragment {
 
         // Getting Personage from Application
         personage = BecomeAKing.getInstance().getPersonage();
-        level = personage.getLevel().clone();
+        ILevel = personage.getLevel().clone();
         statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
@@ -78,74 +78,74 @@ public class PersonageStatsFragment extends Fragment {
                 personage.getAge()));
         textViewLevel.setText(getActivity().getString(
                 R.string.level_d,
-                level.getValue()));
+                ILevel.getValue()));
         textViewExperience.setText(getActivity().getString(
                 R.string.d_d,
-                level.getCurrentExperience(),
-                level.getNeededExperience()));
+                ILevel.getCurrentExperience(),
+                ILevel.getNeededExperience()));
         textViewSkillPoints.setText(getActivity().getString(
                 R.string.skill_points_d,
-                level.getAvailableSkillPoints()));
+                ILevel.getAvailableSkillPoints()));
 
         // Stat bonuses
-        int statBonusValue = statBonuses.get(StatBonus.HealthPerDay);
+        int statBonusValue = statBonuses.get(Stat.HealthPerDay);
         imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewHealthIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.get(StatBonus.ReputationPerDay);
+        statBonusValue = statBonuses.get(Stat.ReputationPerDay);
         imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewReputationIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.get(StatBonus.CostPerDay);
+        statBonusValue = statBonuses.get(Stat.CostPerDay);
         imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewMoneyIncome.setText(Integer.toString(statBonusValue));
 
         // Strength
-        textViewStrength.setText(Integer.toString(level.getStrength()));
+        textViewStrength.setText(Integer.toString(ILevel.getStrength()));
         ImageButton imageButtonIncreaseStrength = view.findViewById(R.id.increase_strength);
         imageButtonIncreaseStrength.setOnClickListener(v -> {
-            if (level.getAvailableSkillPoints() > 0) {
-                level.affectStrength(1);
-                textViewStrength.setText(Integer.toString(level.getStrength()));
+            if (ILevel.getAvailableSkillPoints() > 0) {
+                ILevel.affectStrength(1);
+                textViewStrength.setText(Integer.toString(ILevel.getStrength()));
                 textViewSkillPoints.setText(getActivity().getString(
                         R.string.skill_points_d,
-                        level.getAvailableSkillPoints()));
+                        ILevel.getAvailableSkillPoints()));
             }
         });
         ImageButton imageButtonDecreaseStrength = view.findViewById(R.id.decrease_strength);
         imageButtonDecreaseStrength.setOnClickListener(v -> {
-            if (level.getStrength() > personage.getLevel().getStrength()) {
-                level.affectStrength(-1);
-                textViewStrength.setText(Integer.toString(level.getStrength()));
+            if (ILevel.getStrength() > personage.getLevel().getStrength()) {
+                ILevel.affectStrength(-1);
+                textViewStrength.setText(Integer.toString(ILevel.getStrength()));
                 textViewSkillPoints.setText(getActivity().getString(
                         R.string.skill_points_d,
-                        level.getAvailableSkillPoints()));
+                        ILevel.getAvailableSkillPoints()));
             }
         });
 
         // Luck
-        textViewLuck.setText(Integer.toString(level.getLuck()));
+        textViewLuck.setText(Integer.toString(ILevel.getLuck()));
         ImageButton imageButtonIncreaseLuck = view.findViewById(R.id.increase_luck);
         imageButtonIncreaseLuck.setOnClickListener(v -> {
-            if (level.getAvailableSkillPoints() > 0) {
-                level.affectLuck(1);
-                textViewLuck.setText(Integer.toString(level.getLuck()));
+            if (ILevel.getAvailableSkillPoints() > 0) {
+                ILevel.affectLuck(1);
+                textViewLuck.setText(Integer.toString(ILevel.getLuck()));
                 textViewSkillPoints.setText(getActivity().getString(
                         R.string.skill_points_d,
-                        level.getAvailableSkillPoints()));
+                        ILevel.getAvailableSkillPoints()));
             }
         });
         ImageButton imageButtonDecreaseLuck = view.findViewById(R.id.decrease_luck);
         imageButtonDecreaseLuck.setOnClickListener(v -> {
-            if (level.getLuck() > personage.getLevel().getLuck()) {
-                level.affectLuck(-1);
-                textViewLuck.setText(Integer.toString(level.getLuck()));
+            if (ILevel.getLuck() > personage.getLevel().getLuck()) {
+                ILevel.affectLuck(-1);
+                textViewLuck.setText(Integer.toString(ILevel.getLuck()));
                 textViewSkillPoints.setText(getActivity().getString(
                         R.string.skill_points_d,
-                        level.getAvailableSkillPoints()));
+                        ILevel.getAvailableSkillPoints()));
             }
         });
 
@@ -161,7 +161,7 @@ public class PersonageStatsFragment extends Fragment {
 
         Button buttonSave = view.findViewById(R.id.button_save);
         buttonSave.setOnClickListener(v -> {
-            personage.setLevel(level);
+            personage.setLevel(ILevel);
             Fragment fragment = new PersonageFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_frame, fragment)
@@ -171,12 +171,12 @@ public class PersonageStatsFragment extends Fragment {
 
         LinearLayout layoutDropSkillPoints = view.findViewById(R.id.layout_drop_skill_points);
         layoutDropSkillPoints.setOnClickListener(v -> {
-            level.dropSkillPoints();
-            textViewStrength.setText(Integer.toString(level.getStrength()));
-            textViewLuck.setText(Integer.toString(level.getLuck()));
+            ILevel.dropSkillPoints();
+            textViewStrength.setText(Integer.toString(ILevel.getStrength()));
+            textViewLuck.setText(Integer.toString(ILevel.getLuck()));
             textViewSkillPoints.setText(getActivity().getString(
                     R.string.skill_points_d,
-                    level.getAvailableSkillPoints()));
+                    ILevel.getAvailableSkillPoints()));
             AdManagerMock.showAd((AppCompatActivity) getActivity());
         });
     }

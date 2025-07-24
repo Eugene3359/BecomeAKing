@@ -13,11 +13,11 @@ import android.graphics.drawable.LayerDrawable;
 
 public class DrawableUtility {
 
-    /***
+    /**
      * The method makes Drawable repeatable
      *
-     * @param drawable The Drawable that must be repeatable
-     * @return repeatable Drawable
+     * @param drawable  The Drawable that must be repeatable
+     * @return          The repeatable Drawable
      */
     public static Drawable createTiledDrawable(Context context, Drawable drawable) {
         if (drawable == null)
@@ -48,12 +48,12 @@ public class DrawableUtility {
     }
 
 
-    /***
+    /**
      * The method creates Drawable with set borderColor and backgroundColor
      *
      * @param borderColor       The int that contains colors id
      * @param backgroundColor   The int that contains colors id
-     * @return Drawable with set borderColor and backgroundColor
+     * @return                  The Drawable with set borderColor and backgroundColor
      */
     public static Drawable createBorderDrawable(Context context, int borderColor, int backgroundColor) {
         // Create a GradientDrawable for the border
@@ -73,13 +73,14 @@ public class DrawableUtility {
         return drawable;
     }
 
-    /***
+
+    /**
      * The method creates Drawable with set borderColor, backgroundColor and backgroundDrawable
      *
      * @param borderColor           The int that contains colors id
      * @param backgroundColor       The int that contains color id
      * @param backgroundDrawable    The Drawable that must be used as background
-     * @return Drawable with set borderColor, backgroundColor and backgroundDrawable
+     * @return                      The Drawable with set borderColor, backgroundColor and backgroundDrawable
      */
     public static Drawable createBorderDrawable(Context context, int borderColor, int backgroundColor, Drawable backgroundDrawable) {
         // Create a GradientDrawable with set border color

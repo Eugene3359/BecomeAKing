@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.TitlesAdapter;
-import com.scipath.becomeaking.model.Title;
-import com.scipath.becomeaking.adapter.ObjectClickListener;
+import com.scipath.becomeaking.model.enums.Title;
+import com.scipath.becomeaking.contract.callback.ObjectCallback;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
@@ -47,7 +47,7 @@ public class TitleSelectionActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.titles_list);
 
         // Button click callback
-        ObjectClickListener objectClickListener = new ObjectClickListener() {
+        ObjectCallback objectCallback = new ObjectCallback() {
             @Override public void onClick(Object title)
             {
                 if(!(title instanceof Title)) return;
@@ -64,7 +64,7 @@ public class TitleSelectionActivity extends AppCompatActivity {
 
         // Displaying titles as Buttons that works as RadioButtons using TitleAdapter
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        titlesAdapter = new TitlesAdapter(titles, objectClickListener, this);
+        titlesAdapter = new TitlesAdapter(titles, objectCallback, this);
         recyclerView.setAdapter(titlesAdapter);
 
         // Button continue

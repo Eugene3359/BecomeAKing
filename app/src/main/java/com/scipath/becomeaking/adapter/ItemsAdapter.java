@@ -15,10 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
-import com.scipath.becomeaking.model.StatBonus;
-import com.scipath.becomeaking.model.item.IItem;
+import com.scipath.becomeaking.contract.callback.ItemCallback;
+import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.model.enums.Stat;
+import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
@@ -29,7 +30,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     // Variables
     private int categoryId;
-    private Category category;
+    private ICategory category;
     private ItemCallback callback;
     private Context context;
 
@@ -115,7 +116,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_item, viewGroup, false);
-
         return new ItemsAdapter.ViewHolder(view);
     }
 
@@ -132,22 +132,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         viewHolder.getItemNameView().setText(item.getNameId());
         TextView textViewRequirement = viewHolder.getItemRequirementView();
 
-        int strengthRequired = item.getStatBonuses().get(StatBonus.StrengthRequired);
-        int reputationRequired = item.getStatBonuses().get(StatBonus.ReputationRequired);
+        int strengthRequired = item.getStats().get(Stat.StrengthRequired);
+        int reputationRequired = item.getStats().get(Stat.ReputationRequired);
         if(strengthRequired == 0 && reputationRequired == 0) {
             textViewRequirement.setVisibility(View.GONE);
             textViewRequirement.setText("");
         } else {
             String requirement = (strengthRequired == 0) ?
-                    StatBonus.ReputationRequired.getDescription(reputationRequired, context) :
-                    StatBonus.StrengthRequired.getDescription(strengthRequired, context);
+                    Stat.ReputationRequired.getDescription(reputationRequired, context) :
+                    Stat.StrengthRequired.getDescription(strengthRequired, context);
             textViewRequirement.setVisibility(View.VISIBLE);
             textViewRequirement.setText(requirement);
         }
         viewHolder.getItemImageView().setImageResource(item.getImageId());
         viewHolder.getItemImageView().setContentDescription(item.getName(context));
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
-        viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStatBonuses(), context));
+        viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStats(), context));
         if (!item.isBought()) {
             viewHolder.resetItemButtonBuyState(item, categoryId, context);
 

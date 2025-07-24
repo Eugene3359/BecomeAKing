@@ -4,12 +4,13 @@ import android.app.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.manager.SaveManager;
-import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.StatBonus;
-import com.scipath.becomeaking.model.StatBonusesMap;
+import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
@@ -58,11 +59,11 @@ public class BecomeAKing extends Application {
         return gameState.personage;
     }
 
-    public ArrayList<Category> getCategories() {
+    public ArrayList<ICategory> getCategories() {
         return gameState.categories;
     }
 
-    public ArrayList<Category> getCategoriesSublist(int fromIndex, int toIndex) {
+    public ArrayList<ICategory> getCategoriesSublist(int fromIndex, int toIndex) {
         return new ArrayList<>(gameState.categories.subList(fromIndex, toIndex));
     }
 
@@ -74,26 +75,25 @@ public class BecomeAKing extends Application {
 
 
     // Methods
-    public StatBonusesMap getCurrentStatBonuses () {
-        StatBonusesMap statBonuses = new StatBonusesMap();
-        for (Category category : gameState.categories) {
-            category.recalculateStats();
-            StatBonusesMap categoryStatBonuses = category.getStatBonuses();
-            for (StatBonus statBonus : categoryStatBonuses.keySet()) {
-                statBonuses.put(statBonus,
-                        statBonuses.get(statBonus)
-                                + categoryStatBonuses.get(statBonus));
+    public IStats getCurrentStatBonuses () {
+        IStats stats = new Stats();
+        for (ICategory ICategory : gameState.categories) {
+            IStats categoryStatBonuses = ICategory.getStats();
+            for (Stat stat : categoryStatBonuses.getKeys()) {
+                stats.add(stat,
+                        stats.get(stat)
+                                + categoryStatBonuses.get(stat));
             }
         }
-        return statBonuses;
+        return stats;
     }
 
     public void nextDay() {
         gameState.day++;
-        StatBonusesMap statBonuses = getCurrentStatBonuses();
-        gameState.personage.affectHealth(statBonuses.get(StatBonus.HealthPerDay));
-        gameState.personage.affectReputation(statBonuses.get(StatBonus.ReputationPerDay));
-        gameState.personage.affectMoney(statBonuses.get(StatBonus.CostPerDay));
+        IStats statBonuses = getCurrentStatBonuses();
+        gameState.personage.affectHealth(statBonuses.get(Stat.HealthPerDay));
+        gameState.personage.affectReputation(statBonuses.get(Stat.ReputationPerDay));
+        gameState.personage.affectMoney(statBonuses.get(Stat.CostPerDay));
     }
 
     public void checkPersonageForNegativeValues(AppCompatActivity activity) {

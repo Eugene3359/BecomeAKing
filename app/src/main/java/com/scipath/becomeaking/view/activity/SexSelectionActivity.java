@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Sex;
+import com.scipath.becomeaking.model.enums.Sex;
 
 
 public class SexSelectionActivity extends AppCompatActivity {

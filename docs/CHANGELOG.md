@@ -1,3 +1,13 @@
+# Become a King [0.3.1] - 24.07.2025
+
+### Changes
+- Changed `Royal Furniture` daily cost
+
+### Fixes
+- Fixed a bug when after buying an item from `House` category `Maximum Health` remains the same
+
+---
+
 # Become a King [0.3.0] - 10.07.2025
 
 ### Additions
@@ -162,7 +172,7 @@
 # Become a King [0.1.1] - 20.05.2025
 
 ### Additions
-- Added more clothes
+- Added more items to `Clothes` category 
 
 ---
 

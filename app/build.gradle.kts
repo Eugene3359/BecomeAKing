@@ -10,8 +10,8 @@ android {
         applicationId = "com.scipath.becomeaking"
         minSdk = 26
         targetSdk = 35
-        versionCode = 16
-        versionName = "0.3.0"
+        versionCode = 17
+        versionName = "0.3.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,7 +50,12 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.gson)
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

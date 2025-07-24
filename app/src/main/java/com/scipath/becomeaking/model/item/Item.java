@@ -6,43 +6,53 @@ import android.graphics.drawable.Drawable;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.IItem;
+import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.StatBonus;
-import com.scipath.becomeaking.model.StatBonusesMap;
-
-import java.io.Serializable;
+import com.scipath.becomeaking.model.enums.Stat;
 
 
-public class Item implements IItem, Serializable {
+public class Item implements IItem {
 
     // Fields
+    protected static int idCounter = 0;
+
+    protected int id;
     protected int nameId;
     protected int imageId;
     protected final int interactionNameId = R.id.buy;
     protected int cost;
     protected boolean bought;
-    protected StatBonusesMap statBonuses;
+    protected IStats stats;
 
 
     // Constructors
     public Item(int nameId, int imageId, int cost) {
+        id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
         this.cost = cost;
         bought = false;
-        statBonuses = new StatBonusesMap();
+        stats = new Stats();
     }
 
-    public Item(int nameId, int imageId, int cost, StatBonusesMap statBonuses) {
+    public Item(int nameId, int imageId, int cost, IStats stats) {
+        id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
         this.cost = cost;
         bought = false;
-        this.statBonuses = statBonuses;
+        this.stats = stats;
     }
 
 
     // Accessors
+    @Override
+    public int getId() {
+        return id;
+    }
+
     @Override
     public int getNameId() {
         return nameId;
@@ -69,8 +79,8 @@ public class Item implements IItem, Serializable {
     }
 
     @Override
-    public StatBonusesMap getStatBonuses() {
-        return statBonuses;
+    public IStats getStats() {
+        return stats;
     }
 
 
@@ -96,28 +106,16 @@ public class Item implements IItem, Serializable {
     }
 
     @Override
-    public void setStatBonuses(StatBonusesMap statBonuses) {
-        this.statBonuses = statBonuses;
+    public void setStats(IStats stats) {
+        this.stats = stats;
     }
 
 
     // Methods
-    /***
-     * Item name resource accessor
-     *
-     * @return The String that contains the item name
-     */
-
     @Override
     public String getName(Context context) {
         return context.getString(nameId);
     }
-
-    /***
-     * Item image resource accessor
-     *
-     * @return The Drawable that contains the item image
-     */
 
     @Override
     public Drawable getImage(Context context) {
@@ -125,15 +123,23 @@ public class Item implements IItem, Serializable {
     }
 
     @Override
+    public String getInteractionName(Context context) {
+        return context.getString(interactionNameId);
+    }
+
+    @Override
     public int interact(Personage personage) {
+        // Check for money
         if (personage.getMoney() < cost) return -1; // Not enough money
 
+        // Check for strength
         int personageStrength = personage.getLevel().getStrength();
-        int strengthRequired = statBonuses.get(StatBonus.StrengthRequired);
+        int strengthRequired = stats.get(Stat.StrengthRequired);
         if (personageStrength < strengthRequired) return -2; // Not enough strength
 
+        // Buy
         personage.affectMoney(-cost);
-        personage.affectReputation(statBonuses.get(StatBonus.ReputationImpact));
+        personage.affectReputation(stats.get(Stat.ReputationImpact));
         personage.recalculateStats();
         bought = true;
         return 0; // Item bought

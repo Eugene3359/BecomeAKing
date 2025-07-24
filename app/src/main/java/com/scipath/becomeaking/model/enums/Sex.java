@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.model;
+package com.scipath.becomeaking.model.enums;
 
 import android.content.Context;
 
@@ -34,8 +34,8 @@ public enum Sex implements Serializable {
     /**
      * Sex name resource accessor
      *
-     * @param context The Context that provides access to resources
-     * @return The String that contain sex name
+     * @param context   The Context that provides access to resources
+     * @return          The String that contain sex name
      */
     public String getName(Context context) {
         return context.getString(nameId);

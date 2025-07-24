@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.CategoriesAdapter;
-import com.scipath.becomeaking.model.Category;
+import com.scipath.becomeaking.contract.model.ICategory;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class CategoriesFragment extends Fragment {
 
         // Getting sublist of categories from Application
         Bundle args = getArguments();
-        ArrayList<Category> categories = BecomeAKing.getInstance()
+        ArrayList<ICategory> categories = BecomeAKing.getInstance()
                 .getCategoriesSublist(args.getInt("fromIndex"), args.getInt("toIndex"));
 
         // View

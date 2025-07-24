@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,10 +17,10 @@ import android.widget.ImageView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.adapter.ItemCallback;
+import com.scipath.becomeaking.contract.callback.ItemCallback;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.item.IItem;
+import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.Clicker1Activity;
@@ -70,6 +69,7 @@ public class ItemsFragment extends Fragment {
                     activity.switchMenuButton(activity.findViewById(R.id.button_personage) , new PersonageFragment());
                     startClickerMiniGamer(item);
                 } else if (item instanceof Item){
+                    personage.recalculateStats();
                     activity.updateViews();
                 }
             }

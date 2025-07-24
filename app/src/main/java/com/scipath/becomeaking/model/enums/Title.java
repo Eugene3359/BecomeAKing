@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.model;
+package com.scipath.becomeaking.model.enums;
 
 import android.content.Context;
 
@@ -40,8 +40,8 @@ public enum Title implements Serializable {
     /**
      * Title name resource accessor
      *
-     * @param context The Context that provides access to resources
-     * @return The String that contain title name
+     * @param context   The Context that provides access to resources
+     * @return          The String that contain title name
      */
     public String getName(Context context) {
         return context.getString(nameId);

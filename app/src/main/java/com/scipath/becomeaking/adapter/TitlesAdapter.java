@@ -5,13 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Title;
+import com.scipath.becomeaking.contract.callback.ObjectCallback;
+import com.scipath.becomeaking.model.enums.Title;
 import com.scipath.becomeaking.view.customview.CustomRadioButton;
 
 public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder> {
@@ -19,14 +19,14 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
     // Variables
     private Context context;
     private Title[] localDataSet;
-    private ObjectClickListener objectClickListener;
+    private ObjectCallback objectCallback;
     private int selectedPosition = -1;
 
 
     // Constructor
-    public TitlesAdapter(Title[] dataSet, ObjectClickListener objectClickListener, Context context) {
+    public TitlesAdapter(Title[] dataSet, ObjectCallback objectCallback, Context context) {
         localDataSet = dataSet;
-        this.objectClickListener = objectClickListener;
+        this.objectCallback = objectCallback;
         this.context = context;
     }
 
@@ -76,7 +76,7 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
                         // Update selected position
                         selectedPosition = viewHolder.getAdapterPosition();
                         // Call listener
-                        objectClickListener.onClick(localDataSet[position]);
+                        objectCallback.onClick(localDataSet[position]);
                     }
                 });
     }

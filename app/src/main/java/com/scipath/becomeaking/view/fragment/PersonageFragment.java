@@ -15,16 +15,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.manager.AdManagerMock;
-import com.scipath.becomeaking.model.Category;
-import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.StatBonus;
-import com.scipath.becomeaking.model.StatBonusesMap;
+import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.activity.GameActivity;
 
 import java.util.ArrayList;
@@ -34,8 +32,8 @@ public class PersonageFragment extends Fragment {
 
     // Models variables
     Personage personage;
-    ArrayList<Category> categories;
-    StatBonusesMap statBonuses;
+    ArrayList<ICategory> categories;
+    IStats stats;
 
     // Views variables
     TextView textViewReputation;
@@ -59,7 +57,7 @@ public class PersonageFragment extends Fragment {
         // Getting Personage, Categories and StatBonuses from Application
         personage = BecomeAKing.getInstance().getPersonage();
         categories = BecomeAKing.getInstance().getCategories();
-        statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
+        stats = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
         TextView textViewName = view.findViewById(R.id.text_view_name);
@@ -89,17 +87,17 @@ public class PersonageFragment extends Fragment {
         imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCategories().get(1).getImageId());
 
         // Stat bonuses
-        int statBonusValue = statBonuses.get(StatBonus.HealthPerDay);
+        int statBonusValue = stats.get(Stat.HealthPerDay);
         imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewHealthIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.get(StatBonus.ReputationPerDay);
+        statBonusValue = stats.get(Stat.ReputationPerDay);
         imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewReputationIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.get(StatBonus.CostPerDay);
+        statBonusValue = stats.get(Stat.CostPerDay);
         imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewMoneyIncome.setText(Integer.toString(statBonusValue));
