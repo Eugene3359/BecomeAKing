@@ -104,13 +104,13 @@ public class PersonageFragment extends Fragment {
 
         updateViews();
 
-        textViewNutrition.setText(categories.get(0).getLastBoughtItem().getNameId());
-        textViewClothes.setText(categories.get(1).getLastBoughtItem().getNameId());
-        if (categories.get(5).getLastBoughtItem() != null) {
-            textViewHousing.setText(categories.get(5).getLastBoughtItem().getNameId());
+        textViewNutrition.setText(categories.get(0).getBestBoughtItem().getNameId());
+        textViewClothes.setText(categories.get(1).getBestBoughtItem().getNameId());
+        if (categories.get(5).getBestBoughtItem() != null) {
+            textViewHousing.setText(categories.get(5).getBestBoughtItem().getNameId());
         }
-        if (categories.get(9).getLastBoughtItem() != null) {
-            textViewHorse.setText(categories.get(9).getLastBoughtItem().getNameId());
+        if (categories.get(9).getBestBoughtItem() != null) {
+            textViewHorse.setText(categories.get(9).getBestBoughtItem().getNameId());
         }
         textViewMaxHealth.setText(Integer.toString(personage.getMaxHealth()));
         textViewMight.setText(Integer.toString(personage.getMight()));

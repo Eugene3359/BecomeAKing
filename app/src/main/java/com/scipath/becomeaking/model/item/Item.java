@@ -12,6 +12,8 @@ import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Stat;
 
+import java.util.Objects;
+
 
 public class Item implements IItem {
 
@@ -21,9 +23,10 @@ public class Item implements IItem {
     protected int id;
     protected int nameId;
     protected int imageId;
-    protected final int interactionNameId = R.id.buy;
+    protected int interactionNameId;
     protected int cost;
     protected boolean bought;
+
     protected IStats stats;
 
 
@@ -32,6 +35,7 @@ public class Item implements IItem {
         id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
+        this.interactionNameId = R.string.buy_d;
         this.cost = cost;
         bought = false;
         stats = new Stats();
@@ -41,6 +45,7 @@ public class Item implements IItem {
         id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
+        this.interactionNameId = R.string.buy_d;
         this.cost = cost;
         bought = false;
         this.stats = stats;
@@ -107,7 +112,7 @@ public class Item implements IItem {
 
     @Override
     public void setStats(IStats stats) {
-        this.stats = stats;
+        this.stats = Objects.requireNonNullElseGet(stats, Stats::new);
     }
 
 
@@ -124,11 +129,13 @@ public class Item implements IItem {
 
     @Override
     public String getInteractionName(Context context) {
-        return context.getString(interactionNameId);
+        return String.format(context.getString(interactionNameId), cost);
     }
 
     @Override
     public int interact(Personage personage) {
+        if (personage == null) return -10; // Null
+
         // Check for money
         if (personage.getMoney() < cost) return -1; // Not enough money
 

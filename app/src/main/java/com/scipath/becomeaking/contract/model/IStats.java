@@ -1,5 +1,6 @@
 package com.scipath.becomeaking.contract.model;
 
+import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 
 import com.scipath.becomeaking.model.enums.Stat;
@@ -7,7 +8,7 @@ import com.scipath.becomeaking.model.enums.Stat;
 import java.util.List;
 
 
-public interface IStats {
+public interface IStats extends Cloneable {
 
     // Accessors
     int get(Stat stat);
@@ -29,4 +30,7 @@ public interface IStats {
 
     // Methods
     int size();
+
+    @NonNull
+    IStats clone();
 }

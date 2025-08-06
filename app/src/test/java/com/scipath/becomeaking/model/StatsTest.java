@@ -142,4 +142,25 @@ public class StatsTest {
         assertEquals(1, stats.size());
         assertEquals(100, stats.get(Stat.MaxHealth));
     }
+
+    @Test
+    void size_returnsSize() {
+        assertEquals(0, stats.size());
+        stats.add(Stat.MaxHealth, 100);
+        stats.add(Stat.Might, 1);
+        stats.add(Stat.Might, 2);
+        assertEquals(2, stats.size());
+        stats.remove(Stat.Might);
+        assertEquals(1, stats.size());
+    }
+
+    @Test
+    void clone_returnsDeepCopy() {
+        stats.add(Stat.MaxHealth, 100);
+        IStats cloned = stats.clone();
+
+        assertNotSame(stats, cloned);
+        assertEquals(stats.get(Stat.MaxHealth), cloned.get(Stat.MaxHealth));
+        assertNotSame(stats.getPair(0), cloned.getPair(0));
+    }
 }

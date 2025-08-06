@@ -9,9 +9,11 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.enums.StatsMod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Category implements ICategory {
@@ -23,6 +25,7 @@ public class Category implements ICategory {
     protected int imageId;
     protected List<IItem> items;
     protected boolean itemsMutated;
+    protected StatsMod statsMod;
     protected IStats stats;
 
 
@@ -32,7 +35,8 @@ public class Category implements ICategory {
         this.nameId = nameId;
         this.imageId = 0;
         this.items = new ArrayList<>();
-        itemsMutated = false;
+        this.itemsMutated = false;
+        this.statsMod = StatsMod.Best;
         this.stats = new Stats();
     }
 
@@ -50,12 +54,18 @@ public class Category implements ICategory {
 
     @Override
     public int getImageId() {
+        if (itemsMutated) recalculateStats();
         return imageId;
     }
 
     @Override
     public List<IItem> getItems() {
         return items;
+    }
+
+    @Override
+    public StatsMod getStatsMod() {
+        return statsMod;
     }
 
     @Override
@@ -73,15 +83,22 @@ public class Category implements ICategory {
 
     @Override
     public void setItems(List<IItem> items) {
-        this.items = items;
+        this.items = Objects.requireNonNullElseGet(items, ArrayList::new);
         itemsMutated = true;
     }
 
     @Override
     public ICategory addItem(IItem item) {
-        this.items.add(item);
-        itemsMutated = true;
+        if (item != null) {
+            this.items.add(item);
+            itemsMutated = true;
+        }
         return this;
+    }
+
+    @Override
+    public void setStatsMod(StatsMod statsMod) {
+        if (statsMod != null) this.statsMod = statsMod;
     }
 
 
@@ -97,7 +114,7 @@ public class Category implements ICategory {
     }
 
     @Override
-    public IItem getLastBoughtItem() {
+    public IItem getBestBoughtItem() {
         IItem item;
         for (int i = items.size()-1; i >= 0; i--) {
             item = items.get(i);
@@ -112,24 +129,25 @@ public class Category implements ICategory {
      * marked as bought.
      */
     protected void recalculateStats() {
+        imageId = 0;
+        stats = new Stats();
         if (items.isEmpty()) return;
 
         // Updating category imageId
-        imageId = getLastBoughtItem() == null ?
+        imageId = getBestBoughtItem() == null ?
                 items.get(0).getImageId() :
-                getLastBoughtItem().getImageId();
+                getBestBoughtItem().getImageId();
 
         // Updating category stats
-        stats = new Stats();
-        if (nameId == R.string.nutrition | nameId == R.string.books) {
+        if (statsMod == StatsMod.Best) {
+            IItem item = getBestBoughtItem();
+            if (item != null) stats = item.getStats();
+        } else if (statsMod == StatsMod.Sum) {
             for (IItem item : items) {
                 if (item.isBought()) {
                     stats.merge(item.getStats());
                 }
             }
-        } else {
-            IItem item = getLastBoughtItem();
-            if (item != null) stats = item.getStats();
         }
     }
 }

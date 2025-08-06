@@ -41,8 +41,6 @@ public interface IPersonage extends Serializable {
 
     void setAge(int age);
 
-    void setMaxHealth(int maxHealth);
-
     void setHealth(int health);
 
     void setReputation(int reputation);
@@ -58,8 +56,6 @@ public interface IPersonage extends Serializable {
     void affectReputation(int reputation);
 
     void affectMoney(int money);
-
-    int restrictHealth(int health);
 
     void recalculateStats();
 }

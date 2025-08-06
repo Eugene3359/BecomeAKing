@@ -4,6 +4,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.enums.Stat;
+import com.scipath.becomeaking.model.enums.StatsMod;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.item.Work;
@@ -17,6 +18,7 @@ public class CategoriesList {
 
         // Nutrition
         categories.add(new Category(R.string.nutrition));
+        categories.get(0).setStatsMod(StatsMod.Sum);
         categories.get(0)
                 .addItem(new Item(R.string.bread, R.drawable.img_bread, 0))
                 .addItem(new Item(R.string.meat, R.drawable.img_meat, 0))
@@ -351,6 +353,7 @@ public class CategoriesList {
 
         // Books
         categories.add(new Category(R.string.books));
+        categories.get(7).setStatsMod(StatsMod.Sum);
         categories.get(7)
                 .addItem(new Item(R.string.old_book, R.drawable.img_old_book, 200))
                 .addItem(new Item(R.string.new_book, R.drawable.img_new_book, 600))

@@ -3,6 +3,8 @@ package com.scipath.becomeaking.contract.model;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import com.scipath.becomeaking.model.enums.StatsMod;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public interface ICategory extends Serializable {
 
     List<IItem> getItems();
 
+    StatsMod getStatsMod();
+
     IStats getStats();
 
 
@@ -27,6 +31,8 @@ public interface ICategory extends Serializable {
     void setItems(List<IItem> items);
 
     ICategory addItem(IItem item);
+
+    void setStatsMod(StatsMod statsMod);
 
 
     // Methods
@@ -46,5 +52,5 @@ public interface ICategory extends Serializable {
      */
     Drawable getImage(Context context);
 
-    IItem getLastBoughtItem();
+    IItem getBestBoughtItem();
 }

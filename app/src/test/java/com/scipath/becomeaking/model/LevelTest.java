@@ -29,28 +29,28 @@ class LevelTest {
     }
 
     @Test
-    void affectStrength_WithEnoughPoints() {
+    void affectStrength_withEnoughPoints() {
         level.affectStrength(1);
         assertEquals(1, level.getStrength());
         assertEquals(1, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectStrength_WithoutEnoughPoints_doesNothing() {
+    void affectStrength_withoutEnoughPoints_doesNothing() {
         level.affectStrength(3); // only 2 available
         assertEquals(0, level.getStrength()); // should not apply
         assertEquals(2, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectLuck_WithEnoughPoints() {
+    void affectLuck_withEnoughPoints() {
         level.affectLuck(2);
         assertEquals(2, level.getLuck());
         assertEquals(0, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectLuck_WithoutEnoughPoints_doesNothing() {
+    void affectLuck_withoutEnoughPoints_doesNothing() {
         level.affectLuck(3); // only 2 available
         assertEquals(0, level.getLuck()); // should not apply
         assertEquals(2, level.getAvailableSkillPoints());

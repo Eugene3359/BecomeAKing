@@ -15,7 +15,7 @@ public class Personage implements IPersonage {
     private String name;
     private Sex sex;
     private Title title;
-    private com.scipath.becomeaking.contract.model.ILevel ILevel;
+    private ILevel level;
     private int age;
     private int maxHealth;
     private int health;
@@ -29,7 +29,7 @@ public class Personage implements IPersonage {
         this.name = name;
         this.sex = sex;
         this.title = title;
-        ILevel = new Level();
+        level = new Level();
         age = 20;
         maxHealth = title.getMaxHealth();
         health = maxHealth;
@@ -57,7 +57,7 @@ public class Personage implements IPersonage {
 
     @Override
     public ILevel getLevel() {
-        return ILevel;
+        return level;
     }
 
     @Override
@@ -105,21 +105,17 @@ public class Personage implements IPersonage {
     @Override
     public void setTitle(Title title) {
         this.title = title;
+        recalculateStats();
     }
 
     @Override
     public void setLevel(ILevel ILevel) {
-        this.ILevel = ILevel;
+        this.level = ILevel;
     }
 
     @Override
     public void setAge(int age) {
         this.age = age;
-    }
-
-    @Override
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
     }
 
     @Override
@@ -160,15 +156,19 @@ public class Personage implements IPersonage {
     }
 
     @Override
-    public int restrictHealth(int health) {
-        // Health can't be bellow zero or above maximum health
-        return Math.max(0, Math.min(health, maxHealth));
+    public void recalculateStats() {
+        maxHealth = title.getMaxHealth();
+        BecomeAKing app = BecomeAKing.getInstance();
+        if (app != null) {
+            IStats stats = app.getCurrentStatBonuses();
+            maxHealth = Math.max(maxHealth, stats.get(Stat.MaxHealth));
+            might = stats.get(Stat.Might);
+        }
+        health = restrictHealth(health);
     }
 
-    @Override
-    public void recalculateStats() {
-        IStats stats = BecomeAKing.getInstance().getCurrentStatBonuses();
-        maxHealth = Math.max(title.getMaxHealth(), stats.get(Stat.MaxHealth));
-        might = stats.get(Stat.Might);
+    private int restrictHealth(int health) {
+        // Health can't be bellow zero or above maximum health
+        return Math.max(0, Math.min(health, maxHealth));
     }
 }

@@ -12,6 +12,7 @@ public interface IItem extends Serializable {
 
     // Accessors
     int getId();
+
     int getNameId();
 
     int getImageId();

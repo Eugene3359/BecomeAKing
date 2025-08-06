@@ -1,5 +1,6 @@
 package com.scipath.becomeaking.model;
 
+import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 
 import com.scipath.becomeaking.contract.model.IStats;
@@ -91,12 +92,22 @@ public class Stats implements IStats {
 
 
     // Methods
+    protected int find(Stat stat) {
+        return keys.indexOf(stat);
+    }
+
     @Override
     public int size() {
         return keys.size();
     }
 
-    protected int find(Stat stat) {
-        return keys.indexOf(stat);
+    @NonNull
+    @Override
+    public IStats clone() {
+        try {
+            return (IStats) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
