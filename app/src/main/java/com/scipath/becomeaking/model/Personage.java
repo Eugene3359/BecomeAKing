@@ -12,34 +12,43 @@ import com.scipath.becomeaking.model.enums.Title;
 public class Personage implements IPersonage {
 
     // Fields
-    private String name;
-    private Sex sex;
-    private Title title;
-    private ILevel level;
-    private int age;
-    private int maxHealth;
-    private int health;
-    private int reputation;
-    private int money;
-    private int might;
+    protected static int idCounter = 0;
+
+    protected int id;
+    protected String name;
+    protected Sex sex;
+    protected Title title;
+    protected ILevel level;
+    protected int age;
+    protected int maxHealth;
+    protected int health;
+    protected int reputation;
+    protected int money;
+    protected int might;
 
 
     // Constructor
     public Personage(String name, Sex sex, Title title) {
+        this.id = idCounter++;
         this.name = name;
         this.sex = sex;
         this.title = title;
-        level = new Level();
-        age = 20;
-        maxHealth = title.getMaxHealth();
-        health = maxHealth;
-        reputation = 0;
-        money = 100;
-        might = 0;
+        this.level = new Level();
+        this.age = 20;
+        this.maxHealth = title.getMaxHealth();
+        this.health = maxHealth;
+        this.reputation = 0;
+        this.money = 100;
+        this.might = 0;
     }
 
 
     // Accessors
+    @Override
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String getName() {
         return name;

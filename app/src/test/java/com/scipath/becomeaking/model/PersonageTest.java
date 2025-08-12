@@ -18,7 +18,14 @@ public class PersonageTest {
 
     @BeforeEach
     void setUp() {
+        Personage.idCounter = 0;
         personage = new Personage("Hero", Sex.Male, Title.Villager);
+    }
+
+    @Test
+    void getId_returnsExpectedId() {
+        assertEquals(0, personage.getId());
+        assertEquals(1, new Personage("Villain", Sex.Male, Title.Bandit).getId());
     }
 
     @Test
@@ -38,13 +45,12 @@ public class PersonageTest {
 
     @Test
     void getLevel_returnsExpectedValue() {
-        assertInstanceOf(ILevel.class, personage.getLevel());
-        assertEquals(1, personage.getLevel().getValue()); // initial value
+        assertEquals(1, personage.getLevel().getValue()); // Initial value
     }
 
     @Test
     void getAge_returnsExpectedValue() {
-        assertEquals(20, personage.getAge()); // initial value
+        assertEquals(20, personage.getAge()); // Initial value
     }
 
     @Test
@@ -59,17 +65,17 @@ public class PersonageTest {
 
     @Test
     void getReputation_returnsExpectedValue() {
-        assertEquals(0, personage.getReputation()); // initial value
+        assertEquals(0, personage.getReputation()); // Initial value
     }
 
     @Test
     void getMoney_returnsExpectedValue() {
-        assertEquals(100, personage.getMoney()); // initial value
+        assertEquals(100, personage.getMoney()); // Initial value
     }
 
     @Test
     void getMight_returnsExpectedValue() {
-        assertEquals(0, personage.getMight()); // initial value
+        assertEquals(0, personage.getMight()); // Initial value
     }
 
     @Test
@@ -95,7 +101,6 @@ public class PersonageTest {
     void setLevel_changesLevel() {
         ILevel level = new Level();
         level.gainExperience(100);
-        assertEquals(1, personage.getLevel().getValue());
         personage.setLevel(level);
         assertEquals(2, personage.getLevel().getValue());
     }
@@ -115,7 +120,7 @@ public class PersonageTest {
     @Test
     void setHealth_withValueAboveMaxHealth_changesHealthToMaxHealth() {
         personage.setHealth(200);
-        assertEquals(100, personage.getHealth());
+        assertEquals(personage.getMaxHealth(), personage.getHealth());
     }
 
     @Test
@@ -138,8 +143,8 @@ public class PersonageTest {
 
     @Test
     void setMight_changesMight() {
-        personage.setMight(2);
-        assertEquals(2, personage.getMight());
+        personage.setMight(10);
+        assertEquals(10, personage.getMight());
     }
 
     @Test

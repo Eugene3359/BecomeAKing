@@ -3,13 +3,17 @@ package com.scipath.becomeaking.contract.model;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.scipath.becomeaking.model.enums.StatsMod;
-
 import java.io.Serializable;
 import java.util.List;
 
 
 public interface ICategory extends Serializable {
+
+    enum StatsMod {
+        Best,
+        Sum;
+    }
+
 
     // Accessors
     int getId();

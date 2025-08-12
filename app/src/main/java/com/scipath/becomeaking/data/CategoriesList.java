@@ -2,33 +2,35 @@ package com.scipath.becomeaking.data;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.ICategory.*;
 import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.enums.Stat;
-import com.scipath.becomeaking.model.enums.StatsMod;
+import com.scipath.becomeaking.model.item.Food;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
 
+
 public class CategoriesList {
+
     public static ArrayList<ICategory> getCategories(boolean isMale) {
         ArrayList<ICategory> categories = new ArrayList<>();
-
 
         // Nutrition
         categories.add(new Category(R.string.nutrition));
         categories.get(0).setStatsMod(StatsMod.Sum);
         categories.get(0)
-                .addItem(new Item(R.string.bread, R.drawable.img_bread, 0))
-                .addItem(new Item(R.string.meat, R.drawable.img_meat, 0))
-                .addItem(new Item(R.string.cheese, R.drawable.img_cheese, 0))
-                .addItem(new Item(R.string.vegetables, R.drawable.img_vegetables, 0))
-                .addItem(new Item(R.string.soup, R.drawable.img_soup, 0))
-                .addItem(new Item(R.string.nourishing_food, R.drawable.img_nourishing_food, 0))
-                .addItem(new Item(R.string.luxurious_food, R.drawable.img_luxury_food, 0))
-                .addItem(new Item(R.string.aristocracy_food, R.drawable.img_nobleman_food, 0))
-                .addItem(new Item(R.string.royal_food, R.drawable.img_royal_food, 0));
+                .addItem(new Food(R.string.bread, R.drawable.img_bread, 0))
+                .addItem(new Food(R.string.meat, R.drawable.img_meat, 0))
+                .addItem(new Food(R.string.cheese, R.drawable.img_cheese, 0))
+                .addItem(new Food(R.string.vegetables, R.drawable.img_vegetables, 0))
+                .addItem(new Food(R.string.soup, R.drawable.img_soup, 0))
+                .addItem(new Food(R.string.nourishing_food, R.drawable.img_nourishing_food, 0))
+                .addItem(new Food(R.string.luxurious_food, R.drawable.img_luxury_food, 0))
+                .addItem(new Food(R.string.aristocracy_food, R.drawable.img_nobleman_food, 0))
+                .addItem(new Food(R.string.royal_food, R.drawable.img_royal_food, 0));
         // Bread
         categories.get(0).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5)

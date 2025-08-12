@@ -13,12 +13,16 @@ import java.util.List;
 public class Stats implements IStats {
 
     // Fields
-    private ArrayList<Stat> keys;
-    private ArrayList<Integer> values;
+    protected static int idCounter = 0;
+
+    protected int id;
+    protected ArrayList<Stat> keys;
+    protected ArrayList<Integer> values;
 
 
     // Constructor
     public Stats() {
+        id = idCounter++;
         keys = new ArrayList<>();
         values = new ArrayList<>();
     }
@@ -26,13 +30,18 @@ public class Stats implements IStats {
 
     // Accessors
     @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
     public int get(Stat stat) {
-        if (stat != null) {
-            int index = find(stat);
-            if (index == -1) return 0;
-            return values.get(index);
-        }
-        return 0;
+        if (stat == null) return 0;
+
+        int index = find(stat);
+        if (index == -1) return 0;
+
+        return values.get(index);
     }
 
     @Override
@@ -58,9 +67,7 @@ public class Stats implements IStats {
         if (stat == null) return this;
 
         if (keys.contains(stat)) {
-            int index = find(stat);
-            keys.set(index, stat);
-            values.set(index, value);
+            values.set(find(stat), value);
         } else {
             keys.add(stat);
             values.add(value);
@@ -86,7 +93,7 @@ public class Stats implements IStats {
         for (Stat stat : stats.getKeys()) {
             int current = this.get(stat);
             int value = stats.get(stat);
-            this.add(stat, current + value);
+            add(stat, current + value);
         }
     }
 

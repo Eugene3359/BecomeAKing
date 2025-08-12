@@ -9,6 +9,8 @@ import java.io.Serializable;
 public interface IPersonage extends Serializable {
 
     // Accessors
+    int getId();
+
     String getName();
 
     Sex getSex();

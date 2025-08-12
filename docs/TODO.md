@@ -2,6 +2,10 @@
 
 ## In Progress
 - Refactoring
+- Tests
+- Fix crush on work starting
+- Fix crush on screen rotation
+- Fix work stats display
 
 ## In Queue
 

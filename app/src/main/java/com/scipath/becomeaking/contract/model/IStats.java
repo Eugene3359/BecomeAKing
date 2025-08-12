@@ -11,6 +11,8 @@ import java.util.List;
 public interface IStats extends Cloneable {
 
     // Accessors
+    int getId();
+
     int get(Stat stat);
 
     List<Stat> getKeys();

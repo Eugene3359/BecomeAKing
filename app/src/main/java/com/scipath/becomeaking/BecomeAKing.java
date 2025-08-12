@@ -14,6 +14,7 @@ import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 
 public class BecomeAKing extends Application {
@@ -65,6 +66,14 @@ public class BecomeAKing extends Application {
 
     public ArrayList<ICategory> getCategoriesSublist(int fromIndex, int toIndex) {
         return new ArrayList<>(gameState.categories.subList(fromIndex, toIndex));
+    }
+
+    public ICategory getCategoryById(int id) {
+        return gameState.categories
+                .stream()
+                .filter(c -> c.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
 

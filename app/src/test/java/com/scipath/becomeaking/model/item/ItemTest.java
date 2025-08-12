@@ -1,13 +1,14 @@
-package com.scipath.becomeaking.model;
+package com.scipath.becomeaking.model.item;
 
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.enums.Title;
-import com.scipath.becomeaking.model.item.Item;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,11 +23,18 @@ public class ItemTest {
 
     @BeforeEach
     void setUp() {
+        Item.idCounter = 0;
         item = new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000, new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
                 .add(Stat.CostPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
+    }
+
+    @Test
+    void getId_returnsExpectedId() {
+        assertEquals(0, item.getId());
+        assertEquals(1, new Item(R.string.two_blades, R.drawable.img_two_blades, 2000).getId());
     }
 
     @Test
@@ -41,7 +49,7 @@ public class ItemTest {
 
     @Test
     void getInteractionNameId_returnsExpectedId() {
-        assertEquals(R.string.buy_d, item.getInteractionNameId());
+        assertEquals(R.string.buy_d, item.getInteractionNameId()); // Initial value
     }
 
     @Test
@@ -50,14 +58,8 @@ public class ItemTest {
     }
 
     @Test
-    void isBought_withNotBoughtItem_returnsFalse() {
-        assertFalse(item.isBought());
-    }
-
-    @Test
-    void isBought_withBoughtItem_returnsTrue() {
-        item.setBought(true);
-        assertTrue(item.isBought());
+    void isBought_returnsExpectedValue() {
+        assertFalse(item.isBought()); // Initial value
     }
 
     @Test
@@ -90,13 +92,12 @@ public class ItemTest {
 
     @Test
     void setBought_changesItemsBoughtState() {
-        assertFalse(item.isBought());
         item.setBought(true);
         assertTrue(item.isBought());
     }
 
     @Test
-    void setStats_withValidStats_setsItemsNewStats() {
+    void setStats_withValidStats_changesItemsStats() {
         IStats stats = new Stats();
         stats.add(Stat.MaxHealth, 150);
         item.setStats(stats);
@@ -108,6 +109,7 @@ public class ItemTest {
     @Test
     void setStats_withNull_setsEmptyStats() {
         item.setStats(null);
+        assertNotNull(item.getStats());
         assertEquals(0, item.getStats().size());
     }
 
@@ -117,6 +119,7 @@ public class ItemTest {
         personage.setMoney(1000);
         personage.getLevel().affectStrength(2);
         assertEquals(0, item.interact(personage));
+        assertEquals(0, personage.getMoney());
     }
 
     @Test
@@ -125,6 +128,7 @@ public class ItemTest {
         personage.setMoney(500);
         personage.getLevel().affectStrength(2);
         assertEquals(-1, item.interact(personage));
+        assertEquals(500, personage.getMoney());
     }
 
     @Test
@@ -133,10 +137,11 @@ public class ItemTest {
         personage.setMoney(1000);
         personage.getLevel().affectStrength(1);
         assertEquals(-2, item.interact(personage));
+        assertEquals(1000, personage.getMoney());
     }
 
     @Test
-    void interact_withNull_returnsMinusTenAndDoNotModifiesPersonage() {
+    void interact_withNull_returnsMinusTen() {
         assertEquals(-10, item.interact(null));
     }
 }

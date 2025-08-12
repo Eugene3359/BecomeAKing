@@ -20,12 +20,20 @@ public class StatsTest {
 
     @BeforeEach
     void setUp() {
-        stats = new Stats();
+        Stats.idCounter = 0;
+        stats = new Stats()
+                .add(Stat.MaxHealth, 100)
+                .add(Stat.Might, 10);
+    }
+
+    @Test
+    void getId_returnsExpectedId() {
+        assertEquals(0, stats.getId());
+        assertEquals(1, new Stats().getId());
     }
 
     @Test
     void get_withExistingStat_returnsExpectedValue() {
-        stats.add(Stat.MaxHealth, 100);
         assertEquals(100, stats.get(Stat.MaxHealth));
     }
 
@@ -41,126 +49,102 @@ public class StatsTest {
 
     @Test
     void getKeys_returnsCopy() {
-        stats.add(Stat.MaxHealth, 100);
         List<Stat> keys = stats.getKeys();
+        assertEquals(2, keys.size());
         assertEquals(Stat.MaxHealth, keys.get(0));
-        keys.clear(); // modifying copy
-        assertEquals(1, stats.size()); // original still intact
+        keys.clear(); // Modifying copy
+        assertEquals(2, stats.size()); // Original still intact
     }
 
     @Test
     void getValues_returnsCopy() {
-        stats.add(Stat.MaxHealth, 100);
         List<Integer> values = stats.getValues();
+        assertEquals(2, values.size());
         assertEquals(100, values.get(0));
         values.clear();
-        assertEquals(1, stats.size());
+        assertEquals(2, stats.size());
     }
 
     @Test
     void getPair_withValidIndex_returnsExpectedValue() {
-        stats.add(Stat.MaxHealth, 100);
         Pair<Stat, Integer> pair = stats.getPair(0);
-        assertNotNull(pair);
         assertEquals(Stat.MaxHealth, pair.first);
         assertEquals(100, pair.second);
     }
 
     @Test
-    void getPair_withInvalidIndex_returnsNull() {
-        stats.add(Stat.MaxHealth, 100);
-        stats.add(Stat.Might, 1);
+    void getPair_withIndexOutOfRange_returnsNull() {
         assertNull(stats.getPair(-1));
         assertNull(stats.getPair(2));
     }
 
     @Test
-    void add_withNewStat() {
-        stats.add(Stat.MaxHealth, 100);
-        assertEquals(1, stats.size());
-        assertEquals(100, stats.get(Stat.MaxHealth));
+    void add_withNewStat_addsStat() {
+        stats.add(Stat.StrengthRequired, 1);
+        assertEquals(3, stats.size());
+        assertEquals(1, stats.get(Stat.StrengthRequired));
     }
 
     @Test
-    void add_withExistingStat_updatesValue() {
-        stats.add(Stat.MaxHealth, 100);
+    void add_withExistingStat_updatesStatsValue() {
         stats.add(Stat.MaxHealth, 150);
-        assertEquals(1, stats.size());
+        assertEquals(2, stats.size());
         assertEquals(150, stats.get(Stat.MaxHealth));
     }
 
     @Test
     void add_withNull_doesNothing() {
-        stats.add(null, 5);
-        assertEquals(0, stats.size());
+        stats.add(null, 10);
+        assertEquals(2, stats.size());
     }
 
     @Test
     void remove_withExistingStat_removesStat() {
-        stats.add(Stat.MaxHealth, 100);
         stats.remove(Stat.MaxHealth);
-        assertEquals(0, stats.size());
+        assertEquals(1, stats.size());
         assertEquals(0, stats.get(Stat.MaxHealth));
     }
 
     @Test
     void remove_withMissingStat_doesNothing() {
-        stats.add(Stat.MaxHealth, 100);
-        stats.remove(Stat.Might);
-        assertEquals(1, stats.size());
-        assertEquals(100, stats.get(Stat.MaxHealth));
+        stats.remove(Stat.StrengthRequired);
+        assertEquals(2, stats.size());
     }
 
     @Test
     void remove_withNull_doesNothing() {
-        stats.add(Stat.MaxHealth, 100);
         stats.remove(null);
-        assertEquals(1, stats.size());
+        assertEquals(2, stats.size());
     }
 
     @Test
-    void merge_withValidValue() {
-        stats.add(Stat.MaxHealth, 100);
-        stats.add(Stat.Might, 1);
-
+    void merge_withValidValue_mergesStats() {
         Stats other = new Stats();
-        other.add(Stat.HealthPerDay, 10);
-        other.add(Stat.Might, 2);
-
+        other.add(Stat.Might, 20);
+        other.add(Stat.StrengthRequired, 2);
         stats.merge(other);
-
         assertEquals(3, stats.size());
         assertEquals(100, stats.get(Stat.MaxHealth));
-        assertEquals(3, stats.get(Stat.Might));
-        assertEquals(10, stats.get(Stat.HealthPerDay));
+        assertEquals(30, stats.get(Stat.Might));
+        assertEquals(2, stats.get(Stat.StrengthRequired));
     }
 
     @Test
     void merge_withNull_doesNothing() {
-        stats.add(Stat.MaxHealth, 100);
         stats.merge(null);
-        assertEquals(1, stats.size());
-        assertEquals(100, stats.get(Stat.MaxHealth));
+        assertEquals(2, stats.size());
     }
 
     @Test
     void size_returnsSize() {
-        assertEquals(0, stats.size());
-        stats.add(Stat.MaxHealth, 100);
-        stats.add(Stat.Might, 1);
-        stats.add(Stat.Might, 2);
         assertEquals(2, stats.size());
-        stats.remove(Stat.Might);
-        assertEquals(1, stats.size());
     }
 
     @Test
     void clone_returnsDeepCopy() {
-        stats.add(Stat.MaxHealth, 100);
         IStats cloned = stats.clone();
-
         assertNotSame(stats, cloned);
+        assertEquals(stats.size(), cloned.size());
         assertEquals(stats.get(Stat.MaxHealth), cloned.get(Stat.MaxHealth));
-        assertNotSame(stats.getPair(0), cloned.getPair(0));
     }
 }

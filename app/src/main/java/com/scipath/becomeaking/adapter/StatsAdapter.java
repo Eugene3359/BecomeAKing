@@ -21,8 +21,8 @@ import com.scipath.becomeaking.model.enums.Stat;
 public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> {
 
     // Variables
-    private IStats stats;
-    private Context context;
+    private final IStats stats;
+    private final Context context;
 
 
     // Constructor
@@ -35,12 +35,10 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
     // ViewHolder subclass
     // Provide a reference to the type of views that you are using
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         private final LinearLayout layout;
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             layout = view.findViewById(R.id.layout_stat);
         }
 
@@ -62,28 +60,27 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
     @NonNull
     @Override
     public StatsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_stat, viewGroup, false);
+
         return new StatsAdapter.ViewHolder(view);
     }
 
 
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull StatsAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         Pair<Stat, Integer> element = stats.getPair(position);
         Stat stat = element.first;
         int value = element.second;
 
-        // Setting values to views
         viewHolder.getStatImageView().setImageResource(stat.getIconId());
         viewHolder.getStatImageView().setContentDescription(stat.getName(context));
         viewHolder.getStatTextView().setText(stat.getDescription(value, context));
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+
+    // Return the size of dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return stats.size();

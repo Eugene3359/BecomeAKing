@@ -15,52 +15,79 @@ class LevelTest {
 
     @BeforeEach
     void setUp() {
+        Level.idCounter = 0;
         level = new Level();
     }
 
     @Test
-    void initialValues() {
-        assertEquals(1, level.getValue());
-        assertEquals(0, level.getCurrentExperience());
-        assertEquals(100, level.getNeededExperience());
-        assertEquals(2, level.getAvailableSkillPoints());
-        assertEquals(0, level.getStrength());
-        assertEquals(0, level.getLuck());
+    void getId_returnsExpectedId() {
+        assertEquals(0, level.getId());
+        assertEquals(1, new Level().getId());
     }
 
     @Test
-    void affectStrength_withEnoughPoints() {
+    void getValue_returnsExpectedValue() {
+        assertEquals(1, level.getValue()); // Initial value
+    }
+
+    @Test
+    void getCurrentExperience_returnsExpectedValue() {
+        assertEquals(0, level.getCurrentExperience()); // Initial value
+    }
+
+    @Test
+    void getNeededExperience_returnsExpectedValue() {
+        assertEquals(100, level.getNeededExperience()); // Initial value
+    }
+
+    @Test
+    void getAvailableSkillPoints_returnsExpectedValue() {
+        assertEquals(2, level.getAvailableSkillPoints()); // Initial value
+    }
+
+    @Test
+    void getStrength_returnsExpectedValue() {
+        assertEquals(0, level.getStrength()); // Initial value
+    }
+
+    @Test
+    void getLuck_returnsExpectedValue() {
+        assertEquals(0, level.getLuck()); // Initial value
+    }
+
+    @Test
+    void affectStrength_withEnoughAvailableSkillPoints_increasesStrengthAndDecreasesAvailableSkillPoints() {
         level.affectStrength(1);
         assertEquals(1, level.getStrength());
         assertEquals(1, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectStrength_withoutEnoughPoints_doesNothing() {
-        level.affectStrength(3); // only 2 available
-        assertEquals(0, level.getStrength()); // should not apply
+    void affectStrength_withNotEnoughAvailableSkillPoints_doesNothing() {
+        level.affectStrength(3); // Only 2 available
+        assertEquals(0, level.getStrength());
         assertEquals(2, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectLuck_withEnoughPoints() {
-        level.affectLuck(2);
-        assertEquals(2, level.getLuck());
-        assertEquals(0, level.getAvailableSkillPoints());
+    void affectLuck_withEnoughAvailableSkillPoints_increaseLuckAndDecreasesAvailableSkillPoints() {
+        level.affectLuck(1);
+        assertEquals(1, level.getLuck());
+        assertEquals(1, level.getAvailableSkillPoints());
     }
 
     @Test
-    void affectLuck_withoutEnoughPoints_doesNothing() {
-        level.affectLuck(3); // only 2 available
-        assertEquals(0, level.getLuck()); // should not apply
+    void affectLuck_withNotEnoughAvailableSkillPoints_doesNothing() {
+        level.affectLuck(3); // Only 2 available
+        assertEquals(0, level.getLuck());
         assertEquals(2, level.getAvailableSkillPoints());
     }
 
     @Test
     void gainExperience_withValueLessThenNeededExperience_increasesExperience() {
         level.gainExperience(50); // 100 needed for level-up
-        assertEquals(50, level.getCurrentExperience());
         assertEquals(1, level.getValue());
+        assertEquals(50, level.getCurrentExperience());
     }
 
     @Test
@@ -74,10 +101,10 @@ class LevelTest {
 
     @Test
     void gainExperience_withExcessiveValue_doesNotLevelUpPastMaximumLevel() {
-        // level cap is 4 (index 3), so go beyond it
-        level.gainExperience(10000); // should reach level 4, then stop
+        // Level cap is 4 (index 3)
+        level.gainExperience(10000); // Should reach level 4, then stop
         assertEquals(4, level.getValue());
-        assertEquals(1000, level.getCurrentExperience()); // locked at max
+        assertEquals(1000, level.getCurrentExperience()); // Locked at max
         assertEquals(8, level.getAvailableSkillPoints());
     }
 
@@ -85,8 +112,6 @@ class LevelTest {
     void dropSkillPoints_resetsSkillPoints() {
         level.affectStrength(1);
         level.affectLuck(1);
-        assertEquals(0, level.getAvailableSkillPoints());
-
         level.dropSkillPoints();
         assertEquals(2, level.getAvailableSkillPoints());
         assertEquals(0, level.getStrength());

@@ -64,7 +64,7 @@ public class TitleSelectionActivity extends AppCompatActivity {
 
         // Displaying titles as Buttons that works as RadioButtons using TitleAdapter
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        titlesAdapter = new TitlesAdapter(titles, objectCallback, this);
+        titlesAdapter = new TitlesAdapter(titles, objectCallback);
         recyclerView.setAdapter(titlesAdapter);
 
         // Button continue

@@ -14,18 +14,16 @@ import android.graphics.drawable.LayerDrawable;
 public class DrawableUtility {
 
     /**
-     * The method makes Drawable repeatable
+     * The method makes Drawable tiled
      *
-     * @param drawable  The Drawable that must be repeatable
-     * @return          The repeatable Drawable
+     * @param drawable  The Drawable that must be tiled
+     * @return          The tiled Drawable
      */
     public static Drawable createTiledDrawable(Context context, Drawable drawable) {
-        if (drawable == null)
-            return null;
+        if (drawable == null) return null;
 
         // If drawable is color - return drawable
-        if (drawable instanceof ColorDrawable)
-            return drawable;
+        if (drawable instanceof ColorDrawable) return drawable;
 
         BitmapDrawable bitmapDrawable;
         if (drawable instanceof BitmapDrawable) {

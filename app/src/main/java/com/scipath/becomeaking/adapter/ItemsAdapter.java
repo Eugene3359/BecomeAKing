@@ -29,16 +29,16 @@ import com.scipath.becomeaking.view.fragment.DialogueFragment;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     // Variables
-    private int categoryId;
-    private ICategory category;
-    private ItemCallback callback;
-    private Context context;
+    private final int categoryId;
+    private final ICategory category;
+    private final ItemCallback callback;
+    private final Context context;
 
 
     // Constructor
     public ItemsAdapter(int categoryId, ItemCallback callback, Context context) {
         this.categoryId = categoryId;
-        this.category = BecomeAKing.getInstance().getCategories().get(categoryId);
+        this.category = BecomeAKing.getInstance().getCategoryById(categoryId);
         this.callback = callback;
         this.context = context;
     }
@@ -51,7 +51,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             layout = view.findViewById(R.id.item_layout);
         }
 
@@ -75,34 +74,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             return layout.findViewById(R.id.stats_list);
         }
 
-        public Button getItemButtonBuyView() {
-            return layout.findViewById(R.id.buy);
+        public Button getItemButtonInteractView() {
+            return layout.findViewById(R.id.button_interact);
         }
 
-        public void resetItemButtonBuyState(IItem item, int categoryId, Context context) {
-            Button button = getItemButtonBuyView();
+        public void resetItemButtonInteractState(IItem item, Context context) {
+            Button button = getItemButtonInteractView();
             button.setEnabled(true);
             button.setBackgroundColor(context.getColor(R.color.transparent_green));
-
-            if (categoryId == 0) {
-                button.setText(context.getString(R.string.add_to_ration));
-            } else if (categoryId >= 10) {
-                button.setText(context.getString(R.string.start));
-            } else {
-                button.setText(context.getString(R.string.buy_d, item.getCost()));
-            }
+            button.setText(item.getInteractionName(context));
         }
 
-        public void setItemButtonBuyNotEnabled(int categoryId, Context context) {
-            Button button = getItemButtonBuyView();
-            if (categoryId == 0) {
-                button.setText(context.getString(R.string.in_ration));
-            } else if (categoryId >= 10) {
-                button.setText(context.getString(R.string.started));
-            }
-            else {
-                button.setText(context.getString(R.string.bought));
-            }
+        public void setItemButtonBuyNotEnabled(IItem item, Context context) {
+            Button button = getItemButtonInteractView();
+            button.setText(item.getInteractionResultNameId());
             button.setBackgroundColor(context.getColor(R.color.transparent_red));
             button.setEnabled(false);
         }
@@ -113,9 +98,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ItemsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_item, viewGroup, false);
+
         return new ItemsAdapter.ViewHolder(view);
     }
 
@@ -125,6 +110,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ItemsAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+
+        // TODO: Continue refactoring from here,
+        //  don't forget to write tests for getInteractionResultNameId() and Food class.
+
+
         Personage personage = BecomeAKing.getInstance().getPersonage();
         IItem item = category.getItems().get(position);
 
@@ -149,9 +139,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
         viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStats(), context));
         if (!item.isBought()) {
-            viewHolder.resetItemButtonBuyState(item, categoryId, context);
+            viewHolder.resetItemButtonInteractState(item, context);
 
-            viewHolder.getItemButtonBuyView().setOnClickListener(view -> {
+            viewHolder.getItemButtonInteractView().setOnClickListener(view -> {
                 int code = item.interact(personage);
                 int messageId = 0;
 
@@ -159,7 +149,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                     case 0:
                         callback.call(item);
                         if (item instanceof Item) {
-                            viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
+                            viewHolder.setItemButtonBuyNotEnabled(item, context);
                         }
                         break;
                     case -1:
@@ -178,12 +168,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 }
             });
         } else {
-            viewHolder.setItemButtonBuyNotEnabled(categoryId, context);
+            viewHolder.setItemButtonBuyNotEnabled(item, context);
         }
     }
 
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return category.getItems().size();

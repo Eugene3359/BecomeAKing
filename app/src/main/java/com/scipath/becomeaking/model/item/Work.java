@@ -14,11 +14,13 @@ public class Work extends Item {
     public Work(int nameId, int imageId, int cost) {
         super(nameId, imageId, cost);
         this.interactionNameId = R.string.start;
+        this.interactionResultNameId = R.string.started;
     }
 
     public Work(int nameId, int imageId, int cost, Stats stats) {
         super(nameId, imageId, cost, stats);
         this.interactionNameId = R.string.start;
+        this.interactionResultNameId = R.string.started;
     }
 
 

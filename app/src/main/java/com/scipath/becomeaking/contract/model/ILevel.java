@@ -8,6 +8,8 @@ import java.io.Serializable;
 public interface ILevel extends Serializable, Cloneable {
 
     // Accessors
+    int getId();
+
     int getValue();
 
     int getCurrentExperience();

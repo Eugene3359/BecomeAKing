@@ -67,11 +67,11 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.scipath.becomeaking.view.customview.CustomButton
-        android:id="@+id/buy"
+        android:id="@+id/button_interact"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         app:backgroundColor="@color/transparent_green"
-        android:text="@string/buy_d"
+        android:text="@string/placeholder"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:textAllCaps="false" />

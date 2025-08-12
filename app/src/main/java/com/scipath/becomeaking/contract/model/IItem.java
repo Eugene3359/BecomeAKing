@@ -19,6 +19,8 @@ public interface IItem extends Serializable {
 
     int getInteractionNameId();
 
+    int getInteractionResultNameId();
+
     int getCost();
 
     boolean isBought();
@@ -62,6 +64,14 @@ public interface IItem extends Serializable {
      * @return          The String that contains the item interaction name
      */
     String getInteractionName(Context context);
+
+    /**
+     * Item interaction result name resource accessor
+     *
+     * @param context   The Context that provides access to resources
+     * @return          The String that contains the item interaction result name
+     */
+    String getInteractionResultName(Context context);
 
     int interact(Personage personage);
 }

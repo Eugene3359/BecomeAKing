@@ -24,30 +24,32 @@ public class Item implements IItem {
     protected int nameId;
     protected int imageId;
     protected int interactionNameId;
+    protected int interactionResultNameId;
     protected int cost;
     protected boolean bought;
-
     protected IStats stats;
 
 
     // Constructors
     public Item(int nameId, int imageId, int cost) {
-        id = idCounter++;
+        this.id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
         this.interactionNameId = R.string.buy_d;
+        this.interactionResultNameId = R.string.bought;
         this.cost = cost;
-        bought = false;
-        stats = new Stats();
+        this.bought = false;
+        this.stats = new Stats();
     }
 
     public Item(int nameId, int imageId, int cost, IStats stats) {
-        id = idCounter++;
+        this.id = idCounter++;
         this.nameId = nameId;
         this.imageId = imageId;
         this.interactionNameId = R.string.buy_d;
+        this.interactionResultNameId = R.string.bought;
         this.cost = cost;
-        bought = false;
+        this.bought = false;
         this.stats = stats;
     }
 
@@ -71,6 +73,11 @@ public class Item implements IItem {
     @Override
     public int getInteractionNameId() {
         return interactionNameId;
+    }
+
+    @Override
+    public int getInteractionResultNameId() {
+        return interactionResultNameId;
     }
 
     @Override
@@ -133,6 +140,11 @@ public class Item implements IItem {
     }
 
     @Override
+    public String getInteractionResultName(Context context) {
+        return context.getString(interactionResultNameId);
+    }
+
+    @Override
     public int interact(Personage personage) {
         if (personage == null) return -10; // Null
 
@@ -147,8 +159,8 @@ public class Item implements IItem {
         // Buy
         personage.affectMoney(-cost);
         personage.affectReputation(stats.get(Stat.ReputationImpact));
-        personage.recalculateStats();
         bought = true;
+        personage.recalculateStats();
         return 0; // Item bought
     }
 }

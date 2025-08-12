@@ -7,19 +7,23 @@ import com.scipath.becomeaking.contract.model.ILevel;
 public class Level implements ILevel {
 
     // Fields
-    private final int[] levelUpDemands = { 100, 200, 500, 1000 };
-    private final int skillPointsPerLevel = 2;
+    protected static int idCounter = 0;
 
-    private int value;
-    private int currentExperience;
-    private int neededExperience;
-    private int availableSkillPoints;
-    private int strength;
-    public int luck;
+    protected static final int[] levelUpDemands = { 100, 200, 500, 1000 };
+    protected static final int skillPointsPerLevel = 2;
+
+    protected int id;
+    protected int value;
+    protected int currentExperience;
+    protected int neededExperience;
+    protected int availableSkillPoints;
+    protected int strength;
+    protected int luck;
 
 
     // Constructor
     public Level() {
+        id = idCounter++;
         value = 1;
         currentExperience = 0;
         neededExperience = levelUpDemands[0];
@@ -30,6 +34,11 @@ public class Level implements ILevel {
 
 
     // Accessors
+    @Override
+    public int getId() {
+        return id;
+    }
+
     @Override
     public int getValue() {
         return value;
@@ -95,6 +104,7 @@ public class Level implements ILevel {
         value++;
         availableSkillPoints += skillPointsPerLevel;
 
+        // In case that gained experience exceeds demands for 1 level up
         if (currentExperience >= neededExperience) tryLevelUp();
     }
 

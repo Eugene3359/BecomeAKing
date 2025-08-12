@@ -34,7 +34,7 @@ public enum Stat implements Serializable {
     MoneyPerClick(R.string.money, R.string.c_d_per_click, R.drawable.icon_coin);
 
 
-    // Individual stat fields
+    // Fields
     private final int nameId;
     private final int descriptionId;
     private final int iconId;

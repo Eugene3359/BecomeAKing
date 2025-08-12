@@ -5,11 +5,9 @@ import android.graphics.drawable.Drawable;
 
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
-import com.scipath.becomeaking.model.enums.StatsMod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +18,7 @@ public class Category implements ICategory {
 
     // Fields
     protected static int idCounter = 0;
+
     protected int id;
     protected int nameId;
     protected int imageId;
@@ -71,7 +70,7 @@ public class Category implements ICategory {
     @Override
     public IStats getStats() {
         if (itemsMutated) recalculateStats();
-        return stats;
+        return stats.clone();
     }
 
 
@@ -134,14 +133,14 @@ public class Category implements ICategory {
         if (items.isEmpty()) return;
 
         // Updating category imageId
-        imageId = getBestBoughtItem() == null ?
+        IItem bestBoughtItem = getBestBoughtItem();
+        imageId = bestBoughtItem == null ?
                 items.get(0).getImageId() :
-                getBestBoughtItem().getImageId();
+                bestBoughtItem.getImageId();
 
         // Updating category stats
         if (statsMod == StatsMod.Best) {
-            IItem item = getBestBoughtItem();
-            if (item != null) stats = item.getStats();
+            if (bestBoughtItem != null) stats = bestBoughtItem.getStats();
         } else if (statsMod == StatsMod.Sum) {
             for (IItem item : items) {
                 if (item.isBought()) {

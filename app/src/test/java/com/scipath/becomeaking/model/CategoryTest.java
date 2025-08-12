@@ -1,14 +1,16 @@
 package com.scipath.becomeaking.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.ICategory.*;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.enums.Stat;
-import com.scipath.becomeaking.model.enums.StatsMod;
 import com.scipath.becomeaking.model.item.Item;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +27,7 @@ public class CategoryTest {
 
     @BeforeEach
     void setUp() {
+        Category.idCounter = 0;
         category = new Category(R.string.weapon);
         category.addItem(new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000))
                 .addItem(new Item(R.string.two_blades, R.drawable.img_two_blades, 3000));
@@ -41,6 +44,12 @@ public class CategoryTest {
                 .add(Stat.ReputationPerDay, 50)
                 .add(Stat.CostPerDay, -40)
                 .add(Stat.StrengthRequired, 2));
+    }
+
+    @Test
+    void getId_returnsExpectedId() {
+        assertEquals(0, category.getId());
+        assertEquals(1, new Category(R.string.armor).getId());
     }
 
     @Test
@@ -81,6 +90,17 @@ public class CategoryTest {
         assertEquals(2, items.size());
         assertEquals(R.string.steel_sword, items.get(0).getNameId());
         assertEquals(R.string.two_blades, items.get(1).getNameId());
+    }
+
+    @Test
+    void getStatsMod_returnsExpectedValue() {
+        assertEquals(StatsMod.Best, category.getStatsMod()); // Initial value
+    }
+
+    @Test
+    void getStats_returnsStatsDeepCopy() {
+        IStats stats = category.getStats();
+        assertNotSame(stats, category.getStats());
     }
 
     @Test
@@ -152,6 +172,7 @@ public class CategoryTest {
     @Test
     void setItems_withNull_setsEmptyItemsList() {
         category.setItems(null);
+        assertNotNull(category.getItems());
         assertEquals(0, category.getItems().size());
     }
 
@@ -176,6 +197,18 @@ public class CategoryTest {
     }
 
     @Test
+    void setStatsMod_withValidStatsMod_changesStatsMod() {
+        category.setStatsMod(StatsMod.Sum);
+        assertEquals(StatsMod.Sum, category.getStatsMod());
+    }
+
+    @Test
+    void setStatsMod_withNull_doesNothing() {
+        category.setStatsMod(null);
+        assertEquals(StatsMod.Best, category.getStatsMod());
+    }
+
+    @Test
     void getBestBoughtItem_withNoBoughItems_returnsNull() {
         assertNull(category.getBestBoughtItem());
     }
@@ -194,5 +227,11 @@ public class CategoryTest {
         category.getItems().get(0).setBought(true);
         category.getItems().get(1).setBought(true);
         assertEquals(R.string.two_blades, category.getBestBoughtItem().getNameId());
+    }
+
+    @Test
+    void getBestBoughtItem_withEmptyItemsList_returnsNull() {
+        category.setItems(new ArrayList<>());
+        assertNull(category.getBestBoughtItem());
     }
 }
