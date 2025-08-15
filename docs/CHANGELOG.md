@@ -1,3 +1,12 @@
+# Become a King [0.3.2] - 16.08.2025
+
+### Changes
+- Same work can't be started twice a day
+- No more than two works can be completed a day
+- Requirement stats no longer displayed in items stat bonuses list
+
+---
+
 # Become a King [0.3.1] - 24.07.2025
 
 ### Changes

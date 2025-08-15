@@ -26,7 +26,7 @@ public class Item implements IItem {
     protected int interactionNameId;
     protected int interactionResultNameId;
     protected int cost;
-    protected boolean bought;
+    protected boolean interacted;
     protected IStats stats;
 
 
@@ -38,7 +38,7 @@ public class Item implements IItem {
         this.interactionNameId = R.string.buy_d;
         this.interactionResultNameId = R.string.bought;
         this.cost = cost;
-        this.bought = false;
+        this.interacted = false;
         this.stats = new Stats();
     }
 
@@ -49,7 +49,7 @@ public class Item implements IItem {
         this.interactionNameId = R.string.buy_d;
         this.interactionResultNameId = R.string.bought;
         this.cost = cost;
-        this.bought = false;
+        this.interacted = false;
         this.stats = stats;
     }
 
@@ -86,8 +86,8 @@ public class Item implements IItem {
     }
 
     @Override
-    public boolean isBought() {
-        return bought;
+    public boolean isInteracted() {
+        return interacted;
     }
 
     @Override
@@ -113,8 +113,8 @@ public class Item implements IItem {
     }
 
     @Override
-    public void setBought(boolean isBought) {
-        this.bought = isBought;
+    public void setInteracted(boolean isInteracted) {
+        this.interacted = isInteracted;
     }
 
     @Override
@@ -157,9 +157,9 @@ public class Item implements IItem {
         if (personageStrength < strengthRequired) return -2; // Not enough strength
 
         // Buy
+        interacted = true;
         personage.affectMoney(-cost);
         personage.affectReputation(stats.get(Stat.ReputationImpact));
-        bought = true;
         personage.recalculateStats();
         return 0; // Item bought
     }

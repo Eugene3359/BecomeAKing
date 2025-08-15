@@ -117,7 +117,7 @@ public class Category implements ICategory {
         IItem item;
         for (int i = items.size()-1; i >= 0; i--) {
             item = items.get(i);
-            if (item.isBought()) return item;
+            if (item.isInteracted()) return item;
         }
         return null;
     }
@@ -143,7 +143,7 @@ public class Category implements ICategory {
             if (bestBoughtItem != null) stats = bestBoughtItem.getStats();
         } else if (statsMod == StatsMod.Sum) {
             for (IItem item : items) {
-                if (item.isBought()) {
+                if (item.isInteracted()) {
                     stats.merge(item.getStats());
                 }
             }

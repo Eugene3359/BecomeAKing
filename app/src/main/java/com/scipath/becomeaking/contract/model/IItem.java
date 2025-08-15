@@ -23,7 +23,7 @@ public interface IItem extends Serializable {
 
     int getCost();
 
-    boolean isBought();
+    boolean isInteracted();
 
     IStats getStats();
 
@@ -35,7 +35,7 @@ public interface IItem extends Serializable {
 
     void setCost(int cost);
 
-    void setBought(boolean isBought);
+    void setInteracted(boolean isInteracted);
 
     void setStats(IStats stats);
 

@@ -8,6 +8,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.scipath.becomeaking.contract.model.IItem;
+import com.scipath.becomeaking.model.item.Food;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.Work;
 
@@ -23,6 +24,7 @@ public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<
     private static final Map<String, Class<? extends IItem>> TYPE_MAP = new HashMap<>();
 
     static {
+        TYPE_MAP.put("food", Food.class);
         TYPE_MAP.put("item", Item.class);
         TYPE_MAP.put("work", Work.class);
     }

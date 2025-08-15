@@ -27,7 +27,9 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
 
     // Constructor
     public StatsAdapter(IStats stats, Context context) {
-        this.stats = stats;
+        this.stats = stats.clone();
+        stats.remove(Stat.StrengthRequired);
+        stats.remove(Stat.ReputationRequired);
         this.context = context;
     }
 
@@ -70,10 +72,13 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull StatsAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
         Pair<Stat, Integer> element = stats.getPair(position);
         Stat stat = element.first;
         int value = element.second;
 
+        // Setting values to views
         viewHolder.getStatImageView().setImageResource(stat.getIconId());
         viewHolder.getStatImageView().setContentDescription(stat.getName(context));
         viewHolder.getStatTextView().setText(stat.getDescription(value, context));

@@ -30,6 +30,9 @@ import com.scipath.becomeaking.view.activity.GameActivity;
 
 public class ItemsFragment extends Fragment {
 
+    private int categoryId;
+
+
     public static ItemsFragment newInstance() {
         return new ItemsFragment();
     }
@@ -52,7 +55,7 @@ public class ItemsFragment extends Fragment {
         // Getting personage and items from Application
         Personage personage = BecomeAKing.getInstance().getPersonage();
         Bundle args = getArguments();
-        int categoryId = args.getInt("categoryId");
+        categoryId = args.getInt("categoryId");
 
         // Views
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
@@ -102,10 +105,12 @@ public class ItemsFragment extends Fragment {
 
     public void startClickerMiniGamer(IItem item) {
         Intent intent;
-        if(item.getCost() == 0) {
+        if (categoryId == 10) {
             intent = new Intent(getContext(), Clicker1Activity.class);
-        } else {
+        } else if (categoryId == 11) {
             intent = new Intent(getContext(), Clicker2Activity.class);
+        } else {
+            return;
         }
         intent.putExtra("item", item);
         getContext().startActivity(intent);

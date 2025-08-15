@@ -53,13 +53,18 @@ public class ItemTest {
     }
 
     @Test
+    void getInteractionResultNameId_returnsExpectedId() {
+        assertEquals(R.string.bought, item.getInteractionResultNameId()); // Initial value
+    }
+
+    @Test
     void getCost_returnsExpectedValue() {
         assertEquals(1000, item.getCost());
     }
 
     @Test
     void isBought_returnsExpectedValue() {
-        assertFalse(item.isBought()); // Initial value
+        assertFalse(item.isInteracted()); // Initial value
     }
 
     @Test
@@ -92,8 +97,8 @@ public class ItemTest {
 
     @Test
     void setBought_changesItemsBoughtState() {
-        item.setBought(true);
-        assertTrue(item.isBought());
+        item.setInteracted(true);
+        assertTrue(item.isInteracted());
     }
 
     @Test
@@ -132,7 +137,7 @@ public class ItemTest {
     }
 
     @Test
-    void interact_withNotStrengthPersonage_returnsMinusTwoAndDoNotModifiesPersonage() {
+    void interact_withNotEnoughStrengthPersonage_returnsMinusTwoAndDoNotModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setMoney(1000);
         personage.getLevel().affectStrength(1);

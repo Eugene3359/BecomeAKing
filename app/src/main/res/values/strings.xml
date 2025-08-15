@@ -225,10 +225,12 @@
     <string name="bought">Куплено</string>
     <string name="add_to_ration">Добавить в рацион</string>
     <string name="in_ration">В рационе</string>
-    <string name="started">Начато</string>
+    <string name="ended">Выполнено</string>
     <string name="not_enough_money">Недостаточно денег</string>
     <string name="not_enough_strength_skill_points">Недостаточно очков силы</string>
     <string name="not_enough_reputation">Недостаточно репутации</string>
+    <string name="null_personage_error">Ошибка. Персонаж отсутствует.</string>
+    <string name="work_cant_be_started">Вы не можете выполнить более 2 работ в день.</string>
 
     <!-- Item/Category Stats -->
     <string name="c_d_per_day">%1$c %2$d в день</string>

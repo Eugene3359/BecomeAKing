@@ -5,10 +5,11 @@ import androidx.core.util.Pair;
 
 import com.scipath.becomeaking.model.enums.Stat;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public interface IStats extends Cloneable {
+public interface IStats extends Serializable, Cloneable {
 
     // Accessors
     int getId();

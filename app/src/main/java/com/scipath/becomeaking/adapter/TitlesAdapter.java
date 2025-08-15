@@ -59,8 +59,12 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
-        viewHolder.getRadioButton().setText(dataSet[position].getNameId());
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
+        Title title = dataSet[position];
 
+        // Setting values to views
+        viewHolder.radioButton.setText(title.getNameId());
         viewHolder.radioButton.setChecked(position == selectedPosition);
         viewHolder.radioButton.setOnCheckedChangeListener(
                 (compoundButton, isChecked) -> {
@@ -68,7 +72,7 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
                         // Update selected position
                         selectedPosition = viewHolder.getAdapterPosition();
                         // Call listener
-                        objectCallback.onClick(dataSet[position]);
+                        objectCallback.onClick(title);
                     }
                 });
     }

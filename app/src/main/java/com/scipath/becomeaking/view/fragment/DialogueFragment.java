@@ -23,6 +23,7 @@ public class DialogueFragment extends DialogFragment {
     private int buttonTextId;
     private Callback callback;
 
+
     public static DialogueFragment newInstance(int messageId, int buttonTextId) {
         DialogueFragment fragment = new DialogueFragment();
         Bundle args = new Bundle();

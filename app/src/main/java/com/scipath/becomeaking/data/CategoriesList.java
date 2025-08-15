@@ -22,20 +22,20 @@ public class CategoriesList {
         categories.add(new Category(R.string.nutrition));
         categories.get(0).setStatsMod(StatsMod.Sum);
         categories.get(0)
-                .addItem(new Food(R.string.bread, R.drawable.img_bread, 0))
-                .addItem(new Food(R.string.meat, R.drawable.img_meat, 0))
-                .addItem(new Food(R.string.cheese, R.drawable.img_cheese, 0))
-                .addItem(new Food(R.string.vegetables, R.drawable.img_vegetables, 0))
-                .addItem(new Food(R.string.soup, R.drawable.img_soup, 0))
-                .addItem(new Food(R.string.nourishing_food, R.drawable.img_nourishing_food, 0))
-                .addItem(new Food(R.string.luxurious_food, R.drawable.img_luxury_food, 0))
-                .addItem(new Food(R.string.aristocracy_food, R.drawable.img_nobleman_food, 0))
-                .addItem(new Food(R.string.royal_food, R.drawable.img_royal_food, 0));
+                .addItem(new Food(R.string.bread, R.drawable.img_bread))
+                .addItem(new Food(R.string.meat, R.drawable.img_meat))
+                .addItem(new Food(R.string.cheese, R.drawable.img_cheese))
+                .addItem(new Food(R.string.vegetables, R.drawable.img_vegetables))
+                .addItem(new Food(R.string.soup, R.drawable.img_soup))
+                .addItem(new Food(R.string.nourishing_food, R.drawable.img_nourishing_food))
+                .addItem(new Food(R.string.luxurious_food, R.drawable.img_luxury_food))
+                .addItem(new Food(R.string.aristocracy_food, R.drawable.img_nobleman_food))
+                .addItem(new Food(R.string.royal_food, R.drawable.img_royal_food));
         // Bread
         categories.get(0).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5)
                 .add(Stat.CostPerDay, -1));
-        categories.get(0).getItems().get(0).setBought(true);
+        categories.get(0).getItems().get(0).setInteracted(true);
         // Meat
         categories.get(0).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
@@ -98,7 +98,7 @@ public class CategoriesList {
         // Poor man/woman clothes
         categories.get(1).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5));
-        categories.get(1).getItems().get(0).setBought(true);
+        categories.get(1).getItems().get(0).setInteracted(true);
         // Peasant clothes
         categories.get(1).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
@@ -458,11 +458,11 @@ public class CategoriesList {
         // Work in village
         categories.add(new Category(R.string.work_in_a_village));
         categories.get(10)
-                .addItem(new Work(R.string.to_graze_animals, R.drawable.img_to_graze_animals, 0))
-                .addItem(new Work(R.string.harvesting, R.drawable.img_harvesting, 0))
-                .addItem(new Work(R.string.logging, R.drawable.img_logging, 0))
-                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 0))
-                .addItem(new Work(R.string.unloading_ships, R.drawable.img_unloading_ships, 0));
+                .addItem(new Work(R.string.to_graze_animals, R.drawable.img_to_graze_animals))
+                .addItem(new Work(R.string.harvesting, R.drawable.img_harvesting))
+                .addItem(new Work(R.string.logging, R.drawable.img_logging))
+                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine))
+                .addItem(new Work(R.string.unloading_ships, R.drawable.img_unloading_ships));
         // To graze animals
         categories.get(10).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthImpact, -20)
@@ -497,12 +497,12 @@ public class CategoriesList {
         // Work in town
         categories.add(new Category(R.string.work_in_a_town));
         categories.get(11)
-                .addItem(new Work(R.string.cart_repair, R.drawable.img_cart_repair, -1))
-                .addItem(new Work(R.string.architects_apprentice, R.color.placeholder, -1))
-                .addItem(new Work(R.string.weavers_apprentice, R.drawable.img_weavers_apprentice, -1))
-                .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, -1))
-                .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.img_blacksmiths_apprentice, -1))
-                .addItem(new Work(R.string.lords_courtier, R.drawable.img_lords_courtier, -1));
+                .addItem(new Work(R.string.cart_repair, R.drawable.img_cart_repair))
+                .addItem(new Work(R.string.architects_apprentice, R.color.placeholder))
+                .addItem(new Work(R.string.weavers_apprentice, R.drawable.img_weavers_apprentice))
+                .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice))
+                .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.img_blacksmiths_apprentice))
+                .addItem(new Work(R.string.lords_courtier, R.drawable.img_lords_courtier));
         // Cart repair
         categories.get(11).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthImpact, -20)

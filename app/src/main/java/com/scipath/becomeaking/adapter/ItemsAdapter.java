@@ -20,7 +20,6 @@ import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
@@ -29,7 +28,6 @@ import com.scipath.becomeaking.view.fragment.DialogueFragment;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     // Variables
-    private final int categoryId;
     private final ICategory category;
     private final ItemCallback callback;
     private final Context context;
@@ -37,7 +35,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     // Constructor
     public ItemsAdapter(int categoryId, ItemCallback callback, Context context) {
-        this.categoryId = categoryId;
         this.category = BecomeAKing.getInstance().getCategoryById(categoryId);
         this.callback = callback;
         this.context = context;
@@ -80,9 +77,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         public void resetItemButtonInteractState(IItem item, Context context) {
             Button button = getItemButtonInteractView();
-            button.setEnabled(true);
-            button.setBackgroundColor(context.getColor(R.color.transparent_green));
             button.setText(item.getInteractionName(context));
+            button.setBackgroundColor(context.getColor(R.color.transparent_green));
+            button.setEnabled(true);
         }
 
         public void setItemButtonBuyNotEnabled(IItem item, Context context) {
@@ -110,18 +107,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ItemsAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-
-        // TODO: Continue refactoring from here,
-        //  don't forget to write tests for getInteractionResultNameId() and Food class.
-
-
         Personage personage = BecomeAKing.getInstance().getPersonage();
         IItem item = category.getItems().get(position);
 
         // Setting values to views
         viewHolder.getItemNameView().setText(item.getNameId());
-        TextView textViewRequirement = viewHolder.getItemRequirementView();
 
+        TextView textViewRequirement = viewHolder.getItemRequirementView();
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
         if(strengthRequired == 0 && reputationRequired == 0) {
@@ -134,11 +126,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             textViewRequirement.setVisibility(View.VISIBLE);
             textViewRequirement.setText(requirement);
         }
+
         viewHolder.getItemImageView().setImageResource(item.getImageId());
         viewHolder.getItemImageView().setContentDescription(item.getName(context));
+
         viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
         viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStats(), context));
-        if (!item.isBought()) {
+
+        if (!item.isInteracted()) {
             viewHolder.resetItemButtonInteractState(item, context);
 
             viewHolder.getItemButtonInteractView().setOnClickListener(view -> {
@@ -148,9 +143,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 switch (code) {
                     case 0:
                         callback.call(item);
-                        if (item instanceof Item) {
-                            viewHolder.setItemButtonBuyNotEnabled(item, context);
-                        }
+                        viewHolder.setItemButtonBuyNotEnabled(item, context);
                         break;
                     case -1:
                         messageId = R.string.not_enough_money;
@@ -161,6 +154,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                     case -3:
                         messageId = R.string.not_enough_reputation;
                         break;
+                    case -4:
+                        messageId = R.string.work_cant_be_started;
+                        break;
+                    case -10:
+                        messageId = R.string.null_personage_error;
                 }
                 if (messageId != 0) {
                     DialogueFragment.newInstance(messageId, R.string.ok)

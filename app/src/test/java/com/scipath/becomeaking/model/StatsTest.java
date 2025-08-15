@@ -39,7 +39,7 @@ public class StatsTest {
 
     @Test
     void get_withMissingStat_returnsZero() {
-        assertEquals(0, stats.get(Stat.Might));
+        assertEquals(0, stats.get(Stat.StrengthRequired));
     }
 
     @Test

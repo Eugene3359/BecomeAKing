@@ -64,17 +64,17 @@ public class CategoryTest {
 
     @Test
     void getImageId_withOneItemBought_returnsThisItemsImageId() {
-        category.getItems().get(0).setBought(true);
+        category.getItems().get(0).setInteracted(true);
         assertEquals(R.drawable.img_steel_sword, category.getImageId());
-        category.getItems().get(0).setBought(false);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(false);
+        category.getItems().get(1).setInteracted(true);
         assertEquals(R.drawable.img_two_blades, category.getImageId());
     }
 
     @Test
     void getImageId_withAllItemsBought_returnsBestItemsImageId() {
-        category.getItems().get(0).setBought(true);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(true);
+        category.getItems().get(1).setInteracted(true);
         assertEquals(R.drawable.img_two_blades, category.getImageId());
     }
 
@@ -111,12 +111,12 @@ public class CategoryTest {
 
     @Test
     void getStats_withOneItemBought_returnsThisItemsStats() {
-        category.getItems().get(0).setBought(true);
+        category.getItems().get(0).setInteracted(true);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(40, stats.get(Stat.Might));
-        category.getItems().get(0).setBought(false);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(false);
+        category.getItems().get(1).setInteracted(true);
         stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(80, stats.get(Stat.Might));
@@ -124,8 +124,8 @@ public class CategoryTest {
 
     @Test
     void getStats_withAllItemBoughtAndBestStatsMod_returnsBestItemsStats() {
-        category.getItems().get(1).setBought(true);
-        category.getItems().get(0).setBought(true);
+        category.getItems().get(1).setInteracted(true);
+        category.getItems().get(0).setInteracted(true);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(80, stats.get(Stat.Might));
@@ -134,8 +134,8 @@ public class CategoryTest {
     @Test
     void getStats_withAllItemBoughtAndSumStatsMod_returnsSumItemsStats() {
         category.setStatsMod(StatsMod.Sum);
-        category.getItems().get(0).setBought(true);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(true);
+        category.getItems().get(1).setInteracted(true);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(120, stats.get(Stat.Might));
@@ -215,17 +215,17 @@ public class CategoryTest {
 
     @Test
     void getBestBoughtItem_withOneBoughtItem_returnsThisItem() {
-        category.getItems().get(0).setBought(true);
+        category.getItems().get(0).setInteracted(true);
         assertEquals(R.string.steel_sword, category.getBestBoughtItem().getNameId());
-        category.getItems().get(0).setBought(false);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(false);
+        category.getItems().get(1).setInteracted(true);
         assertEquals(R.string.two_blades, category.getBestBoughtItem().getNameId());
     }
 
     @Test
     void getBestBoughtItem_withAllItemsBought_returnsBestItem() {
-        category.getItems().get(0).setBought(true);
-        category.getItems().get(1).setBought(true);
+        category.getItems().get(0).setInteracted(true);
+        category.getItems().get(1).setInteracted(true);
         assertEquals(R.string.two_blades, category.getBestBoughtItem().getNameId());
     }
 
