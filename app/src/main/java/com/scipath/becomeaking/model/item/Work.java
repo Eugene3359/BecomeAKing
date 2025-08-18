@@ -12,6 +12,7 @@ public class Work extends Item {
 
     // Variables
     protected static int interactionCounter = 0;
+    protected int interactionValue;
 
 
     // Constructors
@@ -19,12 +20,20 @@ public class Work extends Item {
         super(nameId, imageId, 0);
         this.interactionNameId = R.string.start;
         this.interactionResultNameId = R.string.ended;
+        interactionValue = 1;
     }
 
     public Work(int nameId, int imageId, Stats stats) {
         super(nameId, imageId, 0, stats);
         this.interactionNameId = R.string.start;
         this.interactionResultNameId = R.string.ended;
+        interactionValue = 1;
+    }
+
+
+    // Accessors
+    public int getInteractionValue() {
+        return interactionValue;
     }
 
 
@@ -32,6 +41,10 @@ public class Work extends Item {
     @Override
     public void setCost(int cost) {
         // Cost for work is always 0;
+    }
+
+    public void setInteractionValue(int value) {
+        interactionValue = value;
     }
 
 
@@ -51,13 +64,13 @@ public class Work extends Item {
         if (personageReputation < reputationRequired) return -3; // Not enough reputation
 
         // Check for number of completed works
-        if (interactionCounter >= 2) return -4;
+        if (interactionCounter + interactionValue > 2) return -4;
 
         // Work
         interacted = true;
         personage.affectHealth(stats.get(Stat.HealthImpact));
         personage.affectReputation(stats.get(Stat.ReputationImpact));
-        interactionCounter++;
+        interactionCounter += interactionValue;
         return 0;
     }
 

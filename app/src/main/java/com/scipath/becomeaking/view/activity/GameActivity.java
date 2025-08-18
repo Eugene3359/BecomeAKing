@@ -99,7 +99,7 @@ public class GameActivity extends AppCompatActivity {
             CategoriesFragment newFragment = new CategoriesFragment();
             Bundle args = new Bundle();
             args.putInt("fromIndex", 10);
-            args.putInt("toIndex", 12);
+            args.putInt("toIndex", 13);
             newFragment.setArguments(args);
             switchMenuButton(buttonJob, newFragment);
         });
@@ -121,6 +121,8 @@ public class GameActivity extends AppCompatActivity {
             updateViews();
             if(fragment.getClass() == PersonageFragment.class) {
                 ((PersonageFragment)fragment).updateViews();
+            } else {
+                switchMenuButton(buttonPersonage, new PersonageFragment());
             }
             BecomeAKing.getInstance().checkPersonageForNegativeValues(this);
         });

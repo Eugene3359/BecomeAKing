@@ -6,20 +6,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.item.Work;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.ItemsFragment;
 
 import java.util.ArrayList;
@@ -64,6 +69,22 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         public RecyclerView getCategoryStatsView() {
             return layout.findViewById(R.id.stats_list);
         }
+
+        public Button getCategoryButtonSelect() {
+            return layout.findViewById(R.id.button_select);
+        }
+
+        public void setCategoryButtonSelectStateNotSelected(Context context) {
+            Button button = getCategoryButtonSelect();
+            button.setText(R.string.select);
+            button.setBackgroundColor(context.getColor(R.color.transparent_green));
+        }
+
+        public void setCategoryButtonSelectStateSelected(Context context) {
+            Button button = getCategoryButtonSelect();
+            button.setText(R.string.remove);
+            button.setBackgroundColor(context.getColor(R.color.transparent_red));
+        }
     }
 
 
@@ -89,27 +110,70 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         viewHolder.getCategoryNameView().setText(category.getNameId());
         if (category.getImageId()!= 0)
             viewHolder.getCategoryImageView().setImageResource(category.getImageId());
-
         viewHolder.getCategoryImageView().setContentDescription(category.getName(context));
-        if (!(category.getItems().get(0) instanceof Work)) {
+
+
+
+        if (category.getItems().size() == 1 && category.getItems().get(0) instanceof Work) {
+            Work firstItem = (Work) category.getItems().get(0);
+            IStats stats = firstItem.getStats();
+            viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
+            viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
+
+            Button buttonSelect = viewHolder.getCategoryButtonSelect();
+            buttonSelect.setVisibility(View.VISIBLE);
+            if (!firstItem.isInteracted()) {
+                viewHolder.setCategoryButtonSelectStateNotSelected(context);
+            } else {
+                viewHolder.setCategoryButtonSelectStateSelected(context);
+            }
+            viewHolder.getCategoryButtonSelect().setOnClickListener(view -> {
+                if (!firstItem.isInteracted()) {
+                    int code = firstItem.interact(BecomeAKing.getInstance().getPersonage());
+                    int messageId = 0;
+
+                    switch (code) {
+                        case 0:
+                            viewHolder.setCategoryButtonSelectStateSelected(context);
+                            break;
+                        case -3:
+                            messageId = R.string.not_enough_reputation;
+                            break;
+                        case -4:
+                            messageId = R.string.you_dont_have_a_time;
+                            break;
+                        case -10:
+                            messageId = R.string.null_personage_error;
+                    }
+                    if (messageId != 0) {
+                        DialogueFragment.newInstance(messageId, R.string.ok)
+                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                    }
+                } else {
+                    firstItem.setInteracted(false);
+                    Work.refreshInteractionCounter();
+                    viewHolder.setCategoryButtonSelectStateNotSelected(context);
+                }
+            });
+        } else {
             IStats stats = category.getStats();
             viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
             viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
-        }
 
-        viewHolder.getLayout().setOnClickListener(view -> {
-            if (!categories.get(position).getItems().isEmpty()) {
-                Fragment fragment = new ItemsFragment();
-                Bundle bundle = new Bundle();
-                bundle.putInt("categoryId", categories.get(position).getId());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_frame, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
+            viewHolder.getLayout().setOnClickListener(view -> {
+                if (!categories.get(position).getItems().isEmpty()) {
+                    Fragment fragment = new ItemsFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("categoryId", categories.get(position).getId());
+                    fragment.setArguments(bundle);
+                    ((FragmentActivity) context).getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_frame, fragment)
+                            .addToBackStack(null)
+                            .commit();
+                }
+            });
+        }
     }
 
 

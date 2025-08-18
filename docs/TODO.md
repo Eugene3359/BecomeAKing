@@ -1,7 +1,7 @@
 # Project Tasks
 
 ## In Progress
-- Refactoring
+- Refactoring views
 - Fix crush on screen rotation
 
 ## In Queue

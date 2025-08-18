@@ -82,7 +82,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             button.setEnabled(true);
         }
 
-        public void setItemButtonBuyNotEnabled(IItem item, Context context) {
+        public void setItemButtonInteractNotEnabled(IItem item, Context context) {
             Button button = getItemButtonInteractView();
             button.setText(item.getInteractionResultNameId());
             button.setBackgroundColor(context.getColor(R.color.transparent_red));
@@ -143,7 +143,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 switch (code) {
                     case 0:
                         callback.call(item);
-                        viewHolder.setItemButtonBuyNotEnabled(item, context);
+                        viewHolder.setItemButtonInteractNotEnabled(item, context);
                         break;
                     case -1:
                         messageId = R.string.not_enough_money;
@@ -155,7 +155,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         messageId = R.string.not_enough_reputation;
                         break;
                     case -4:
-                        messageId = R.string.work_cant_be_started;
+                        messageId = R.string.you_dont_have_a_time;
                         break;
                     case -10:
                         messageId = R.string.null_personage_error;
@@ -166,7 +166,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 }
             });
         } else {
-            viewHolder.setItemButtonBuyNotEnabled(item, context);
+            viewHolder.setItemButtonInteractNotEnabled(item, context);
         }
     }
 

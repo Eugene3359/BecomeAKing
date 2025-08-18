@@ -56,5 +56,5 @@ public interface ICategory extends Serializable {
      */
     Drawable getImage(Context context);
 
-    IItem getBestBoughtItem();
+    IItem getBestItem();
 }

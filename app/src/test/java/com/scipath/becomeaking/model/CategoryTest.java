@@ -209,29 +209,29 @@ public class CategoryTest {
     }
 
     @Test
-    void getBestBoughtItem_withNoBoughItems_returnsNull() {
-        assertNull(category.getBestBoughtItem());
+    void getBestItem_withNoBoughItems_returnsNull() {
+        assertNull(category.getBestItem());
     }
 
     @Test
-    void getBestBoughtItem_withOneBoughtItem_returnsThisItem() {
+    void getBestBoughtItem_withOneItem_returnsThisItem() {
         category.getItems().get(0).setInteracted(true);
-        assertEquals(R.string.steel_sword, category.getBestBoughtItem().getNameId());
+        assertEquals(R.string.steel_sword, category.getBestItem().getNameId());
         category.getItems().get(0).setInteracted(false);
         category.getItems().get(1).setInteracted(true);
-        assertEquals(R.string.two_blades, category.getBestBoughtItem().getNameId());
+        assertEquals(R.string.two_blades, category.getBestItem().getNameId());
     }
 
     @Test
     void getBestBoughtItem_withAllItemsBought_returnsBestItem() {
         category.getItems().get(0).setInteracted(true);
         category.getItems().get(1).setInteracted(true);
-        assertEquals(R.string.two_blades, category.getBestBoughtItem().getNameId());
+        assertEquals(R.string.two_blades, category.getBestItem().getNameId());
     }
 
     @Test
-    void getBestBoughtItem_withEmptyItemsList_returnsNull() {
+    void getBestItem_withEmptyItemsList_returnsNull() {
         category.setItems(new ArrayList<>());
-        assertNull(category.getBestBoughtItem());
+        assertNull(category.getBestItem());
     }
 }

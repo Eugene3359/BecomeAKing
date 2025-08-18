@@ -1,8 +1,19 @@
+# Become a King [0.3.3] - 18.08.2025
+### Additions
+- Added `Caravan Protection` work as `All Day Work`
+
+### Changes
+- Personage view is now displayed immediately after clicking Next Day
+
+---
+
 # Become a King [0.3.2] - 16.08.2025
 
 ### Changes
 - Same work can't be started twice a day
 - No more than two works can be completed a day
+
+### Fixes
 - Requirement stats no longer displayed in items stat bonuses list
 
 ---

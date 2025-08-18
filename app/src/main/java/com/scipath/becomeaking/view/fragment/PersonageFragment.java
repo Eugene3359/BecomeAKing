@@ -36,6 +36,12 @@ public class PersonageFragment extends Fragment {
     IStats stats;
 
     // Views variables
+    ImageView imageViewHealthIncome;
+    TextView textViewHealthIncome;
+    ImageView imageViewReputationIncome;
+    TextView textViewReputationIncome;
+    ImageView imageViewMoneyIncome;
+    TextView textViewMoneyIncome;
     TextView textViewReputation;
     TextView textViewDay;
 
@@ -57,22 +63,21 @@ public class PersonageFragment extends Fragment {
         // Getting Personage, Categories and StatBonuses from Application
         personage = BecomeAKing.getInstance().getPersonage();
         categories = BecomeAKing.getInstance().getCategories();
-        stats = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         // Views
         TextView textViewName = view.findViewById(R.id.text_view_name);
         TextView textViewTitle = view.findViewById(R.id.text_view_title);
         ImageView imageViewPersonageIcon = view.findViewById(R.id.image_view_personage_icon);
 
+        imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
+        textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
+        imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
+        textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
+        imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
+        textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
+
         textViewDay = view.findViewById(R.id.text_view_day);
         textViewReputation = view.findViewById(R.id.text_view_reputation2);
-
-        ImageView imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
-        TextView textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
-        ImageView imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
-        TextView textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
-        ImageView imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
-        TextView textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
 
         TextView textViewNutrition = view.findViewById(R.id.text_view_nutrition);
         TextView textViewClothes = view.findViewById(R.id.text_view_clothes);
@@ -86,31 +91,15 @@ public class PersonageFragment extends Fragment {
         textViewTitle.setText(personage.getTitle().getName(getActivity()));
         imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCategories().get(1).getImageId());
 
-        // Stat bonuses
-        int statBonusValue = stats.get(Stat.HealthPerDay);
-        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewHealthIncome.setText(Integer.toString(statBonusValue));
-
-        statBonusValue = stats.get(Stat.ReputationPerDay);
-        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewReputationIncome.setText(Integer.toString(statBonusValue));
-
-        statBonusValue = stats.get(Stat.CostPerDay);
-        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewMoneyIncome.setText(Integer.toString(statBonusValue));
-
         updateViews();
 
-        textViewNutrition.setText(categories.get(0).getBestBoughtItem().getNameId());
-        textViewClothes.setText(categories.get(1).getBestBoughtItem().getNameId());
-        if (categories.get(5).getBestBoughtItem() != null) {
-            textViewHousing.setText(categories.get(5).getBestBoughtItem().getNameId());
+        textViewNutrition.setText(categories.get(0).getBestItem().getNameId());
+        textViewClothes.setText(categories.get(1).getBestItem().getNameId());
+        if (categories.get(5).getBestItem() != null) {
+            textViewHousing.setText(categories.get(5).getBestItem().getNameId());
         }
-        if (categories.get(9).getBestBoughtItem() != null) {
-            textViewHorse.setText(categories.get(9).getBestBoughtItem().getNameId());
+        if (categories.get(9).getBestItem() != null) {
+            textViewHorse.setText(categories.get(9).getBestItem().getNameId());
         }
         textViewMaxHealth.setText(Integer.toString(personage.getMaxHealth()));
         textViewMight.setText(Integer.toString(personage.getMight()));
@@ -180,6 +169,24 @@ public class PersonageFragment extends Fragment {
     }
 
     public void updateViews() {
+        // Daily stats
+        stats = BecomeAKing.getInstance().getCurrentStatBonuses();
+        int statBonusValue = stats.get(Stat.HealthPerDay);
+        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewHealthIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = stats.get(Stat.ReputationPerDay);
+        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewReputationIncome.setText(Integer.toString(statBonusValue));
+
+        statBonusValue = stats.get(Stat.CostPerDay);
+        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
+                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
+        textViewMoneyIncome.setText(Integer.toString(statBonusValue));
+
+        // Day number and personage reputation
         textViewDay.setText(Integer.toString(BecomeAKing.getInstance().getDay()));
         textViewReputation.setText(Integer.toString(personage.getReputation()));
     }

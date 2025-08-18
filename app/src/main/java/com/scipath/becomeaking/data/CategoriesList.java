@@ -540,6 +540,18 @@ public class CategoriesList {
                 .add(Stat.MoneyPerClick, 50)
                 .add(Stat.ReputationRequired, 100000));
 
+
+        // Caravan protection
+        categories.add(new Category(R.string.caravan_protection));
+        Work work = new Work(R.string.caravan_protection, R.drawable.img_caravan_protection);
+        work.setInteractionValue(2);
+        work.setStats(new Stats()
+                .add(Stat.HealthPerDay, -80)
+                .add(Stat.ReputationPerDay, 80)
+                .add(Stat.CostPerDay, 80));
+        categories.get(12).addItem(work);
+
+
         return categories;
     }
 }

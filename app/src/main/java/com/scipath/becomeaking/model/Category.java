@@ -8,6 +8,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +114,7 @@ public class Category implements ICategory {
     }
 
     @Override
-    public IItem getBestBoughtItem() {
+    public IItem getBestItem() {
         IItem item;
         for (int i = items.size()-1; i >= 0; i--) {
             item = items.get(i);
@@ -133,14 +134,16 @@ public class Category implements ICategory {
         if (items.isEmpty()) return;
 
         // Updating category imageId
-        IItem bestBoughtItem = getBestBoughtItem();
-        imageId = bestBoughtItem == null ?
+        IItem bestItem = getBestItem();
+        imageId = bestItem == null ?
                 items.get(0).getImageId() :
-                bestBoughtItem.getImageId();
+                bestItem.getImageId();
+
+        if (bestItem instanceof Work && items.size() != 1) return;
 
         // Updating category stats
         if (statsMod == StatsMod.Best) {
-            if (bestBoughtItem != null) stats = bestBoughtItem.getStats();
+            if (bestItem != null) stats = bestItem.getStats();
         } else if (statsMod == StatsMod.Sum) {
             for (IItem item : items) {
                 if (item.isInteracted()) {

@@ -175,6 +175,10 @@
     <string name="blacksmiths_apprentice">Ученик кузнеца</string>
     <string name="lords_courtier">Придворный лорда</string>
 
+    <!-- All day long work -->
+    <string name="caravan_protection">Защита каравана</string>
+    <string name="mercenary_in_the_army">Наемник в армии</string>
+
     <!-- Business -->
     <string name="business">Предприятия</string>
 
@@ -216,6 +220,10 @@
     <string name="drop_skills">Скинуть навыки</string>
     <string name="save">Сохранить</string>
 
+    <!-- Categories Fragment -->
+    <string name="select">Выбрать</string>
+    <string name="remove">Убрать</string>
+
     <!-- Items Fragment -->
     <string name="previous">Предыдущий</string>
     <string name="next">Следующий</string>
@@ -231,6 +239,7 @@
     <string name="not_enough_reputation">Недостаточно репутации</string>
     <string name="null_personage_error">Ошибка. Персонаж отсутствует.</string>
     <string name="work_cant_be_started">Вы не можете выполнить более 2 работ в день.</string>
+    <string name="you_dont_have_a_time">У вас сегодня осталось недостаточно времени для выполнения даной работы.</string>
 
     <!-- Item/Category Stats -->
     <string name="c_d_per_day">%1$c %2$d в день</string>

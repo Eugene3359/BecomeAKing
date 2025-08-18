@@ -38,16 +38,30 @@
             android:layout_height="100dp"
             app:backgroundColor="@color/cloth_darkest_brown"
             app:backgroundDrawable="@drawable/bg_cloth1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:gravity="center_vertical" >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/stats_list"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginHorizontal="20dp"
                 tools:context=".view.activity.GameActivity"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+            <com.scipath.becomeaking.view.customview.CustomButton
+                android:id="@+id/button_select"
+                android:layout_width="72dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="38dp"
+                android:padding="0dp"
+                app:backgroundColor="@color/transparent_green"
+                android:text="@string/select"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:visibility="gone" />
 
         </com.scipath.becomeaking.view.customview.CustomLinearLayout>
 
