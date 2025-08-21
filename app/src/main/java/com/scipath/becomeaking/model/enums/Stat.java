@@ -24,7 +24,8 @@ public enum Stat implements Serializable {
     // Daily stats change
     HealthPerDay(R.string.health, R.string.c_d_per_day, R.drawable.icon_heart),
     ReputationPerDay(R.string.reputation, R.string.c_d_per_day, R.drawable.icon_civic_crown),
-    CostPerDay(R.string.money, R.string.c_d_per_day, R.drawable.icon_coin),
+    CoinsPerDay(R.string.money, R.string.c_d_per_day, R.drawable.icon_coin),
+    CoinsPerMight(R.string.money, R.string.c_d_per_1_might, R.drawable.icon_coin),
 
     // Requirement stats
     ReputationRequired(R.string.reputation, R.string.required_reputation_d, 0),

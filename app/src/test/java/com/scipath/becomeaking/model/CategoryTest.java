@@ -36,13 +36,13 @@ public class CategoryTest {
         category.getItems().get(0).setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -20)
+                .add(Stat.CoinsPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
         // Two blades
         category.getItems().get(1).setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -40)
+                .add(Stat.CoinsPerDay, -40)
                 .add(Stat.StrengthRequired, 2));
     }
 
@@ -161,7 +161,7 @@ public class CategoryTest {
         items.get(0).getStats()
                 .add(Stat.Might, 200)
                 .add(Stat.ReputationPerDay, 100)
-                .add(Stat.CostPerDay, -200)
+                .add(Stat.CoinsPerDay, -200)
                 .add(Stat.StrengthRequired, 4);
         category.setItems(items);
         assertEquals(1, category.getItems().size());
@@ -182,7 +182,7 @@ public class CategoryTest {
         item.getStats()
                 .add(Stat.Might, 200)
                 .add(Stat.ReputationPerDay, 100)
-                .add(Stat.CostPerDay, -200)
+                .add(Stat.CoinsPerDay, -200)
                 .add(Stat.StrengthRequired, 4);
         category.addItem(item);
         assertEquals(3, category.getItems().size());

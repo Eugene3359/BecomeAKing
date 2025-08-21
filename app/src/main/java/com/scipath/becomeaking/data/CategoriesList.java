@@ -34,48 +34,48 @@ public class CategoriesList {
         // Bread
         categories.get(0).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5)
-                .add(Stat.CostPerDay, -1));
+                .add(Stat.CoinsPerDay, -1));
         categories.get(0).getItems().get(0).setInteracted(true);
         // Meat
         categories.get(0).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Cheese
         categories.get(0).getItems().get(2).setStats(new Stats()
                 .add(Stat.HealthPerDay, 15)
                 .add(Stat.ReputationPerDay, 15)
-                .add(Stat.CostPerDay, -10));
+                .add(Stat.CoinsPerDay, -10));
         // Vegetables
         categories.get(0).getItems().get(3).setStats(new Stats()
                 .add(Stat.HealthPerDay, 20)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -15));
+                .add(Stat.CoinsPerDay, -15));
         // Soup
         categories.get(0).getItems().get(4).setStats(new Stats()
                 .add(Stat.HealthPerDay, 30)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -30));
+                .add(Stat.CoinsPerDay, -30));
         // Nourishing food
         categories.get(0).getItems().get(5).setStats(new Stats()
                 .add(Stat.HealthPerDay, 40)
                 .add(Stat.ReputationPerDay, 30)
-                .add(Stat.CostPerDay, -40));
+                .add(Stat.CoinsPerDay, -40));
         // Luxurious food
         categories.get(0).getItems().get(6).setStats(new Stats()
                 .add(Stat.HealthPerDay, 50)
                 .add(Stat.ReputationPerDay, 40)
-                .add(Stat.CostPerDay, -45));
+                .add(Stat.CoinsPerDay, -45));
         // Aristocracy food
         categories.get(0).getItems().get(7).setStats(new Stats()
                 .add(Stat.HealthPerDay, 70)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -60));
+                .add(Stat.CoinsPerDay, -60));
         // Royal food
         categories.get(0).getItems().get(8).setStats(new Stats()
                 .add(Stat.HealthPerDay, 100)
                 .add(Stat.ReputationPerDay, 300)
-                .add(Stat.CostPerDay, -500));
+                .add(Stat.CoinsPerDay, -500));
 
 
         // Clothes
@@ -103,32 +103,32 @@ public class CategoriesList {
         categories.get(1).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Citizen clothes
         categories.get(1).getItems().get(2).setStats(new Stats()
                 .add(Stat.HealthPerDay, 15)
                 .add(Stat.ReputationPerDay, 15)
-                .add(Stat.CostPerDay, -10));
+                .add(Stat.CoinsPerDay, -10));
         // Luxurious clothes
         categories.get(1).getItems().get(3).setStats(new Stats()
                 .add(Stat.HealthPerDay, 30)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -30));
+                .add(Stat.CoinsPerDay, -30));
         // Aristocracy clothes
         categories.get(1).getItems().get(4).setStats(new Stats()
                 .add(Stat.HealthPerDay, 40)
                 .add(Stat.ReputationPerDay, 30)
-                .add(Stat.CostPerDay, -40));
+                .add(Stat.CoinsPerDay, -40));
         // Earl clothes
         categories.get(1).getItems().get(5).setStats(new Stats()
                 .add(Stat.HealthPerDay, 70)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -60));
+                .add(Stat.CoinsPerDay, -60));
         // Royal clothes
         categories.get(1).getItems().get(6).setStats(new Stats()
                 .add(Stat.HealthPerDay, 100)
                 .add(Stat.ReputationPerDay, 200)
-                .add(Stat.CostPerDay, -400));
+                .add(Stat.CoinsPerDay, -400));
 
 
         // Entertainment
@@ -144,32 +144,32 @@ public class CategoriesList {
         categories.get(2).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Fair
         categories.get(2).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 20)
                 .add(Stat.ReputationPerDay, 15)
-                .add(Stat.CostPerDay, -20));
+                .add(Stat.CoinsPerDay, -20));
         // Tournament
         categories.get(2).getItems().get(2).setStats(new Stats()
                 .add(Stat.HealthPerDay, 30)
                 .add(Stat.ReputationPerDay, 30)
-                .add(Stat.CostPerDay, -30));
+                .add(Stat.CoinsPerDay, -30));
         // Theatre
         categories.get(2).getItems().get(3).setStats(new Stats()
                 .add(Stat.HealthPerDay, 50)
                 .add(Stat.ReputationPerDay, 40)
-                .add(Stat.CostPerDay, -40));
+                .add(Stat.CoinsPerDay, -40));
         // Hunt
         categories.get(2).getItems().get(4).setStats(new Stats()
                 .add(Stat.HealthPerDay, 70)
                 .add(Stat.ReputationPerDay, 60)
-                .add(Stat.CostPerDay, -60));
+                .add(Stat.CoinsPerDay, -60));
         // Feast
         categories.get(2).getItems().get(5).setStats(new Stats()
                 .add(Stat.HealthPerDay, 100)
                 .add(Stat.ReputationPerDay, 150)
-                .add(Stat.CostPerDay, -300));
+                .add(Stat.CoinsPerDay, -300));
 
 
         // Weapon
@@ -186,42 +186,42 @@ public class CategoriesList {
         categories.get(3).getItems().get(0).setStats(new Stats()
                 .add(Stat.Might, 10)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Rusty sword
         categories.get(3).getItems().get(1).setStats(new Stats()
                 .add(Stat.Might, 20)
                 .add(Stat.ReputationPerDay, 10)
-                .add(Stat.CostPerDay, -10)
+                .add(Stat.CoinsPerDay, -10)
                 .add(Stat.StrengthRequired, 1));
         // Steel sword
         categories.get(3).getItems().get(2).setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -20)
+                .add(Stat.CoinsPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
         // Two blades
         categories.get(3).getItems().get(3).setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -40)
+                .add(Stat.CoinsPerDay, -40)
                 .add(Stat.StrengthRequired, 2));
         // Ax and shield
         categories.get(3).getItems().get(4).setStats(new Stats()
                 .add(Stat.Might, 100)
                 .add(Stat.ReputationPerDay, 60)
-                .add(Stat.CostPerDay, -50)
+                .add(Stat.CoinsPerDay, -50)
                 .add(Stat.StrengthRequired, 3));
         // Sword and shield
         categories.get(3).getItems().get(5).setStats(new Stats()
                 .add(Stat.Might, 150)
                 .add(Stat.ReputationPerDay, 80)
-                .add(Stat.CostPerDay, -70)
+                .add(Stat.CoinsPerDay, -70)
                 .add(Stat.StrengthRequired, 3));
         // Ancient artifacts
         categories.get(3).getItems().get(6).setStats(new Stats()
                 .add(Stat.Might, 200)
                 .add(Stat.ReputationPerDay, 100)
-                .add(Stat.CostPerDay, -200)
+                .add(Stat.CoinsPerDay, -200)
                 .add(Stat.StrengthRequired, 4));
 
 
@@ -239,42 +239,42 @@ public class CategoriesList {
         categories.get(4).getItems().get(0).setStats(new Stats()
                 .add(Stat.Might, 10)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Rusty armor
         categories.get(4).getItems().get(1).setStats(new Stats()
                 .add(Stat.Might, 30)
                 .add(Stat.ReputationPerDay, 15)
-                .add(Stat.CostPerDay, -10)
+                .add(Stat.CoinsPerDay, -10)
                 .add(Stat.StrengthRequired, 1));
         // Old armor
         categories.get(4).getItems().get(2).setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 25)
-                .add(Stat.CostPerDay, -15)
+                .add(Stat.CoinsPerDay, -15)
                 .add(Stat.StrengthRequired, 2));
         // Heavy armor
         categories.get(4).getItems().get(3).setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -40)
+                .add(Stat.CoinsPerDay, -40)
                 .add(Stat.StrengthRequired, 2));
         // Good armor
         categories.get(4).getItems().get(4).setStats(new Stats()
                 .add(Stat.Might, 120)
                 .add(Stat.ReputationPerDay, 80)
-                .add(Stat.CostPerDay, -60)
+                .add(Stat.CoinsPerDay, -60)
                 .add(Stat.StrengthRequired, 3));
         // Luxurious armor
         categories.get(4).getItems().get(5).setStats(new Stats()
                 .add(Stat.Might, 140)
                 .add(Stat.ReputationPerDay, 90)
-                .add(Stat.CostPerDay, -65)
+                .add(Stat.CoinsPerDay, -65)
                 .add(Stat.StrengthRequired, 3));
         // King armor
         categories.get(4).getItems().get(6).setStats(new Stats()
                 .add(Stat.Might, 200)
                 .add(Stat.ReputationPerDay, 110)
-                .add(Stat.CostPerDay, -200)
+                .add(Stat.CoinsPerDay, -200)
                 .add(Stat.StrengthRequired, 4));
 
 
@@ -291,31 +291,31 @@ public class CategoriesList {
         // Hut
         categories.get(5).getItems().get(0).setStats(new Stats()
                 .add(Stat.MaxHealth, 200)
-                .add(Stat.CostPerDay, -10));
+                .add(Stat.CoinsPerDay, -10));
         // Old house
         categories.get(5).getItems().get(1).setStats(new Stats()
                 .add(Stat.MaxHealth, 500)
-                .add(Stat.CostPerDay, -20));
+                .add(Stat.CoinsPerDay, -20));
         // Stone house
         categories.get(5).getItems().get(2).setStats(new Stats()
                 .add(Stat.MaxHealth, 1000)
-                .add(Stat.CostPerDay, -300));
+                .add(Stat.CoinsPerDay, -300));
         // Country house
         categories.get(5).getItems().get(3).setStats(new Stats()
                 .add(Stat.MaxHealth, 1500)
-                .add(Stat.CostPerDay, -500));
+                .add(Stat.CoinsPerDay, -500));
         // Small mansion
         categories.get(5).getItems().get(4).setStats(new Stats()
                 .add(Stat.MaxHealth, 2000)
-                .add(Stat.CostPerDay, -1000));
+                .add(Stat.CoinsPerDay, -1000));
         // Medium mansion
         categories.get(5).getItems().get(5).setStats(new Stats()
                 .add(Stat.MaxHealth, 3500)
-                .add(Stat.CostPerDay, -2500));
+                .add(Stat.CoinsPerDay, -2500));
         // Large mansion
         categories.get(5).getItems().get(6).setStats(new Stats()
                 .add(Stat.MaxHealth, 5000)
-                .add(Stat.CostPerDay, -6000));
+                .add(Stat.CoinsPerDay, -6000));
 
 
         // Furniture
@@ -330,27 +330,27 @@ public class CategoriesList {
         categories.get(6).getItems().get(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5)
                 .add(Stat.ReputationPerDay, 5)
-                .add(Stat.CostPerDay, -2));
+                .add(Stat.CoinsPerDay, -2));
         // Ordinary furniture
         categories.get(6).getItems().get(1).setStats(new Stats()
                 .add(Stat.HealthPerDay, 10)
                 .add(Stat.ReputationPerDay, 10)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // New furniture
         categories.get(6).getItems().get(2).setStats(new Stats()
                 .add(Stat.HealthPerDay, 20)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -10));
+                .add(Stat.CoinsPerDay, -10));
         // Luxurious furniture
         categories.get(6).getItems().get(3).setStats(new Stats()
                 .add(Stat.HealthPerDay, 30)
                 .add(Stat.ReputationPerDay, 30)
-                .add(Stat.CostPerDay, -50));
+                .add(Stat.CoinsPerDay, -50));
         // Royal furniture
         categories.get(6).getItems().get(4).setStats(new Stats()
                 .add(Stat.HealthPerDay, 60)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -200));
+                .add(Stat.CoinsPerDay, -200));
 
 
         // Books
@@ -427,32 +427,32 @@ public class CategoriesList {
         categories.get(9).getItems().get(0).setStats(new Stats()
                 .add(Stat.Might, 10)
                 .add(Stat.ReputationPerDay, 10)
-                .add(Stat.CostPerDay, -5));
+                .add(Stat.CoinsPerDay, -5));
         // Young horse
         categories.get(9).getItems().get(1).setStats(new Stats()
                 .add(Stat.Might, 20)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -10));
+                .add(Stat.CoinsPerDay, -10));
         // Fast horse
         categories.get(9).getItems().get(2).setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 25)
-                .add(Stat.CostPerDay, -20));
+                .add(Stat.CoinsPerDay, -20));
         // Light armored horse
         categories.get(9).getItems().get(3).setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 40)
-                .add(Stat.CostPerDay, -30));
+                .add(Stat.CoinsPerDay, -30));
         // Medium armored horse
         categories.get(9).getItems().get(4).setStats(new Stats()
                 .add(Stat.Might, 120)
                 .add(Stat.ReputationPerDay, 40)
-                .add(Stat.CostPerDay, -50));
+                .add(Stat.CoinsPerDay, -50));
         // Heavy armored horse
         categories.get(9).getItems().get(5).setStats(new Stats()
                 .add(Stat.Might, 160)
                 .add(Stat.ReputationPerDay, 50)
-                .add(Stat.CostPerDay, -250));
+                .add(Stat.CoinsPerDay, -250));
 
 
         // Work in village
@@ -548,9 +548,21 @@ public class CategoriesList {
         work.setStats(new Stats()
                 .add(Stat.HealthPerDay, -80)
                 .add(Stat.ReputationPerDay, 80)
-                .add(Stat.CostPerDay, 80)
+                .add(Stat.CoinsPerDay, 80)
                 .add(Stat.HorseAndWeaponRequired, 1));
         categories.get(12).addItem(work);
+
+
+        // Mercenary in the army
+        categories.add(new Category(R.string.mercenary_in_the_army));
+        work = new Work(R.string.mercenary_in_the_army, R.drawable.img_mercenary_in_the_army);
+        work.setInteractionValue(2);
+        work.setStats(new Stats()
+                .add(Stat.HealthPerDay, -50)
+                .add(Stat.ReputationPerDay, 80)
+                .add(Stat.CoinsPerMight, 3)
+                .add(Stat.ReputationRequired, 8000));
+        categories.get(13).addItem(work);
 
 
         return categories;

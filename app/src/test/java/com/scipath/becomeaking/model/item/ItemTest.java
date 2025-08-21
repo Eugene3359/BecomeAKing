@@ -27,7 +27,7 @@ public class ItemTest {
         item = new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000, new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
-                .add(Stat.CostPerDay, -20)
+                .add(Stat.CoinsPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
     }
 
@@ -73,7 +73,7 @@ public class ItemTest {
         assertEquals(4, stats.size());
         assertEquals(40, stats.get(Stat.Might));
         assertEquals(20, stats.get(Stat.ReputationPerDay));
-        assertEquals(-20, stats.get(Stat.CostPerDay));
+        assertEquals(-20, stats.get(Stat.CoinsPerDay));
         assertEquals(2, stats.get(Stat.StrengthRequired));
     }
 

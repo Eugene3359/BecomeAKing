@@ -98,7 +98,7 @@ public class PersonageStatsFragment extends Fragment {
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewReputationIncome.setText(Integer.toString(statBonusValue));
 
-        statBonusValue = statBonuses.get(Stat.CostPerDay);
+        statBonusValue = statBonuses.get(Stat.CoinsPerDay);
         imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
         textViewMoneyIncome.setText(Integer.toString(statBonusValue));

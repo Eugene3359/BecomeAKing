@@ -100,7 +100,7 @@ public class GameActivity extends AppCompatActivity {
             CategoriesFragment newFragment = new CategoriesFragment();
             Bundle args = new Bundle();
             args.putInt("fromIndex", 10);
-            args.putInt("toIndex", 13);
+            args.putInt("toIndex", 14);
             newFragment.setArguments(args);
             switchMenuButton(buttonJob, newFragment);
         });

@@ -16,6 +16,7 @@ import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class BecomeAKing extends Application {
@@ -95,6 +96,11 @@ public class BecomeAKing extends Application {
                                 + categoryStatBonuses.get(stat));
             }
         }
+
+        int coinsPerDay = stats.get(Stat.CoinsPerDay);
+        coinsPerDay += stats.get(Stat.Might) * stats.get(Stat.CoinsPerMight);
+        stats.add(Stat.CoinsPerDay, coinsPerDay);
+
         return stats;
     }
 
@@ -103,12 +109,13 @@ public class BecomeAKing extends Application {
         IStats statBonuses = getCurrentStatBonuses();
         gameState.personage.affectHealth(statBonuses.get(Stat.HealthPerDay));
         gameState.personage.affectReputation(statBonuses.get(Stat.ReputationPerDay));
-        gameState.personage.affectMoney(statBonuses.get(Stat.CostPerDay));
+        gameState.personage.affectMoney(statBonuses.get(Stat.CoinsPerDay));
 
         ArrayList<ICategory> categories = gameState.categories;
         for (int i = 0; i < categories.size(); i++) {
-            for (IItem work : categories.get(i).getItems()) {
-                if (work instanceof Work)
+            List<IItem> items = categories.get(i).getItems();
+            for (IItem work : items) {
+                if (work instanceof Work && items.size() > 1)
                     work.setInteracted(false);
             }
         }

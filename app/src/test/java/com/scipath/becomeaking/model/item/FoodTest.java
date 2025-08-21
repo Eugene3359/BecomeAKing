@@ -22,7 +22,7 @@ public class FoodTest {
     void setUp() {
         food = new Food(R.string.bread, R.drawable.img_bread, new Stats()
                 .add(Stat.HealthPerDay, 5)
-                .add(Stat.CostPerDay, -1));
+                .add(Stat.CoinsPerDay, -1));
     }
 
     @Test

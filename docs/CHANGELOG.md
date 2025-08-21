@@ -1,3 +1,10 @@
+# Become a King [0.4.0] - 21.08.2025
+
+### Additions
+- Added `Mercenary in the Army` work as `All Day Work`
+
+---
+
 # Become a King [0.3.4] - 21.08.2025
 
 ### Additions
