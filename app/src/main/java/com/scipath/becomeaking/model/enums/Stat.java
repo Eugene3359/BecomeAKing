@@ -29,6 +29,7 @@ public enum Stat implements Serializable {
     // Requirement stats
     ReputationRequired(R.string.reputation, R.string.required_reputation_d, 0),
     StrengthRequired(R.string.strength, R.string.required_strength_skill_points_d, 0),
+    HorseAndWeaponRequired(R.string.horse_and_weapon_required, R.string.horse_and_weapon_required, 0),
 
     // Work stats
     MoneyPerClick(R.string.money, R.string.c_d_per_click, R.drawable.icon_coin);

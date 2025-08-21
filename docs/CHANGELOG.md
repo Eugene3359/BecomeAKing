@@ -1,4 +1,16 @@
+# Become a King [0.3.4] - 21.08.2025
+
+### Additions
+- Added requirements for `All Day Work`
+
+### Changes
+- Decreased text size for items and categories stats
+- Application now runs only in portrait mode
+
+---
+
 # Become a King [0.3.3] - 18.08.2025
+
 ### Additions
 - Added `Caravan Protection` work as `All Day Work`
 
@@ -64,8 +76,8 @@
 # Become a King [0.2.0] - 27.06.2025
 
 ### Additions
-- Added items to `Artworks` category
 - Added items to `Horse` category
+- Added items to `Artworks` category
 
 ### Fixes
 - Fixed a bug when after buying an item from `Books` category reputation remained the same
@@ -161,8 +173,8 @@
 - Added `Clicker1` mini-game
 
 ### Changes
-- `buttonJob` is now active
 - Daily changes to `Health`, `Reputation`, and `Money` are now displayed
+- `buttonJob` is now active
 
 ### Fixes
 - Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ `buttonBuy` appeared disabled even though they hadn't been purchased

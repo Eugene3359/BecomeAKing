@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
-import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.ItemsFragment;
@@ -33,8 +33,8 @@ import java.util.ArrayList;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 
     // Variables
-    private final Context context;
     private final ArrayList<ICategory> categories;
+    private final Context context;
 
 
     // Constructor
@@ -59,7 +59,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         }
 
         public TextView getCategoryNameView() {
-            return layout.findViewById(R.id.text_view_category);
+            return layout.findViewById(R.id.text_view_name);
+        }
+
+        public TextView getCategoryRequirementView() {
+            return layout.findViewById(R.id.text_view_requirement);
         }
 
         public ImageView getCategoryImageView() {
@@ -107,73 +111,106 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         ICategory category = categories.get(position);
 
         // Setting values to views
+        // Category name and image
         viewHolder.getCategoryNameView().setText(category.getNameId());
         if (category.getImageId()!= 0)
             viewHolder.getCategoryImageView().setImageResource(category.getImageId());
         viewHolder.getCategoryImageView().setContentDescription(category.getName(context));
 
-
-
+        IStats stats;
         if (category.getItems().size() == 1 && category.getItems().get(0) instanceof Work) {
-            Work firstItem = (Work) category.getItems().get(0);
-            IStats stats = firstItem.getStats();
-            viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
-            viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
-
-            Button buttonSelect = viewHolder.getCategoryButtonSelect();
-            buttonSelect.setVisibility(View.VISIBLE);
-            if (!firstItem.isInteracted()) {
-                viewHolder.setCategoryButtonSelectStateNotSelected(context);
-            } else {
-                viewHolder.setCategoryButtonSelectStateSelected(context);
-            }
-            viewHolder.getCategoryButtonSelect().setOnClickListener(view -> {
-                if (!firstItem.isInteracted()) {
-                    int code = firstItem.interact(BecomeAKing.getInstance().getPersonage());
-                    int messageId = 0;
-
-                    switch (code) {
-                        case 0:
-                            viewHolder.setCategoryButtonSelectStateSelected(context);
-                            break;
-                        case -3:
-                            messageId = R.string.not_enough_reputation;
-                            break;
-                        case -4:
-                            messageId = R.string.you_dont_have_a_time;
-                            break;
-                        case -10:
-                            messageId = R.string.null_personage_error;
-                    }
-                    if (messageId != 0) {
-                        DialogueFragment.newInstance(messageId, R.string.ok)
-                                .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
-                    }
-                } else {
-                    firstItem.setInteracted(false);
-                    Work.refreshInteractionCounter();
-                    viewHolder.setCategoryButtonSelectStateNotSelected(context);
-                }
-            });
+            Work work = (Work) category.getItems().get(0);
+            stats = work.getStats();
+            interactOnButtonSelectClick(work, viewHolder);
         } else {
-            IStats stats = category.getStats();
-            viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
-            viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
-
-            viewHolder.getLayout().setOnClickListener(view -> {
-                if (!categories.get(position).getItems().isEmpty()) {
-                    Fragment fragment = new ItemsFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("categoryId", categories.get(position).getId());
-                    fragment.setArguments(bundle);
-                    ((FragmentActivity) context).getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragment_frame, fragment)
-                            .addToBackStack(null)
-                            .commit();
-                }
-            });
+            stats = category.getStats();
+            changeFragmentOnCategoryClick(position, viewHolder.getLayout());
         }
+
+        setRequirementView(stats, viewHolder.getCategoryRequirementView());
+
+        viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
+        viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
+    }
+
+
+    private void setRequirementView(IStats stats, TextView requirementView) {
+        int strengthRequired = stats.get(Stat.StrengthRequired);
+        int reputationRequired = stats.get(Stat.ReputationRequired);
+        int horseAndWeaponRequired = stats.get(Stat.HorseAndWeaponRequired);
+        String requirement = "";
+
+        if (strengthRequired != 0) {
+            requirement = Stat.StrengthRequired.getDescription(strengthRequired, context);
+        }
+        if (reputationRequired != 0) {
+            requirement = Stat.ReputationRequired.getDescription(reputationRequired, context);
+        }
+        if (horseAndWeaponRequired != 0) {
+            requirement = Stat.HorseAndWeaponRequired.getName(context);
+        }
+
+        if (!requirement.isEmpty()) {
+            requirementView.setVisibility(View.VISIBLE);
+            requirementView.setText(requirement);
+        }
+    }
+    
+    private void interactOnButtonSelectClick(Work work, ViewHolder viewHolder) {
+        Button buttonSelect = viewHolder.getCategoryButtonSelect();
+        buttonSelect.setVisibility(View.VISIBLE);
+        if (!work.isInteracted()) {
+            viewHolder.setCategoryButtonSelectStateNotSelected(context);
+        } else {
+            viewHolder.setCategoryButtonSelectStateSelected(context);
+        }
+        viewHolder.getCategoryButtonSelect().setOnClickListener(view -> {
+            if (!work.isInteracted()) {
+                int code = work.interact(BecomeAKing.getInstance().getPersonage());
+                int messageId = 0;
+
+                switch (code) {
+                    case 0:
+                        viewHolder.setCategoryButtonSelectStateSelected(context);
+                        break;
+                    case -3:
+                        messageId = R.string.not_enough_reputation;
+                        break;
+                    case -4:
+                        messageId = R.string.you_dont_have_a_time;
+                        break;
+                    case -5:
+                        messageId = R.string.horse_and_weapon_required;
+                        break;
+                    case -10:
+                        messageId = R.string.null_personage_error;
+                }
+                if (messageId != 0) {
+                    DialogueFragment.newInstance(messageId, R.string.ok)
+                            .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
+                }
+            } else {
+                work.setInteracted(false);
+                Work.refreshInteractionCounter();
+                viewHolder.setCategoryButtonSelectStateNotSelected(context);
+            }
+        });
+    }
+
+    private void changeFragmentOnCategoryClick(int position, LinearLayout layout) {
+        layout.setOnClickListener(view -> {
+            if (!categories.get(position).getItems().isEmpty()) {
+                Fragment fragment = new ItemsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("categoryId", categories.get(position).getId());
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_frame, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
 

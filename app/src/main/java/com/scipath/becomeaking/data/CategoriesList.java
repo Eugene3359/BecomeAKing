@@ -548,7 +548,8 @@ public class CategoriesList {
         work.setStats(new Stats()
                 .add(Stat.HealthPerDay, -80)
                 .add(Stat.ReputationPerDay, 80)
-                .add(Stat.CostPerDay, 80));
+                .add(Stat.CostPerDay, 80)
+                .add(Stat.HorseAndWeaponRequired, 1));
         categories.get(12).addItem(work);
 
 

@@ -151,7 +151,7 @@ public class Item implements IItem {
         // Check for money
         if (personage.getMoney() < cost) return -1; // Not enough money
 
-        // Check for strength
+        // Check for strength requirement
         int personageStrength = personage.getLevel().getStrength();
         int strengthRequired = stats.get(Stat.StrengthRequired);
         if (personageStrength < strengthRequired) return -2; // Not enough strength

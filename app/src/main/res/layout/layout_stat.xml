@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:text="@string/placeholder"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_size_small"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>

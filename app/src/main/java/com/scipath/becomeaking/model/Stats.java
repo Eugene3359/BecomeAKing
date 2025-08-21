@@ -111,10 +111,9 @@ public class Stats implements IStats {
     @NonNull
     @Override
     public IStats clone() {
-        try {
-            return (IStats) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+        Stats copy = new Stats();
+        copy.keys = new ArrayList<>(this.keys);
+        copy.values = new ArrayList<>(this.values);
+        return copy;
     }
 }

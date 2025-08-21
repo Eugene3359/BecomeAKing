@@ -28,8 +28,9 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
     // Constructor
     public StatsAdapter(IStats stats, Context context) {
         this.stats = stats.clone();
-        stats.remove(Stat.StrengthRequired);
-        stats.remove(Stat.ReputationRequired);
+        this.stats.remove(Stat.StrengthRequired);
+        this.stats.remove(Stat.ReputationRequired);
+        this.stats.remove(Stat.HorseAndWeaponRequired);
         this.context = context;
     }
 

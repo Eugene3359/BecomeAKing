@@ -20,18 +20,34 @@
         android:layout_height="150dp"
         android:orientation="vertical">
 
-        <com.scipath.becomeaking.view.customview.CustomTextView
-            android:id="@+id/text_view_category"
+        <com.scipath.becomeaking.view.customview.CustomLinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingHorizontal="20dp"
             app:backgroundColor="@color/cloth_dark_brown"
             app:backgroundDrawable="@drawable/bg_cloth1"
-            android:text="@string/placeholder"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_small"
-            android:textStyle="bold"
-            android:gravity="center_vertical" />
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/text_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_small"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_view_requirement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_size_smallest"
+                android:visibility="gone" />
+
+        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
 
         <com.scipath.becomeaking.view.customview.CustomLinearLayout
             android:layout_width="match_parent"
@@ -58,7 +74,7 @@
                 android:padding="0dp"
                 app:backgroundColor="@color/transparent_green"
                 android:text="@string/select"
-                android:textSize="11sp"
+                android:textSize="@dimen/font_size_smallest"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:visibility="gone" />

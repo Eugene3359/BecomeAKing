@@ -116,10 +116,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         TextView textViewRequirement = viewHolder.getItemRequirementView();
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
-        if(strengthRequired == 0 && reputationRequired == 0) {
-            textViewRequirement.setVisibility(View.GONE);
-            textViewRequirement.setText("");
-        } else {
+        if(strengthRequired != 0 || reputationRequired != 0) {
             String requirement = (strengthRequired == 0) ?
                     Stat.ReputationRequired.getDescription(reputationRequired, context) :
                     Stat.StrengthRequired.getDescription(strengthRequired, context);

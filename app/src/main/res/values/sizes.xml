@@ -5,4 +5,5 @@
     <dimen name="view_width">242dp</dimen>
     <dimen name="font_size_big">34sp</dimen>
     <dimen name="font_size_small">20sp</dimen>
+    <dimen name="font_size_smallest">11sp</dimen>
 </resources>

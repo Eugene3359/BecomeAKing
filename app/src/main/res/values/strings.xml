@@ -248,6 +248,7 @@
     <string name="maximum_amount_d">Запас %1$d</string>
     <string name="required_strength_skill_points_d">Нужна сила %1$d</string>
     <string name="required_reputation_d">Нужна репутация %1$d</string>
+    <string name="horse_and_weapon_required">Нужен конь и оружие</string>
 
 
     <!-- Clicker MiniGame Activity -->

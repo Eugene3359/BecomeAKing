@@ -2,10 +2,14 @@ package com.scipath.becomeaking.model.item;
 
 import android.content.Context;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.Stats;
+
+import java.util.ArrayList;
 
 
 public class Work extends Item {
@@ -58,13 +62,21 @@ public class Work extends Item {
     public int interact(Personage personage) {
         if (personage == null) return -10; // Null
 
-        // Check for reputation
+        // Check for reputation requirement
         int personageReputation = personage.getReputation();
         int reputationRequired = stats.get(Stat.ReputationRequired);
         if (personageReputation < reputationRequired) return -3; // Not enough reputation
 
         // Check for number of completed works
         if (interactionCounter + interactionValue > 2) return -4;
+
+        // Check for horse and weapon requirement
+        int horseAndWeaponRequired = stats.get(Stat.HorseAndWeaponRequired);
+        if (horseAndWeaponRequired != 0) {
+            ArrayList<ICategory> categories = BecomeAKing.getInstance().getCategories();
+            if (categories.get(3).getBestItem() == null || categories.get(9).getBestItem() == null)
+                return -5;
+        }
 
         // Work
         interacted = true;

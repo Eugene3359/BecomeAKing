@@ -34,9 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:text="@string/placeholder"
-            android:textSize="10sp"
+            android:textSize="@dimen/font_size_smallest"
             android:textStyle="bold"
-            android:textColor="@color/light_gray" />
+            android:textColor="@color/light_gray"
+            android:visibility="gone" />
 
     </LinearLayout>
 
