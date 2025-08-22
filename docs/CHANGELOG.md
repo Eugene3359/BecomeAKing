@@ -1,3 +1,15 @@
+# Become a King [0.4.1] - 22.08.2025
+
+### Additions
+- Implemented language selection
+- Added English language
+
+### Changes
+- English is now default language
+- Items stats now vertically centred
+
+---
+
 # Become a King [0.4.0] - 21.08.2025
 
 ### Additions

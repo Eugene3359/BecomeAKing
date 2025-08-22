@@ -14,7 +14,7 @@ public enum Stat implements Serializable {
 
     // Stats
     // Persistent stats
-    MaxHealth(R.string.health, R.string.maximum_amount_d, R.drawable.icon_heart),
+    MaxHealth(R.string.health, R.string.d_maximum_amount, R.drawable.icon_heart),
     Might(R.string.might, R.string.c_d, R.drawable.icon_might),
 
     // Single stats change
@@ -28,7 +28,7 @@ public enum Stat implements Serializable {
     CoinsPerMight(R.string.money, R.string.c_d_per_1_might, R.drawable.icon_coin),
 
     // Requirement stats
-    ReputationRequired(R.string.reputation, R.string.required_reputation_d, 0),
+    ReputationRequired(R.string.reputation, R.string.d_reputation_required_, 0),
     StrengthRequired(R.string.strength, R.string.required_strength_skill_points_d, 0),
     HorseAndWeaponRequired(R.string.horse_and_weapon_required, R.string.horse_and_weapon_required, 0),
 

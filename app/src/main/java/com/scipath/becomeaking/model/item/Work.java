@@ -23,14 +23,14 @@ public class Work extends Item {
     public Work(int nameId, int imageId) {
         super(nameId, imageId, 0);
         this.interactionNameId = R.string.start;
-        this.interactionResultNameId = R.string.ended;
+        this.interactionResultNameId = R.string.done;
         interactionValue = 1;
     }
 
     public Work(int nameId, int imageId, Stats stats) {
         super(nameId, imageId, 0, stats);
         this.interactionNameId = R.string.start;
-        this.interactionResultNameId = R.string.ended;
+        this.interactionResultNameId = R.string.done;
         interactionValue = 1;
     }
 

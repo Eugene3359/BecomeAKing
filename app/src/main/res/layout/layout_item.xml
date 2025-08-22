@@ -58,14 +58,20 @@
 
     </com.scipath.becomeaking.view.customview.CustomLinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stats_list"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_marginVertical="7.5dp"
-        android:layout_gravity="center_horizontal"
-        tools:context=".view.activity.GameActivity"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:gravity="center" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stats_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context=".view.activity.GameActivity"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </LinearLayout>
 
     <com.scipath.becomeaking.view.customview.CustomButton
         android:id="@+id/button_interact"

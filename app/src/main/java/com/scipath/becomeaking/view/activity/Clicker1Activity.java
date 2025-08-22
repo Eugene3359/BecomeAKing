@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -18,7 +17,7 @@ import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
-public class Clicker1Activity extends AppCompatActivity {
+public class Clicker1Activity extends BaseActivity {
 
     // Variables
     private int moneyEarned = 0;

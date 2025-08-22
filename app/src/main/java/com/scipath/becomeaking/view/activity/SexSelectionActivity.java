@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -15,7 +14,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.enums.Sex;
 
 
-public class SexSelectionActivity extends AppCompatActivity {
+public class SexSelectionActivity extends BaseActivity {
 
     // Models variables
     private Sex currentSex;

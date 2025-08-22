@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -24,7 +23,7 @@ import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import java.util.ArrayList;
 
 
-public class NamingPersonageActivity extends AppCompatActivity {
+public class NamingPersonageActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class NamingPersonageActivity extends AppCompatActivity {
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.enter_name, R.string.ok);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.enter_a_name, R.string.got_it);
                 dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });

@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,7 +21,7 @@ import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.Random;
 
-public class Clicker2Activity extends AppCompatActivity {
+public class Clicker2Activity extends BaseActivity {
 
     // Variables
     private int moneyEarned = 0;

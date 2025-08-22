@@ -148,7 +148,7 @@ public class BecomeAKing extends Application {
         message += " " + getApplicationContext().getString(R.string.game_over);
 
         // Showing dialogue
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(message, R.string.ok);
+        DialogueFragment dialogueFragment = DialogueFragment.newInstance(message, R.string.got_it);
         dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         dialogueFragment.setCallback(() ->
         {
@@ -173,12 +173,12 @@ public class BecomeAKing extends Application {
                 isLoaded = true;
             } else {
                 // Load error
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.something_went_wrong, R.string.ok);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.something_went_wrong, R.string.got_it);
                 dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
             }
         } else {
             // No save file
-            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.save_not_found, R.string.ok);
+            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.save_not_found, R.string.got_it);
             dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         }
     }

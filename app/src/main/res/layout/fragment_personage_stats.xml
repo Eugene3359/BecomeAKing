@@ -293,7 +293,7 @@
                     app:borderColor="@color/border_brown"
                     app:backgroundColor="@color/cloth_gray"
                     app:backgroundDrawable="@drawable/bg_cloth1"
-                    android:text="@string/drop_skills"
+                    android:text="@string/drop_skill_points"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_size_small"
                     android:gravity="center" />

@@ -9,7 +9,7 @@ import com.scipath.becomeaking.view.fragment.DialogueFragment;
 public class AdManagerMock {
 
     public static void showAd(AppCompatActivity activity) {
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.ad, R.string.ok);
+        DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.ad, R.string.got_it);
         dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
     }
 }

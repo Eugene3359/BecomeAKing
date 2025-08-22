@@ -81,7 +81,7 @@ public class CategoriesList {
         // Clothes
         categories.add(new Category(R.string.clothes));
         categories.get(1)
-                .addItem(new Item(R.string.poor_man_clothes, isMale ?
+                .addItem(new Item(R.string.poor_mans_clothes, isMale ?
                         R.drawable.img_poor_man_clothes : R.drawable.img_poor_woman_clothes, 10))
                 .addItem(new Item(R.string.peasant_clothes, isMale ?
                         R.drawable.img_peasant_clothes : R.drawable.img_peasant_clothes_w, 50))
@@ -392,7 +392,7 @@ public class CategoriesList {
         // Artworks
         categories.add(new Category(R.string.artworks));
         categories.get(8)
-                .addItem(new Item(R.string.figurine_from_the_workshop, R.drawable.img_figurine_from_the_workshop, 300))
+                .addItem(new Item(R.string.workshop_figurine, R.drawable.img_figurine_from_the_workshop, 300))
                 .addItem(new Item(R.string.local_painting, R.drawable.img_local_painting, 800))
                 .addItem(new Item(R.string.painting_by_a_famous_artist, R.drawable.img_painting_by_a_famous_artist, 1500))
                 .addItem(new Item(R.string.marble_statue, R.drawable.img_marble_statue, 4000))
@@ -458,7 +458,7 @@ public class CategoriesList {
         // Work in village
         categories.add(new Category(R.string.work_in_a_village));
         categories.get(10)
-                .addItem(new Work(R.string.to_graze_animals, R.drawable.img_to_graze_animals))
+                .addItem(new Work(R.string.grazing_animals, R.drawable.img_to_graze_animals))
                 .addItem(new Work(R.string.harvesting, R.drawable.img_harvesting))
                 .addItem(new Work(R.string.logging, R.drawable.img_logging))
                 .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine))

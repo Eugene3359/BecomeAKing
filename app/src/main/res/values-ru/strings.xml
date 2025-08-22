@@ -1,0 +1,268 @@
+<resources>
+    <string name="app_name">Become a King</string>
+
+    <string name="background">Фон</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="test">Тест</string>
+    <string name="ad">Реклама</string>
+
+    <!-- Main Activity -->
+    <string name="new_game">Навая игра</string>
+    <string name="load">Загрузить</string>
+    <string name="language">Язык</string>
+    <string name="image_of_knights">Изображение рыцарей</string>
+    <string name="save_not_found">Сохранение не найдено</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+    <string name="got_it">Понятно</string>
+
+    <!-- Language Selection Activity -->
+    <string name="select_language">Выберите язык</string>
+    <string name="change">Изменить</string>
+    <string name="back">Назад</string>
+
+    <!-- Sex Selection Activity -->
+    <string name="select_sex">Выберите пол персонажа</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+    <string name="_continue">Продолжить</string>
+
+    <!-- Title Selection Activity -->
+    <string name="select_starting_title">Выберите начальный титул персонажа. Во время игры вы откроете больше титулов.</string>
+    <string name="rogue">Бродяга</string>
+    <string name="villager">Крестьянин</string>
+    <string name="bandit">Разбойник</string>
+    <string name="chose_title">Выберите титул персонажа</string>
+
+    <!-- Naming Personage Activity -->
+    <string name="name_your_personage">Назовите своего персонажа</string>
+    <string name="enter_a_name">Введите имя</string>
+    <string name="start">Начать</string>
+
+    <!-- Game Activity Main Stats -->
+    <string name="health">Здоровье</string>
+    <string name="reputation">Репутация</string>
+    <string name="money">Деньги</string>
+    <string name="next_day">Следующий день</string>
+    <string name="_0">0</string>
+
+    <!-- Game Activity Menu -->
+    <string name="personage">Персонаж</string>
+    <string name="shop">Лавки</string>
+    <string name="property">Имущество</string>
+    <string name="job">Работа</string>
+    <string name="finance">Финансы</string>
+    <string name="battle">Сражение</string>
+
+    <!-- Income and Expenses Layout -->
+    <string name="income_and_expense">Доход и расход</string>
+    <string name="personage_image">Изображение персонажа</string>
+    <string name="frame">Рамка</string>
+
+    <!-- Personage Fragment -->
+    <string name="name">Имя</string>
+    <string name="title">Титул</string>
+    <string name="arrow">Стрела</string>
+    <string name="day">День</string>
+    <string name="none">Нету</string>
+
+    <!-- Nutrition -->
+    <string name="nutrition">Питание</string>
+    <string name="bread">Хлеб</string>
+    <string name="meat">Мясо</string>
+    <string name="cheese">Сыр</string>
+    <string name="vegetables">Овощи</string>
+    <string name="soup">Суп</string>
+    <string name="nourishing_food">Сытный обед</string>
+    <string name="luxurious_food">Роскошная еда</string>
+    <string name="aristocracy_food">Дворянская еда</string>
+    <string name="royal_food">Королевская еда</string>
+
+    <!-- Clothes -->
+    <string name="clothes">Одежда</string>
+    <string name="poor_mans_clothes">Одежда бедняка</string>
+    <string name="peasant_clothes">Одежда крестьянина</string>
+    <string name="citizen_clothes">Одежда горожанина</string>
+    <string name="luxurious_clothes">Роскошная одежда</string>
+    <string name="aristocracy_clothes">Одежда знати</string>
+    <string name="earl_clothes">Одежда графа</string>
+    <string name="royal_clothes">Королевская одежда</string>
+
+    <!-- Entertainment -->
+    <string name="entertainment">Развлечение</string>
+    <string name="have_a_drink_at_the_tavern">Выпить в таверне</string>
+    <string name="walk_around_the_fair">Пройтись по ярмарку</string>
+    <string name="watch_the_tournament">Посмотреть на турнир</string>
+    <string name="visit_the_theatre">Посетить театр</string>
+    <string name="organize_a_hunt">Организовать охоту</string>
+    <string name="throw_a_feast">Устроить пир</string>
+
+    <!-- Weapon -->
+    <string name="weapon">Оружие</string>
+    <string name="ax">Секира</string>
+    <string name="rusty_sword">Ржавый меч</string>
+    <string name="steel_sword">Стальной меч</string>
+    <string name="two_blades">Парные клинки</string>
+    <string name="ax_and_shield">Топор и щит</string>
+    <string name="sword_and_shield">Меч и щит</string>
+    <string name="ancient_artifacts">Древние артефакты</string>
+
+    <!-- Armor -->
+    <string name="armor">Броня</string>
+    <string name="leather_armor">Кожаная броня</string>
+    <string name="rusty_armor">Ржавая броня</string>
+    <string name="old_armor">Старая броня</string>
+    <string name="heavy_armor">Тяжелая броня</string>
+    <string name="good_armor">Качественная броня</string>
+    <string name="luxurious_armor">Роскошная броня</string>
+    <string name="king_armor">Броня короля</string>
+
+    <!-- Housing -->
+    <string name="housing">Жилье</string>
+    <string name="hut">Хижина</string>
+    <string name="old_house">Старый дом</string>
+    <string name="stone_house">Каменный дом</string>
+    <string name="country_house">Загородний дом</string>
+    <string name="small_mansion">Малый особняк</string>
+    <string name="medium_mansion">Средний особняк</string>
+    <string name="large_mansion">Большой особняк</string>
+
+    <!-- Furniture -->
+    <string name="furniture">Мебель</string>
+    <string name="old_furniture">Старая мебель</string>
+    <string name="ordinary_furniture">Обычная мебель</string>
+    <string name="new_furniture">Новая мебель</string>
+    <string name="luxurious_furniture">Роскошная мебель</string>
+    <string name="royal_furniture">Королевская мебель</string>
+
+    <!-- Books -->
+    <string name="books">Книги</string>
+    <string name="old_book">Старая книга</string>
+    <string name="new_book">Новая книга</string>
+    <string name="science_book">Научная книга</string>
+    <string name="military_strategy_books">Книги о военной стратегии</string>
+    <string name="small_library">Небольшая библиотека</string>
+    <string name="medium_library">Средняя библиотека</string>
+    <string name="huge_library">Огромная библиотека</string>
+    <string name="royal_library">Королевская библиотека</string>
+
+    <!-- Artworks -->
+    <string name="artworks">Произведения искусства</string>
+    <string name="workshop_figurine">Фигурка из мастерской</string>
+    <string name="local_painting">Местная картина</string>
+    <string name="painting_by_a_famous_artist">Картина известного художника</string>
+    <string name="marble_statue">Мраморная статуя</string>
+    <string name="private_museum">Собственный музей</string>
+
+    <!-- Horse -->
+    <string name="horse">Лошадь</string>
+    <string name="lame_horse">Хромой конь</string>
+    <string name="young_horse">Молодой конь</string>
+    <string name="fast_horse">Быстрый конь</string>
+    <string name="light_armored_horse">Конь в легкой броне</string>
+    <string name="medium_armored_horse">Конь в средней броне</string>
+    <string name="heavy_armored_horse">Конь в тяжелой броне</string>
+
+    <!-- Work in a village -->
+    <string name="work_in_a_village">Работа в селе</string>
+    <string name="grazing_animals">Выпас животных</string>
+    <string name="harvesting">Сбор урожая</string>
+    <string name="logging">Лесозаготовка</string>
+    <string name="work_in_a_mine">Работа в шахте</string>
+    <string name="unloading_ships">Разгрузка кораблей</string>
+
+    <!-- Work in a town -->
+    <string name="work_in_a_town">Работа в городе</string>
+    <string name="cart_repair">Ремонт телег</string>
+    <string name="architects_apprentice">Ученик архитектора</string>
+    <string name="weavers_apprentice">Ученик ткача </string>
+    <string name="craftsmans_apprentice">Ученик ремесленика</string>
+    <string name="blacksmiths_apprentice">Ученик кузнеца</string>
+    <string name="lords_courtier">Придворный лорда</string>
+
+    <!-- All day long work -->
+    <string name="caravan_protection">Защита каравана</string>
+    <string name="mercenary_in_the_army">Наемник в армии</string>
+
+    <!-- Business -->
+    <string name="enterprises">Предприятия</string>
+
+    <!-- Domains -->
+    <string name="domains">Владения</string>
+
+    <!-- Personage Fragment Stats -->
+    <string name="max_health">Запас здоровья</string>
+    <string name="might">Мощь</string>
+
+    <!-- Ad -->
+    <string name="watch_ad">Смотреть рекламу</string>
+    <string name="_300">+300</string>
+    <string name="_500">+500</string>
+    <string name="_1000">+1000</string>
+
+    <!-- Personage Fragment Buttons -->
+    <string name="level">Уровень</string>
+    <string name="family">Семья</string>
+    <string name="friends">Друзья</string>
+    <string name="caravans">Караваны</string>
+    <string name="settings">Настройки</string>
+    <string name="developer">Разработчик</string>
+    <string name="save_and_exit">Сохранить и выйти</string>
+
+    <!-- Personage Characteristics Fragment -->
+    <string name="age_d">Возраст %d</string>
+    <string name="watch">Часы</string>
+    <string name="level_d">Уровень %d</string>
+    <string name="d_d">%d/%d</string>
+    <string name="skill_points">Очки навыков</string>
+    <string name="characteristics">Характеристики</string>
+    <string name="decrease">Уменьшить</string>
+    <string name="increase">Увеличить</string>
+    <string name="strength">Сила</string>
+    <string name="luck">Удача</string>
+    <string name="regeneration">Регенерация</string>
+    <string name="skill_points_d">Очки навыков %d</string>
+    <string name="drop_skill_points">Скинуть очки навыков</string>
+    <string name="save">Сохранить</string>
+
+    <!-- Categories Fragment -->
+    <string name="select">Выбрать</string>
+    <string name="remove">Убрать</string>
+
+    <!-- Items Fragment -->
+    <string name="previous">Предыдущий</string>
+    <string name="next">Следующий</string>
+
+    <!-- Item -->
+    <string name="buy_d">Купить: %d</string>
+    <string name="bought">Куплено</string>
+    <string name="add_to_ration">Добавить в рацион</string>
+    <string name="in_ration">В рационе</string>
+    <string name="done">Выполнено</string>
+    <string name="not_enough_money">Недостаточно денег</string>
+    <string name="not_enough_strength_points">Недостаточно очков силы</string>
+    <string name="not_enough_reputation">Недостаточно репутации</string>
+    <string name="null_personage_error">Ошибка. Персонаж отсутствует.</string>
+    <string name="you_dont_have_a_time">У вас сегодня осталось недостаточно времени для выполнения даной работы</string>
+
+    <!-- Item/Category Stats -->
+    <string name="c_d_per_day">%1$c %2$d в день</string>
+    <string name="c_d">%1$c %2$d</string>
+    <string name="c_d_per_click">%1$c %2$d за нажатие</string>
+    <string name="d_maximum_amount">Запас %1$d</string>
+    <string name="c_d_per_1_might">%1$c %2$d за 1 мощи</string>
+    <string name="required_strength_skill_points_d">Нужна сила %1$d</string>
+    <string name="d_reputation_required_">Нужна репутация %1$d</string>
+    <string name="horse_and_weapon_required">Нужен конь и оружие</string>
+
+    <!-- Clicker Activity -->
+    <string name="exit">Выйти</string>
+    <string name="instruction1">Жми как можно быстрее — от этого зависит твой доход!</string>
+    <string name="instruction2">Нажимай кнопки в правильном порядке!</string>
+
+    <!-- Game Over -->
+    <string name="game_over">Игра закончилась.</string>
+    <string name="negative_health">Потеряно все здоровье. Вы погибли.</string>
+    <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>
+    <string name="negative_money">Вы задолжали денег не тем людям. Вас продали в рабство.</string>
+
+</resources>

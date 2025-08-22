@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,7 +25,7 @@ import com.scipath.becomeaking.model.enums.Title;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         // Button language
         Button buttonLanguage = findViewById(R.id.button_language);
         buttonLanguage.setOnClickListener(view -> {
-            // TODO: move to new LanguageActivity
+            Intent intent = new Intent(MainActivity.this, LanguageSelectionActivity.class);
+            startActivity(intent);
         });
 
         // Button test

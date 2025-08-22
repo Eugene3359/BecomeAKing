@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,7 +18,7 @@ import com.scipath.becomeaking.contract.callback.ObjectCallback;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
-public class TitleSelectionActivity extends AppCompatActivity {
+public class TitleSelectionActivity extends BaseActivity {
 
     // Models variables
     private Title currentTitle;
@@ -47,22 +46,19 @@ public class TitleSelectionActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.titles_list);
 
         // Button click callback
-        ObjectCallback objectCallback = new ObjectCallback() {
-            @Override public void onClick(Object title)
-            {
-                if(!(title instanceof Title)) return;
-                // Notify adapter about onButtonClick event
-                recyclerView.post(new Runnable() {
-                    @Override public void run()
-                    {
-                        titlesAdapter.notifyDataSetChanged();
-                        currentTitle = (Title)title;
-                    }
-                });
-            }
+        ObjectCallback objectCallback = title -> {
+            if(!(title instanceof Title)) return;
+            // Notify adapter about onButtonClick event
+            recyclerView.post(new Runnable() {
+                @Override public void run()
+                {
+                    titlesAdapter.notifyDataSetChanged();
+                    currentTitle = (Title)title;
+                }
+            });
         };
 
-        // Displaying titles as Buttons that works as RadioButtons using TitleAdapter
+        // Displaying titles as RadioButtons using TitleAdapter
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         titlesAdapter = new TitlesAdapter(titles, objectCallback);
         recyclerView.setAdapter(titlesAdapter);
@@ -77,7 +73,7 @@ public class TitleSelectionActivity extends AppCompatActivity {
                 intent.putExtra("title", currentTitle);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.chose_title, R.string.ok);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.chose_title, R.string.got_it);
                 dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });

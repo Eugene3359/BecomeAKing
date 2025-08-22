@@ -10,8 +10,8 @@ android {
         applicationId = "com.scipath.becomeaking"
         minSdk = 26
         targetSdk = 35
-        versionCode = 23
-        versionName = "0.4.0"
+        versionCode = 24
+        versionName = "0.4.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -59,4 +59,24 @@ dependencies {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+}
+
+tasks.register("copyEnglishStrings") {
+    val defaultStrings = file("src/main/res/values/strings.xml")
+    val enStrings = file("src/main/res/values-en/strings.xml")
+
+    inputs.file(defaultStrings)
+    outputs.file(enStrings)
+
+    doLast {
+        if (defaultStrings.exists()) {
+            enStrings.parentFile.mkdirs()
+            enStrings.writeText(defaultStrings.readText())
+            println("Copied values/strings.xml → values-en/strings.xml")
+        }
+    }
+}
+
+tasks.named("preBuild").configure {
+    dependsOn("copyEnglishStrings")
 }

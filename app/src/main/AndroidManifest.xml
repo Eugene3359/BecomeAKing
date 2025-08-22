@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BecomeAKing"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
             android:name=".view.activity.Clicker2Activity"
             android:exported="false"
@@ -39,6 +39,10 @@
             android:name=".view.activity.SexSelectionActivity"
             android:exported="false"
             android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.LanguageSelectionActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.MainActivity"

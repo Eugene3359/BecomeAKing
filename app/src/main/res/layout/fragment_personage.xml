@@ -46,7 +46,7 @@
                     android:rotation="45"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/arrow_image"/>
+                    android:contentDescription="@string/arrow"/>
 
                 <TextView
                     android:id="@+id/text_view_title"
@@ -121,7 +121,7 @@
                     android:rotation="45"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/arrow_image"/>
+                    android:contentDescription="@string/arrow"/>
 
                 <TextView
                     android:id="@+id/text_view_day"
@@ -167,14 +167,14 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_nutrition"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/absent"
+                        android:text="@string/none"
                         android:textColor="@color/light_brown"
                         android:textSize="24sp"
                         android:textAlignment="center" />
@@ -203,14 +203,14 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_clothes"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/absent"
+                        android:text="@string/none"
                         android:textColor="@color/light_brown"
                         android:textSize="24sp"
                         android:textAlignment="center" />
@@ -239,14 +239,14 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_housing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/absent"
+                        android:text="@string/none"
                         android:textColor="@color/light_brown"
                         android:textSize="24sp"
                         android:textAlignment="center" />
@@ -275,14 +275,14 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_horse"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/absent"
+                        android:text="@string/none"
                         android:textColor="@color/light_brown"
                         android:textSize="24sp"
                         android:textAlignment="center" />
@@ -338,7 +338,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/business"
+                        android:text="@string/enterprises"
                         android:textColor="@color/light_brown"
                         android:textSize="24sp"
                         android:textAlignment="center" />
@@ -350,7 +350,7 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -386,7 +386,7 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -421,7 +421,7 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_max_health"
@@ -457,7 +457,7 @@
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow_image"/>
+                        android:contentDescription="@string/arrow"/>
 
                     <TextView
                         android:id="@+id/text_view_might"
@@ -668,7 +668,7 @@
                 app:backgroundColor="@color/cloth_light_brown"
                 app:backgroundColorPressed="@color/cloth_brown"
                 app:backgroundDrawable="@drawable/bg_cloth1"
-                android:text="@string/setting"
+                android:text="@string/settings"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textAllCaps="false" />

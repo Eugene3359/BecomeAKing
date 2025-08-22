@@ -146,7 +146,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         messageId = R.string.not_enough_money;
                         break;
                     case -2:
-                        messageId = R.string.not_enough_strength_skill_points;
+                        messageId = R.string.not_enough_strength_points;
                         break;
                     case -3:
                         messageId = R.string.not_enough_reputation;
@@ -158,7 +158,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         messageId = R.string.null_personage_error;
                 }
                 if (messageId != 0) {
-                    DialogueFragment.newInstance(messageId, R.string.ok)
+                    DialogueFragment.newInstance(messageId, R.string.got_it)
                             .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
                 }
             });

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brown"
-    tools:context=".view.activity.NamingPersonageActivity">
+    tools:context=".view.activity.LanguageSelectionActivity">
 
     <include layout="@layout/layout_cloth_background" />
 
@@ -15,48 +15,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal" >
 
             <TextView
                 android:layout_width="268dp"
                 android:layout_height="wrap_content"
-                android:text="@string/name_your_personage"
+                android:text="@string/select_language"
                 android:textColor="@color/light_brown"
-                android:textSize="32sp"
+                android:textSize="24sp"
                 android:textAlignment="center" />
 
-            <EditText
-                android:id="@+id/edit_text_name_input"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginVertical="75dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:inputType="text"
-                android:hint="@string/enter_a_name"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="24sp"
-                android:textStyle="italic"
-                android:textAlignment="center"
-                android:importantForAutofill="no" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/languages_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context=".view.activity.LanguageSelectionActivity"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+            </RadioGroup>
 
             <com.scipath.becomeaking.view.customview.CustomButton
-                android:id="@+id/button_start"
-                android:layout_height="@dimen/view_height_big"
+                android:id="@+id/button_change"
                 android:layout_width="@dimen/view_width"
+                android:layout_height="@dimen/view_height_big"
+                android:layout_marginTop="10dp"
                 app:borderColor="@color/black"
                 app:backgroundColor="@color/cloth_salad"
                 app:backgroundColorPressed="@color/cloth_dark_salad"
                 app:backgroundDrawable="@drawable/bg_cloth1"
-                android:text="@string/start"
+                android:text="@string/change"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false" />

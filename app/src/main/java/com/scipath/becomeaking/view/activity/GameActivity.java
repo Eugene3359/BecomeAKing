@@ -5,7 +5,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,7 +19,7 @@ import com.scipath.becomeaking.view.fragment.CategoriesFragment;
 import com.scipath.becomeaking.view.fragment.PersonageFragment;
 
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends BaseActivity {
 
     // Models variables
     private Personage personage;

@@ -10,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.callback.ObjectCallback;
-import com.scipath.becomeaking.model.enums.Title;
 import com.scipath.becomeaking.view.customview.CustomRadioButton;
 
+import java.util.Locale;
 
-public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder> {
+
+public class LocalesAdapter extends RecyclerView.Adapter<LocalesAdapter.ViewHolder> {
 
     // Variables
-    private final Title[] dataSet;
+    private final Locale[] dataSet;
     private final ObjectCallback objectCallback;
     private int selectedPosition = -1;
 
 
     // Constructor
-    public TitlesAdapter(Title[] dataSet, ObjectCallback objectCallback) {
+    public LocalesAdapter(Locale[] dataSet, ObjectCallback objectCallback) {
         this.dataSet = dataSet;
         this.objectCallback = objectCallback;
     }
@@ -48,23 +49,27 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public LocalesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_radio_button_title, viewGroup, false);
 
-        return new ViewHolder(view);
+        return new LocalesAdapter.ViewHolder(view);
     }
 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(LocalesAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        Title title = dataSet[position];
+        Locale locale = dataSet[position];
 
         // Setting values to views
-        viewHolder.getRadioButton().setText(title.getNameId());
+        String languageName = locale.getDisplayLanguage(locale);
+        languageName = Character.toUpperCase(languageName.charAt(0)) +
+                languageName.substring(1).toLowerCase();
+
+        viewHolder.getRadioButton().setText(languageName);
         viewHolder.getRadioButton().setChecked(position == selectedPosition);
         viewHolder.getRadioButton().setOnCheckedChangeListener(
                 (compoundButton, isChecked) -> {
@@ -72,7 +77,7 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
                         // Update selected position
                         selectedPosition = viewHolder.getAdapterPosition();
                         // Call listener
-                        objectCallback.onClick(title);
+                        objectCallback.onClick(locale);
                     }
                 });
     }

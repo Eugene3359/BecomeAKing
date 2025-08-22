@@ -36,7 +36,7 @@ public class WorkTest {
 
     @Test
     void getInteractionResultNameId_returnsExpectedId() {
-        assertEquals(R.string.ended, work.getInteractionResultNameId()); // Initial value
+        assertEquals(R.string.done, work.getInteractionResultNameId()); // Initial value
     }
 
     @Test
