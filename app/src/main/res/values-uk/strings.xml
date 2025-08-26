@@ -1,0 +1,259 @@
+<resources>
+    <string name="background">Фон</string>
+    <string name="test">Тест</string>
+    <string name="ad">Реклама</string>
+
+    <!-- Main Activity -->
+    <string name="new_game">Нова гра</string>
+    <string name="load">Завантажити</string>
+    <string name="language">Мова</string>
+    <string name="image_of_knights">Зображення рицарів</string>
+    <string name="save_not_found">Збереження не знайдено</string>
+    <string name="something_went_wrong">Щось пішло не так</string>
+    <string name="got_it">Зрозуміло</string>
+
+    <!-- Language Selection Activity -->
+    <string name="select_language">Виберіть мову</string>
+    <string name="change">Змінити</string>
+    <string name="back">Назад</string>
+
+    <!-- Sex Selection Activity -->
+    <string name="select_sex">Виберіть стать персонажа</string>
+    <string name="male">Чоловік</string>
+    <string name="female">Жінка</string>
+    <string name="_continue">Продовжити</string>
+
+    <!-- Title Selection Activity -->
+    <string name="select_starting_title">Виберіть початковий титул персонажа. Ви розблокуєте більше титулів під час гри.</string>
+    <string name="rogue">Волоцюга</string>
+    <string name="villager">Селянин</string>
+    <string name="bandit">Бандит</string>
+    <string name="chose_title">Виберіть титул персонажа</string>
+
+    <!-- Naming Personage Activity -->
+    <string name="name_your_personage">Назвіть свого персонажа</string>
+    <string name="enter_a_name">Введіть ім\'я</string>
+    <string name="start">Почати</string>
+
+    <!-- Game Activity Main Stats -->
+    <string name="health">Здоров\'я</string>
+    <string name="reputation">Репутація</string>
+    <string name="money">Гроші</string>
+    <string name="next_day">Наступний день</string>
+
+    <!-- Game Activity Menu -->
+    <string name="personage">Персонаж</string>
+    <string name="shop">Магазин</string>
+    <string name="property">Власність</string>
+    <string name="job">Робота</string>
+    <string name="finance">Фінанси</string>
+    <string name="battle">Битва</string>
+
+    <!-- Income and Expenses Layout -->
+    <string name="income_and_expense">Доходи та витрати</string>
+    <string name="personage_image">Зображення персонажа</string>
+    <string name="frame">Рамка</string>
+
+    <!-- Personage Fragment -->
+    <string name="name">Ім\'я</string>
+    <string name="title">Титул</string>
+    <string name="arrow">Стріла</string>
+    <string name="day">День</string>
+    <string name="none">Немає</string>
+
+    <!-- Nutrition -->
+    <string name="nutrition">Харчування</string>
+    <string name="bread">Хліб</string>
+    <string name="meat">М\'ясо</string>
+    <string name="cheese">Сир</string>
+    <string name="vegetables">Овочі</string>
+    <string name="soup">Суп</string>
+    <string name="nourishing_food">Поживний обід</string>
+    <string name="luxurious_food">Розкішна їжа</string>
+    <string name="aristocracy_food">Їжа аристократії</string>
+    <string name="royal_food">Королівська їжа</string>
+
+    <!-- Clothes -->
+    <string name="clothes">Одяг</string>
+    <string name="poor_mans_clothes">Одяг бідняка</string>
+    <string name="peasant_clothes">Одяг селянина</string>
+    <string name="citizen_clothes">Одяг містянина</string>
+    <string name="luxurious_clothes">Розкішний одяг</string>
+    <string name="aristocracy_clothes">Одяг аристократії</string>
+    <string name="earl_clothes">Одяг графа</string>
+    <string name="royal_clothes">Королівський одяг</string>
+
+    <!-- Entertainment -->
+    <string name="entertainment">Розваги</string>
+    <string name="have_a_drink_at_the_tavern">Випити в таверні</string>
+    <string name="walk_around_the_fair">Прогулянка ярмарком</string>
+    <string name="watch_the_tournament">Дивитися турнір</string>
+    <string name="visit_the_theatre">Відвідати театр</string>
+    <string name="organize_a_hunt">Організуйте полювання</string>
+    <string name="throw_a_feast">Влаштуйте бенкет</string>
+
+    <!-- Weapon -->
+    <string name="weapon">Зброя</string>
+    <string name="ax">Сокира</string>
+    <string name="rusty_sword">Іржавий меч</string>
+    <string name="steel_sword">Сталевий меч</string>
+    <string name="two_blades">Два клинки</string>
+    <string name="ax_and_shield">Сокира та щит</string>
+    <string name="sword_and_shield">Меч та щит</string>
+    <string name="ancient_artifacts">Стародавні артефакти</string>
+
+    <!-- Armor -->
+    <string name="armor">Броня</string>
+    <string name="leather_armor">Шкіряна броня</string>
+    <string name="rusty_armor">Іржава броня</string>
+    <string name="old_armor">Стара броня</string>
+    <string name="heavy_armor">Важка броня</string>
+    <string name="good_armor">Хороша броня</string>
+    <string name="luxurious_armor">Розкішна броня</string>
+    <string name="king_armor">Королівська броня</string>
+
+    <!-- Housing -->
+    <string name="housing">Житло</string>
+    <string name="hut">Хатина</string>
+    <string name="old_house">Старий будинок</string>
+    <string name="stone_house">Кам\'яний будинок</string>
+    <string name="country_house">Заміський будинок</string>
+    <string name="small_mansion">Маленький особняк</string>
+    <string name="medium_mansion">Середній особняк</string>
+    <string name="large_mansion">Великий особняк</string>
+
+    <!-- Furniture -->
+    <string name="furniture">Меблі</string>
+    <string name="old_furniture">Старі меблі</string>
+    <string name="ordinary_furniture">Звичайні меблі</string>
+    <string name="new_furniture">Нові меблі</string>
+    <string name="luxurious_furniture">Розкішні меблі</string>
+    <string name="royal_furniture">Королівські меблі</string>
+
+    <!-- Books -->
+    <string name="books">Книги</string>
+    <string name="old_book">Стара книга</string>
+    <string name="new_book">Нова книга</string>
+    <string name="science_book">Наукова книга</string>
+    <string name="military_strategy_books">Книги з військової стратегії</string>
+    <string name="small_library">Мала бібліотека</string>
+    <string name="medium_library">Середня бібліотека</string>
+    <string name="huge_library">Велика бібліотека</string>
+    <string name="royal_library">Королівська бібліотека</string>
+
+    <!-- Artworks -->
+    <string name="artworks">Твори мистецтва</string>
+    <string name="workshop_figurine">Фігурка з майстерні</string>
+    <string name="local_painting">Місцевий живопис</string>
+    <string name="painting_by_a_famous_artist">Картина відомого художника</string>
+    <string name="marble_statue">Мармурова статуя</string>
+    <string name="private_museum">Приватний музей</string>
+
+    <!-- Horse -->
+    <string name="horse">Кінь</string>
+    <string name="lame_horse">Кульгавий кінь</string>
+    <string name="young_horse">Молодий кінь</string>
+    <string name="fast_horse">Швидкий кінь</string>
+    <string name="light_armored_horse">Кінь в легкій броні</string>
+    <string name="medium_armored_horse">Кінь в середній броні</string>
+    <string name="heavy_armored_horse">Кінь в важкій броні</string>
+
+    <!-- Work in a village -->
+    <string name="work_in_a_village">Робота в селі</string>
+    <string name="grazing_animals">Випас тварин</string>
+    <string name="harvesting">Збір врожаю</string>
+    <string name="logging">Лісозаготівля</string>
+    <string name="work_in_a_mine">Робота в шахті</string>
+    <string name="unloading_ships">Розвантаження суден</string>
+
+    <!-- Work in a town -->
+    <string name="work_in_a_town">Робота в місті</string>
+    <string name="cart_repair">Ремонт возів</string>
+    <string name="architects_apprentice">Учень архітектора</string>
+    <string name="weavers_apprentice">Учень ткача</string>
+    <string name="craftsmans_apprentice">Учень ремісника</string>
+    <string name="blacksmiths_apprentice">Учень коваля</string>
+    <string name="lords_courtier">Придворний лорда</string>
+
+    <!-- All day long work -->
+    <string name="caravan_protection">Захист каравану</string>
+    <string name="mercenary_in_the_army">Найманець в армії</string>
+
+    <!-- Business -->
+    <string name="enterprises">Підприємства</string>
+
+    <!-- Domains -->
+    <string name="domains">Володіння</string>
+
+    <!-- Personage Fragment Stats -->
+    <string name="max_health">Максимальне здоров\'я</string>
+    <string name="might">Могутність</string>
+
+    <!-- Ad -->
+    <string name="watch_ad">Дивитися рекламу</string>
+
+    <!-- Personage Fragment Buttons -->
+    <string name="level">Рівень</string>
+    <string name="family">Родина</string>
+    <string name="friends">Друзі</string>
+    <string name="caravans">Каравани</string>
+    <string name="settings">Налаштування</string>
+    <string name="developer">Розробник</string>
+    <string name="save_and_exit">Зберегти та вийти</string>
+
+    <!-- Personage Characteristics Fragment -->
+    <string name="age_d">Вік %d</string>
+    <string name="watch">Годинник</string>
+    <string name="level_d">Рівень %d</string>
+    <string name="skill_points">Очки навичок</string>
+    <string name="characteristics">Характеристики</string>
+    <string name="decrease">Зменшити</string>
+    <string name="increase">Збільшити</string>
+    <string name="strength">Сила</string>
+    <string name="luck">Удача</string>
+    <string name="regeneration">Регенерація</string>
+    <string name="skill_points_d">Очки навичок %d</string>
+    <string name="drop_skill_points">Скинути очки навичок</string>
+    <string name="save">Зберегти</string>
+
+    <!-- Categories Fragment -->
+    <string name="select">Вибрати</string>
+    <string name="remove">Видалити</string>
+
+    <!-- Items Fragment -->
+    <string name="previous">Попередній</string>
+    <string name="next">Наступний</string>
+
+    <!-- Item -->
+    <string name="buy_d">Купити: %d</string>
+    <string name="bought">Куплено</string>
+    <string name="add_to_ration">Додати до раціону</string>
+    <string name="in_ration">У раціоні</string>
+    <string name="done">Готово</string>
+    <string name="not_enough_money">Недостатньо грошей</string>
+    <string name="not_enough_strength_points">Недостатньо очок сили</string>
+    <string name="not_enough_reputation">Недостатньо репутації</string>
+    <string name="null_personage_error">Помилка. Відсутній персонаж.</string>
+    <string name="you_dont_have_a_time">У вас не залишилося достатньо часу, щоб виконати це завдання сьогодні</string>
+
+    <!-- Item/Category Stats -->
+    <string name="c_d_per_day">%1$c %2$d на день</string>
+    <string name="c_d_per_click">%1$c %2$d за натиснення</string>
+    <string name="d_maximum_amount">Запас %1$d</string>
+    <string name="c_d_per_1_might">%1$c %2$d за 1 могутності</string>
+    <string name="required_strength_skill_points_d">Потрібна сила %1$d</string>
+    <string name="d_reputation_required_">Потрібна репутація %1$d</string>
+    <string name="horse_and_weapon_required">Потрібні кінь та зброя</string>
+
+    <!-- Clicker Activity -->
+    <string name="exit">Вихід</string>
+    <string name="instruction1">Натискайте якомога швидше — від цього залежить ваш дохід!</string>
+    <string name="instruction2">Натискайте кнопки у правильному порядку!</string>
+
+    <!-- Game Over -->
+    <string name="game_over">Гра закінчена.</string>
+    <string name="negative_health">Все здоров\'я втрачено. Ви мертві.</string>
+    <string name="negative_reputation">Ваша репутація впала нижче нуля. Вас вигнали з міста.</string>
+    <string name="negative_money">Ви заборгували гроші не тим людям. Вас продали в рабство.</string>
+
+</resources>

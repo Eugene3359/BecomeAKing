@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Become a King</string>
+    <string name="app_name" translatable="false">Become a King</string>
 
+    <string name="placeholder" translatable="false">Placeholder</string>
     <string name="background">Background</string>
-    <string name="placeholder">Placeholder</string>
     <string name="test">Test</string>
     <string name="ad">Ad</string>
 
@@ -43,7 +43,7 @@
     <string name="reputation">Reputation</string>
     <string name="money">Money</string>
     <string name="next_day">Next day</string>
-    <string name="_0">0</string>
+    <string name="_0" translatable="false">0</string>
 
     <!-- Game Activity Menu -->
     <string name="personage">Character</string>
@@ -195,9 +195,9 @@
 
     <!-- Ad -->
     <string name="watch_ad">Watch ad</string>
-    <string name="_300">+300</string>
-    <string name="_500">+500</string>
-    <string name="_1000">+1000</string>
+    <string name="_300" translatable="false">+300</string>
+    <string name="_500" translatable="false">+500</string>
+    <string name="_1000" translatable="false">+1000</string>
 
     <!-- Personage Fragment Buttons -->
     <string name="level">Level</string>
@@ -212,7 +212,7 @@
     <string name="age_d">Age %d</string>
     <string name="watch">Clock</string>
     <string name="level_d">Level %d</string>
-    <string name="d_d">%d/%d</string>
+    <string name="d_d" translatable="false">%d/%d</string>
     <string name="skill_points">Skill Points</string>
     <string name="characteristics">Characteristics</string>
     <string name="decrease">Decrease</string>
@@ -246,7 +246,7 @@
 
     <!-- Item/Category Stats -->
     <string name="c_d_per_day">%1$c %2$d per day</string>
-    <string name="c_d">%1$c %2$d</string>
+    <string name="c_d" translatable="false">%1$c %2$d</string>
     <string name="c_d_per_click">%1$c %2$d per click</string>
     <string name="d_maximum_amount">%1$d maximum amount</string>
     <string name="c_d_per_1_might">%1$c %2$d per 1 might</string>

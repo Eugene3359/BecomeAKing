@@ -1,3 +1,10 @@
+# Become a King [0.4.2] - 26.08.2025
+
+### Additions
+- Added Ukrainian language
+
+---
+
 # Become a King [0.4.1] - 22.08.2025
 
 ### Additions

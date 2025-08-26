@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">Become a King</string>
-
     <string name="background">Фон</string>
-    <string name="placeholder">Placeholder</string>
     <string name="test">Тест</string>
     <string name="ad">Реклама</string>
 
@@ -43,7 +40,6 @@
     <string name="reputation">Репутация</string>
     <string name="money">Деньги</string>
     <string name="next_day">Следующий день</string>
-    <string name="_0">0</string>
 
     <!-- Game Activity Menu -->
     <string name="personage">Персонаж</string>
@@ -195,9 +191,6 @@
 
     <!-- Ad -->
     <string name="watch_ad">Смотреть рекламу</string>
-    <string name="_300">+300</string>
-    <string name="_500">+500</string>
-    <string name="_1000">+1000</string>
 
     <!-- Personage Fragment Buttons -->
     <string name="level">Уровень</string>
@@ -212,7 +205,6 @@
     <string name="age_d">Возраст %d</string>
     <string name="watch">Часы</string>
     <string name="level_d">Уровень %d</string>
-    <string name="d_d">%d/%d</string>
     <string name="skill_points">Очки навыков</string>
     <string name="characteristics">Характеристики</string>
     <string name="decrease">Уменьшить</string>
@@ -246,7 +238,6 @@
 
     <!-- Item/Category Stats -->
     <string name="c_d_per_day">%1$c %2$d в день</string>
-    <string name="c_d">%1$c %2$d</string>
     <string name="c_d_per_click">%1$c %2$d за нажатие</string>
     <string name="d_maximum_amount">Запас %1$d</string>
     <string name="c_d_per_1_might">%1$c %2$d за 1 мощи</string>

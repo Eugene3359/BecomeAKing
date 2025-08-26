@@ -17,7 +17,7 @@ public class LocaleManager {
     private static final Locale[] SUPPORTED_LOCALES = {
             new Locale("en"),
             new Locale("ru"),
-            // new Locale("uk")
+            new Locale("uk")
     };
 
 

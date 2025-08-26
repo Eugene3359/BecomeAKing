@@ -1,7 +1,7 @@
 # Project Tasks
 
 ## In Progress
-- Add more languages (fr, it, de, sp, uk)
+- Add more languages (fr, it, de, sp)
 - Refactoring views
 
 ## In Queue
