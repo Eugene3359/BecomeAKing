@@ -73,7 +73,7 @@ public class TitleSelectionActivity extends BaseActivity {
                 intent.putExtra("title", currentTitle);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.chose_title, R.string.got_it);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.chose_title, R.string.got_it);
                 dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });

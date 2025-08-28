@@ -57,7 +57,7 @@
     <!-- Personage Fragment -->
     <string name="name">Ім\'я</string>
     <string name="title">Титул</string>
-    <string name="arrow">Стріла</string>
+    <string name="decorative_element">Стріла</string>
     <string name="day">День</string>
     <string name="none">Немає</string>
 
@@ -251,6 +251,7 @@
     <string name="instruction2">Натискайте кнопки у правильному порядку!</string>
 
     <!-- Game Over -->
+    <string name="notification">Сповіщення</string>
     <string name="game_over">Гра закінчена.</string>
     <string name="negative_health">Все здоров\'я втрачено. Ви мертві.</string>
     <string name="negative_reputation">Ваша репутація впала нижче нуля. Вас вигнали з міста.</string>

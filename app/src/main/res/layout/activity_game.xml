@@ -85,7 +85,7 @@
                     <ImageView
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:src="@drawable/icon_coin"
+                        android:src="@drawable/icon_coin1"
                         android:background="@color/game_menu_brown"
                         android:contentDescription="@string/money" />
 

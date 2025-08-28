@@ -18,24 +18,27 @@ import com.scipath.becomeaking.contract.callback.Callback;
 
 public class DialogueFragment extends DialogFragment {
 
+    private int headerId;
     private int messageId;
     private String message;
     private int buttonTextId;
     private Callback callback;
 
 
-    public static DialogueFragment newInstance(int messageId, int buttonTextId) {
+    public static DialogueFragment newInstance(int headerId, int messageId, int buttonTextId) {
         DialogueFragment fragment = new DialogueFragment();
         Bundle args = new Bundle();
+        args.putInt("headerId", headerId);
         args.putInt("messageId", messageId);
         args.putInt("buttonTextId", buttonTextId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static DialogueFragment newInstance(String message, int buttonTextId) {
+    public static DialogueFragment newInstance(int headerId, String message, int buttonTextId) {
         DialogueFragment fragment = new DialogueFragment();
         Bundle args = new Bundle();
+        args.putInt("headerId", headerId);
         args.putString("message", message);
         args.putInt("buttonTextId", buttonTextId);
         fragment.setArguments(args);
@@ -46,6 +49,7 @@ public class DialogueFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            headerId = getArguments().getInt("headerId");
             messageId = getArguments().getInt("messageId");
             message = getArguments().getString("message");
             buttonTextId = getArguments().getInt("buttonTextId");
@@ -61,14 +65,24 @@ public class DialogueFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dialogue, container, false);
+        View view = inflater.inflate(R.layout.fragment_dialogue2, container, false);
 
-        // Message TextView
+        // Header
+        TextView textViewHeader = view.findViewById(R.id.text_view_header);
+        if (headerId != 0) {
+            textViewHeader.setText(headerId);
+        } else {
+            view.findViewById(R.id.layout_header).setVisibility(View.GONE);
+        }
+
+        // Message
         TextView textViewMessage = view.findViewById(R.id.text_view_message);
-        if(message != null) {
+        if(messageId != 0) {
+            textViewMessage.setText(messageId);
+        } else if (message != null) {
             textViewMessage.setText(message);
         } else {
-            textViewMessage.setText(messageId);
+            textViewMessage.setVisibility(View.GONE);
         }
 
         // Button

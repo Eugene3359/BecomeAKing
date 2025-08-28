@@ -42,11 +42,11 @@
                 <ImageView
                     android:layout_width="29dp"
                     android:layout_height="29dp"
-                    android:src="@drawable/icon_airbrush"
+                    android:src="@drawable/icon_decorative_arrow"
                     android:rotation="45"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/arrow"/>
+                    android:contentDescription="@string/decorative_element"/>
 
                 <TextView
                     android:id="@+id/text_view_title"
@@ -117,11 +117,11 @@
                 <ImageView
                     android:layout_width="29dp"
                     android:layout_height="29dp"
-                    android:src="@drawable/icon_airbrush"
+                    android:src="@drawable/icon_decorative_arrow"
                     android:rotation="45"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/arrow"/>
+                    android:contentDescription="@string/decorative_element"/>
 
                 <TextView
                     android:id="@+id/text_view_day"
@@ -163,11 +163,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_nutrition"
@@ -199,11 +199,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_clothes"
@@ -235,11 +235,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_housing"
@@ -271,11 +271,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_horse"
@@ -346,11 +346,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -382,11 +382,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -417,11 +417,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_max_health"
@@ -453,11 +453,11 @@
                     <ImageView
                         android:layout_width="29dp"
                         android:layout_height="29dp"
-                        android:src="@drawable/icon_airbrush"
+                        android:src="@drawable/icon_decorative_arrow"
                         android:rotation="45"
                         android:scaleType="fitXY"
                         android:adjustViewBounds="true"
-                        android:contentDescription="@string/arrow"/>
+                        android:contentDescription="@string/decorative_element"/>
 
                     <TextView
                         android:id="@+id/text_view_might"
@@ -580,7 +580,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/icon_coin"
+                        android:src="@drawable/icon_coin1"
                         android:contentDescription="@string/money"/>
 
                     <TextView

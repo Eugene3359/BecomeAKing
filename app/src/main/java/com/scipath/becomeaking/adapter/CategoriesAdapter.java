@@ -186,7 +186,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                         messageId = R.string.null_personage_error;
                 }
                 if (messageId != 0) {
-                    DialogueFragment.newInstance(messageId, R.string.got_it)
+                    DialogueFragment.newInstance(R.string.notification, messageId, R.string.got_it)
                             .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
                 }
             } else {

@@ -14,6 +14,7 @@
     <color name="transparent_white">#80FFFFFF</color>
 
     <color name="gray">#4B4B4B</color>
+    <color name="whitish_gray">#D0D0D0</color>
     <color name="light_gray">#B2AAAA</color>
     <color name="dark_blue">#47666B</color>
     <color name="light_blue">#5B6C6E</color>
@@ -49,5 +50,8 @@
     <color name="cloth_light_brown">#CCBFB192</color>
     <color name="cloth_yellowish_brown">#D97A5528</color>
     <color name="cloth_yellow">#CCC8A83B</color>
+
+    <color name="transparent_dark_brown">#F22D1D0E</color>
+    <color name="transparent_light_brown">#F2453D36</color>
 
 </resources>

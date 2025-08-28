@@ -57,7 +57,7 @@
     <!-- Personage Fragment -->
     <string name="name">Имя</string>
     <string name="title">Титул</string>
-    <string name="arrow">Стрела</string>
+    <string name="decorative_element">Стрела</string>
     <string name="day">День</string>
     <string name="none">Нету</string>
 
@@ -251,6 +251,7 @@
     <string name="instruction2">Нажимай кнопки в правильном порядке!</string>
 
     <!-- Game Over -->
+    <string name="notification">Уведомление</string>
     <string name="game_over">Игра закончилась.</string>
     <string name="negative_health">Потеряно все здоровье. Вы погибли.</string>
     <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>

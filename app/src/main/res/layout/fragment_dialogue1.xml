@@ -17,13 +17,29 @@
         android:orientation="vertical"
         android:layout_gravity="center_horizontal" >
 
+        <LinearLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp" >
+
+            <TextView
+                android:id="@+id/text_view_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/text_view_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholder"
-            android:textSize="20sp"
             android:textColor="@color/white"
+            android:textSize="20sp"
             android:textAlignment="center" />
 
         <com.scipath.becomeaking.view.customview.CustomButton
@@ -33,8 +49,8 @@
             android:layout_marginTop="25dp"
             app:backgroundColor="@color/transparent_green"
             android:text="@string/placeholder"
-            android:textSize="20sp"
             android:textColor="@color/white"
+            android:textSize="20sp"
             android:textAllCaps="false" />
 
     </com.scipath.becomeaking.view.customview.CustomLinearLayout>

@@ -1,6 +1,7 @@
 # Project Tasks
 
 ## In Progress
+- Implement work result notification
 - Add more languages (fr, it, de, sp)
 - Refactoring views
 

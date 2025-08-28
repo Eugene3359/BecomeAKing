@@ -1,3 +1,10 @@
+# Become a King [0.4.3] - 28.08.2025
+
+### Changes
+- Changed notification view
+
+---
+
 # Become a King [0.4.2] - 26.08.2025
 
 ### Additions

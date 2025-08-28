@@ -61,7 +61,7 @@
     <!-- Personage Fragment -->
     <string name="name">Name</string>
     <string name="title">Title</string>
-    <string name="arrow">Arrows</string>
+    <string name="decorative_element">Decorative Element</string>
     <string name="day">Day</string>
     <string name="none">None</string>
 
@@ -260,6 +260,8 @@
     <string name="instruction2">Click the buttons in the right order!</string>
 
     <!-- Game Over -->
+    <string name="notification">Notification</string>
+    <string name="s_s" translatable="false">%1$s %2$s</string>
     <string name="game_over">Game over.</string>
     <string name="negative_health">All health lost. You are dead.</string>
     <string name="negative_reputation">Your reputation has dropped below zero. You have been banished from the city.</string>

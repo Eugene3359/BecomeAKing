@@ -55,7 +55,7 @@ public class NamingPersonageActivity extends BaseActivity {
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.enter_a_name, R.string.got_it);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.enter_a_name, R.string.got_it);
                 dialogueFragment.show(getSupportFragmentManager(), "dialogue");
             }
         });

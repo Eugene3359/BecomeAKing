@@ -130,25 +130,28 @@ public class BecomeAKing extends Application {
 
     public void gameOver(int code, AppCompatActivity activity) {
         // Forming game-over message
-        String message;
+        int reasonId;
         switch (code) {
             case 0:
-                message = getApplicationContext().getString(R.string.negative_health);
+                reasonId = R.string.negative_health;
                 break;
             case 1:
-                message = getApplicationContext().getString(R.string.negative_reputation);
+                reasonId = R.string.negative_reputation;
                 break;
             case 2:
-                message = getApplicationContext().getString(R.string.negative_money);
+                reasonId = R.string.negative_money;
                 break;
             default:
                 // Game Over from unknown reason
-                message = "";
+                reasonId = 0;
         }
-        message += " " + getApplicationContext().getString(R.string.game_over);
+        String message = activity.getString(
+                R.string.s_s,
+                activity.getString(reasonId),
+                activity.getString(R.string.game_over));
 
         // Showing dialogue
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(message, R.string.got_it);
+        DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, reasonId, R.string.got_it);
         dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         dialogueFragment.setCallback(() ->
         {
@@ -173,12 +176,12 @@ public class BecomeAKing extends Application {
                 isLoaded = true;
             } else {
                 // Load error
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.something_went_wrong, R.string.got_it);
+                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.something_went_wrong, R.string.got_it);
                 dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
             }
         } else {
             // No save file
-            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.save_not_found, R.string.got_it);
+            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.save_not_found, R.string.got_it);
             dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
         }
     }

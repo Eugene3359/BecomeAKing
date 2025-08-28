@@ -158,7 +158,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                         messageId = R.string.null_personage_error;
                 }
                 if (messageId != 0) {
-                    DialogueFragment.newInstance(messageId, R.string.got_it)
+                    DialogueFragment.newInstance(R.string.notification, messageId, R.string.got_it)
                             .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
                 }
             });

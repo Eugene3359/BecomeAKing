@@ -54,7 +54,7 @@ public class Clicker1Activity extends BaseActivity {
         textViewTimer.setText("10");
 
         // Setting Dialog
-        DialogueFragment dialogueFragmentStart = DialogueFragment.newInstance(R.string.instruction1, R.string.start);
+        DialogueFragment dialogueFragmentStart = DialogueFragment.newInstance(R.string.notification, R.string.instruction1, R.string.start);
         dialogueFragmentStart.setCallback(() ->
         {
             new CountDownTimer(10000, 1000) {
@@ -64,7 +64,7 @@ public class Clicker1Activity extends BaseActivity {
                 }
 
                 public void onFinish() {
-                    DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(R.string.exit, R.string.exit);
+                    DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(R.string.notification, R.string.exit, R.string.exit);
                     dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
                     dialogueFragmentResult.setCallback(() -> {
                         BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
