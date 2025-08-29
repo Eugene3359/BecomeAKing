@@ -246,9 +246,10 @@
     <string name="horse_and_weapon_required">Потрібні кінь та зброя</string>
 
     <!-- Clicker Activity -->
-    <string name="exit">Вихід</string>
+    <string name="exit">Вийти</string>
     <string name="instruction1">Натискайте якомога швидше — від цього залежить ваш дохід!</string>
     <string name="instruction2">Натискайте кнопки у правильному порядку!</string>
+    <string name="you_have_earned_d_coins">Ви заробили %d монет</string>
 
     <!-- Game Over -->
     <string name="notification">Сповіщення</string>

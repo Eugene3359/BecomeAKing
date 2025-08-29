@@ -57,7 +57,7 @@ public class Clicker2Activity extends BaseActivity {
 
         // Setting Views values
         textViewWork.setText(item.getNameId());
-        textViewMoneyEarned.setText(Float.toString(moneyEarned));
+        textViewMoneyEarned.setText(Integer.toString(moneyEarned));
         imageViewWork.setImageResource(item.getImageId());
         imageViewWork.setContentDescription(item.getName(this));
         textViewMoneyPerClick.setText(Integer.toString(moneyPerClick));
@@ -76,8 +76,10 @@ public class Clicker2Activity extends BaseActivity {
                 }
 
                 public void onFinish() {
-                    DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(R.string.notification, R.string.exit, R.string.exit);
-                    dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
+                    DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
+                            R.string.notification,
+                            getString(R.string.you_have_earned_d_coins, moneyEarned),
+                            R.string.exit);                    dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
                     dialogueFragmentResult.setCallback(() -> {
                         BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
                         finish();
@@ -138,7 +140,7 @@ public class Clicker2Activity extends BaseActivity {
         currentFrame.setBackground(AppCompatResources.getDrawable(this, R.drawable.shape_green_glow));
         currentButton.setOnClickListener(view -> {
             moneyEarned += moneyPerClick;
-            textViewMoneyEarned.setText(Float.toString(moneyEarned));
+            textViewMoneyEarned.setText(Integer.toString(moneyEarned));
 
             changeCurrentButton();
         });

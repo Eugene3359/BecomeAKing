@@ -1,9 +1,7 @@
 # Project Tasks
 
 ## In Progress
-- Implement work result notification
-- Add more languages (fr, it, de, sp)
-- Refactoring views
+- Refactor views
 
 ## In Queue
 
@@ -14,6 +12,9 @@
 ### TitleSelectionActivity
 - Add more titles
 - Generate titles array based on player achievements
+
+### LanguageSelectionActivity
+- Add more languages (fr, it, de, sp)
 
 ### UI Cleanup
 - Remove unnecessary `ScrollView` components from fragments

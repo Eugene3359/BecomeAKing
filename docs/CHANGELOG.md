@@ -1,3 +1,11 @@
+# Become a King [0.4.4] - 29.08.2025
+
+### Changes
+- The amount of coins earned is now shown in the notification after completing work
+- Replaced some images
+
+---
+
 # Become a King [0.4.3] - 28.08.2025
 
 ### Changes
@@ -164,7 +172,7 @@
 
 ### Fixes
 - Fixed a bug when reputation wasn't affected by starting a work
-- Fixed a bug when money didn't update after finishing a work
+- Fixed a bug when money didn't update after completing a work
 
 ---
 

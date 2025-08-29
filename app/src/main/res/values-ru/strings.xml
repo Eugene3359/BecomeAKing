@@ -249,6 +249,7 @@
     <string name="exit">Выйти</string>
     <string name="instruction1">Жми как можно быстрее — от этого зависит твой доход!</string>
     <string name="instruction2">Нажимай кнопки в правильном порядке!</string>
+    <string name="you_have_earned_d_coins">Вы заработали %d монет</string>
 
     <!-- Game Over -->
     <string name="notification">Уведомление</string>
