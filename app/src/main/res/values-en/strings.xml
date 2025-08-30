@@ -255,10 +255,11 @@
     <string name="horse_and_weapon_required">Horse and weapon required</string>
 
     <!-- Clicker Activity -->
-    <string name="exit">Exit</string>
+    <string name="_10" translatable="false">10</string>
     <string name="instruction1">Click as fast as you can - your income depends on it!</string>
     <string name="instruction2">Click the buttons in the right order!</string>
     <string name="you_have_earned_d_coins">You have earned %d coins</string>
+    <string name="exit">Exit</string>
 
     <!-- Game Over -->
     <string name="notification">Notification</string>

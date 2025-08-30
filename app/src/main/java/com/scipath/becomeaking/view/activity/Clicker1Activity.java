@@ -12,77 +12,103 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.model.enums.Stat;
+import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+
 
 public class Clicker1Activity extends BaseActivity {
 
     // Variables
-    private int moneyEarned = 0;
+    private static final int WORK_DURATION_MS = 10_000;
+    private static final int TICK_INTERVAL_MS = 1000;
+    protected int moneyEarned = 0;
+    protected int moneyPerClick = 0;
+
+    // Views
+    protected int layoutId  = R.layout.activity_clicker1;
+    protected TextView textViewWork = null;
+    protected ImageView imageViewWork = null;
+    protected TextView textViewMoneyEarned = null;
+    protected TextView textViewMoneyPerClick = null;
+    protected TextView textViewTimer = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_clicker1);
+        setContentView(layoutId);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Getting item
-        IItem item = (IItem) getIntent().getSerializableExtra("item");
-        int moneyPerClick = item.getStats().get(Stat.MoneyPerClick);
+        // Getting work
+        Work work = (Work) getIntent().getSerializableExtra("work");
+        moneyPerClick = work.getStats().get(Stat.MoneyPerClick);
 
-        // Views
-        TextView textViewWork = findViewById(R.id.text_view_work);
-        TextView textViewMoneyEarned = findViewById(R.id.text_view_money_earned);
-        ImageView imageViewWork = findViewById(R.id.image_view_work);
-        TextView textViewMoneyPerClick = findViewById(R.id.text_view_money_per_click);
-        TextView textViewTimer = findViewById(R.id.text_view_timer);
+        setViews(work);
+        onWorkStarted();
+    }
 
-        // Setting Views values
-        textViewWork.setText(item.getNameId());
-        textViewMoneyEarned.setText(Integer.toString(moneyEarned));
-        imageViewWork.setImageResource(item.getImageId());
-        imageViewWork.setContentDescription(item.getName(this));
-        textViewMoneyPerClick.setText(Integer.toString(moneyPerClick));
-        textViewTimer.setText("10");
 
-        // Setting Dialog
-        DialogueFragment dialogueFragmentStart = DialogueFragment.newInstance(R.string.notification, R.string.instruction1, R.string.start);
-        dialogueFragmentStart.setCallback(() ->
-        {
-            new CountDownTimer(10000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    // Update timer display on tick
-                    textViewTimer.setText(Long.toString(millisUntilFinished / 1000));
-                }
+    protected void setViews(Work work) {
+        textViewWork = findViewById(R.id.text_view_work);
+        imageViewWork = findViewById(R.id.image_view_work);
+        textViewMoneyEarned = findViewById(R.id.text_view_money_earned);
+        textViewMoneyPerClick = findViewById(R.id.text_view_money_per_click);
+        textViewTimer = findViewById(R.id.text_view_timer);
 
-                public void onFinish() {
-                    DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
-                            R.string.notification,
-                            getString(R.string.you_have_earned_d_coins, moneyEarned),
-                            R.string.exit);
-                    dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
-                    dialogueFragmentResult.setCallback(() -> {
-                        BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
-                        finish();
-                    });
-                }
-            }.start();
-        });
-        dialogueFragmentStart.show(getSupportFragmentManager(), "dialogue");
+        textViewWork.setText(work.getNameId());
+        imageViewWork.setImageResource(work.getImageId());
+        imageViewWork.setContentDescription(work.getName(this));
+        textViewMoneyEarned.setText(String.valueOf(moneyEarned));
+        textViewMoneyPerClick.setText(String.valueOf(moneyPerClick));
+        textViewTimer.setText(R.string._10);
+    }
 
-        // Clicker
+    protected void onWorkStarted() {
+        setClicker();
+
+        showDialogue(
+                R.string.notification,
+                R.string.instruction1,
+                R.string.start,
+                this::startTimer
+        );
+    }
+
+    private void setClicker() {
         CustomLinearLayout linearLayoutClick = findViewById(R.id.container_clicker);
         linearLayoutClick.setOnClickListener(view -> {
             moneyEarned += moneyPerClick;
-            textViewMoneyEarned.setText(Integer.toString(moneyEarned));
+            textViewMoneyEarned.setText(String.valueOf(moneyEarned));
         });
+    }
+
+    protected void startTimer() {
+        new CountDownTimer(WORK_DURATION_MS, TICK_INTERVAL_MS) {
+            public void onTick(long millisUntilFinished) {
+                textViewTimer.setText(String.valueOf(millisUntilFinished / 1000));
+            }
+
+            public void onFinish() {
+                onWorkCompleted();
+            }
+        }.start();
+    }
+
+    protected void onWorkCompleted() {
+        showDialogue(
+                R.string.notification,
+                getString(R.string.you_have_earned_d_coins, moneyEarned),
+                R.string.exit,
+                () -> {
+                    BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
+                    finish();
+                }
+        );
     }
 }

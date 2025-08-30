@@ -112,7 +112,7 @@ public class ItemsFragment extends Fragment {
         } else {
             return;
         }
-        intent.putExtra("item", item);
+        intent.putExtra("work", item);
         getContext().startActivity(intent);
     }
 }
