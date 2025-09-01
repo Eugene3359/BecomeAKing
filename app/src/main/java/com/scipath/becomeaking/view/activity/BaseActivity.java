@@ -20,7 +20,8 @@ public class BaseActivity extends AppCompatActivity {
                 messageId,
                 buttonTextId);
         dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
-        dialogueFragmentResult.setCallback(callback::run);
+        if (callback != null)
+            dialogueFragmentResult.setCallback(callback::run);
     }
 
     protected void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {

@@ -115,11 +115,12 @@ public class BecomeAKing extends Application {
         for (int i = 0; i < categories.size(); i++) {
             List<IItem> items = categories.get(i).getItems();
             for (IItem work : items) {
-                if (work instanceof Work && items.size() > 1)
+                if (work instanceof Work && items.size() > 1) {
                     work.setInteracted(false);
+                    Work.refreshInteractionCounter();
+                }
             }
         }
-        Work.refreshInteractionCounter();
     }
 
     public void checkPersonageForNegativeValues(AppCompatActivity activity) {

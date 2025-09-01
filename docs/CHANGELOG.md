@@ -1,3 +1,11 @@
+# Become a King [0.4.5] - 01.09.2025
+
+### Fixes
+- Fixed a bug where, after clicking `Next Day`, it was still possible to start a work even though a all day work had already been selected
+- Fixed a crash that occurred after clicking a number in the `Clicker2` mini-game
+
+---
+
 # Become a King [0.4.4] - 29.08.2025
 
 ### Changes

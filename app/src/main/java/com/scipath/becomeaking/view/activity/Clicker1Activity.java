@@ -20,13 +20,13 @@ import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 public class Clicker1Activity extends BaseActivity {
 
     // Variables
-    private static final int WORK_DURATION_MS = 10_000;
-    private static final int TICK_INTERVAL_MS = 1000;
+    protected static final int WORK_DURATION_MS = 10_000;
+    protected static final int TICK_INTERVAL_MS = 1000;
     protected int moneyEarned = 0;
     protected int moneyPerClick = 0;
+    protected int layoutId  = R.layout.activity_clicker1;
 
     // Views
-    protected int layoutId  = R.layout.activity_clicker1;
     protected TextView textViewWork = null;
     protected ImageView imageViewWork = null;
     protected TextView textViewMoneyEarned = null;
@@ -52,7 +52,6 @@ public class Clicker1Activity extends BaseActivity {
         setViews(work);
         onWorkStarted();
     }
-
 
     protected void setViews(Work work) {
         textViewWork = findViewById(R.id.text_view_work);

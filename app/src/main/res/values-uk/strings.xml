@@ -4,6 +4,7 @@
     <string name="ad">Реклама</string>
 
     <!-- Main Activity -->
+    <string name="in_development">Ця частина знаходиться в розробці</string>
     <string name="new_game">Нова гра</string>
     <string name="load">Завантажити</string>
     <string name="language">Мова</string>

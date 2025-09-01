@@ -136,7 +136,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/icon_armor"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_button_green"
+                    android:background="@color/game_menu_brown"
                     android:contentDescription="@string/personage" />
 
                 <ImageButton

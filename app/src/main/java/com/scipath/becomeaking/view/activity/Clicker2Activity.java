@@ -15,11 +15,13 @@ public class Clicker2Activity extends Clicker1Activity {
 
     // Variables
     private int currentNumber = 0;
+    private final Random random = new Random();
+
+    // Views
     private FrameLayout[] frames;
     private CustomButton[] buttons;
     private FrameLayout currentFrame = null;
     private CustomButton currentButton = null;
-    private final Random random = new Random();
 
 
     @Override
@@ -27,7 +29,6 @@ public class Clicker2Activity extends Clicker1Activity {
         layoutId = R.layout.activity_clicker2;
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     protected void onWorkStarted() {
@@ -51,8 +52,8 @@ public class Clicker2Activity extends Clicker1Activity {
         }
 
         currentNumber = random.nextInt(9) + 1;
-        currentFrame = frames[currentNumber];
-        currentButton = buttons[currentNumber];
+        currentFrame = frames[currentNumber - 1];
+        currentButton = buttons[currentNumber - 1];
 
         currentFrame.setBackground(AppCompatResources.getDrawable(this, R.drawable.shape_green_glow));
         currentButton.setOnClickListener(view -> {

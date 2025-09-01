@@ -21,10 +21,10 @@ import com.scipath.becomeaking.view.fragment.PersonageFragment;
 
 public class GameActivity extends BaseActivity {
 
-    // Models variables
+    // Models
     private Personage personage;
 
-    // Views variables
+    // Views
     private TextView textViewHealth;
     private TextView textViewReputation;
     private TextView textViewMoney;
@@ -43,32 +43,22 @@ public class GameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_game);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Getting Personage from Application
+        // Getting Personage
         personage = BecomeAKing.getInstance().getPersonage();
 
         // Views
         textViewHealth = findViewById(R.id.text_view_health);
         textViewReputation = findViewById(R.id.text_view_reputation);
         textViewMoney = findViewById(R.id.text_view_money);
-
         updateViews();
 
-        // Setting Fragment
-        fragment = new PersonageFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_frame, fragment)
-                .addToBackStack(null).commit();
-
-        // Buttons
-        buttonActive = findViewById(R.id.button_personage);
-
+        // Menu Buttons
         buttonPersonage = findViewById(R.id.button_personage);
         buttonPersonage.setOnClickListener(view -> {
             switchMenuButton(buttonPersonage, new PersonageFragment());
@@ -106,28 +96,45 @@ public class GameActivity extends BaseActivity {
 
         buttonFinance = findViewById(R.id.button_finance);
         buttonFinance.setOnClickListener(view -> {
-            // TODO: ClickListener
+            // TODO: Change a fragment after implementation
+            switchMenuButton(buttonFinance, new PersonageFragment());
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
         });
 
         buttonBattle = findViewById(R.id.button_battle);
         buttonBattle.setOnClickListener(view -> {
-            // TODO: ClickListener
+            // TODO: Change a fragment after implementation
+            switchMenuButton(buttonBattle, new PersonageFragment());
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
         });
 
+        switchMenuButton(buttonPersonage, new PersonageFragment());
+
+        // Next Day Button
         ImageButton imageButtonNextDay = findViewById(R.id.image_button_next_day);
         imageButtonNextDay.setOnClickListener(view -> {
             BecomeAKing.getInstance().nextDay();
             BecomeAKing.getInstance().saveGame();
             updateViews();
-            if(fragment.getClass() == PersonageFragment.class) {
+            if (fragment.getClass() == PersonageFragment.class) {
                 ((PersonageFragment)fragment).updateViews();
             } else {
                 switchMenuButton(buttonPersonage, new PersonageFragment());
             }
             BecomeAKing.getInstance().checkPersonageForNegativeValues(this);
         });
-    }
 
+    }
 
     @Override
     protected void onResume() {
@@ -143,6 +150,12 @@ public class GameActivity extends BaseActivity {
         super.onDestroy();
     }
 
+    public void updateViews() {
+        textViewHealth.setText(String.valueOf(personage.getHealth()));
+        textViewReputation.setText(String.valueOf(personage.getReputation()));
+        textViewMoney.setText(String.valueOf(personage.getMoney()));
+    }
+
     public void switchMenuButton(ImageButton pressedButton, Fragment newFragment) {
         if (buttonActive != pressedButton) {
             // Make all buttons brown
@@ -150,6 +163,8 @@ public class GameActivity extends BaseActivity {
             buttonShop.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
             buttonHousing.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
             buttonJob.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+            buttonFinance.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+            buttonBattle.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
 
             // Make active button green
             buttonActive = pressedButton;
@@ -172,13 +187,9 @@ public class GameActivity extends BaseActivity {
     private void refreshFragmentData() {
         getSupportFragmentManager().beginTransaction()
                 .detach(fragment) // Detach to refresh the view
+                .commit();
+        getSupportFragmentManager().beginTransaction()
                 .attach(fragment) // Reattach to force a refresh
                 .commit();
-    }
-
-    public void updateViews() {
-        textViewHealth.setText(Integer.toString(personage.getHealth()));
-        textViewReputation.setText(Integer.toString(personage.getReputation()));
-        textViewMoney.setText(Integer.toString(personage.getMoney()));
     }
 }

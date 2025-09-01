@@ -5,6 +5,7 @@
     <string name="background">Background</string>
     <string name="test">Test</string>
     <string name="ad">Ad</string>
+    <string name="in_development">This part is in development</string>
 
     <!-- Main Activity -->
     <string name="new_game">New Game</string>
