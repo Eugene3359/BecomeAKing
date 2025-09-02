@@ -56,7 +56,7 @@ public class LocalesAdapter extends RecyclerView.Adapter<LocalesAdapter.ViewHold
         return new LocalesAdapter.ViewHolder(view);
     }
 
-
+    
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(LocalesAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {

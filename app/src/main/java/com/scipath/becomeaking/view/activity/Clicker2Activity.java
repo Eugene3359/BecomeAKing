@@ -25,8 +25,12 @@ public class Clicker2Activity extends Clicker1Activity {
 
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_clicker2;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        layoutId = R.layout.activity_clicker2;
         super.onCreate(savedInstanceState);
     }
 

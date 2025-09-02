@@ -5,35 +5,28 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.enums.Sex;
 
 
 public class SexSelectionActivity extends BaseActivity {
 
-    // Models variables
+    // Models
     private Sex currentSex;
 
-    // Views variables
+    // Views
     ImageButton buttonMale;
     ImageButton buttonFemale;
 
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_sex_selection;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_sex_selection);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Variables initialization
         currentSex = Sex.Male;

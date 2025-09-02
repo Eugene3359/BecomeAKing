@@ -5,11 +5,6 @@ import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.enums.Stat;
@@ -24,7 +19,6 @@ public class Clicker1Activity extends BaseActivity {
     protected static final int TICK_INTERVAL_MS = 1000;
     protected int moneyEarned = 0;
     protected int moneyPerClick = 0;
-    protected int layoutId  = R.layout.activity_clicker1;
 
     // Views
     protected TextView textViewWork = null;
@@ -35,15 +29,13 @@ public class Clicker1Activity extends BaseActivity {
 
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_clicker1;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(layoutId);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Getting work
         Work work = (Work) getIntent().getSerializableExtra("work");
@@ -92,7 +84,6 @@ public class Clicker1Activity extends BaseActivity {
             public void onTick(long millisUntilFinished) {
                 textViewTimer.setText(String.valueOf(millisUntilFinished / 1000));
             }
-
             public void onFinish() {
                 onWorkCompleted();
             }
