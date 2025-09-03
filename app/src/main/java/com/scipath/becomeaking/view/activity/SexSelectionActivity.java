@@ -55,6 +55,7 @@ public class SexSelectionActivity extends BaseActivity {
             startActivity(intent);
         });
 
+        // Button back
         Button buttonBack = findViewById(R.id.button_back);
         buttonBack.setOnClickListener(view -> {
             finish();

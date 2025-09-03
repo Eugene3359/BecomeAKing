@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +19,7 @@ import com.scipath.becomeaking.contract.model.ICategory;
 import java.util.ArrayList;
 
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends BaseFragment {
 
     public static CategoriesFragment newInstance() {
         return new CategoriesFragment();
@@ -36,18 +35,14 @@ public class CategoriesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting sublist of categories from Application
+        // Getting sublist of categories
         Bundle args = getArguments();
         ArrayList<ICategory> categories = BecomeAKing.getInstance()
                 .getCategoriesSublist(args.getInt("fromIndex"), args.getInt("toIndex"));
 
         // View
         RecyclerView recyclerView = view.findViewById(R.id.category_list);
-
-        // Adapter
         CategoriesAdapter categoriesAdapter = new CategoriesAdapter(categories, view.getContext());
-
-        // Displaying categories
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(categoriesAdapter);
     }

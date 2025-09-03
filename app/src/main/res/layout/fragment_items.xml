@@ -20,11 +20,12 @@
             app:layout_constraintRight_toRightOf="parent"
             android:gravity="center" >
 
-            <ImageView
-                android:id="@+id/arrow_left"
+            <ImageButton
+                android:id="@+id/button_previous_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_arrow_brown_left"
+                android:background="@null"
                 android:contentDescription="@string/previous"
                 android:visibility="visible"/>
 
@@ -35,11 +36,12 @@
                 android:layout_marginHorizontal="20dp"
                 android:overScrollMode="never"/>
 
-            <ImageView
-                android:id="@+id/arrow_right"
+            <ImageButton
+                android:id="@+id/button_next_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_arrow_brown_right"
+                android:background="@null"
                 android:contentDescription="@string/next"
                 android:visibility="visible"/>
 

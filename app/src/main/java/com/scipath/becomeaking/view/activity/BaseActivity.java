@@ -40,13 +40,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showDialogue(int headerId, int messageId, int buttonTextId, Runnable callback) {
-        DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
+        DialogueFragment dialogueFragment = DialogueFragment.newInstance(
                 headerId,
                 messageId,
                 buttonTextId);
-        dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
+        dialogueFragment.show(getSupportFragmentManager(), "dialogue");
         if (callback != null)
-            dialogueFragmentResult.setCallback(callback::run);
+            dialogueFragment.setCallback(callback::run);
     }
 
     protected void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {

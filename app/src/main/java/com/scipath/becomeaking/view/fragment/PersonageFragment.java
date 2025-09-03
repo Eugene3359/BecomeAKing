@@ -28,22 +28,21 @@ import com.scipath.becomeaking.view.activity.GameActivity;
 import java.util.ArrayList;
 
 
-public class PersonageFragment extends Fragment {
+public class PersonageFragment extends BaseFragment {
 
-    // Models variables
-    Personage personage;
-    ArrayList<ICategory> categories;
-    IStats stats;
+    // Models
+    private Personage personage;
+    private ArrayList<ICategory> categories;
 
-    // Views variables
-    ImageView imageViewHealthIncome;
-    TextView textViewHealthIncome;
-    ImageView imageViewReputationIncome;
-    TextView textViewReputationIncome;
-    ImageView imageViewMoneyIncome;
-    TextView textViewMoneyIncome;
-    TextView textViewReputation;
-    TextView textViewDay;
+    // Views
+    private ImageView imageViewHealthIncome;
+    private TextView textViewHealthIncome;
+    private ImageView imageViewReputationIncome;
+    private TextView textViewReputationIncome;
+    private ImageView imageViewMoneyIncome;
+    private TextView textViewMoneyIncome;
+    private TextView textViewReputation;
+    private TextView textViewDay;
 
 
     public static PersonageFragment newInstance() {
@@ -60,7 +59,7 @@ public class PersonageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting Personage, Categories and StatBonuses from Application
+        // Getting personage and categories
         personage = BecomeAKing.getInstance().getPersonage();
         categories = BecomeAKing.getInstance().getCategories();
 
@@ -88,8 +87,8 @@ public class PersonageFragment extends Fragment {
 
         // Setting Views values
         textViewName.setText(personage.getName());
-        textViewTitle.setText(personage.getTitle().getName(getActivity()));
-        imageViewPersonageIcon.setImageResource(BecomeAKing.getInstance().getCategories().get(1).getImageId());
+        textViewTitle.setText(personage.getTitle().getNameId());
+        imageViewPersonageIcon.setImageResource(categories.get(1).getImageId());
 
         updateViews();
 
@@ -101,8 +100,8 @@ public class PersonageFragment extends Fragment {
         if (categories.get(9).getBestItem() != null) {
             textViewHorse.setText(categories.get(9).getBestItem().getNameId());
         }
-        textViewMaxHealth.setText(Integer.toString(personage.getMaxHealth()));
-        textViewMight.setText(Integer.toString(personage.getMight()));
+        textViewMaxHealth.setText(String.valueOf(personage.getMaxHealth()));
+        textViewMight.setText(String.valueOf(personage.getMight()));
 
         // Buttons
         Button buttonLevel = view.findViewById(R.id.button_level);
@@ -117,26 +116,31 @@ public class PersonageFragment extends Fragment {
         Button buttonFamily = view.findViewById(R.id.button_family);
         buttonFamily.setOnClickListener(v -> {
             // TODO: Handler
+            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
         });
 
         Button buttonFriends = view.findViewById(R.id.button_friends);
         buttonFriends.setOnClickListener(v -> {
             // TODO: Handler
+            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
         });
 
         Button buttonCaravans = view.findViewById(R.id.button_caravans);
         buttonCaravans.setOnClickListener(v -> {
             // TODO: Handler
+            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
         });
 
         Button buttonSetting = view.findViewById(R.id.button_setting);
         buttonSetting.setOnClickListener(v -> {
             // TODO: Handler
+            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
         });
 
         Button buttonDeveloper = view.findViewById(R.id.button_developer);
         buttonDeveloper.setOnClickListener(v -> {
             // TODO: Handler
+            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
         });
 
         Button buttonExit = view.findViewById(R.id.button_exit);
@@ -170,24 +174,24 @@ public class PersonageFragment extends Fragment {
 
     public void updateViews() {
         // Daily stats
-        stats = BecomeAKing.getInstance().getCurrentStatBonuses();
+        IStats stats = BecomeAKing.getInstance().getCurrentStatBonuses();
         int statBonusValue = stats.get(Stat.HealthPerDay);
         imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewHealthIncome.setText(Integer.toString(statBonusValue));
+        textViewHealthIncome.setText(String.valueOf(statBonusValue));
 
         statBonusValue = stats.get(Stat.ReputationPerDay);
         imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewReputationIncome.setText(Integer.toString(statBonusValue));
+        textViewReputationIncome.setText(String.valueOf(statBonusValue));
 
         statBonusValue = stats.get(Stat.CoinsPerDay);
         imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewMoneyIncome.setText(Integer.toString(statBonusValue));
+        textViewMoneyIncome.setText(String.valueOf(statBonusValue));
 
         // Day number and personage reputation
-        textViewDay.setText(Integer.toString(BecomeAKing.getInstance().getDay()));
-        textViewReputation.setText(Integer.toString(personage.getReputation()));
+        textViewDay.setText(String.valueOf(BecomeAKing.getInstance().getDay()));
+        textViewReputation.setText(String.valueOf(personage.getReputation()));
     }
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,11 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.callback.ItemCallback;
 import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.contract.model.IItem;
@@ -28,7 +26,7 @@ import com.scipath.becomeaking.view.activity.Clicker2Activity;
 import com.scipath.becomeaking.view.activity.GameActivity;
 
 
-public class ItemsFragment extends Fragment {
+public class ItemsFragment extends BaseFragment {
 
     private int categoryId;
 
@@ -52,29 +50,26 @@ public class ItemsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting personage and items from Application
+        // Getting personage and categoryId
         Personage personage = BecomeAKing.getInstance().getPersonage();
         Bundle args = getArguments();
         categoryId = args.getInt("categoryId");
 
         // Views
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
-        ImageView arrowLeft = view.findViewById(R.id.arrow_left);
-        ImageView arrowRight = view.findViewById(R.id.arrow_right);
+        ImageButton buttonPreviousItem = view.findViewById(R.id.button_previous_item);
+        ImageButton buttonNextItem = view.findViewById(R.id.button_next_item);
         Button buttonBack = view.findViewById(R.id.button_back);
 
         // Adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, new ItemCallback() {
-            @Override
-            public void call(IItem item) {
-                GameActivity activity = (GameActivity)requireActivity();
-                if (item instanceof Work) {
-                    activity.switchMenuButton(activity.findViewById(R.id.button_personage) , new PersonageFragment());
-                    startClickerMiniGamer(item);
-                } else if (item instanceof Item){
-                    personage.recalculateStats();
-                    activity.updateViews();
-                }
+        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, item -> {
+            GameActivity activity = (GameActivity)requireActivity();
+            if (item instanceof Work) {
+                activity.switchMenuButton(activity.findViewById(R.id.button_personage), new PersonageFragment());
+                startClickerMiniGamer(item);
+            } else if (item instanceof Item){
+                personage.recalculateStats();
+                activity.updateViews();
             }
         }, view.getContext());
 
@@ -85,13 +80,13 @@ public class ItemsFragment extends Fragment {
         recyclerView.setAdapter(itemsAdapter);
 
         // Scroll left on arrow click
-        arrowLeft.setOnClickListener(v -> {
+        buttonPreviousItem.setOnClickListener(v -> {
             int firstVisible = layoutManager.findFirstVisibleItemPosition();
             recyclerView.smoothScrollToPosition(Math.max(0, firstVisible - 1));
         });
 
         // Scroll right on arrow click
-        arrowRight.setOnClickListener(v -> {
+        buttonNextItem.setOnClickListener(v -> {
             int lastVisible = layoutManager.findLastVisibleItemPosition();
             recyclerView.smoothScrollToPosition(lastVisible + 1);
         });
@@ -101,7 +96,6 @@ public class ItemsFragment extends Fragment {
             getParentFragmentManager().popBackStack();
         });
     }
-
 
     public void startClickerMiniGamer(IItem item) {
         Intent intent;

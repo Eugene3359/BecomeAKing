@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.TitlesAdapter;
 import com.scipath.becomeaking.model.enums.Title;
-import com.scipath.becomeaking.contract.callback.ObjectCallback;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
 public class TitleSelectionActivity extends BaseActivity {
@@ -33,28 +31,22 @@ public class TitleSelectionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Getting titles set
-        // TODO: make it algorithmically depending on players achievements
         Title[] titles = Title.values();
 
         // Views
         RecyclerView recyclerView = findViewById(R.id.titles_list);
-
-        // Button click callback
-        ObjectCallback objectCallback = title -> {
-            if(!(title instanceof Title)) return;
-            // Notify adapter about onButtonClick event
-            recyclerView.post(new Runnable() {
-                @Override public void run()
-                {
-                    titlesAdapter.notifyDataSetChanged();
-                    currentTitle = (Title)title;
-                }
-            });
-        };
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Displaying titles as RadioButtons using TitleAdapter
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        titlesAdapter = new TitlesAdapter(titles, objectCallback);
+        titlesAdapter = new TitlesAdapter(titles, title -> {
+            if(title instanceof Title) {
+                // Notify adapter about onButtonClick event
+                recyclerView.post(() -> {
+                    titlesAdapter.notifyDataSetChanged();
+                    currentTitle = (Title)title;
+                });
+            }
+        });
         recyclerView.setAdapter(titlesAdapter);
 
         // Button continue
@@ -67,8 +59,7 @@ public class TitleSelectionActivity extends BaseActivity {
                 intent.putExtra("title", currentTitle);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.chose_title, R.string.got_it);
-                dialogueFragment.show(getSupportFragmentManager(), "dialogue");
+                showDialogue(R.string.notification, R.string.chose_title, R.string.got_it, null);
             }
         });
 

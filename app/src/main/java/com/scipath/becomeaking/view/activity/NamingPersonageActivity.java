@@ -13,7 +13,6 @@ import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Title;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
 
@@ -48,8 +47,7 @@ public class NamingPersonageActivity extends BaseActivity {
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);
             } else {
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.enter_a_name, R.string.got_it);
-                dialogueFragment.show(getSupportFragmentManager(), "dialogue");
+                showDialogue(R.string.notification, R.string.enter_a_name, R.string.got_it, null);
             }
         });
 

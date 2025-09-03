@@ -29,9 +29,9 @@ import com.scipath.becomeaking.model.enums.Stat;
 public class PersonageStatsFragment extends Fragment {
 
     // Models variables
-    Personage personage;
-    ILevel ILevel;
-    IStats statBonuses;
+    private Personage personage;
+    private ILevel ILevel;
+    private IStats statBonuses;
 
 
     public static PersonageStatsFragment newInstance() {
@@ -48,7 +48,7 @@ public class PersonageStatsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting Personage from Application
+        // Getting personage
         personage = BecomeAKing.getInstance().getPersonage();
         ILevel = personage.getLevel().clone();
         statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
