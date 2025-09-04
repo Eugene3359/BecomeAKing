@@ -17,7 +17,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_income_and_expenses" />
+            <com.scipath.becomeaking.view.layout.PersonageLayout
+                android:id="@+id/layout_personage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <!-- Age -->
             <com.scipath.becomeaking.view.customview.CustomLinearLayout

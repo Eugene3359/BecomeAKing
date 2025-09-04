@@ -5,25 +5,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
-import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.manager.AdManagerMock;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.view.activity.GameActivity;
+import com.scipath.becomeaking.view.layout.PersonageLayout;
 
 import java.util.ArrayList;
 
@@ -32,15 +29,9 @@ public class PersonageFragment extends BaseFragment {
 
     // Models
     private Personage personage;
-    private ArrayList<ICategory> categories;
 
     // Views
-    private ImageView imageViewHealthIncome;
-    private TextView textViewHealthIncome;
-    private ImageView imageViewReputationIncome;
-    private TextView textViewReputationIncome;
-    private ImageView imageViewMoneyIncome;
-    private TextView textViewMoneyIncome;
+    private PersonageLayout personageLayout;
     private TextView textViewReputation;
     private TextView textViewDay;
 
@@ -61,20 +52,12 @@ public class PersonageFragment extends BaseFragment {
 
         // Getting personage and categories
         personage = BecomeAKing.getInstance().getPersonage();
-        categories = BecomeAKing.getInstance().getCategories();
+        ArrayList<ICategory> categories = BecomeAKing.getInstance().getCategories();
 
         // Views
+        personageLayout = view.findViewById(R.id.layout_personage);
         TextView textViewName = view.findViewById(R.id.text_view_name);
         TextView textViewTitle = view.findViewById(R.id.text_view_title);
-        ImageView imageViewPersonageIcon = view.findViewById(R.id.image_view_personage_icon);
-
-        imageViewHealthIncome = view.findViewById(R.id.image_view_health_income);
-        textViewHealthIncome = view.findViewById(R.id.text_view_health_income);
-        imageViewReputationIncome = view.findViewById(R.id.image_view_reputation_income);
-        textViewReputationIncome = view.findViewById(R.id.text_view_reputation_income);
-        imageViewMoneyIncome = view.findViewById(R.id.image_view_money_income);
-        textViewMoneyIncome = view.findViewById(R.id.text_view_money_income);
-
         textViewDay = view.findViewById(R.id.text_view_day);
         textViewReputation = view.findViewById(R.id.text_view_reputation2);
 
@@ -86,10 +69,9 @@ public class PersonageFragment extends BaseFragment {
         TextView textViewMight = view.findViewById(R.id.text_view_might);
 
         // Setting Views values
+        personageLayout.updateImage();
         textViewName.setText(personage.getName());
         textViewTitle.setText(personage.getTitle().getNameId());
-        imageViewPersonageIcon.setImageResource(categories.get(1).getImageId());
-
         updateViews();
 
         textViewNutrition.setText(categories.get(0).getBestItem().getNameId());
@@ -107,7 +89,7 @@ public class PersonageFragment extends BaseFragment {
         Button buttonLevel = view.findViewById(R.id.button_level);
         buttonLevel.setOnClickListener(v -> {
             Fragment fragment = new PersonageStatsFragment();
-            getActivity().getSupportFragmentManager().beginTransaction()
+            requireActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_frame, fragment)
                     .addToBackStack(null)
                     .commit();
@@ -145,50 +127,36 @@ public class PersonageFragment extends BaseFragment {
 
         Button buttonExit = view.findViewById(R.id.button_exit);
         buttonExit.setOnClickListener(v -> {
-            getActivity().finish();
+            requireActivity().finish();
         });
 
         // Ad
         LinearLayout layoutHealthForAd = view.findViewById(R.id.layout_health_for_ad);
         layoutHealthForAd.setOnClickListener(v -> {
             personage.affectHealth(300);
-            ((GameActivity)getActivity()).updateViews();
-            AdManagerMock.showAd((AppCompatActivity) getActivity());
+            ((GameActivity)requireActivity()).updateViews();
+            AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
 
         LinearLayout layoutReputationForAd = view.findViewById(R.id.layout_reputation_for_ad);
         layoutReputationForAd.setOnClickListener(v -> {
             personage.affectReputation(500);
-            ((GameActivity)getActivity()).updateViews();
-            textViewReputation.setText(Integer.toString(personage.getReputation()));
-            AdManagerMock.showAd((AppCompatActivity) getActivity());
+            ((GameActivity)requireActivity()).updateViews();
+            textViewReputation.setText(String.valueOf(personage.getReputation()));
+            AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
 
         LinearLayout layoutMoneyForAd = view.findViewById(R.id.layout_money_for_ad);
         layoutMoneyForAd.setOnClickListener(v -> {
             personage.affectMoney(1000);
-            ((GameActivity)getActivity()).updateViews();
-            AdManagerMock.showAd((AppCompatActivity) getActivity());
+            ((GameActivity)requireActivity()).updateViews();
+            AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
     }
 
     public void updateViews() {
         // Daily stats
-        IStats stats = BecomeAKing.getInstance().getCurrentStatBonuses();
-        int statBonusValue = stats.get(Stat.HealthPerDay);
-        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewHealthIncome.setText(String.valueOf(statBonusValue));
-
-        statBonusValue = stats.get(Stat.ReputationPerDay);
-        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewReputationIncome.setText(String.valueOf(statBonusValue));
-
-        statBonusValue = stats.get(Stat.CoinsPerDay);
-        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(requireContext(),
-                statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewMoneyIncome.setText(String.valueOf(statBonusValue));
+        personageLayout.updateStats();
 
         // Day number and personage reputation
         textViewDay.setText(String.valueOf(BecomeAKing.getInstance().getDay()));
