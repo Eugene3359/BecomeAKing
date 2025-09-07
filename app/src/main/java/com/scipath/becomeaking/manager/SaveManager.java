@@ -28,7 +28,7 @@ public class SaveManager {
 
     private static final String FILE_NAME = "save.json";
 
-    public static void saveGame(Context context, GameState gameState) {
+    public static void saveGame(GameState gameState, Context context) {
         try {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(IStats.class, new IStatsSerializer())

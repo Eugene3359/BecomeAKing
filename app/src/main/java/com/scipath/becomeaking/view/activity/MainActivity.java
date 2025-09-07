@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
             personage.setReputation(8000);
             personage.setMoney(100000);
             ArrayList<ICategory> categories = CategoriesList.getCategories(true);
-            BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
+            BecomeAKing.getInstance().setGameState(new GameState(personage, categories, 0));
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             startActivity(intent);
         });

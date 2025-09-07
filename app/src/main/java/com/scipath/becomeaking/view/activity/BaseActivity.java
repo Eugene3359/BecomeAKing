@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void showDialogue(int headerId, int messageId, int buttonTextId, Runnable callback) {
+    public void showDialogue(int headerId, int messageId, int buttonTextId, Runnable callback) {
         DialogueFragment dialogueFragment = DialogueFragment.newInstance(
                 headerId,
                 messageId,
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             dialogueFragment.setCallback(callback::run);
     }
 
-    protected void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {
+    public void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {
         DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
                 headerId,
                 message,

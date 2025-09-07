@@ -42,7 +42,7 @@ public class NamingPersonageActivity extends BaseActivity {
                 Title title = (Title)thisIntent.getSerializableExtra("title");
                 Personage personage = new Personage(personageName, sex, title);
                 ArrayList<ICategory> categories = CategoriesList.getCategories(sex == Sex.Male);
-                BecomeAKing.getInstance().setGameState(new GameState(0, personage, categories));
+                BecomeAKing.getInstance().setGameState(new GameState(personage, categories, 0));
 
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);

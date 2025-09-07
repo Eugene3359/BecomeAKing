@@ -1,7 +1,6 @@
 # Project Tasks
 
 ## In Progress
-- Refactor app class
 
 ## In Queue
 

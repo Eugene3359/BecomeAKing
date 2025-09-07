@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class GameState implements Serializable {
 
-    public int day;
     public Personage personage;
     public ArrayList<ICategory> categories;
+    public int day;
 
 
-    public GameState(int day, Personage personage, ArrayList<ICategory> categories) {
-        this.day = day;
+    public GameState(Personage personage, ArrayList<ICategory> categories, int day) {
         this.personage = personage;
         this.categories = categories;
+        this.day = day;
     }
 }

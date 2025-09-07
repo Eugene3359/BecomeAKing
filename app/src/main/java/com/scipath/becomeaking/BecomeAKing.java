@@ -2,8 +2,6 @@ package com.scipath.becomeaking;
 
 import android.app.Application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
@@ -13,7 +11,7 @@ import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +52,6 @@ public class BecomeAKing extends Application {
         return gameState;
     }
 
-    public int getDay() {
-        return gameState.day;
-    }
-
     public Personage getPersonage() {
         return gameState.personage;
     }
@@ -73,9 +67,13 @@ public class BecomeAKing extends Application {
     public ICategory getCategoryById(int id) {
         return gameState.categories
                 .stream()
-                .filter(c -> c.getId() == id)
+                .filter(category -> category.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public int getDay() {
+        return gameState.day;
     }
 
 
@@ -89,11 +87,9 @@ public class BecomeAKing extends Application {
     public IStats getCurrentStatBonuses () {
         IStats stats = new Stats();
         for (ICategory ICategory : gameState.categories) {
-            IStats categoryStatBonuses = ICategory.getStats();
-            for (Stat stat : categoryStatBonuses.getKeys()) {
-                stats.add(stat,
-                        stats.get(stat)
-                                + categoryStatBonuses.get(stat));
+            IStats categoryStats = ICategory.getStats();
+            for (Stat stat : categoryStats.getKeys()) {
+                stats.add(stat,stats.get(stat) + categoryStats.get(stat));
             }
         }
 
@@ -106,30 +102,35 @@ public class BecomeAKing extends Application {
 
     public void nextDay() {
         gameState.day++;
+
         IStats statBonuses = getCurrentStatBonuses();
         gameState.personage.affectHealth(statBonuses.get(Stat.HealthPerDay));
         gameState.personage.affectReputation(statBonuses.get(Stat.ReputationPerDay));
         gameState.personage.affectMoney(statBonuses.get(Stat.CoinsPerDay));
 
-        ArrayList<ICategory> categories = gameState.categories;
-        for (int i = 0; i < categories.size(); i++) {
-            List<IItem> items = categories.get(i).getItems();
-            for (IItem work : items) {
-                if (work instanceof Work && items.size() > 1) {
-                    work.setInteracted(false);
-                    Work.refreshInteractionCounter();
+        boolean isAllDayWorkSelected = false;
+        for (ICategory category : gameState.categories) {
+            List<IItem> items = category.getItems();
+            if (!(items.get(0) instanceof Work)) continue;
+            if (items.size() > 1) {
+                for (IItem item : items) {
+                    item.setInteracted(false);
                 }
+            } else {
+                if (items.get(0).isInteracted()) isAllDayWorkSelected = true;
             }
         }
+
+        if (!isAllDayWorkSelected) Work.refreshInteractionCounter();
     }
 
-    public void checkPersonageForNegativeValues(AppCompatActivity activity) {
+    public void checkPersonageForNegativeValues(BaseActivity activity) {
         if (gameState.personage.getHealth() == 0) gameOver(0, activity);
         if (gameState.personage.getReputation() < 0) gameOver(1, activity);
         if (gameState.personage.getMoney() < 0) gameOver(2, activity);
     }
 
-    public void gameOver(int code, AppCompatActivity activity) {
+    public void gameOver(int code, BaseActivity activity) {
         // Forming game-over message
         int reasonId;
         switch (code) {
@@ -152,22 +153,23 @@ public class BecomeAKing extends Application {
                 activity.getString(R.string.game_over));
 
         // Showing dialogue
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, reasonId, R.string.got_it);
-        dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
-        dialogueFragment.setCallback(() ->
-        {
-            // Deleting save file
-            SaveManager.deleteSave(getApplicationContext());
-            clearGameState();
-            activity.finish();
-        });
+        activity.showDialogue(
+                R.string.notification,
+                message,
+                R.string.got_it,
+                () -> {
+                    // Deleting save file
+                    SaveManager.deleteSave(getApplicationContext());
+                    clearGameState();
+                    activity.finish();
+                });
     }
 
     public void saveGame() {
-        SaveManager.saveGame(getApplicationContext(), gameState);
+        SaveManager.saveGame(gameState, getApplicationContext());
     }
 
-    public void loadGame(AppCompatActivity activity) {
+    public void loadGame(BaseActivity activity) {
         if (SaveManager.saveExists(getApplicationContext())) {
             // Save file exists
             GameState gameState = SaveManager.loadGame(getApplicationContext());
@@ -177,13 +179,19 @@ public class BecomeAKing extends Application {
                 isLoaded = true;
             } else {
                 // Load error
-                DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.something_went_wrong, R.string.got_it);
-                dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
+                activity.showDialogue(
+                        R.string.notification,
+                        R.string.something_went_wrong,
+                        R.string.got_it,
+                        null);
             }
         } else {
             // No save file
-            DialogueFragment dialogueFragment = DialogueFragment.newInstance(R.string.notification, R.string.save_not_found, R.string.got_it);
-            dialogueFragment.show(activity.getSupportFragmentManager(), "dialogue");
+            activity.showDialogue(
+                    R.string.notification,
+                    R.string.save_not_found,
+                    R.string.got_it,
+                    null);
         }
     }
 
