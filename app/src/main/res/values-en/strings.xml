@@ -270,4 +270,8 @@
     <string name="negative_reputation">Your reputation has dropped below zero. You have been banished from the city.</string>
     <string name="negative_money">You owe money to the wrong people. You have been sold into slavery.</string>
 
+    <!-- Finance Fragment -->
+    <string name="map">Map</string>
+    <string name="drakkenbur">Drakkenbur</string>
+
 </resources>

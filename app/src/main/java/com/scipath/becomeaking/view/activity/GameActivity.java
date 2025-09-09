@@ -12,6 +12,7 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.fragment.CategoriesFragment;
+import com.scipath.becomeaking.view.fragment.FinanceFragment;
 import com.scipath.becomeaking.view.fragment.PersonageFragment;
 
 
@@ -90,8 +91,7 @@ public class GameActivity extends BaseActivity {
 
         buttonFinance = findViewById(R.id.button_finance);
         buttonFinance.setOnClickListener(view -> {
-            // TODO: Change a fragment after implementation
-            switchMenuButton(buttonFinance, new PersonageFragment());
+            switchMenuButton(buttonFinance, new FinanceFragment());
             showDialogue(
                     R.string.notification,
                     R.string.in_development,
@@ -103,7 +103,7 @@ public class GameActivity extends BaseActivity {
         buttonBattle = findViewById(R.id.button_battle);
         buttonBattle.setOnClickListener(view -> {
             // TODO: Change a fragment after implementation
-            switchMenuButton(buttonBattle, new PersonageFragment());
+            switchMenuButton(buttonBattle, new Fragment());
             showDialogue(
                     R.string.notification,
                     R.string.in_development,

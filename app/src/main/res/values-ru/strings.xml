@@ -259,4 +259,8 @@
     <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>
     <string name="negative_money">Вы задолжали денег не тем людям. Вас продали в рабство.</string>
 
+    <!-- Finance Fragment -->
+    <string name="map">Карта</string>
+    <string name="drakkenbur">Драккенбур</string>
+
 </resources>

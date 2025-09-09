@@ -1,8 +1,11 @@
 # Project Tasks
 
 ## In Progress
+- Implement map modes
 
 ## In Queue
+
+### FinanceFragment
 
 ### PersonageFragment
 - Handle bottom button actions

@@ -1,3 +1,9 @@
+# Become a King [0.5.0] - 09.09.2025
+
+### Additions
+- `buttonFinance` is now active
+- Added a map
+
 # Become a King [0.4.5] - 01.09.2025
 
 ### Fixes
