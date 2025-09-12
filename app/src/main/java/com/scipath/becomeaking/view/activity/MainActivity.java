@@ -71,7 +71,7 @@ public class MainActivity extends BaseActivity {
             personage.setMoney(100000);
             ArrayList<ICategory> categories = CategoriesList.getCategories(true);
             BecomeAKing.getInstance().setGameState(new GameState(personage, categories, 0));
-            Intent intent = new Intent(MainActivity.this, GameActivity.class);
+            Intent intent = new Intent(MainActivity.this, MapActivity.class);
             startActivity(intent);
         });
     }

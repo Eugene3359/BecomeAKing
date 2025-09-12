@@ -18,7 +18,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/img_logging"
-            android:contentDescription="@string/drakkenbur"/>
+            android:contentDescription="@string/drakkenburg"/>
 
         <com.scipath.becomeaking.view.customview.CustomLinearLayout
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_marginVertical="10dp"
                 app:backgroundColor="@color/transparent_gray"
                 app:backgroundDrawable="@drawable/bg_cloth1"
-                android:text="@string/drakkenbur"
+                android:text="@string/drakkenburg"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_small"
                 android:textStyle="bold"

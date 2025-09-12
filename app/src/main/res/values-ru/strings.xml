@@ -261,6 +261,22 @@
 
     <!-- Finance Fragment -->
     <string name="map">Карта</string>
-    <string name="drakkenbur">Драккенбур</string>
+    <string name="city">Город</string>
+    <string name="grimshaven">Гримсхейвен</string>
+    <string name="farendol">Фарендол</string>
+    <string name="thornford">Торнфорд</string>
+    <string name="drakkenburg">Драккенбург</string>
+    <string name="steinhart">Стайнхарт</string>
+    <string name="ravenholm">Равенхольм</string>
+    <string name="valmir">Вальмир</string>
+    <string name="tenebris">Тенебрис</string>
+    <string name="wolfengard">Вольфенгард</string>
+    <string name="kastervik">Кастервик</string>
+    <string name="morgenheim">Моргенхейм</string>
+    <string name="elmyria">Элмирия</string>
+    <string name="blackhollow">Блэкхоллоу</string>
+    <string name="albreston">Альбрестон</string>
+    <string name="schaderveld">Шадервельд</string>
+    <string name="winterholm">Винтерхолм</string>
 
 </resources>

@@ -40,7 +40,7 @@ public class FinanceFragment extends BaseFragment {
         Button buttonCity = view.findViewById(R.id.button_city);
         buttonCity.setOnClickListener(v -> {
             showDialogue(
-                    R.string.drakkenbur,
+                    R.string.drakkenburg,
                     R.string.placeholder,
                     R.string.got_it,
                     null

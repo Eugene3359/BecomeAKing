@@ -1,3 +1,8 @@
+# Become a King [0.5.1] - 12.09.2025
+
+### Changes
+- Cities on the map are now interactable
+
 # Become a King [0.5.0] - 09.09.2025
 
 ### Additions

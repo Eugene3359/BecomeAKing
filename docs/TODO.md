@@ -1,6 +1,7 @@
 # Project Tasks
 
 ## In Progress
+- Add routes to the map
 - Implement map modes
 
 ## In Queue

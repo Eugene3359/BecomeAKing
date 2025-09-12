@@ -272,6 +272,22 @@
 
     <!-- Finance Fragment -->
     <string name="map">Map</string>
-    <string name="drakkenbur">Drakkenbur</string>
+    <string name="city">City</string>
+    <string name="grimshaven">Grimshaven</string>
+    <string name="farendol">Farendol</string>
+    <string name="thornford">Thornford</string>
+    <string name="drakkenburg">Drakkenburg</string>
+    <string name="steinhart">Steinhart</string>
+    <string name="ravenholm">Ravenholm</string>
+    <string name="valmir">Valmir</string>
+    <string name="tenebris">Tenebris</string>
+    <string name="wolfengard">Wolfengard</string>
+    <string name="kastervik">Kastervik</string>
+    <string name="morgenheim">Morgenheim</string>
+    <string name="elmyria">Elmyria</string>
+    <string name="blackhollow">Blackhollow</string>
+    <string name="albreston">Albreston</string>
+    <string name="schaderveld">Schaderveld</string>
+    <string name="winterholm">Winterholm</string>
 
 </resources>
