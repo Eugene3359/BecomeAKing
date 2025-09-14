@@ -42,6 +42,12 @@
                 android:scaleType="fitXY"
                 android:contentDescription="@string/map" />
 
+            <com.scipath.becomeaking.view.customview.MapRoutesView
+                android:id="@+id/map_routes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
         </FrameLayout>
 
     </HorizontalScrollView>

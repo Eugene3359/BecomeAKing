@@ -1,13 +1,27 @@
+# Become a King [0.5.2] - 14.09.2025
+
+### Additions
+- Added routes between cities on the map
+
+### Fixes
+- Fixed positioning of cities on the map
+
+---
+
 # Become a King [0.5.1] - 12.09.2025
 
 ### Changes
 - Cities on the map are now interactable
+
+---
 
 # Become a King [0.5.0] - 09.09.2025
 
 ### Additions
 - `buttonFinance` is now active
 - Added a map
+
+---
 
 # Become a King [0.4.5] - 01.09.2025
 
@@ -272,3 +286,5 @@
 
 ### Additions
 - Added documentation
+
+---

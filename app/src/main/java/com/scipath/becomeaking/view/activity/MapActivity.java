@@ -1,11 +1,17 @@
 package com.scipath.becomeaking.view.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICity;
+import com.scipath.becomeaking.data.CitiesList;
+import com.scipath.becomeaking.view.customview.MapRoutesView;
 import com.scipath.becomeaking.view.layout.CityLayout;
+
+import java.util.ArrayList;
 
 
 public class MapActivity extends BaseActivity {
@@ -14,8 +20,12 @@ public class MapActivity extends BaseActivity {
     private int mapHeight;
     private int mapWidth;
 
+    // Models
+    private ArrayList<ICity> cities;
+
     // Views
     private FrameLayout mapContainer;
+    private MapRoutesView mapRoutesView;
 
 
     @Override
@@ -34,28 +44,21 @@ public class MapActivity extends BaseActivity {
                 null
         );
 
+        cities = CitiesList.getCities();
+
+        // Views
         mapContainer = findViewById(R.id.map_container);
+        mapRoutesView = findViewById(R.id.map_routes);
+
         mapContainer.post(() -> {
             mapHeight = mapContainer.getHeight();
             mapWidth = mapContainer.getWidth();
 
-            // Cities
-            addCity(0.115f, 0.200f, R.string.grimshaven);
-            addCity(0.160f, 0.360f, R.string.farendol);
-            addCity(0.215f, 0.340f, R.string.thornford);
-            addCity(0.305f, 0.100f, R.string.drakkenburg);
-            addCity(0.315f, 0.645f, R.string.steinhart);
-            addCity(0.370f, 0.415f, R.string.ravenholm);
-            addCity(0.415f, 0.315f, R.string.valmir);
-            addCity(0.575f, 0.295f, R.string.tenebris);
-            addCity(0.655f, 0.120f, R.string.wolfengard);
-            addCity(0.640f, 0.240f, R.string.kastervik);
-            addCity(0.670f, 0.680f, R.string.morgenheim);
-            addCity(0.815f, 0.290f, R.string.elmyria);
-            addCity(0.795f, 0.395f, R.string.blackhollow);
-            addCity(0.775f, 0.780f, R.string.albreston);
-            addCity(0.835f, 0.690f, R.string.schaderveld);
-            addCity(0.885f, 0.335f, R.string.winterholm);
+
+            for (ICity city : cities) {
+                addCity(city);
+                addRoute(city);
+            }
         });
 
         // Buttons
@@ -65,20 +68,26 @@ public class MapActivity extends BaseActivity {
         });
     }
 
-    private void addCity(float x, float y, int cityNameId) {
-        CityLayout city = new CityLayout(this);
-        city.setName(cityNameId);
+    private void addCity(ICity city) {
+        CityLayout cityLayout = new CityLayout(this);
+        cityLayout.setName(city.getNameId());
 
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
-        params.topMargin = (int) (mapHeight * y);
-        params.leftMargin = (int) (mapWidth * x);
 
-        city.setLayoutParams(params);
+        cityLayout.measure(
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        );
 
-        city.setOnClickListener(v -> {
+        params.topMargin = (int) ((mapHeight * city.getY()) - (0.5 * cityLayout.getMeasuredHeight()));
+        params.leftMargin = (int) ((mapWidth * city.getX()) - (0.5 * cityLayout.getMeasuredWidth()));
+
+        cityLayout.setLayoutParams(params);
+
+        cityLayout.setOnClickListener(v -> {
             showDialogue(
                     R.string.notification,
                     R.string.in_development,
@@ -87,6 +96,12 @@ public class MapActivity extends BaseActivity {
             );
         });
 
-        mapContainer.addView(city);
+        mapContainer.addView(cityLayout);
+    }
+
+    private void addRoute(ICity city) {
+        for (ICity route : city.getRoutes()) {
+            mapRoutesView.addConnection(city.getX(), city.getY(), route.getX(), route.getY());
+        }
     }
 }
