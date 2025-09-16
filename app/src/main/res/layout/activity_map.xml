@@ -20,7 +20,7 @@
         app:backgroundDrawable="@drawable/bg_cloth1"
         android:text="@string/back"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_size_small"
+        android:textSize="18sp"
         android:textAllCaps="false" />
 
     <HorizontalScrollView
@@ -51,5 +51,36 @@
         </FrameLayout>
 
     </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="5dp"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/button_finance"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:foreground="@drawable/ib_border"
+            android:background="@color/game_menu_brown"
+            android:src="@drawable/icon_moneybag"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/finance" />
+
+        <ImageButton
+            android:id="@+id/button_battle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:foreground="@drawable/ib_border"
+            android:background="@color/game_menu_brown"
+            android:src="@drawable/icon_battle"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/battle" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

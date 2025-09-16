@@ -27,14 +27,14 @@
         <attr name="backgroundDrawable" />
     </declare-styleable>
 
-    <declare-styleable name="CustomLinearLayout">
+    <declare-styleable name="CustomImageView">
         <attr name="isSquare" />
         <attr name="borderColor" />
         <attr name="backgroundColor" />
         <attr name="backgroundDrawable" />
     </declare-styleable>
 
-    <declare-styleable name="CustomImageView">
+    <declare-styleable name="CustomLinearLayout">
         <attr name="isSquare" />
         <attr name="borderColor" />
         <attr name="backgroundColor" />

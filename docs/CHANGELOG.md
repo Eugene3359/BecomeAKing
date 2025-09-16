@@ -1,3 +1,10 @@
+# Become a King [0.5.2.1] - 16.09.2025
+
+### Additions
+- Added buttons to switch between map modes
+
+---
+
 # Become a King [0.5.2] - 14.09.2025
 
 ### Additions

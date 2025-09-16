@@ -1,7 +1,7 @@
 # Project Tasks
 
 ## In Progress
-- Implement map modes
+- Bugfix
 
 ## In Queue
 

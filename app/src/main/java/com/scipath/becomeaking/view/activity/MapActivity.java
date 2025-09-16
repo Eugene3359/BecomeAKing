@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+
+import androidx.core.content.ContextCompat;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICity;
@@ -26,6 +29,9 @@ public class MapActivity extends BaseActivity {
     // Views
     private FrameLayout mapContainer;
     private MapRoutesView mapRoutesView;
+    private ImageButton buttonActive;
+    private ImageButton buttonFinance;
+    private ImageButton buttonBattle;
 
 
     @Override
@@ -66,6 +72,18 @@ public class MapActivity extends BaseActivity {
         buttonBack.setOnClickListener(view -> {
             finish();
         });
+
+        buttonFinance = findViewById(R.id.button_finance);
+        buttonFinance.setOnClickListener(view -> {
+            switchMenuButton(buttonFinance);
+        });
+
+        buttonBattle = findViewById(R.id.button_battle);
+        buttonBattle.setOnClickListener(view -> {
+            switchMenuButton(buttonBattle);
+        });
+
+        switchMenuButton(buttonFinance);
     }
 
     private void addCity(ICity city) {
@@ -89,7 +107,7 @@ public class MapActivity extends BaseActivity {
 
         cityLayout.setOnClickListener(v -> {
             showDialogue(
-                    R.string.notification,
+                    city.getNameId(),
                     R.string.in_development,
                     R.string.got_it,
                     null
@@ -102,6 +120,24 @@ public class MapActivity extends BaseActivity {
     private void addRoute(ICity city) {
         for (ICity route : city.getRoutes()) {
             mapRoutesView.addConnection(city.getX(), city.getY(), route.getX(), route.getY());
+        }
+    }
+
+    public void switchMenuButton(ImageButton pressedButton) {
+        if (buttonActive != pressedButton) {
+            // Make all buttons brown
+            buttonFinance.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_brown));
+            buttonBattle.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_brown));
+
+            // Make active button green
+            buttonActive = pressedButton;
+            buttonActive.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_button_green));
+
+            if (buttonActive == buttonFinance) {
+                mapRoutesView.setVisibility(View.VISIBLE);
+            } else {
+                mapRoutesView.setVisibility(View.GONE);
+            }
         }
     }
 }
