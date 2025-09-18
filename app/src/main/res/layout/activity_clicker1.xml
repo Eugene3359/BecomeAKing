@@ -88,7 +88,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="17dp"
             app:isSquare="true"
-            android:src="@color/placeholder"
+            android:src="@drawable/bg_placeholder"
             android:contentDescription="@string/placeholder"/>
 
     </com.scipath.becomeaking.view.customview.CustomLinearLayout>

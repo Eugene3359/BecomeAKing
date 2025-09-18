@@ -14,7 +14,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginRight="10dp"
-        android:src="@color/placeholder"
+        android:src="@drawable/bg_placeholder"
         android:contentDescription="@string/placeholder"/>
 
     <TextView

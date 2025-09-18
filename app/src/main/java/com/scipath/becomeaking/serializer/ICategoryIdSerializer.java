@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ICategorySerializer implements JsonSerializer<ICategory>, JsonDeserializer<ICategory> {
+public class ICategoryIdSerializer implements JsonSerializer<ICategory>, JsonDeserializer<ICategory> {
 
     private static final String TYPE_FIELD = "type";
     private static final String DATA_FIELD = "data";

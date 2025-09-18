@@ -1,3 +1,10 @@
+# Become a King [0.5.2.2] - 18.09.2025
+
+### Fixes
+- Fixed an issue where saved games could become corrupted after updating the app
+
+---
+
 # Become a King [0.5.2.1] - 16.09.2025
 
 ### Additions

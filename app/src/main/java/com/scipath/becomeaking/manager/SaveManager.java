@@ -10,8 +10,8 @@ import com.scipath.becomeaking.contract.model.IPersonage;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.contract.model.IItem;
-import com.scipath.becomeaking.serializer.ICategorySerializer;
-import com.scipath.becomeaking.serializer.IItemSerializer;
+import com.scipath.becomeaking.serializer.ICategoryKeySerializer;
+import com.scipath.becomeaking.serializer.IItemKeySerializer;
 import com.scipath.becomeaking.serializer.ILevelSerializer;
 import com.scipath.becomeaking.serializer.IPersonageSerializer;
 import com.scipath.becomeaking.serializer.IStatsSerializer;
@@ -32,8 +32,8 @@ public class SaveManager {
         try {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(IStats.class, new IStatsSerializer())
-                    .registerTypeAdapter(IItem.class, new IItemSerializer())
-                    .registerTypeAdapter(ICategory.class, new ICategorySerializer())
+                    .registerTypeAdapter(IItem.class, new IItemKeySerializer(context))
+                    .registerTypeAdapter(ICategory.class, new ICategoryKeySerializer(context))
                     .registerTypeAdapter(ILevel.class, new ILevelSerializer())
                     .registerTypeAdapter(IPersonage.class, new IPersonageSerializer())
                     .create();
@@ -52,8 +52,8 @@ public class SaveManager {
                 InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
                 Gson gson = new GsonBuilder()
                         .registerTypeAdapter(IStats.class, new IStatsSerializer())
-                        .registerTypeAdapter(IItem.class, new IItemSerializer())
-                        .registerTypeAdapter(ICategory.class, new ICategorySerializer())
+                        .registerTypeAdapter(IItem.class, new IItemKeySerializer(context))
+                        .registerTypeAdapter(ICategory.class, new ICategoryKeySerializer(context))
                         .registerTypeAdapter(ILevel.class, new ILevelSerializer())
                         .registerTypeAdapter(IPersonage.class, new IPersonageSerializer())
                         .create();

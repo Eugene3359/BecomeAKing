@@ -16,7 +16,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<IItem> {
+public class IItemIdSerializer implements JsonSerializer<IItem>, JsonDeserializer<IItem> {
 
     private static final String TYPE_FIELD = "type";
     private static final String DATA_FIELD = "data";

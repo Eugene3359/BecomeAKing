@@ -498,7 +498,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.work_in_a_town));
         categories.get(11)
                 .addItem(new Work(R.string.cart_repair, R.drawable.img_cart_repair))
-                .addItem(new Work(R.string.architects_apprentice, R.color.placeholder))
+                .addItem(new Work(R.string.architects_apprentice, R.drawable.bg_placeholder))
                 .addItem(new Work(R.string.weavers_apprentice, R.drawable.img_weavers_apprentice))
                 .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice))
                 .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.img_blacksmiths_apprentice))

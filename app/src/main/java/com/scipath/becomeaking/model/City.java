@@ -67,14 +67,18 @@ public class City implements ICity {
 
     @Override
     public ICity setCoordinates(float x, float y) {
+        x = x < 1 ? 0 : (x > 1 ? 1 : x);
+        y = y < 1 ? 0 : (y > 1 ? 1 : y);
         coordinates = new Pair<>(x, y);
         return this;
     }
 
     @Override
     public ICity addRoute(ICity city) {
-        routes.add(city);
-        city.getRoutes().add(this);
+        if (city != this) {
+            routes.add(city);
+            city.getRoutes().add(this);
+        }
         return this;
     }
 

@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@color/placeholder"
+            android:src="@drawable/bg_placeholder"
             android:adjustViewBounds="true"
             android:contentDescription="@string/placeholder"/>
 

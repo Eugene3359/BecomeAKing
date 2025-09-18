@@ -1,11 +1,12 @@
 # Project Tasks
 
 ## In Progress
-- Bugfix
+- Merchantry
 
 ## In Queue
 
 ### FinanceFragment
+- Bank
 
 ### PersonageFragment
 - Handle bottom button actions
