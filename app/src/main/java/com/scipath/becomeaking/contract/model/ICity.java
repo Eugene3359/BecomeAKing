@@ -1,6 +1,6 @@
 package com.scipath.becomeaking.contract.model;
 
-import android.util.Pair;
+import androidx.core.util.Pair;
 
 import java.util.Set;
 
