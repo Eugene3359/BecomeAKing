@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/income_and_expense"
-        android:textColor="@color/light_brown"
+        android:textColor="@color/text_light_brown2"
         android:textSize="24sp"
         android:textAllCaps="true" />
 
@@ -45,9 +45,9 @@
                 android:layout_width="0dp"
                 android:layout_height="28dp"
                 android:layout_weight="1"
-                android:background="@color/game_menu_brown"
+                android:background="@color/game_menu_element"
                 android:text="@string/_0"
-                android:textColor="@color/darker_brown"
+                android:textColor="@color/text_brown"
                 android:textSize="20sp"
                 android:textAlignment="center" />
 
@@ -76,9 +76,9 @@
                 android:layout_width="0dp"
                 android:layout_height="28dp"
                 android:layout_weight="1"
-                android:background="@color/game_menu_brown"
+                android:background="@color/game_menu_element"
                 android:text="@string/_0"
-                android:textColor="@color/darker_brown"
+                android:textColor="@color/text_brown"
                 android:textSize="20sp"
                 android:textAlignment="center" />
 
@@ -106,9 +106,9 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="@color/game_menu_brown"
+                android:background="@color/game_menu_element"
                 android:text="@string/_0"
-                android:textColor="@color/darker_brown"
+                android:textColor="@color/text_brown"
                 android:textSize="20sp"
                 android:textAlignment="center" />
 

@@ -47,6 +47,35 @@
 
         </LinearLayout>
 
+        <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            android:id="@+id/layout_experience"
+            android:layout_width="143dp"
+            android:layout_height="42dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:backgroundDrawable="@drawable/bg_cloth"
+            app:backgroundColor="@color/button_blue"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_skill_point"
+                android:contentDescription="@string/skill_points" />
+
+            <TextView
+                android:id="@+id/text_view_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+
         <com.scipath.becomeaking.view.customview.CustomButton
             android:id="@+id/button_back"
             android:layout_width="143dp"
@@ -57,9 +86,8 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:backgroundColor="@color/cloth_yellowish_brown"
-            app:backgroundColorPressed="@color/cloth_dark_brown"
-            app:backgroundDrawable="@drawable/bg_cloth1" />
+            app:backgroundColor="@color/button_dark_brown"
+            app:backgroundColorPressed="@color/text_brown" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

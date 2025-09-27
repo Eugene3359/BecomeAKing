@@ -126,12 +126,12 @@ public class MapActivity extends BaseActivity {
     public void switchMenuButton(ImageButton pressedButton) {
         if (buttonActive != pressedButton) {
             // Make all buttons brown
-            buttonFinance.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_brown));
-            buttonBattle.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_brown));
+            buttonFinance.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_element));
+            buttonBattle.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_element));
 
             // Make active button green
             buttonActive = pressedButton;
-            buttonActive.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_button_green));
+            buttonActive.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_button_active));
 
             if (buttonActive == buttonFinance) {
                 mapRoutesView.setVisibility(View.VISIBLE);

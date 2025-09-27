@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown"
+    android:background="@color/background_brown"
     android:fitsSystemWindows="true"
     tools:context=".view.activity.GameActivity" >
 
@@ -48,7 +48,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:src="@drawable/icon_heart"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:contentDescription="@string/health" />
 
                     <TextView
@@ -57,9 +57,9 @@
                         android:layout_height="28dp"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="1dp"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:text="@string/_0"
-                        android:textColor="@color/darker_brown"
+                        android:textColor="@color/text_brown"
                         android:textSize="20sp"
                         android:textAlignment="center" />
 
@@ -67,7 +67,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:src="@drawable/icon_civic_crown"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:contentDescription="@string/reputation" />
 
                     <TextView
@@ -76,9 +76,9 @@
                         android:layout_height="28dp"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="1dp"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:text="@string/_0"
-                        android:textColor="@color/darker_brown"
+                        android:textColor="@color/text_brown"
                         android:textSize="20sp"
                         android:textAlignment="center" />
 
@@ -87,7 +87,7 @@
                         android:layout_height="28dp"
                         android:src="@drawable/icon_coin1"
                         android:scaleType="fitXY"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:contentDescription="@string/money" />
 
                     <TextView
@@ -96,9 +96,9 @@
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:layout_marginLeft="1dp"
-                        android:background="@color/game_menu_brown"
+                        android:background="@color/game_menu_element"
                         android:text="@string/_0"
-                        android:textColor="@color/darker_brown"
+                        android:textColor="@color/text_brown"
                         android:textSize="20sp"
                         android:textAlignment="center" />
 
@@ -136,7 +136,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/icon_armor"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/personage" />
 
                 <ImageButton
@@ -147,7 +147,7 @@
                     android:layout_marginHorizontal="1dp"
                     android:src="@drawable/icon_food"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/shop" />
 
                 <ImageButton
@@ -157,7 +157,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/icon_house"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/property" />
 
                 <ImageButton
@@ -168,7 +168,7 @@
                     android:layout_marginHorizontal="1dp"
                     android:src="@drawable/icon_weapon"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/job" />
 
                 <ImageButton
@@ -178,7 +178,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/icon_moneybag"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/finance" />
 
                 <ImageButton
@@ -189,7 +189,7 @@
                     android:layout_marginLeft="1dp"
                     android:src="@drawable/icon_battle"
                     android:scaleType="fitCenter"
-                    android:background="@color/game_menu_brown"
+                    android:background="@color/game_menu_element"
                     android:contentDescription="@string/battle" />
 
             </LinearLayout>

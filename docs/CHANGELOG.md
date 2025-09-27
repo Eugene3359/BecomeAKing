@@ -1,3 +1,13 @@
+# Become a King [0.5.3] - 28.09.2025
+
+### Additions
+- Players now gain experience after completing work
+
+### Changes
+- Updated interface element backgrounds and colors
+
+---
+
 # Become a King [0.5.2.2] - 18.09.2025
 
 ### Fixes

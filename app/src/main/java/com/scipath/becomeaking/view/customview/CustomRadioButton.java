@@ -16,6 +16,16 @@ import com.scipath.becomeaking.R;
 
 public class CustomRadioButton extends AppCompatRadioButton {
 
+    // Variables
+    int borderColor;
+    int backgroundColor;
+    int backgroundColorSelected;
+    Drawable backgroundDrawable;
+    Drawable backgroundDrawableSelected;
+    Drawable defaultBackground;
+    Drawable selectedBackground;
+
+
     // Constructor
     public CustomRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -25,11 +35,11 @@ public class CustomRadioButton extends AppCompatRadioButton {
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRadioButton);
 
-        int borderColor = typedArray.getColor(R.styleable.CustomRadioButton_borderColor, 0x00000000); // Default: null
-        int backgroundColor = typedArray.getColor(R.styleable.CustomRadioButton_backgroundColor, 0x00000000); // Default: null
-        int backgroundColorSelecteds = typedArray.getColor(R.styleable.CustomRadioButton_backgroundColorSelected, backgroundColor); // Default: backgroundColor
-        Drawable backgroundDrawable = typedArray.getDrawable(R.styleable.CustomRadioButton_backgroundDrawable);
-        Drawable backgroundDrawableSelected = typedArray.getDrawable(R.styleable.CustomRadioButton_backgroundDrawableSelected);
+        borderColor = typedArray.getColor(R.styleable.CustomRadioButton_borderColor, 0x00000000); // Default: null
+        backgroundColor = typedArray.getColor(R.styleable.CustomRadioButton_backgroundColor, 0x00000000); // Default: null
+        backgroundColorSelected = typedArray.getColor(R.styleable.CustomRadioButton_backgroundColorSelected, backgroundColor); // Default: backgroundColor
+        backgroundDrawable = typedArray.getDrawable(R.styleable.CustomRadioButton_backgroundDrawable);
+        backgroundDrawableSelected = typedArray.getDrawable(R.styleable.CustomRadioButton_backgroundDrawableSelected);
         if (backgroundDrawableSelected == null) backgroundDrawableSelected = backgroundDrawable;
 
         typedArray.recycle();
@@ -43,9 +53,26 @@ public class CustomRadioButton extends AppCompatRadioButton {
         }
 
         // Create default and selected states
-        Drawable defaultBackground = createBorderDrawable(context, borderColor, backgroundColor, backgroundDrawable);
-        Drawable selectedBackground = createBorderDrawable(context, borderColor, backgroundColorSelecteds, backgroundDrawableSelected);
+        defaultBackground = createBorderDrawable(context, borderColor, backgroundColor, backgroundDrawable);
+        selectedBackground = createBorderDrawable(context, borderColor, backgroundColorSelected, backgroundDrawableSelected);
 
+        applyAttributes();
+    }
+
+    @Override
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        defaultBackground = createBorderDrawable(getContext(), borderColor, backgroundColor, backgroundDrawable);
+        applyAttributes();
+    }
+
+    public void setBackgroundColorSelected(int backgroundColorSelected) {
+        this.backgroundColorSelected = backgroundColorSelected;
+        selectedBackground = createBorderDrawable(getContext(), borderColor, backgroundColorSelected, backgroundDrawableSelected);
+        applyAttributes();
+    }
+
+    protected void applyAttributes() {
         // Create a selector using StateListDrawable
         StateListDrawable stateListDrawable = new StateListDrawable();
         stateListDrawable.addState(new int[]{android.R.attr.state_checked}, selectedBackground);

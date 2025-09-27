@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/placeholder"
-                android:textColor="@color/whitish_gray"
+                android:textColor="@color/text_almost_white"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textAlignment="center" />
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:paddingHorizontal="20dp"
-                app:borderColor="@color/whitish_gray"
+                app:borderColor="@color/text_almost_white"
                 android:text="@string/placeholder"
                 android:textSize="14sp"
                 android:textColor="@color/white"

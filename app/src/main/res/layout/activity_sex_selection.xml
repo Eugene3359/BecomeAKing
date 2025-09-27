@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown"
+    android:background="@color/background_brown"
     tools:context=".view.activity.SexSelectionActivity">
 
     <include layout="@layout/layout_cloth_background" />
@@ -28,7 +28,7 @@
                 android:layout_width="268dp"
                 android:layout_height="wrap_content"
                 android:text="@string/select_sex"
-                android:textColor="@color/light_brown"
+                android:textColor="@color/text_light_brown1"
                 android:textSize="24sp"
                 android:textAlignment="center" />
 
@@ -64,9 +64,9 @@
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"
                 app:borderColor="@color/black"
-                app:backgroundColor="@color/cloth_salad"
-                app:backgroundColorPressed="@color/cloth_dark_salad"
-                app:backgroundDrawable="@drawable/bg_cloth1"
+                app:backgroundColor="@color/button_green"
+                app:backgroundColorPressed="@color/button_green_pressed"
+                app:backgroundDrawable="@drawable/bg_wood_wall"
                 android:text="@string/_continue"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_big"
@@ -78,9 +78,9 @@
                 android:layout_width="@dimen/view_width"
                 android:layout_marginTop="20dp"
                 app:borderColor="@color/black"
-                app:backgroundColor="@color/cloth_light_brown"
-                app:backgroundColorPressed="@color/cloth_brown"
-                app:backgroundDrawable="@drawable/bg_cloth1"
+                app:backgroundColor="@color/button_light_brown"
+                app:backgroundColorPressed="@color/button_light_brown_pressed"
+                app:backgroundDrawable="@drawable/bg_wood_wall"
                 android:text="@string/back"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_big"

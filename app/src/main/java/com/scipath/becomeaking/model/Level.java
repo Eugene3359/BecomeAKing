@@ -9,7 +9,7 @@ public class Level implements ILevel {
     // Fields
     protected static int idCounter = 0;
 
-    protected static final int[] levelUpDemands = { 100, 200, 500, 1000 };
+    protected static final int[] levelUpDemands = new int[100];
     protected static final int skillPointsPerLevel = 2;
 
     protected int id;
@@ -23,6 +23,13 @@ public class Level implements ILevel {
 
     // Constructor
     public Level() {
+        int expStep = 50;
+        levelUpDemands[0] = 50;
+        for (int i = 1; i < levelUpDemands.length; i++) {
+            if (i % 10 == 0) expStep += 50;
+            levelUpDemands[i] = levelUpDemands[i - 1] + expStep;
+        }
+
         id = idCounter++;
         value = 1;
         currentExperience = 0;

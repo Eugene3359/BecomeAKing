@@ -26,7 +26,7 @@ public class WorkTest {
                 .add(Stat.HealthImpact, -15)
                 .add(Stat.ReputationImpact, 150)
                 .add(Stat.MoneyPerClick, 15)
-                .add(Stat.ReputationRequired, 1000));
+                .add(Stat.ReputationRequired, 1000), );
     }
 
     @Test

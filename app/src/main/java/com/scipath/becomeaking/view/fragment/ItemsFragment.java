@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
@@ -24,11 +26,22 @@ import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.Clicker1Activity;
 import com.scipath.becomeaking.view.activity.Clicker2Activity;
 import com.scipath.becomeaking.view.activity.GameActivity;
+import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+
+import java.util.List;
 
 
 public class ItemsFragment extends BaseFragment {
 
+    // Variables
     private int categoryId;
+
+    // Models
+    List<IItem> items;
+
+    // Views
+    LinearLayoutManager layoutManager;
+    TextView textViewExperience;
 
 
     public static ItemsFragment newInstance() {
@@ -51,12 +64,15 @@ public class ItemsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Getting personage and categoryId
-        Personage personage = BecomeAKing.getInstance().getPersonage();
         Bundle args = getArguments();
         categoryId = args.getInt("categoryId");
+        Personage personage = BecomeAKing.getInstance().getPersonage();
+        items = BecomeAKing.getInstance().getCategoryById(categoryId).getItems();
 
         // Views
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
+        CustomLinearLayout layoutExperience = view.findViewById(R.id.layout_experience);
+        textViewExperience = view.findViewById(R.id.text_view_experience);
         ImageButton buttonPreviousItem = view.findViewById(R.id.button_previous_item);
         ImageButton buttonNextItem = view.findViewById(R.id.button_next_item);
         Button buttonBack = view.findViewById(R.id.button_back);
@@ -74,10 +90,32 @@ public class ItemsFragment extends BaseFragment {
         }, view.getContext());
 
         // Displaying items
-        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(),
+        layoutManager = new LinearLayoutManager(view.getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(itemsAdapter);
+        recyclerView.setOnTouchListener((v, event) -> true);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
+                super.onScrollStateChanged(rv, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    int position = layoutManager.findFirstCompletelyVisibleItemPosition();
+                    if (position == RecyclerView.NO_POSITION) {
+                        position = layoutManager.findFirstVisibleItemPosition();
+                    }
+                    if (position != RecyclerView.NO_POSITION) {
+                        setItemsExperience(position);
+                    }
+                }
+            }
+        });
+
+        // Experience layout
+        if (items.get(0) instanceof Work) {
+            layoutExperience.setVisibility(View.VISIBLE);
+            setItemsExperience(0);
+        }
 
         // Scroll left on arrow click
         buttonPreviousItem.setOnClickListener(v -> {
@@ -95,6 +133,13 @@ public class ItemsFragment extends BaseFragment {
         buttonBack.setOnClickListener(v -> {
             getParentFragmentManager().popBackStack();
         });
+    }
+
+    public void setItemsExperience(int position) {
+        textViewExperience.setText(getString(
+                R.string.c_d,
+                '+',
+                ((Work)items.get(position)).getExperience()));
     }
 
     public void startClickerMiniGamer(IItem item) {

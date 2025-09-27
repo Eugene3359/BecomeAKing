@@ -7,7 +7,7 @@
     android:layout_width="236dp"
     android:layout_height="463dp"
     app:backgroundColor="@color/cloth_dark_brown"
-    app:backgroundDrawable="@drawable/bg_cloth1"
+    app:backgroundDrawable="@drawable/bg_wood_wall"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal">
 
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="235dp"
         app:backgroundColor="@color/cloth_darkest_brown"
-        app:backgroundDrawable="@drawable/bg_cloth1">
+        app:backgroundDrawable="@drawable/bg_wood_wall">
 
         <ImageView
             android:id="@+id/image_view_item"

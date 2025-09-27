@@ -2,6 +2,6 @@
     <item
         android:width="64dp"
         android:height="64dp"
-        android:drawable="@drawable/img_cloth2"
+        android:drawable="@drawable/img_cloth"
         android:gravity="center" />
 </layer-list>

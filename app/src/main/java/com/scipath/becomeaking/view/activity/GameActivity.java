@@ -153,16 +153,16 @@ public class GameActivity extends BaseActivity {
     public void switchMenuButton(ImageButton pressedButton, Fragment newFragment) {
         if (buttonActive != pressedButton) {
             // Make all buttons brown
-            buttonPersonage.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-            buttonShop.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-            buttonHousing.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-            buttonJob.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-            buttonFinance.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
-            buttonBattle.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_brown));
+            buttonPersonage.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
+            buttonShop.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
+            buttonHousing.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
+            buttonJob.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
+            buttonFinance.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
+            buttonBattle.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_element));
 
             // Make active button green
             buttonActive = pressedButton;
-            buttonActive.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_button_green));
+            buttonActive.setBackgroundColor(ContextCompat.getColor(GameActivity.this, R.color.game_menu_button_active));
 
             setFragment(newFragment);
         } else {

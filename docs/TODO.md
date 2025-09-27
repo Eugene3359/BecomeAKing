@@ -1,11 +1,13 @@
 # Project Tasks
 
 ## In Progress
-- Merchantry
+- Update categories and items designs
+- Add more items
 
 ## In Queue
 
 ### FinanceFragment
+- Merchantry
 - Bank
 
 ### PersonageFragment

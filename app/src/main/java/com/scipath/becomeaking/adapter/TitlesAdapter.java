@@ -37,6 +37,8 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
         public ViewHolder(View view) {
             super(view);
             radioButton = view.findViewById(R.id.title_radio_button);
+            radioButton.setBackgroundColor(view.getContext().getColor(R.color.button_blue));
+            radioButton.setBackgroundColorSelected(view.getContext().getColor(R.color.radio_button_selected));
         }
 
         public CustomRadioButton getRadioButton() {

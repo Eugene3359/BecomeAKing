@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="25dp"
         app:backgroundColor="@color/cloth_dark_brown"
-        app:backgroundDrawable="@drawable/bg_cloth1"
+        app:backgroundDrawable="@drawable/bg_wood_wall"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal" >
 
