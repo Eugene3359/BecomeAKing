@@ -3,7 +3,6 @@ package com.scipath.becomeaking.model.item;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.enums.Sex;
@@ -16,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 public class WorkTest {
 
-    IItem work;
+    Work work;
 
 
     @BeforeEach
@@ -26,7 +25,13 @@ public class WorkTest {
                 .add(Stat.HealthImpact, -15)
                 .add(Stat.ReputationImpact, 150)
                 .add(Stat.MoneyPerClick, 15)
-                .add(Stat.ReputationRequired, 1000), );
+                .add(Stat.ReputationRequired, 1000),
+                10);
+    }
+
+    @Test
+    void getExperience_returnsExpectedValue() {
+        assertEquals(10, work.getExperience()); // Initial value
     }
 
     @Test
@@ -46,12 +51,25 @@ public class WorkTest {
     }
 
     @Test
+    void setExperience_withValidValue_changesExperience() {
+        work.setExperience(25);
+        assertEquals(25, work.getExperience());
+    }
+
+    @Test
+    void setExperience_withNegativeValue_setsZero() {
+        work.setExperience(-10);
+        assertEquals(0, work.getExperience());
+    }
+
+    @Test
     void interact_withFulfilledRequirementsPersonage_returnsZeroAndModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setReputation(1000);
         assertEquals(0, work.interact(personage));
         assertEquals(85, personage.getHealth());
         assertEquals(1150, personage.getReputation());
+        assertEquals(10, personage.getLevel().getCurrentExperience());
     }
 
     @Test

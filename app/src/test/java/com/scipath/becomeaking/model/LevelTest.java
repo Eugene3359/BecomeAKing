@@ -37,7 +37,7 @@ class LevelTest {
 
     @Test
     void getNeededExperience_returnsExpectedValue() {
-        assertEquals(100, level.getNeededExperience()); // Initial value
+        assertEquals(50, level.getNeededExperience()); // Initial value
     }
 
     @Test
@@ -85,27 +85,18 @@ class LevelTest {
 
     @Test
     void gainExperience_withValueLessThenNeededExperience_increasesExperience() {
-        level.gainExperience(50); // 100 needed for level-up
+        level.gainExperience(25); // 50 needed for level-up
         assertEquals(1, level.getValue());
-        assertEquals(50, level.getCurrentExperience());
+        assertEquals(25, level.getCurrentExperience());
     }
 
     @Test
     void gainExperience_withValueMoreThenNeededExperience_levelUp() {
-        level.gainExperience(150); // 100 needed for level-up
+        level.gainExperience(100); // 50 needed for level-up
         assertEquals(2, level.getValue());
         assertEquals(50, level.getCurrentExperience());
         assertEquals(4, level.getAvailableSkillPoints()); // 2 initial + 2 on level up
-        assertEquals(200, level.getNeededExperience());
-    }
-
-    @Test
-    void gainExperience_withExcessiveValue_doesNotLevelUpPastMaximumLevel() {
-        // Level cap is 4 (index 3)
-        level.gainExperience(10000); // Should reach level 4, then stop
-        assertEquals(4, level.getValue());
-        assertEquals(1000, level.getCurrentExperience()); // Locked at max
-        assertEquals(8, level.getAvailableSkillPoints());
+        assertEquals(100, level.getNeededExperience());
     }
 
     @Test

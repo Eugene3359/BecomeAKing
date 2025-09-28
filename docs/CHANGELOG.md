@@ -1,3 +1,10 @@
+# Become a King [0.5.3.1] - 29.09.2025
+
+### Fixes
+- Fixed app crash when scrolling items
+
+---
+
 # Become a King [0.5.3] - 28.09.2025
 
 ### Additions

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.scipath.becomeaking.BecomeAKing;
@@ -94,27 +94,30 @@ public class ItemsFragment extends BaseFragment {
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(itemsAdapter);
-        recyclerView.setOnTouchListener((v, event) -> true);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
-                super.onScrollStateChanged(rv, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    int position = layoutManager.findFirstCompletelyVisibleItemPosition();
-                    if (position == RecyclerView.NO_POSITION) {
-                        position = layoutManager.findFirstVisibleItemPosition();
-                    }
-                    if (position != RecyclerView.NO_POSITION) {
-                        setItemsExperience(position);
-                    }
-                }
-            }
-        });
+
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
 
         // Experience layout
         if (items.get(0) instanceof Work) {
             layoutExperience.setVisibility(View.VISIBLE);
             setItemsExperience(0);
+
+            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
+                    super.onScrollStateChanged(rv, newState);
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        int position = layoutManager.findFirstCompletelyVisibleItemPosition();
+                        if (position == RecyclerView.NO_POSITION) {
+                            position = layoutManager.findFirstVisibleItemPosition();
+                        }
+                        if (position != RecyclerView.NO_POSITION) {
+                            setItemsExperience(position);
+                        }
+                    }
+                }
+            });
         }
 
         // Scroll left on arrow click

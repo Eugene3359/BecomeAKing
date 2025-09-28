@@ -23,7 +23,7 @@ public class Work extends Item {
     // Constructors
     public Work(int nameId, int imageId, int experience) {
         super(nameId, imageId, 0);
-        this.experience = experience;
+        setExperience(experience);
         this.interactionNameId = R.string.start;
         this.interactionResultNameId = R.string.done;
         interactionValue = 1;
@@ -31,7 +31,7 @@ public class Work extends Item {
 
     public Work(int nameId, int imageId, Stats stats, int experience) {
         super(nameId, imageId, 0, stats);
-        this.experience = experience;
+        setExperience(experience);
         this.interactionNameId = R.string.start;
         this.interactionResultNameId = R.string.done;
         interactionValue = 1;
@@ -55,7 +55,7 @@ public class Work extends Item {
     }
 
     public void setExperience(int experience) {
-        this.experience = experience;
+        this.experience = Math.max(0, experience);
     }
 
     public void setInteractionValue(int value) {
