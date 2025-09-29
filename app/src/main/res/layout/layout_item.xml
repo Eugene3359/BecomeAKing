@@ -6,7 +6,7 @@
     android:id="@+id/item_layout"
     android:layout_width="236dp"
     android:layout_height="463dp"
-    app:backgroundColor="@color/cloth_dark_brown"
+    app:backgroundColor="@color/brown"
     app:backgroundDrawable="@drawable/bg_wood_wall"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal">
@@ -41,11 +41,10 @@
 
     </LinearLayout>
 
-    <com.scipath.becomeaking.view.customview.CustomLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="235dp"
-        app:backgroundColor="@color/cloth_darkest_brown"
-        app:backgroundDrawable="@drawable/bg_wood_wall">
+        android:background="@color/item_dark_brown" >
 
         <ImageView
             android:id="@+id/image_view_item"
@@ -56,7 +55,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/placeholder"/>
 
-    </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

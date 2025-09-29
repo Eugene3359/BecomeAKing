@@ -56,7 +56,10 @@
 
     <!-- Layout Category -->
     <color name="grayish_brown">#FF4F463C</color>
-    <color name="category_brown">#D83D2B14</color>
+    <color name="brown">#D83D2B14</color>
+
+    <!-- Layout Item -->
+    <color name="item_dark_brown">#FF1C1914</color>
 
 
     <color name="transparent_gray">#F24B4B4B</color>

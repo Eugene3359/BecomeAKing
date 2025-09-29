@@ -35,6 +35,7 @@ public class ItemsFragment extends BaseFragment {
 
     // Variables
     private int categoryId;
+    private boolean isWorkCategory;
 
     // Models
     List<IItem> items;
@@ -63,11 +64,11 @@ public class ItemsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Getting personage and categoryId
         Bundle args = getArguments();
-        categoryId = args.getInt("categoryId");
         Personage personage = BecomeAKing.getInstance().getPersonage();
+        categoryId = args.getInt("categoryId");
         items = BecomeAKing.getInstance().getCategoryById(categoryId).getItems();
+        isWorkCategory = items.get(0) instanceof Work;
 
         // Views
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
@@ -94,39 +95,49 @@ public class ItemsFragment extends BaseFragment {
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(itemsAdapter);
-
         LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
-
-        // Experience layout
-        if (items.get(0) instanceof Work) {
-            layoutExperience.setVisibility(View.VISIBLE);
-            setItemsExperience(0);
-
-            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
-                    super.onScrollStateChanged(rv, newState);
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        int position = layoutManager.findFirstCompletelyVisibleItemPosition();
-                        if (position == RecyclerView.NO_POSITION) {
-                            position = layoutManager.findFirstVisibleItemPosition();
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
+                super.onScrollStateChanged(rv, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    int position = layoutManager.findFirstCompletelyVisibleItemPosition();
+                    if (position == RecyclerView.NO_POSITION) {
+                        position = layoutManager.findFirstVisibleItemPosition();
+                    }
+                    if (position != RecyclerView.NO_POSITION) {
+                        if (isWorkCategory) setItemsExperience(position);
+                        if (position == 0) {
+                            buttonPreviousItem.setVisibility(View.INVISIBLE);
+                        } else {
+                            buttonPreviousItem.setVisibility(View.VISIBLE);
                         }
-                        if (position != RecyclerView.NO_POSITION) {
-                            setItemsExperience(position);
+                        if (position == items.size()-1) {
+                            buttonNextItem.setVisibility(View.INVISIBLE);
+                        } else {
+                            buttonNextItem.setVisibility(View.VISIBLE);
                         }
                     }
                 }
-            });
+            }
+        });
+
+        // Experience layout
+        if (isWorkCategory) {
+            layoutExperience.setVisibility(View.VISIBLE);
+            setItemsExperience(0);
         }
 
-        // Scroll left on arrow click
+        // Button previous item
+        buttonPreviousItem.setVisibility(View.INVISIBLE);
         buttonPreviousItem.setOnClickListener(v -> {
             int firstVisible = layoutManager.findFirstVisibleItemPosition();
             recyclerView.smoothScrollToPosition(Math.max(0, firstVisible - 1));
         });
 
-        // Scroll right on arrow click
+        // Button next item
+        if (items.size() <= 1) buttonNextItem.setVisibility(View.INVISIBLE);
         buttonNextItem.setOnClickListener(v -> {
             int lastVisible = layoutManager.findLastVisibleItemPosition();
             recyclerView.smoothScrollToPosition(lastVisible + 1);

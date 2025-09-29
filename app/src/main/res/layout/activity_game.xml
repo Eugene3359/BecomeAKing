@@ -10,7 +10,7 @@
     android:fitsSystemWindows="true"
     tools:context=".view.activity.GameActivity" >
 
-    <include layout="@layout/layout_cloth_background" />
+    <include layout="@layout/layout_activity_background" />
 
     <ScrollView
         android:layout_width="match_parent"

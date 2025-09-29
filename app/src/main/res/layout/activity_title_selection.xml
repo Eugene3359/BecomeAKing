@@ -9,7 +9,7 @@
     android:background="@color/background_brown"
     tools:context=".view.activity.TitleSelectionActivity">
 
-    <include layout="@layout/layout_cloth_background" />
+    <include layout="@layout/layout_activity_background" />
 
     <ScrollView
         android:layout_width="match_parent"

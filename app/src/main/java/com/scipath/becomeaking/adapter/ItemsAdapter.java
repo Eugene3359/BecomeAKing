@@ -111,12 +111,16 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         IItem item = category.getItems().get(position);
 
         // Setting values to views
+        if (category.getBackgroundDrawableId() != 0) {
+            viewHolder.getLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
+        }
+
         viewHolder.getItemNameView().setText(item.getNameId());
 
         TextView textViewRequirement = viewHolder.getItemRequirementView();
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
-        if(strengthRequired != 0 || reputationRequired != 0) {
+        if (strengthRequired != 0 || reputationRequired != 0) {
             String requirement = (strengthRequired == 0) ?
                     Stat.ReputationRequired.getDescription(reputationRequired, context) :
                     Stat.StrengthRequired.getDescription(strengthRequired, context);

@@ -1,7 +1,14 @@
+# Become a King [0.5.3.3] - 29.09.2025
+
+### Changes
+- Updated items fragment backgrounds and colors
+
+---
+
 # Become a King [0.5.3.2] - 29.09.2025
 
 ### Changes
-- Updated categories view
+- Updated categories fragment backgrounds and colors
 
 ---
 
