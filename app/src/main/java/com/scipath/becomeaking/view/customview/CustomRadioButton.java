@@ -16,14 +16,14 @@ import com.scipath.becomeaking.R;
 
 public class CustomRadioButton extends AppCompatRadioButton {
 
-    // Variables
-    int borderColor;
-    int backgroundColor;
-    int backgroundColorSelected;
-    Drawable backgroundDrawable;
-    Drawable backgroundDrawableSelected;
-    Drawable defaultBackground;
-    Drawable selectedBackground;
+    // Fields
+    private int borderColor;
+    private int backgroundColor;
+    private int backgroundColorSelected;
+    private Drawable backgroundDrawable;
+    private Drawable backgroundDrawableSelected;
+    private Drawable defaultBackground;
+    private Drawable selectedBackground;
 
 
     // Constructor

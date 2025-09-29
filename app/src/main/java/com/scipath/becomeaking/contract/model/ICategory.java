@@ -22,6 +22,8 @@ public interface ICategory extends Serializable {
 
     int getImageId();
 
+    int getBackgroundDrawableId();
+
     List<IItem> getItems();
 
     StatsMod getStatsMod();
@@ -31,6 +33,8 @@ public interface ICategory extends Serializable {
 
     // Mutators
     void setNameId(int nameId);
+
+    void setBackgroundDrawableId(int drawableId);
 
     void setItems(List<IItem> items);
 

@@ -24,6 +24,7 @@ import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
+import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.ItemsFragment;
 
@@ -70,7 +71,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             return layout.findViewById(R.id.image_view_category);
         }
 
-        public RecyclerView getCategoryStatsView() {
+        public CustomLinearLayout getCategoryStatsLayout() {
+            return layout.findViewById(R.id.layout_stats);
+        }
+
+        public RecyclerView getCategoryStatsList() {
             return layout.findViewById(R.id.stats_list);
         }
 
@@ -116,6 +121,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         if (category.getImageId()!= 0)
             viewHolder.getCategoryImageView().setImageResource(category.getImageId());
         viewHolder.getCategoryImageView().setContentDescription(category.getName(context));
+        if (category.getBackgroundDrawableId() != 0)
+            viewHolder.getCategoryStatsLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
 
         IStats stats;
         if (category.getItems().size() == 1 && category.getItems().get(0) instanceof Work) {
@@ -129,8 +136,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         setRequirementView(stats, viewHolder.getCategoryRequirementView());
 
-        viewHolder.getCategoryStatsView().setLayoutManager(new LinearLayoutManager(context));
-        viewHolder.getCategoryStatsView().setAdapter(new StatsAdapter(stats, context));
+        viewHolder.getCategoryStatsList().setLayoutManager(new LinearLayoutManager(context));
+        StatsAdapter statsAdapter = new StatsAdapter(stats, context);
+        statsAdapter.setTextColor(R.color.text_grayish_brown);
+        viewHolder.getCategoryStatsList().setAdapter(statsAdapter);
     }
 
 

@@ -1,3 +1,10 @@
+# Become a King [0.5.3.2] - 29.09.2025
+
+### Changes
+- Updated categories view
+
+---
+
 # Become a King [0.5.3.1] - 29.09.2025
 
 ### Fixes
@@ -11,7 +18,7 @@
 - Players now gain experience after completing work
 
 ### Changes
-- Updated interface element backgrounds and colors
+- Updated interface elements backgrounds and colors
 
 ---
 

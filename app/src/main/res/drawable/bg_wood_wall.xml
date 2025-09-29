@@ -2,6 +2,6 @@
     <item
         android:width="256dp"
         android:height="256dp"
-        android:drawable="@drawable/img_wood_wall"
+        android:drawable="@drawable/background_wood_wall"
         android:gravity="center" />
 </layer-list>

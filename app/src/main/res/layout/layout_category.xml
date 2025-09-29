@@ -24,8 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingHorizontal="20dp"
-            app:backgroundColor="@color/cloth_dark_brown"
-            app:backgroundDrawable="@drawable/bg_wood_wall"
+            app:backgroundColor="@color/grayish_brown"
             android:orientation="vertical"
             android:gravity="center_vertical">
 
@@ -50,9 +49,10 @@
         </com.scipath.becomeaking.view.customview.CustomLinearLayout>
 
         <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            android:id="@+id/layout_stats"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:backgroundColor="@color/cloth_darkest_brown"
+            app:backgroundColor="@color/category_brown"
             app:backgroundDrawable="@drawable/bg_wood_wall"
             android:orientation="horizontal"
             android:gravity="center_vertical" >

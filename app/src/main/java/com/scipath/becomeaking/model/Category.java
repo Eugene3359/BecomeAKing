@@ -23,6 +23,7 @@ public class Category implements ICategory {
     protected int id;
     protected int nameId;
     protected int imageId;
+    protected int backgroundDrawableId;
     protected List<IItem> items;
     protected boolean itemsMutated;
     protected StatsMod statsMod;
@@ -34,6 +35,7 @@ public class Category implements ICategory {
         this.id = idCounter++;
         this.nameId = nameId;
         this.imageId = 0;
+        this.backgroundDrawableId = 0;
         this.items = new ArrayList<>();
         this.itemsMutated = false;
         this.statsMod = StatsMod.Best;
@@ -59,6 +61,11 @@ public class Category implements ICategory {
     }
 
     @Override
+    public int getBackgroundDrawableId() {
+        return backgroundDrawableId;
+    }
+
+    @Override
     public List<IItem> getItems() {
         return items;
     }
@@ -79,6 +86,11 @@ public class Category implements ICategory {
     @Override
     public void setNameId(int nameId) {
         this.nameId = nameId;
+    }
+
+    @Override
+    public void setBackgroundDrawableId(int drawableId) {
+        backgroundDrawableId = drawableId;
     }
 
     @Override

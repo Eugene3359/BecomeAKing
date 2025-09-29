@@ -20,14 +20,18 @@
     <color name="border_brown">#73582F</color>
 
     <!-- Text -->
-    <color name="text_almost_white">#D0D0D0</color>
-    <color name="text_light_brown1">#D3C691</color>
-    <color name="text_light_brown2">#BFB192</color>
-    <color name="text_brown">#4F3E23</color>
+    <color name="text_almost_white">#FFD0D0D0</color>
+    <color name="text_light_brown1">#FFD3C691</color>
+    <color name="text_light_brown2">#FFBFB192</color>
+    <color name="text_brown">#FF4F3E23</color>
+    <color name="text_grayish_brown">#FF75635C</color>
 
     <!-- Button -->
     <color name="button_light_brown">#33FFFFFF</color>
     <color name="button_light_brown_pressed">#99000000</color>
+    <color name="button_dark_brown">#FF38260A</color>
+    <color name="button_dark_brown2">#332313</color>
+    <color name="button_dark_brown_pressed">#FF38260A</color>
     <color name="button_green">#7F0B6C18</color>
     <color name="button_green_pressed">#CC6D7C41</color>
     <color name="button_blue">#CC247D82</color>
@@ -48,11 +52,11 @@
 
     <!-- Personage Characteristics Activity -->
     <color name="blue">#FF247D82</color>
-    <color name="dark_brown">#FF38260A</color>
     <color name="transparent_white2">#CCACB4B7</color>
 
-
-
+    <!-- Layout Category -->
+    <color name="grayish_brown">#FF4F463C</color>
+    <color name="category_brown">#D83D2B14</color>
 
 
     <color name="transparent_gray">#F24B4B4B</color>
@@ -64,12 +68,9 @@
     <color name="transparent_red">#4DB00606</color>
     <color name="button_back_brown">#6D5028</color>
 
-    <color name="button_dark_brown">#332313</color>
     <color name="green_glow">#D005BA20</color>
 
     <color name="darkest_brown">#271400</color>
-
-    <color name="grayish_brown">#75635C</color>
 
     <color name="cloth_darkest_brown">#D80A0508</color>
     <color name="cloth_dark_brown">#CC1E0F07</color>

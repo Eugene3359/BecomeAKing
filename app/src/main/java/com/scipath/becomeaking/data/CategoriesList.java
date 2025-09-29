@@ -20,6 +20,7 @@ public class CategoriesList {
 
         // Nutrition
         categories.add(new Category(R.string.nutrition));
+        categories.get(0).setBackgroundDrawableId(R.drawable.bg_food);
         categories.get(0).setStatsMod(StatsMod.Sum);
         categories.get(0)
                 .addItem(new Food(R.string.bread, R.drawable.img_bread))
@@ -80,6 +81,7 @@ public class CategoriesList {
 
         // Clothes
         categories.add(new Category(R.string.clothes));
+        categories.get(1).setBackgroundDrawableId(R.drawable.bg_carpet);
         categories.get(1)
                 .addItem(new Item(R.string.poor_mans_clothes, isMale ?
                         R.drawable.img_poor_man_clothes : R.drawable.img_poor_woman_clothes, 10))
@@ -133,6 +135,7 @@ public class CategoriesList {
 
         // Entertainment
         categories.add(new Category(R.string.entertainment));
+        categories.get(2).setBackgroundDrawableId(R.drawable.bg_games);
         categories.get(2)
                 .addItem(new Item(R.string.have_a_drink_at_the_tavern, R.drawable.img_tavern, 20))
                 .addItem(new Item(R.string.walk_around_the_fair, R.drawable.img_fair, 200))
@@ -174,6 +177,7 @@ public class CategoriesList {
 
         // Weapon
         categories.add(new Category(R.string.weapon));
+        categories.get(3).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(3)
                 .addItem(new Item(R.string.ax, R.drawable.img_ax, 100))
                 .addItem(new Item(R.string.rusty_sword, R.drawable.img_rusty_sword, 300))
@@ -227,6 +231,7 @@ public class CategoriesList {
 
         // Armor
         categories.add(new Category(R.string.armor));
+        categories.get(4).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(4)
                 .addItem(new Item(R.string.leather_armor, R.drawable.img_leather_armor, 100))
                 .addItem(new Item(R.string.rusty_armor, R.drawable.img_rusty_armor, 300))
@@ -355,6 +360,7 @@ public class CategoriesList {
 
         // Books
         categories.add(new Category(R.string.books));
+        categories.get(7).setBackgroundDrawableId(R.drawable.bg_books);
         categories.get(7).setStatsMod(StatsMod.Sum);
         categories.get(7)
                 .addItem(new Item(R.string.old_book, R.drawable.img_old_book, 200))
@@ -391,6 +397,7 @@ public class CategoriesList {
 
         // Artworks
         categories.add(new Category(R.string.artworks));
+        categories.get(8).setBackgroundDrawableId(R.drawable.bg_art);
         categories.get(8)
                 .addItem(new Item(R.string.workshop_figurine, R.drawable.img_figurine_from_the_workshop, 300))
                 .addItem(new Item(R.string.local_painting, R.drawable.img_local_painting, 800))
@@ -416,6 +423,7 @@ public class CategoriesList {
 
         // Horse
         categories.add(new Category(R.string.horse));
+        categories.get(9).setBackgroundDrawableId(R.drawable.bg_horses);
         categories.get(9)
                 .addItem(new Item(R.string.lame_horse, R.drawable.img_lame_horse, 1500))
                 .addItem(new Item(R.string.young_horse, R.drawable.img_young_horse, 5000))

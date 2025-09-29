@@ -22,6 +22,7 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
 
     // Variables
     private final IStats stats;
+    private int colorId;
     private final Context context;
 
 
@@ -31,9 +32,13 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
         this.stats.remove(Stat.StrengthRequired);
         this.stats.remove(Stat.ReputationRequired);
         this.stats.remove(Stat.HorseAndWeaponRequired);
+        this.colorId = 0;
         this.context = context;
     }
 
+    public void setTextColor(int resId) {
+        this.colorId = resId;
+    }
 
     // ViewHolder subclass
     // Provide a reference to the type of views that you are using
@@ -83,6 +88,9 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
         viewHolder.getStatImageView().setImageResource(stat.getIconId());
         viewHolder.getStatImageView().setContentDescription(stat.getName(context));
         viewHolder.getStatTextView().setText(stat.getDescription(value, context));
+        if (colorId != 0) {
+            viewHolder.getStatTextView().setTextColor(context.getColor(colorId));
+        }
     }
 
 
