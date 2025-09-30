@@ -1,3 +1,10 @@
+# Become a King [0.5.3.4] - 30.09.2025
+
+### Changes
+- Updated interface elements backgrounds and colors
+
+---
+
 # Become a King [0.5.3.3] - 29.09.2025
 
 ### Changes

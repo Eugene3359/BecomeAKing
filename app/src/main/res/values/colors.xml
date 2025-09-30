@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Standard -->
+    <!-- Standard Colors -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -9,22 +9,26 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Placeholder -->
+    <!-- Placeholder Color -->
     <color name="placeholder">#7F4B4B4B</color>
 
-    <!-- Background -->
+    <!-- Background Colors -->
     <color name="background_brown">#92794F</color>
     <color name="background_dark_brown">#766D5E</color>
 
-    <!-- Border -->
+    <!-- Border Colors -->
     <color name="border_brown">#73582F</color>
 
-    <!-- Text -->
+    <!-- Text Colors -->
     <color name="text_almost_white">#FFD0D0D0</color>
     <color name="text_light_brown1">#FFD3C691</color>
     <color name="text_light_brown2">#FFBFB192</color>
     <color name="text_brown">#FF4F3E23</color>
     <color name="text_grayish_brown">#FF75635C</color>
+
+    <!-- Cloth Colors -->
+    <color name="cloth_brown">#CC1E0F07</color>
+    <color name="cloth_dark_brown">#D80A0508</color>
 
     <!-- Button -->
     <color name="button_light_brown">#33FFFFFF</color>
@@ -46,13 +50,12 @@
     <color name="game_menu_button_active">#367E33</color>
     <color name="icon_green">#318625</color>
     <color name="icon_red">#862525</color>
-    <color name="gray">#4B4B4B</color>
     <color name="dark_blue">#47666B</color>
     <color name="light_blue">#5B6C6E</color>
 
     <!-- Personage Characteristics Activity -->
     <color name="blue">#FF247D82</color>
-    <color name="transparent_white2">#CCACB4B7</color>
+    <color name="transparent_gray">#CCACB4B7</color>
 
     <!-- Layout Category -->
     <color name="grayish_brown">#FF4F463C</color>
@@ -61,8 +64,16 @@
     <!-- Layout Item -->
     <color name="item_dark_brown">#FF1C1914</color>
 
+    <!-- Clicker Mini-games -->
+    <color name="info_brown">#FF472B11</color>
 
-    <color name="transparent_gray">#F24B4B4B</color>
+    <!-- Dialogue Fragment -->
+    <color name="transparent_dark_brown">#F22D1D0E</color>
+    <color name="transparent_light_brown">#F2453D36</color>
+
+    <!-- -->
+
+
     <color name="transparent_raspberry">#F2381123</color>
 
     <color name="light_gray">#B2AAAA</color>
@@ -75,11 +86,9 @@
 
     <color name="darkest_brown">#271400</color>
 
-    <color name="cloth_darkest_brown">#D80A0508</color>
-    <color name="cloth_dark_brown">#CC1E0F07</color>
 
-    <color name="transparent_dark_brown">#F22D1D0E</color>
-    <color name="transparent_light_brown">#F2453D36</color>
+
+
 
     <color name="dark_green">#365A1E</color>
 

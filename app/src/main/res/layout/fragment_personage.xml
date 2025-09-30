@@ -29,7 +29,7 @@
                 android:minHeight="50dp"
                 android:layout_marginTop="15dp"
                 app:borderColor="@color/border_brown"
-                app:backgroundColor="@color/gray"
+                app:backgroundColor="@color/dark_blue"
                 android:gravity="center_vertical" >
 
                 <TextView
@@ -491,7 +491,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="8dp"
                     app:borderColor="@color/border_brown"
-                    app:backgroundColor="@color/button_green"
+                    app:backgroundColor="@color/transparent_gray"
                     app:backgroundDrawable="@drawable/bg_wood_wall"
                     android:gravity="center" >
 
@@ -533,7 +533,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="8dp"
                     app:borderColor="@color/border_brown"
-                    app:backgroundColor="@color/button_green"
+                    app:backgroundColor="@color/transparent_gray"
                     app:backgroundDrawable="@drawable/bg_wood_wall"
                     android:gravity="center" >
 
@@ -575,7 +575,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="8dp"
                     app:borderColor="@color/border_brown"
-                    app:backgroundColor="@color/button_green"
+                    app:backgroundColor="@color/transparent_gray"
                     app:backgroundDrawable="@drawable/bg_wood_wall"
                     android:gravity="center">
 
@@ -668,8 +668,8 @@
                 android:layout_height="46dp"
                 android:layout_marginTop="10dp"
                 app:borderColor="@color/black"
-                app:backgroundColor="@color/button_green"
-                app:backgroundColorPressed="@color/button_green_pressed"
+                app:backgroundColor="@color/button_light_brown"
+                app:backgroundColorPressed="@color/button_light_brown_pressed"
                 app:backgroundDrawable="@drawable/bg_wood_wall"
                 android:text="@string/settings"
                 android:textColor="@color/black"
@@ -682,8 +682,8 @@
                 android:layout_height="46dp"
                 android:layout_marginTop="10dp"
                 app:borderColor="@color/black"
-                app:backgroundColor="@color/button_green"
-                app:backgroundColorPressed="@color/button_green_pressed"
+                app:backgroundColor="@color/button_light_brown"
+                app:backgroundColorPressed="@color/button_light_brown_pressed"
                 app:backgroundDrawable="@drawable/bg_wood_wall"
                 android:text="@string/developer"
                 android:textColor="@color/black"
@@ -696,8 +696,8 @@
                 android:layout_height="46dp"
                 android:layout_marginTop="10dp"
                 app:borderColor="@color/black"
-                app:backgroundColor="@color/button_green"
-                app:backgroundColorPressed="@color/button_green_pressed"
+                app:backgroundColor="@color/button_light_brown"
+                app:backgroundColorPressed="@color/button_light_brown_pressed"
                 app:backgroundDrawable="@drawable/bg_wood_wall"
                 android:text="@string/save_and_exit"
                 android:textColor="@color/black"

@@ -23,8 +23,8 @@
         <com.scipath.becomeaking.view.customview.CustomLinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:backgroundColor="@color/cloth_dark_brown"
-            app:backgroundDrawable="@drawable/bg_wood_wall"
+            app:backgroundColor="@color/cloth_brown"
+            app:backgroundDrawable="@drawable/bg_cloth"
             android:orientation="vertical" >
 
             <com.scipath.becomeaking.view.customview.CustomButton
@@ -32,8 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginVertical="10dp"
-                app:backgroundColor="@color/transparent_gray"
-                app:backgroundDrawable="@drawable/bg_wood_wall"
+                app:backgroundColor="@color/grayish_brown"
                 android:text="@string/drakkenburg"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_small"
@@ -44,8 +43,7 @@
                 android:id="@+id/button_map"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:backgroundColor="@color/transparent_raspberry"
-                app:backgroundDrawable="@drawable/bg_wood_wall"
+                app:backgroundColor="@color/blue"
                 android:text="@string/map"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_small"

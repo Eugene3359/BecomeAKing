@@ -73,4 +73,14 @@ public class CustomLinearLayout extends LinearLayoutCompat {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
+
+    @Override
+    protected int getSuggestedMinimumHeight() {
+        return 0;
+    }
+
+    @Override
+    protected int getSuggestedMinimumWidth() {
+        return 0;
+    }
 }
