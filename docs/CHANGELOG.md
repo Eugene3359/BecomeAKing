@@ -1,3 +1,10 @@
+# Become a King [0.5.4] - 02.10.2025
+
+### Additions
+- Added more items
+
+---
+
 # Become a King [0.5.3.4] - 30.09.2025
 
 ### Changes

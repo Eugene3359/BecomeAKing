@@ -9,8 +9,8 @@ import java.io.Serializable;
 public enum Title implements Serializable {
 
     // Titles
-    Rogue(R.string.rogue, 75),
-    Villager(R.string.villager, 100),
+    Rogue(R.string.rogue, 100),
+    Villager(R.string.villager, 125),
     Bandit(R.string.bandit, 150);
 
 

@@ -68,6 +68,8 @@
     <string name="meat">М\'ясо</string>
     <string name="cheese">Сир</string>
     <string name="vegetables">Овочі</string>
+    <string name="fruits">Фрукти</string>
+    <string name="seafood">Морепродукти</string>
     <string name="soup">Суп</string>
     <string name="nourishing_food">Поживний обід</string>
     <string name="luxurious_food">Розкішна їжа</string>
@@ -115,6 +117,7 @@
 
     <!-- Housing -->
     <string name="housing">Житло</string>
+    <string name="tent">Палатка</string>
     <string name="hut">Хатина</string>
     <string name="old_house">Старий будинок</string>
     <string name="stone_house">Кам\'яний будинок</string>

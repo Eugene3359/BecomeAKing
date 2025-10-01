@@ -68,6 +68,7 @@
     <string name="meat">Мясо</string>
     <string name="cheese">Сыр</string>
     <string name="vegetables">Овощи</string>
+    <string name="seafood">Морепродукти</string>
     <string name="soup">Суп</string>
     <string name="nourishing_food">Сытный обед</string>
     <string name="luxurious_food">Роскошная еда</string>
@@ -115,6 +116,7 @@
 
     <!-- Housing -->
     <string name="housing">Жилье</string>
+    <string name="tent">Палатка</string>
     <string name="hut">Хижина</string>
     <string name="old_house">Старый дом</string>
     <string name="stone_house">Каменный дом</string>
@@ -278,5 +280,6 @@
     <string name="albreston">Альбрестон</string>
     <string name="schaderveld">Шадервельд</string>
     <string name="winterholm">Винтерхолм</string>
+    <string name="fruits">Фрукти</string>
 
 </resources>

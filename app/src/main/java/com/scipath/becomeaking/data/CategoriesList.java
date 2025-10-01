@@ -27,6 +27,8 @@ public class CategoriesList {
                 .addItem(new Food(R.string.meat, R.drawable.img_meat))
                 .addItem(new Food(R.string.cheese, R.drawable.img_cheese))
                 .addItem(new Food(R.string.vegetables, R.drawable.img_vegetables))
+                .addItem(new Food(R.string.fruits, R.drawable.img_fruits))
+                .addItem(new Food(R.string.seafood, R.drawable.img_seafood))
                 .addItem(new Food(R.string.soup, R.drawable.img_soup))
                 .addItem(new Food(R.string.nourishing_food, R.drawable.img_nourishing_food))
                 .addItem(new Food(R.string.luxurious_food, R.drawable.img_luxury_food))
@@ -52,29 +54,39 @@ public class CategoriesList {
                 .add(Stat.HealthPerDay, 20)
                 .add(Stat.ReputationPerDay, 20)
                 .add(Stat.CoinsPerDay, -15));
-        // Soup
+        // Fruits
         categories.get(0).getItems().get(4).setStats(new Stats()
+                .add(Stat.HealthPerDay, 25)
+                .add(Stat.ReputationPerDay, 25)
+                .add(Stat.CoinsPerDay, -20));
+        // Seafood
+        categories.get(0).getItems().get(5).setStats(new Stats()
                 .add(Stat.HealthPerDay, 30)
-                .add(Stat.ReputationPerDay, 20)
+                .add(Stat.ReputationPerDay, 30)
+                .add(Stat.CoinsPerDay, -25));
+        // Soup
+        categories.get(0).getItems().get(6).setStats(new Stats()
+                .add(Stat.HealthPerDay, 35)
+                .add(Stat.ReputationPerDay, 35)
                 .add(Stat.CoinsPerDay, -30));
         // Nourishing food
-        categories.get(0).getItems().get(5).setStats(new Stats()
-                .add(Stat.HealthPerDay, 40)
-                .add(Stat.ReputationPerDay, 30)
-                .add(Stat.CoinsPerDay, -40));
-        // Luxurious food
-        categories.get(0).getItems().get(6).setStats(new Stats()
-                .add(Stat.HealthPerDay, 50)
-                .add(Stat.ReputationPerDay, 40)
-                .add(Stat.CoinsPerDay, -45));
-        // Aristocracy food
         categories.get(0).getItems().get(7).setStats(new Stats()
-                .add(Stat.HealthPerDay, 70)
-                .add(Stat.ReputationPerDay, 50)
+                .add(Stat.HealthPerDay, 90)
+                .add(Stat.ReputationPerDay, 40)
                 .add(Stat.CoinsPerDay, -60));
-        // Royal food
+        // Luxurious food
         categories.get(0).getItems().get(8).setStats(new Stats()
                 .add(Stat.HealthPerDay, 100)
+                .add(Stat.ReputationPerDay, 45)
+                .add(Stat.CoinsPerDay, -70));
+        // Aristocracy food
+        categories.get(0).getItems().get(9).setStats(new Stats()
+                .add(Stat.HealthPerDay, 120)
+                .add(Stat.ReputationPerDay, 50)
+                .add(Stat.CoinsPerDay, -80));
+        // Royal food
+        categories.get(0).getItems().get(10).setStats(new Stats()
+                .add(Stat.HealthPerDay, 200)
                 .add(Stat.ReputationPerDay, 300)
                 .add(Stat.CoinsPerDay, -500));
 
@@ -286,6 +298,7 @@ public class CategoriesList {
         // House
         categories.add(new Category(R.string.housing));
         categories.get(5)
+                .addItem(new Item(R.string.tent, R.drawable.img_tent, 0))
                 .addItem(new Item(R.string.hut, R.drawable.img_hut, 1000))
                 .addItem(new Item(R.string.old_house, R.drawable.img_old_house, 3000))
                 .addItem(new Item(R.string.stone_house, R.drawable.img_stone_house, 6000))
@@ -293,32 +306,37 @@ public class CategoriesList {
                 .addItem(new Item(R.string.small_mansion, R.drawable.img_small_mansion, 30000))
                 .addItem(new Item(R.string.medium_mansion, R.drawable.img_medium_mansion, 45000))
                 .addItem(new Item(R.string.large_mansion, R.drawable.img_large_mansion, 60000));
-        // Hut
+        // Tent
         categories.get(5).getItems().get(0).setStats(new Stats()
+                .add(Stat.MaxHealth, 100)
+                .add(Stat.CoinsPerDay, -1));
+        categories.get(5).getItems().get(0).setInteracted(true);
+        // Hut
+        categories.get(5).getItems().get(1).setStats(new Stats()
                 .add(Stat.MaxHealth, 200)
                 .add(Stat.CoinsPerDay, -10));
         // Old house
-        categories.get(5).getItems().get(1).setStats(new Stats()
+        categories.get(5).getItems().get(2).setStats(new Stats()
                 .add(Stat.MaxHealth, 500)
                 .add(Stat.CoinsPerDay, -20));
         // Stone house
-        categories.get(5).getItems().get(2).setStats(new Stats()
+        categories.get(5).getItems().get(3).setStats(new Stats()
                 .add(Stat.MaxHealth, 1000)
                 .add(Stat.CoinsPerDay, -300));
         // Country house
-        categories.get(5).getItems().get(3).setStats(new Stats()
+        categories.get(5).getItems().get(4).setStats(new Stats()
                 .add(Stat.MaxHealth, 1500)
                 .add(Stat.CoinsPerDay, -500));
         // Small mansion
-        categories.get(5).getItems().get(4).setStats(new Stats()
+        categories.get(5).getItems().get(5).setStats(new Stats()
                 .add(Stat.MaxHealth, 2000)
                 .add(Stat.CoinsPerDay, -1000));
         // Medium mansion
-        categories.get(5).getItems().get(5).setStats(new Stats()
+        categories.get(5).getItems().get(6).setStats(new Stats()
                 .add(Stat.MaxHealth, 3500)
                 .add(Stat.CoinsPerDay, -2500));
         // Large mansion
-        categories.get(5).getItems().get(6).setStats(new Stats()
+        categories.get(5).getItems().get(7).setStats(new Stats()
                 .add(Stat.MaxHealth, 5000)
                 .add(Stat.CoinsPerDay, -6000));
 

@@ -72,6 +72,8 @@
     <string name="meat">Meat</string>
     <string name="cheese">Cheese</string>
     <string name="vegetables">Vegetables</string>
+    <string name="fruits">Fruits</string>
+    <string name="seafood">Seafood</string>
     <string name="soup">Soup</string>
     <string name="nourishing_food">Nourishing Lunch</string>
     <string name="luxurious_food">Luxurious Food</string>
@@ -119,6 +121,7 @@
 
     <!-- Housing -->
     <string name="housing">Housing</string>
+    <string name="tent">Tent</string>
     <string name="hut">Hut</string>
     <string name="old_house">Old House</string>
     <string name="stone_house">Stone House</string>
