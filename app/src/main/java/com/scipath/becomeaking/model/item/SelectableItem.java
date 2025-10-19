@@ -10,11 +10,12 @@ import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 
 
-public class Item extends BaseItem<Item.State> {
+public class SelectableItem extends BaseItem<SelectableItem.State> {
 
     public enum State implements IItemState {
         NotBought(R.string.buy_d),
-        Bought(R.string.bought);
+        Bought(R.string.select),
+        Selected(R.string.selected);
 
         private final int interactionNameId;
 
@@ -34,16 +35,15 @@ public class Item extends BaseItem<Item.State> {
 
 
     // Constructors
-    public Item(int nameId, int imageId, int cost) {
+    public SelectableItem(int nameId, int imageId, int cost) {
         super(nameId, imageId);
         this.cost = cost;
-        this.state = Item.State.NotBought;
-    }
+        this.state = SelectableItem.State.NotBought;    }
 
-    public Item(int nameId, int imageId, int cost, IStats stats) {
+    public SelectableItem(int nameId, int imageId, int cost, IStats stats) {
         super(nameId, imageId, stats);
         this.cost = cost;
-        this.state = Item.State.NotBought;
+        this.state = SelectableItem.State.NotBought;
     }
 
 
@@ -58,11 +58,19 @@ public class Item extends BaseItem<Item.State> {
         this.cost = cost;
     }
 
+    @Override
+    public void setState(SelectableItem.State state) {
+        super.setState(state);
+        if (state == SelectableItem.State.Selected && category != null) {
+            category.setSelectedItem(this);
+        }
+    }
+
 
     // Methods
     @Override
     public String getInteractionName(Context context) {
-        if (state == State.NotBought) {
+        if (state == SelectableItem.State.NotBought) {
             return String.format(
                     context.getString(state.interactionNameId),
                     cost
@@ -79,7 +87,7 @@ public class Item extends BaseItem<Item.State> {
             return InteractionResult.NullPersonage;
 
         // Check for money
-        if (state == State.NotBought && personage.getMoney() < cost)
+        if (state == SelectableItem.State.NotBought && personage.getMoney() < cost)
             return InteractionResult.NotEnoughMoney;
 
         // Check for strength requirement
@@ -89,12 +97,18 @@ public class Item extends BaseItem<Item.State> {
             return InteractionResult.NotEnoughStrength;
 
         // Interact
-        if (state == State.NotBought) {
-            setState(State.Bought);
+        if (state == SelectableItem.State.NotBought) {
+            setState(SelectableItem.State.Bought);
             personage.affectMoney(-cost);
             personage.affectReputation(stats.get(Stat.ReputationImpact));
+        } else if (state == SelectableItem.State.Bought) {
+            setState(SelectableItem.State.Selected);
+        } else if (state == SelectableItem.State.Selected) {
+            setState(SelectableItem.State.Bought);
+            if (category != null) {
+                category.setSelectedItem(category.getItem(0));
+            }
         }
-
         personage.recalculateStats();
 
         return InteractionResult.Successful;

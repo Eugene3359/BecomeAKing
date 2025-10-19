@@ -1,4 +1,14 @@
-# Become a King [0.5.5] - 17.10.2025
+# Become a King [0.5.5.1] - 19.10.2025
+
+### Changes
+- Updated the image for `"None" item`
+
+### Fixes
+- Fixed an issue where items from non-selectable categories displayed the `Select` button text after being bought
+
+---
+
+# Become a King [0.5.5] - 19.10.2025
 
 ### Additions
 - Items from certain categories are now selectable

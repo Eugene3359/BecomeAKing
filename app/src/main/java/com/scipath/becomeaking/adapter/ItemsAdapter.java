@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.contract.callback.ItemCallback;
+import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.contract.model.IItem;
@@ -23,6 +24,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.item.Food;
 import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.SelectableItem;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
@@ -85,16 +87,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             button.setText(item.getInteractionName(context));
             int color;
             if (item.getState() == Item.State.NotBought ||
-                item.getState() == Food.State.NotInRation ||
-                item.getState() == Work.State.NotCompleted) {
+                    item.getState() == SelectableItem.State.NotBought ||
+                    item.getState() == SelectableItem.State.Bought ||
+                    item.getState() == Food.State.NotInRation ||
+                    item.getState() == Work.State.NotCompleted){
                 color = context.getColor(R.color.transparent_green);
+                button.setEnabled(true);
             } else if (item.getState() == Item.State.Bought ||
-                       item.getState() == Work.State.Completed) {
+                    item.getState() == Work.State.Completed) {
                 color = context.getColor(R.color.transparent_red);
-                if (!item.getCategory().isSelectable())
-                    button.setEnabled(false);
+                button.setEnabled(false);
             } else {
                 color = context.getColor(R.color.purple);
+                if (item == item.getCategory().getItem(0) &&
+                        item.getState() == SelectableItem.State.Selected) {
+                    button.setEnabled(false);
+                }
             }
             button.setBackgroundColor(color);
         }
@@ -120,10 +128,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         Personage personage = BecomeAKing.getInstance().getPersonage();
         IItem item = items.get(position);
         item.setOnStateChanged(() -> viewHolder.updateButtonInteractState(item, context));
+        ICategory category = item.getCategory();
 
         // Setting values to views
-        if (item.getCategory().getBackgroundDrawableId() != 0) {
-            viewHolder.getLayout().setBackgroundDrawable(item.getCategory().getBackgroundDrawableId());
+        if (category.getBackgroundDrawableId() != 0) {
+            viewHolder.getLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
         }
 
         viewHolder.getNameView().setText(item.getNameId());

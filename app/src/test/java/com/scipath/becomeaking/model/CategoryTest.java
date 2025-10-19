@@ -11,7 +11,7 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.enums.Stat;
-import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.SelectableItem;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,13 +33,13 @@ public class CategoryTest {
         category = new Category(R.string.weapon, true);
         category.setBackgroundDrawableId(R.drawable.bg_metal_wall);
 
-        item1 = new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000);
+        item1 = new SelectableItem(R.string.steel_sword, R.drawable.img_steel_sword, 1000);
         item1.setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
                 .add(Stat.CoinsPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
-        item2 = new Item(R.string.two_blades, R.drawable.img_two_blades, 3000);
+        item2 = new SelectableItem(R.string.two_blades, R.drawable.img_two_blades, 3000);
         item2.setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 50)
@@ -64,23 +64,20 @@ public class CategoryTest {
     }
 
     @Test
-    void getImageId_withNoBoughtItems_returnsFirstItemsImageId() {
+    void getImageId_withNoItemsInteracted_returnsFirstItemsImageId() {
         assertEquals(item1.getImageId(), category.getImageId());
     }
 
     @Test
-    void getImageId_withOneItemBought_returnsThisItemsImageId() {
-        category.getItem(0).setState(Item.State.Bought);
-        assertEquals(item1.getImageId(), category.getImageId());
-        category.getItem(0).setState(Item.State.NotBought);
-        category.getItem(1).setState(Item.State.Bought);
+    void getImageId_withOneItemInteracted_returnsThisItemsImageId() {
+        category.getItem(1).setState(SelectableItem.State.Selected);
         assertEquals(item2.getImageId(), category.getImageId());
     }
 
     @Test
-    void getImageId_withAllItemsBought_returnsBestItemsImageId() {
-        category.getItem(0).setState(Item.State.Bought);
-        category.getItem(1).setState(Item.State.Bought);
+    void getImageId_withAllItemsInteracted_returnsBestItemsImageId() {
+        category.getItem(0).setState(SelectableItem.State.Selected);
+        category.getItem(1).setState(SelectableItem.State.Selected);
         assertEquals(item2.getImageId(), category.getImageId());
     }
 
@@ -115,49 +112,43 @@ public class CategoryTest {
 
     @Test
     void getSelectedItem_returnsExpectedValue() {
-        category.setSelectedItem(item1);
+        category.selectedItem = item1;
         assertEquals(item1, category.getSelectedItem());
     }
 
     @Test
     void getStats_returnsStatsDeepCopy() {
-        IStats stats = category.getStats();
-        assertNotSame(stats, category.getStats());
+        assertNotSame(category.stats, category.getStats());
     }
 
     @Test
-    void getStats_withNoBoughtItems_returnsEmptyStats() {
+    void getStats_withNoItemsInteracted_returnsEmptyStats() {
         IStats stats = category.getStats();
         assertEquals(0, stats.size());
     }
 
     @Test
-    void getStats_withOneItemBought_returnsThisItemsStats() {
-        category.getItem(0).setState(Item.State.Bought);
+    void getStats_withOneItemInteracted_returnsThisItemsStats() {
+        category.getItem(0).setState(SelectableItem.State.Selected);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(40, stats.get(Stat.Might));
-        category.getItem(0).setState(Item.State.NotBought);
-        category.getItem(1).setState(Item.State.Bought);
-        stats = category.getStats();
-        assertEquals(4, stats.size());
-        assertEquals(80, stats.get(Stat.Might));
     }
 
     @Test
-    void getStats_withAllItemBoughtInSelectableCategory_returnsBestItemsStats() {
-        category.getItem(0).setState(Item.State.Bought);
-        category.getItem(1).setState(Item.State.Bought);
+    void getStats_withAllItemsSelectedInSelectableCategory_returnsBestItemsStats() {
+        category.getItem(0).setState(SelectableItem.State.Selected);
+        category.getItem(1).setState(SelectableItem.State.Selected);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(80, stats.get(Stat.Might));
     }
 
     @Test
-    void getStats_withAllItemBoughtInNotSelectableCategory_returnsSumItemsStats() {
+    void getStats_withAllItemInteractedInNotSelectableCategory_returnsSumItemsStats() {
         category.setSelectable(false);
-        category.getItem(0).setState(Item.State.Bought);
-        category.getItem(1).setState(Item.State.Bought);
+        category.getItem(0).setState(SelectableItem.State.Bought);
+        category.getItem(1).setState(SelectableItem.State.Bought);
         IStats stats = category.getStats();
         assertEquals(4, stats.size());
         assertEquals(120, stats.get(Stat.Might));
@@ -191,7 +182,7 @@ public class CategoryTest {
 
     @Test
     void addItem_withValidItem_addsItemToItemsList() {
-        IItem item3 = new Item(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
+        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
         category.addItem(item3);
         assertEquals(3, category.getItems().size());
         assertEquals(item3, category.getItem(2));
@@ -219,7 +210,7 @@ public class CategoryTest {
     @Test
     void setItems_withValidItemsList_changesItemsList() {
         List<IItem> items = new ArrayList<>();
-        items.add(new Item(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000));
+        items.add(new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000));
         category.setItems(items);
         assertEquals(1, category.getItems().size());
         assertEquals(items, category.getItems());
@@ -248,29 +239,26 @@ public class CategoryTest {
     // Methods
     @Test
     void containsItem_checksIfCategoryContainsItem() {
-        IItem item3 = new Item(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
+        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
         assertTrue(category.containsItem(item1));
         assertFalse(category.containsItem(item3));
     }
 
     @Test
-    void getBestItem_withNoBoughItems_returnsNull() {
+    void getBestItem_withNoItemsInteracted_returnsNull() {
         assertNull(category.getBestItem());
     }
 
     @Test
-    void getBestBoughtItem_withOneItem_returnsThisItem() {
-        category.getItem(0).setState(Item.State.Bought);
-        assertEquals(item1, category.getBestItem());
-        category.getItem(0).setState(Item.State.NotBought);
-        category.getItem(1).setState(Item.State.Bought);
+    void getBestItem_withOneItemInteracted_returnsThisItem() {
+        category.getItem(1).setState(SelectableItem.State.Selected);
         assertEquals(item2, category.getBestItem());
     }
 
     @Test
-    void getBestBoughtItem_withAllItemsBought_returnsBestItem() {
-        category.getItem(0).setState(Item.State.Bought);
-        category.getItem(1).setState(Item.State.Bought);
+    void getBestItem_withAllItemsInteracted_returnsBestItem() {
+        category.getItem(0).setState(SelectableItem.State.Selected);
+        category.getItem(1).setState(SelectableItem.State.Selected);
         assertEquals(item2, category.getBestItem());
     }
 

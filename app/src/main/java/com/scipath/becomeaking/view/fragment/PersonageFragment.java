@@ -19,7 +19,6 @@ import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.manager.AdManagerMock;
 import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.view.activity.GameActivity;
 import com.scipath.becomeaking.view.layout.PersonageLayout;
 
@@ -84,8 +83,7 @@ public class PersonageFragment extends BaseFragment {
         if (categories.get(5).getBestItem() != null) {
             textViewHousing.setText(categories.get(5).getBestItem().getNameId());
         }
-        if (categories.get(9).getBestItem() != null &&
-            categories.get(9).getBestItem().getState() == Item.State.Selected) {
+        if (categories.get(9).getBestItem() != null) {
             textViewHorse.setText(categories.get(9).getBestItem().getNameId());
         }
         textViewMaxHealth.setText(String.valueOf(personage.getMaxHealth()));

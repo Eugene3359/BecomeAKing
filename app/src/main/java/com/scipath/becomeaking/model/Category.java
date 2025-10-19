@@ -10,6 +10,7 @@ import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.item.Food;
 import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.SelectableItem;
 import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
@@ -142,17 +143,17 @@ public class Category implements ICategory {
     @Override
     public void setSelectedItem(IItem item) {
         if (!isSelectable ||
-            !(item instanceof Item) ||
+            !(item instanceof SelectableItem) ||
             item == selectedItem ||
             !items.contains(item)
         ) return;
         // Deselect old item
-        if (selectedItem instanceof Item)
-            selectedItem.setState(Item.State.Bought);
+        if (selectedItem instanceof SelectableItem)
+            selectedItem.setState(SelectableItem.State.Bought);
         // Set new selected item and check its state
         selectedItem = item;
-        if (selectedItem.getState() != Item.State.Selected)
-            selectedItem.setState(Item.State.Selected);
+        if (selectedItem.getState() != SelectableItem.State.Selected)
+            selectedItem.setState(SelectableItem.State.Selected);
     }
 
     @Override
@@ -215,6 +216,7 @@ public class Category implements ICategory {
         } else {
             for (IItem item : items) {
                 if (item.getState() == Item.State.Bought ||
+                    item.getState() == SelectableItem.State.Bought ||
                     item.getState() == Food.State.InRation) {
                     stats.merge(item.getStats());
                 }
