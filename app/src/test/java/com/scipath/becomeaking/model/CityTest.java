@@ -14,8 +14,8 @@ import java.util.Set;
 
 class CityTest {
 
-    ICity city1;
-    ICity city2;
+    City city1;
+    City city2;
 
 
     @BeforeEach

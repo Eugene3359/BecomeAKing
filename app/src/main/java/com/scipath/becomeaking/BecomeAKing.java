@@ -114,10 +114,10 @@ public class BecomeAKing extends Application {
             if (!(items.get(0) instanceof Work)) continue;
             if (items.size() > 1) {
                 for (IItem item : items) {
-                    item.setInteracted(false);
+                    ((Work)item).setState(Work.State.NotCompleted);
                 }
             } else {
-                if (items.get(0).isInteracted()) isAllDayWorkSelected = true;
+                if (items.get(0).getState() == Work.State.Selected) isAllDayWorkSelected = true;
             }
         }
 

@@ -9,7 +9,6 @@ import java.io.Serializable;
 
 public enum Sex implements Serializable {
 
-    // Sexes
     Male(R.string.male),
     Female(R.string.female);
 

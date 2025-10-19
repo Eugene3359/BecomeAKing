@@ -12,7 +12,6 @@ import java.io.Serializable;
 
 public enum Stat implements Serializable {
 
-    // Stats
     // Persistent stats
     MaxHealth(R.string.health, R.string.d_maximum_amount, R.drawable.icon_heart),
     Might(R.string.might, R.string.c_d, R.drawable.icon_might),

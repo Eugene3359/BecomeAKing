@@ -9,12 +9,6 @@ import java.util.List;
 
 public interface ICategory extends Serializable {
 
-    enum StatsMod {
-        Best,
-        Sum;
-    }
-
-
     // Accessors
     int getId();
 
@@ -24,11 +18,15 @@ public interface ICategory extends Serializable {
 
     int getBackgroundDrawableId();
 
+    IItem getItem(int index);
+
     List<IItem> getItems();
 
-    StatsMod getStatsMod();
+    IItem getSelectedItem();
 
     IStats getStats();
+
+    boolean isSelectable();
 
 
     // Mutators
@@ -36,11 +34,15 @@ public interface ICategory extends Serializable {
 
     void setBackgroundDrawableId(int drawableId);
 
-    void setItems(List<IItem> items);
-
     ICategory addItem(IItem item);
 
-    void setStatsMod(StatsMod statsMod);
+    ICategory removeItem(IItem item);
+
+    void setItems(List<IItem> items);
+
+    void setSelectedItem(IItem item);
+
+    void setSelectable(boolean isSelectable);
 
 
     // Methods
@@ -59,6 +61,8 @@ public interface ICategory extends Serializable {
      * @return          The Drawable that contains the category image
      */
     Drawable getImage(Context context);
+
+    boolean containsItem(IItem item);
 
     IItem getBestItem();
 }

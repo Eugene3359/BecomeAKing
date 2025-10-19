@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LevelTest {
 
-    private ILevel level;
+    private Level level;
 
 
     @BeforeEach

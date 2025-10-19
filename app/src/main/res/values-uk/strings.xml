@@ -221,7 +221,6 @@
     <string name="save">Зберегти</string>
 
     <!-- Categories Fragment -->
-    <string name="select">Вибрати</string>
     <string name="remove">Видалити</string>
 
     <!-- Items Fragment -->
@@ -231,9 +230,11 @@
     <!-- Item -->
     <string name="buy_d">Купити: %d</string>
     <string name="bought">Куплено</string>
+    <string name="select">Вибрати</string>
+    <string name="selected">Вибрано</string>
     <string name="add_to_ration">Додати до раціону</string>
     <string name="in_ration">У раціоні</string>
-    <string name="done">Готово</string>
+    <string name="completed">Готово</string>
     <string name="not_enough_money">Недостатньо грошей</string>
     <string name="not_enough_strength_points">Недостатньо очок сили</string>
     <string name="not_enough_reputation">Недостатньо репутації</string>

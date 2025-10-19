@@ -1,3 +1,11 @@
+# Become a King [0.5.5] - 17.10.2025
+
+### Additions
+- Items from certain categories are now selectable
+- Added `"None" item` option for selectable categories
+
+---
+
 # Become a King [0.5.4] - 02.10.2025
 
 ### Additions

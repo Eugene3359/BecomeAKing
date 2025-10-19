@@ -15,7 +15,8 @@ import java.util.List;
 
 public class StatsTest {
 
-    private IStats stats;
+
+    private Stats stats;
 
 
     @BeforeEach

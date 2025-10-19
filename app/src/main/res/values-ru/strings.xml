@@ -220,7 +220,6 @@
     <string name="save">Сохранить</string>
 
     <!-- Categories Fragment -->
-    <string name="select">Выбрать</string>
     <string name="remove">Убрать</string>
 
     <!-- Items Fragment -->
@@ -230,9 +229,11 @@
     <!-- Item -->
     <string name="buy_d">Купить: %d</string>
     <string name="bought">Куплено</string>
+    <string name="select">Вибрати</string>
+    <string name="selected">Вибрано</string>
     <string name="add_to_ration">Добавить в рацион</string>
     <string name="in_ration">В рационе</string>
-    <string name="done">Выполнено</string>
+    <string name="completed">Выполнено</string>
     <string name="not_enough_money">Недостаточно денег</string>
     <string name="not_enough_strength_points">Недостаточно очков силы</string>
     <string name="not_enough_reputation">Недостаточно репутации</string>

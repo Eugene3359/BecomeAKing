@@ -64,8 +64,8 @@ public class ItemsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Bundle args = getArguments();
         Personage personage = BecomeAKing.getInstance().getPersonage();
+        Bundle args = getArguments();
         categoryId = args.getInt("categoryId");
         items = BecomeAKing.getInstance().getCategoryById(categoryId).getItems();
         isWorkCategory = items.get(0) instanceof Work;
@@ -79,7 +79,7 @@ public class ItemsFragment extends BaseFragment {
         Button buttonBack = view.findViewById(R.id.button_back);
 
         // Adapter
-        ItemsAdapter itemsAdapter = new ItemsAdapter(categoryId, item -> {
+        ItemsAdapter itemsAdapter = new ItemsAdapter(items, item -> {
             GameActivity activity = (GameActivity)requireActivity();
             if (item instanceof Work) {
                 activity.switchMenuButton(activity.findViewById(R.id.button_personage), new PersonageFragment());

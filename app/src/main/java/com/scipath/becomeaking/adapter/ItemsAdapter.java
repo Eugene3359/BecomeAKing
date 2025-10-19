@@ -16,26 +16,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.contract.callback.ItemCallback;
-import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.item.Food;
+import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
+
+import java.util.List;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     // Variables
-    private final ICategory category;
+    private final List<IItem> items;
     private final ItemCallback callback;
     private final Context context;
 
 
     // Constructor
-    public ItemsAdapter(int categoryId, ItemCallback callback, Context context) {
-        this.category = BecomeAKing.getInstance().getCategoryById(categoryId);
+    public ItemsAdapter(List<IItem> items, ItemCallback callback, Context context) {
+        this.items = items;
         this.callback = callback;
         this.context = context;
     }
@@ -55,38 +60,43 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             return layout;
         }
 
-        public TextView getItemNameView() {
+        public TextView getNameView() {
             return layout.findViewById(R.id.text_view_item);
         }
 
-        public TextView getItemRequirementView() {
+        public TextView getRequirementView() {
             return layout.findViewById(R.id.text_view_requirement);
         }
 
-        public ImageView getItemImageView() {
+        public ImageView getImageView() {
             return layout.findViewById(R.id.image_view_item);
         }
 
-        public RecyclerView getItemStatsView() {
+        public RecyclerView getStatsView() {
             return layout.findViewById(R.id.stats_list);
         }
 
-        public Button getItemButtonInteractView() {
+        public Button getButtonInteractView() {
             return layout.findViewById(R.id.button_interact);
         }
 
-        public void resetItemButtonInteractState(IItem item, Context context) {
-            Button button = getItemButtonInteractView();
+        public void updateButtonInteractState(IItem item, Context context) {
+            Button button = getButtonInteractView();
             button.setText(item.getInteractionName(context));
-            button.setBackgroundColor(context.getColor(R.color.transparent_green));
-            button.setEnabled(true);
-        }
-
-        public void setItemButtonInteractNotEnabled(IItem item, Context context) {
-            Button button = getItemButtonInteractView();
-            button.setText(item.getInteractionResultNameId());
-            button.setBackgroundColor(context.getColor(R.color.transparent_red));
-            button.setEnabled(false);
+            int color;
+            if (item.getState() == Item.State.NotBought ||
+                item.getState() == Food.State.NotInRation ||
+                item.getState() == Work.State.NotCompleted) {
+                color = context.getColor(R.color.transparent_green);
+            } else if (item.getState() == Item.State.Bought ||
+                       item.getState() == Work.State.Completed) {
+                color = context.getColor(R.color.transparent_red);
+                if (!item.getCategory().isSelectable())
+                    button.setEnabled(false);
+            } else {
+                color = context.getColor(R.color.purple);
+            }
+            button.setBackgroundColor(color);
         }
     }
 
@@ -108,16 +118,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         Personage personage = BecomeAKing.getInstance().getPersonage();
-        IItem item = category.getItems().get(position);
+        IItem item = items.get(position);
+        item.setOnStateChanged(() -> viewHolder.updateButtonInteractState(item, context));
 
         // Setting values to views
-        if (category.getBackgroundDrawableId() != 0) {
-            viewHolder.getLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
+        if (item.getCategory().getBackgroundDrawableId() != 0) {
+            viewHolder.getLayout().setBackgroundDrawable(item.getCategory().getBackgroundDrawableId());
         }
 
-        viewHolder.getItemNameView().setText(item.getNameId());
+        viewHolder.getNameView().setText(item.getNameId());
 
-        TextView textViewRequirement = viewHolder.getItemRequirementView();
+        TextView textViewRequirement = viewHolder.getRequirementView();
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
         if (strengthRequired != 0 || reputationRequired != 0) {
@@ -128,53 +139,32 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             textViewRequirement.setText(requirement);
         }
 
-        viewHolder.getItemImageView().setImageResource(item.getImageId());
-        viewHolder.getItemImageView().setContentDescription(item.getName(context));
+        viewHolder.getImageView().setImageResource(item.getImageId());
+        viewHolder.getImageView().setContentDescription(item.getName(context));
 
-        viewHolder.getItemStatsView().setLayoutManager(new LinearLayoutManager(context));
-        viewHolder.getItemStatsView().setAdapter(new StatsAdapter(item.getStats(), context));
+        viewHolder.getStatsView().setLayoutManager(new LinearLayoutManager(context));
+        viewHolder.getStatsView().setAdapter(new StatsAdapter(item.getStats(), context));
 
-        if (!item.isInteracted()) {
-            viewHolder.resetItemButtonInteractState(item, context);
-
-            viewHolder.getItemButtonInteractView().setOnClickListener(view -> {
-                int code = item.interact(personage);
-                int messageId = 0;
-
-                switch (code) {
-                    case 0:
-                        callback.call(item);
-                        viewHolder.setItemButtonInteractNotEnabled(item, context);
-                        break;
-                    case -1:
-                        messageId = R.string.not_enough_money;
-                        break;
-                    case -2:
-                        messageId = R.string.not_enough_strength_points;
-                        break;
-                    case -3:
-                        messageId = R.string.not_enough_reputation;
-                        break;
-                    case -4:
-                        messageId = R.string.you_dont_have_a_time;
-                        break;
-                    case -10:
-                        messageId = R.string.null_personage_error;
-                }
-                if (messageId != 0) {
-                    DialogueFragment.newInstance(R.string.notification, messageId, R.string.got_it)
-                            .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
-                }
-            });
-        } else {
-            viewHolder.setItemButtonInteractNotEnabled(item, context);
-        }
+        viewHolder.updateButtonInteractState(item, context);
+        viewHolder.getButtonInteractView().setOnClickListener(view -> {
+            InteractionResult result = item.interact(personage);
+            if (result == InteractionResult.Successful) {
+                callback.call(item);
+            } else {
+                DialogueFragment.newInstance(
+                        R.string.notification,
+                        result.getMessageId(),
+                        R.string.got_it
+                ).show(((AppCompatActivity)context)
+                        .getSupportFragmentManager(), "dialogue");
+            }
+        });
     }
 
 
     // Return the size dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return category.getItems().size();
+        return items.size();
     }
 }

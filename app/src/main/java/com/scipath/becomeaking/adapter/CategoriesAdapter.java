@@ -22,6 +22,7 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.customview.CustomLinearLayout;
@@ -59,40 +60,39 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             return layout;
         }
 
-        public TextView getCategoryNameView() {
+        public TextView getNameView() {
             return layout.findViewById(R.id.text_view_name);
         }
 
-        public TextView getCategoryRequirementView() {
+        public TextView getRequirementView() {
             return layout.findViewById(R.id.text_view_requirement);
         }
 
-        public ImageView getCategoryImageView() {
+        public ImageView getImageView() {
             return layout.findViewById(R.id.image_view_category);
         }
 
-        public CustomLinearLayout getCategoryStatsLayout() {
+        public CustomLinearLayout getStatsLayout() {
             return layout.findViewById(R.id.layout_stats);
         }
 
-        public RecyclerView getCategoryStatsList() {
+        public RecyclerView getStatsList() {
             return layout.findViewById(R.id.stats_list);
         }
 
-        public Button getCategoryButtonSelect() {
+        public Button getButtonSelect() {
             return layout.findViewById(R.id.button_select);
         }
 
-        public void setCategoryButtonSelectStateNotSelected(Context context) {
-            Button button = getCategoryButtonSelect();
-            button.setText(R.string.select);
-            button.setBackgroundColor(context.getColor(R.color.transparent_green));
-        }
-
-        public void setCategoryButtonSelectStateSelected(Context context) {
-            Button button = getCategoryButtonSelect();
-            button.setText(R.string.remove);
-            button.setBackgroundColor(context.getColor(R.color.transparent_red));
+        public void updateButtonSelectState(Work work, Context context) {
+            Button button = getButtonSelect();
+            if (work.getState() == Work.State.NotSelected) {
+                button.setText(R.string.select);
+                button.setBackgroundColor(context.getColor(R.color.transparent_green));
+            } else if (work.getState() == Work.State.Selected) {
+                button.setText(R.string.remove);
+                button.setBackgroundColor(context.getColor(R.color.transparent_red));
+            }
         }
     }
 
@@ -116,46 +116,42 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         ICategory category = categories.get(position);
 
         // Setting values to views
-        // Category name and image
-        viewHolder.getCategoryNameView().setText(category.getNameId());
+        viewHolder.getNameView().setText(category.getNameId());
+
         if (category.getImageId()!= 0)
-            viewHolder.getCategoryImageView().setImageResource(category.getImageId());
-        viewHolder.getCategoryImageView().setContentDescription(category.getName(context));
+            viewHolder.getImageView().setImageResource(category.getImageId());
+        viewHolder.getImageView().setContentDescription(category.getName(context));
+
         if (category.getBackgroundDrawableId() != 0)
-            viewHolder.getCategoryStatsLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
+            viewHolder.getStatsLayout().setBackgroundDrawable(category.getBackgroundDrawableId());
 
         IStats stats;
-        if (category.getItems().size() == 1 && category.getItems().get(0) instanceof Work) {
-            Work work = (Work) category.getItems().get(0);
+        if (category.getItems().size() == 1 && category.getItem(0) instanceof Work) {
+            Work work = (Work) category.getItem(0);
             stats = work.getStats();
-            interactOnButtonSelectClick(work, viewHolder);
+            setOnButtonSelectClick(work, viewHolder);
         } else {
             stats = category.getStats();
-            changeFragmentOnCategoryClick(position, viewHolder.getLayout());
+            changeFragmentOnCategoryClick(category, viewHolder.getLayout());
         }
 
-        setRequirementView(stats, viewHolder.getCategoryRequirementView());
+        setRequirementView(stats, viewHolder.getRequirementView());
 
-        viewHolder.getCategoryStatsList().setLayoutManager(new LinearLayoutManager(context));
+        viewHolder.getStatsList().setLayoutManager(new LinearLayoutManager(context));
         StatsAdapter statsAdapter = new StatsAdapter(stats, context);
         statsAdapter.setTextColor(R.color.text_grayish_brown);
-        viewHolder.getCategoryStatsList().setAdapter(statsAdapter);
+        viewHolder.getStatsList().setAdapter(statsAdapter);
     }
 
 
     private void setRequirementView(IStats stats, TextView requirementView) {
-        int strengthRequired = stats.get(Stat.StrengthRequired);
         int reputationRequired = stats.get(Stat.ReputationRequired);
         int horseAndWeaponRequired = stats.get(Stat.HorseAndWeaponRequired);
         String requirement = "";
 
-        if (strengthRequired != 0) {
-            requirement = Stat.StrengthRequired.getDescription(strengthRequired, context);
-        }
         if (reputationRequired != 0) {
             requirement = Stat.ReputationRequired.getDescription(reputationRequired, context);
-        }
-        if (horseAndWeaponRequired != 0) {
+        } else if (horseAndWeaponRequired != 0) {
             requirement = Stat.HorseAndWeaponRequired.getName(context);
         }
 
@@ -165,53 +161,31 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         }
     }
     
-    private void interactOnButtonSelectClick(Work work, ViewHolder viewHolder) {
-        Button buttonSelect = viewHolder.getCategoryButtonSelect();
+    private void setOnButtonSelectClick(Work work, ViewHolder viewHolder) {
+        Button buttonSelect = viewHolder.getButtonSelect();
         buttonSelect.setVisibility(View.VISIBLE);
-        if (!work.isInteracted()) {
-            viewHolder.setCategoryButtonSelectStateNotSelected(context);
-        } else {
-            viewHolder.setCategoryButtonSelectStateSelected(context);
-        }
-        viewHolder.getCategoryButtonSelect().setOnClickListener(view -> {
-            if (!work.isInteracted()) {
-                int code = work.interact(BecomeAKing.getInstance().getPersonage());
-                int messageId = 0;
+        viewHolder.updateButtonSelectState(work, context);
+        work.setOnStateChanged(() -> viewHolder.updateButtonSelectState(work, context));
 
-                switch (code) {
-                    case 0:
-                        viewHolder.setCategoryButtonSelectStateSelected(context);
-                        break;
-                    case -3:
-                        messageId = R.string.not_enough_reputation;
-                        break;
-                    case -4:
-                        messageId = R.string.you_dont_have_a_time;
-                        break;
-                    case -5:
-                        messageId = R.string.horse_and_weapon_required;
-                        break;
-                    case -10:
-                        messageId = R.string.null_personage_error;
-                }
-                if (messageId != 0) {
-                    DialogueFragment.newInstance(R.string.notification, messageId, R.string.got_it)
-                            .show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
-                }
-            } else {
-                work.setInteracted(false);
-                Work.refreshInteractionCounter();
-                viewHolder.setCategoryButtonSelectStateNotSelected(context);
+        viewHolder.getButtonSelect().setOnClickListener(view -> {
+            InteractionResult result = work.interact(BecomeAKing.getInstance().getPersonage());
+            if (result != InteractionResult.Successful) {
+                DialogueFragment.newInstance(
+                        R.string.notification,
+                        result.getMessageId(),
+                        R.string.got_it
+                ).show(((AppCompatActivity)context)
+                        .getSupportFragmentManager(), "dialogue");
             }
         });
     }
 
-    private void changeFragmentOnCategoryClick(int position, LinearLayout layout) {
+    private void changeFragmentOnCategoryClick(ICategory category, LinearLayout layout) {
         layout.setOnClickListener(view -> {
-            if (!categories.get(position).getItems().isEmpty()) {
+            if (!category.getItems().isEmpty()) {
                 Fragment fragment = new ItemsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putInt("categoryId", categories.get(position).getId());
+                bundle.putInt("categoryId", category.getId());
                 fragment.setArguments(bundle);
                 ((FragmentActivity) context).getSupportFragmentManager()
                         .beginTransaction()

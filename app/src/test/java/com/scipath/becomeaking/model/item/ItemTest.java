@@ -2,10 +2,13 @@ package com.scipath.becomeaking.model.item;
 
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.IItem;
+import com.scipath.becomeaking.contract.callback.Callback;
+import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.Category;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.Stats;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.enums.Title;
@@ -18,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemTest {
 
-    private IItem item;
+    private Item item;
 
 
     @BeforeEach
@@ -31,6 +34,8 @@ public class ItemTest {
                 .add(Stat.StrengthRequired, 2));
     }
 
+
+    // Accessors
     @Test
     void getId_returnsExpectedId() {
         assertEquals(0, item.getId());
@@ -48,26 +53,6 @@ public class ItemTest {
     }
 
     @Test
-    void getInteractionNameId_returnsExpectedId() {
-        assertEquals(R.string.buy_d, item.getInteractionNameId()); // Initial value
-    }
-
-    @Test
-    void getInteractionResultNameId_returnsExpectedId() {
-        assertEquals(R.string.bought, item.getInteractionResultNameId()); // Initial value
-    }
-
-    @Test
-    void getCost_returnsExpectedValue() {
-        assertEquals(1000, item.getCost());
-    }
-
-    @Test
-    void isBought_returnsExpectedValue() {
-        assertFalse(item.isInteracted()); // Initial value
-    }
-
-    @Test
     void getStats_returnsExpectedStats() {
         IStats stats = item.getStats();
         assertEquals(4, stats.size());
@@ -78,6 +63,30 @@ public class ItemTest {
     }
 
     @Test
+    void getState_returnsExpectedValue() {
+        assertEquals(Item.State.NotBought, item.getState());
+    }
+
+    @Test
+    void getInteractionNameId_returnsExpectedId() {
+        assertEquals(item.state.getInteractionNameId(), item.getInteractionNameId());
+    }
+
+    @Test
+    void getCategory_returnsExpectedValue() {
+        ICategory category = new Category(0, true);
+        category.addItem(item);
+        assertEquals(category, item.getCategory());
+    }
+
+    @Test
+    void getCost_returnsExpectedValue() {
+        assertEquals(1000, item.getCost());
+    }
+
+
+    // Mutators
+    @Test
     void setNameId_changesItemsNameId() {
         item.setNameId(R.string.two_blades);
         assertEquals(R.string.two_blades, item.getNameId());
@@ -87,18 +96,6 @@ public class ItemTest {
     void setImageId_changesItemsImageId() {
         item.setImageId(R.drawable.img_two_blades);
         assertEquals(R.drawable.img_two_blades, item.getImageId());
-    }
-
-    @Test
-    void setCost_changesItemsCost() {
-        item.setCost(3000);
-        assertEquals(3000, item.getCost());
-    }
-
-    @Test
-    void setBought_changesItemsBoughtState() {
-        item.setInteracted(true);
-        assertTrue(item.isInteracted());
     }
 
     @Test
@@ -119,34 +116,93 @@ public class ItemTest {
     }
 
     @Test
-    void interact_withFulfilledRequirementsPersonage_returnsZeroAndModifiesPersonage() {
+    void setState_changesItemsState() {
+        item.setState(Item.State.Bought);
+        assertEquals(Item.State.Bought, item.getState());
+    }
+
+    @Test
+    void setState_withSelectedState_changesItsCategorySelectedItem_ifCategoryIsSelectable() {
+        ICategory category = new Category(0, true);
+        category.addItem(item);
+        item.setState(Item.State.Selected);
+        assertEquals(item, category.getSelectedItem());
+    }
+
+    @Test
+    void setOnStateChanged_changesOnStateChangedHandler() {
+        Callback callback = () -> {};
+        item.setOnStateChanged(callback);
+        assertEquals(callback, item.onStateChanged);
+    }
+
+    @Test
+    void setState_invokesOnStateChangedHandler() {
+        final boolean[] wasCalled = { false };
+        Callback callback = () -> wasCalled[0] = true;
+        item.setOnStateChanged(callback);
+        item.setState(Item.State.Bought);
+        assertTrue(wasCalled[0]);
+    }
+
+    @Test
+    void setCategory_changesItemsCategory() {
+        ICategory category = new Category(0, true);
+        item.setCategory(category);
+        assertEquals(category, item.getCategory());
+        assertEquals(1, category.getItems().size());
+    }
+
+    @Test
+    void setCost_changesItemsCost() {
+        item.setCost(2000);
+        assertEquals(2000, item.getCost());
+    }
+
+
+    // Methods
+    @Test
+    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setMoney(1000);
         personage.getLevel().affectStrength(2);
-        assertEquals(0, item.interact(personage));
+        assertEquals(InteractionResult.Successful, item.interact(personage));
         assertEquals(0, personage.getMoney());
     }
 
     @Test
-    void interact_withNotEnoughMoneyPersonage_returnsMinusOneAndDoNotModifiesPersonage() {
+    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndChangesItemsState() {
+        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
+        personage.setMoney(1000);
+        personage.getLevel().affectStrength(2);
+        assertEquals(InteractionResult.Successful, item.interact(personage));
+        assertEquals(Item.State.Bought, item.getState());
+        assertEquals(InteractionResult.Successful, item.interact(personage));
+        assertEquals(Item.State.Selected, item.getState());
+        assertEquals(InteractionResult.Successful, item.interact(personage));
+        assertEquals(Item.State.Bought, item.getState());
+    }
+
+    @Test
+    void interact_withNotEnoughMoneyPersonage_returnsNotEnoughMoneyInteractionResultAndDoNotModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setMoney(500);
         personage.getLevel().affectStrength(2);
-        assertEquals(-1, item.interact(personage));
+        assertEquals(InteractionResult.NotEnoughMoney, item.interact(personage));
         assertEquals(500, personage.getMoney());
     }
 
     @Test
-    void interact_withNotEnoughStrengthPersonage_returnsMinusTwoAndDoNotModifiesPersonage() {
+    void interact_withNotEnoughStrengthPersonage_returnsNotEnoughStrengthInteractionResultAndDoNotModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setMoney(1000);
         personage.getLevel().affectStrength(1);
-        assertEquals(-2, item.interact(personage));
+        assertEquals(InteractionResult.NotEnoughStrength, item.interact(personage));
         assertEquals(1000, personage.getMoney());
     }
 
     @Test
-    void interact_withNull_returnsMinusTen() {
-        assertEquals(-10, item.interact(null));
+    void interact_withNull_returnsNullPersonageInteractionResult() {
+        assertEquals(InteractionResult.NullPersonage, item.interact(null));
     }
 }

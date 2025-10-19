@@ -8,6 +8,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.model.item.Food;
+import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.Work;
 
 import java.util.ArrayList;
@@ -25,21 +27,23 @@ public class Category implements ICategory {
     protected int imageId;
     protected int backgroundDrawableId;
     protected List<IItem> items;
-    protected boolean itemsMutated;
-    protected StatsMod statsMod;
+    protected IItem selectedItem;
     protected IStats stats;
+    protected boolean isSelectable;
+    protected boolean itemsMutated;
 
 
     // Constructor
-    public Category(int nameId) {
+    public Category(int nameId, boolean isSelectable) {
         this.id = idCounter++;
         this.nameId = nameId;
         this.imageId = 0;
         this.backgroundDrawableId = 0;
         this.items = new ArrayList<>();
-        this.itemsMutated = false;
-        this.statsMod = StatsMod.Best;
+        this.selectedItem = null;
         this.stats = new Stats();
+        this.isSelectable = isSelectable;
+        this.itemsMutated = false;
     }
 
 
@@ -56,7 +60,9 @@ public class Category implements ICategory {
 
     @Override
     public int getImageId() {
-        if (itemsMutated) recalculateStats();
+        if (itemsMutated) {
+            recalculateStats();
+        }
         return imageId;
     }
 
@@ -66,19 +72,32 @@ public class Category implements ICategory {
     }
 
     @Override
+    public IItem getItem(int index) {
+        if (index < 0 || index >= items.size()) return null;
+        return items.get(index);
+    }
+
+    @Override
     public List<IItem> getItems() {
         return items;
     }
 
     @Override
-    public StatsMod getStatsMod() {
-        return statsMod;
+    public IItem getSelectedItem() {
+        return selectedItem;
     }
 
     @Override
     public IStats getStats() {
-        if (itemsMutated) recalculateStats();
+        if (itemsMutated) {
+            recalculateStats();
+        }
         return stats.clone();
+    }
+
+    @Override
+    public boolean isSelectable() {
+        return isSelectable;
     }
 
 
@@ -90,27 +109,56 @@ public class Category implements ICategory {
 
     @Override
     public void setBackgroundDrawableId(int drawableId) {
-        backgroundDrawableId = drawableId;
-    }
-
-    @Override
-    public void setItems(List<IItem> items) {
-        this.items = Objects.requireNonNullElseGet(items, ArrayList::new);
-        itemsMutated = true;
+        this.backgroundDrawableId = drawableId;
     }
 
     @Override
     public ICategory addItem(IItem item) {
         if (item != null) {
             this.items.add(item);
+            item.setCategory(this);
             itemsMutated = true;
         }
         return this;
     }
 
     @Override
-    public void setStatsMod(StatsMod statsMod) {
-        if (statsMod != null) this.statsMod = statsMod;
+    public ICategory removeItem(IItem item) {
+        if (item != null) {
+            items.remove(item);
+        }
+        return this;
+    }
+
+    @Override
+    public void setItems(List<IItem> items) {
+        this.items = Objects.requireNonNullElseGet(items, ArrayList::new);
+        for (IItem item : this.items) {
+            item.setCategory(this);
+        }
+        itemsMutated = true;
+    }
+
+    @Override
+    public void setSelectedItem(IItem item) {
+        if (!isSelectable ||
+            !(item instanceof Item) ||
+            item == selectedItem ||
+            !items.contains(item)
+        ) return;
+        // Deselect old item
+        if (selectedItem instanceof Item)
+            selectedItem.setState(Item.State.Bought);
+        // Set new selected item and check its state
+        selectedItem = item;
+        if (selectedItem.getState() != Item.State.Selected)
+            selectedItem.setState(Item.State.Selected);
+    }
+
+    @Override
+    public void setSelectable(boolean isSelectable) {
+        this.isSelectable = isSelectable;
+        if (!isSelectable) selectedItem = null;
     }
 
 
@@ -126,19 +174,26 @@ public class Category implements ICategory {
     }
 
     @Override
+    public boolean containsItem(IItem item) {
+        return items.contains(item);
+    }
+
+    @Override
     public IItem getBestItem() {
+        if (isSelectable && selectedItem != null) return selectedItem;
         IItem item;
         for (int i = items.size()-1; i >= 0; i--) {
             item = items.get(i);
-            if (item.isInteracted()) return item;
+            if (item.getState() == Item.State.Bought ||
+                item.getState() == Food.State.InRation)
+                return item;
         }
         return null;
     }
 
     /**
      * Updates the category-level stats based on the values of all items.
-     * This method recalculates stats and sets the image from the last item
-     * marked as bought.
+     * This method recalculates stats and sets the image.
      */
     protected void recalculateStats() {
         imageId = 0;
@@ -151,14 +206,16 @@ public class Category implements ICategory {
                 items.get(0).getImageId() :
                 bestItem.getImageId();
 
-        if (bestItem instanceof Work && items.size() != 1) return;
+        if (bestItem instanceof Work && items.size() > 1) return;
 
         // Updating category stats
-        if (statsMod == StatsMod.Best) {
-            if (bestItem != null) stats = bestItem.getStats();
-        } else if (statsMod == StatsMod.Sum) {
+        if (isSelectable) {
+            if (bestItem != null)
+                stats = bestItem.getStats();
+        } else {
             for (IItem item : items) {
-                if (item.isInteracted()) {
+                if (item.getState() == Item.State.Bought ||
+                    item.getState() == Food.State.InRation) {
                     stats.merge(item.getStats());
                 }
             }

@@ -229,7 +229,6 @@
     <string name="save">Save</string>
 
     <!-- Categories Fragment -->
-    <string name="select">Select</string>
     <string name="remove">Remove</string>
 
     <!-- Items Fragment -->
@@ -239,9 +238,11 @@
     <!-- Item -->
     <string name="buy_d">Buy: %d</string>
     <string name="bought">Bought</string>
+    <string name="select">Select</string>
+    <string name="selected">Selected</string>
     <string name="add_to_ration">Add to ration</string>
     <string name="in_ration">In ration</string>
-    <string name="done">Done</string>
+    <string name="completed">Completed</string>
     <string name="not_enough_money">Not enough money</string>
     <string name="not_enough_strength_points">Not enough strength points</string>
     <string name="not_enough_reputation">Not enough reputation</string>

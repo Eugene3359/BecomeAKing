@@ -1,166 +1,117 @@
 package com.scipath.becomeaking.model.item;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-
-import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.IItem;
+import com.scipath.becomeaking.contract.model.IItemState;
 import com.scipath.becomeaking.contract.model.IStats;
-import com.scipath.becomeaking.model.Stats;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 
-import java.util.Objects;
 
+public class Item extends BaseItem<Item.State> {
 
-public class Item implements IItem {
+    public enum State implements IItemState {
+        NotBought(R.string.buy_d),
+        Bought(R.string.select),
+        Selected(R.string.selected);
+
+        private final int interactionNameId;
+
+        private State(int interactionNameId) {
+            this.interactionNameId = interactionNameId;
+        }
+
+        @Override
+        public int getInteractionNameId() {
+            return interactionNameId;
+        }
+    }
+
 
     // Fields
-    protected static int idCounter = 0;
-
-    protected int id;
-    protected int nameId;
-    protected int imageId;
-    protected int interactionNameId;
-    protected int interactionResultNameId;
     protected int cost;
-    protected boolean interacted;
-    protected IStats stats;
 
 
     // Constructors
     public Item(int nameId, int imageId, int cost) {
-        this.id = idCounter++;
-        this.nameId = nameId;
-        this.imageId = imageId;
-        this.interactionNameId = R.string.buy_d;
-        this.interactionResultNameId = R.string.bought;
+        super(nameId, imageId);
         this.cost = cost;
-        this.interacted = false;
-        this.stats = new Stats();
+        this.state = Item.State.NotBought;
     }
 
     public Item(int nameId, int imageId, int cost, IStats stats) {
-        this.id = idCounter++;
-        this.nameId = nameId;
-        this.imageId = imageId;
-        this.interactionNameId = R.string.buy_d;
-        this.interactionResultNameId = R.string.bought;
+        super(nameId, imageId, stats);
         this.cost = cost;
-        this.interacted = false;
-        this.stats = stats;
+        this.state = Item.State.NotBought;
     }
 
 
     // Accessors
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public int getNameId() {
-        return nameId;
-    }
-
-    @Override
-    public int getImageId() {
-        return imageId;
-    }
-
-    @Override
-    public int getInteractionNameId() {
-        return interactionNameId;
-    }
-
-    @Override
-    public int getInteractionResultNameId() {
-        return interactionResultNameId;
-    }
-
-    @Override
     public int getCost() {
         return cost;
-    }
-
-    @Override
-    public boolean isInteracted() {
-        return interacted;
-    }
-
-    @Override
-    public IStats getStats() {
-        return stats;
     }
 
 
     // Mutators
     @Override
-    public void setNameId(int nameId) {
-        this.nameId = nameId;
+    public void setState(State state) {
+        super.setState(state);
+        if (state == State.Selected && category != null) {
+            category.setSelectedItem(this);
+        }
     }
 
-    @Override
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-
-    @Override
     public void setCost(int cost) {
         this.cost = cost;
-    }
-
-    @Override
-    public void setInteracted(boolean isInteracted) {
-        this.interacted = isInteracted;
-    }
-
-    @Override
-    public void setStats(IStats stats) {
-        this.stats = Objects.requireNonNullElseGet(stats, Stats::new);
     }
 
 
     // Methods
     @Override
-    public String getName(Context context) {
-        return context.getString(nameId);
-    }
-
-    @Override
-    public Drawable getImage(Context context) {
-        return AppCompatResources.getDrawable(context, imageId);
-    }
-
-    @Override
     public String getInteractionName(Context context) {
-        return String.format(context.getString(interactionNameId), cost);
+        if (state == State.NotBought) {
+            return String.format(
+                    context.getString(state.interactionNameId),
+                    cost
+            );
+        } else {
+            return super.getInteractionName(context);
+        }
     }
 
     @Override
-    public String getInteractionResultName(Context context) {
-        return context.getString(interactionResultNameId);
-    }
-
-    @Override
-    public int interact(Personage personage) {
-        if (personage == null) return -10; // Null
+    public InteractionResult interact(Personage personage) {
+        // Check personage for validity
+        if (personage == null)
+            return InteractionResult.NullPersonage;
 
         // Check for money
-        if (personage.getMoney() < cost) return -1; // Not enough money
+        if (state == State.NotBought && personage.getMoney() < cost)
+            return InteractionResult.NotEnoughMoney;
 
         // Check for strength requirement
         int personageStrength = personage.getLevel().getStrength();
         int strengthRequired = stats.get(Stat.StrengthRequired);
-        if (personageStrength < strengthRequired) return -2; // Not enough strength
+        if (personageStrength < strengthRequired)
+            return InteractionResult.NotEnoughStrength;
 
-        // Buy
-        interacted = true;
-        personage.affectMoney(-cost);
-        personage.affectReputation(stats.get(Stat.ReputationImpact));
+        // Interact
+        if (state == State.NotBought) {
+            setState(State.Bought);
+            personage.affectMoney(-cost);
+            personage.affectReputation(stats.get(Stat.ReputationImpact));
+        } else if (state == State.Bought) {
+            setState(State.Selected);
+        } else if (state == State.Selected){
+            setState(State.Bought);
+            if (category != null) {
+                category.setSelectedItem(category.getItem(0));
+            }
+        }
         personage.recalculateStats();
-        return 0; // Item bought
+
+        return InteractionResult.Successful;
     }
 }

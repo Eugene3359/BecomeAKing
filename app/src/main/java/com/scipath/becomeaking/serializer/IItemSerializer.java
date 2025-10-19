@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class IItemKeySerializer implements JsonSerializer<IItem>, JsonDeserializer<IItem> {
+public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<IItem> {
 
     private static final String TYPE_FIELD = "type";
     private static final String DATA_FIELD = "data";
@@ -36,7 +36,7 @@ public class IItemKeySerializer implements JsonSerializer<IItem>, JsonDeserializ
     private final Resources res;
 
 
-    public IItemKeySerializer(Context context) {
+    public IItemSerializer(Context context) {
         this.context = context.getApplicationContext();
         this.res = context.getResources();
     }
@@ -62,16 +62,6 @@ public class IItemKeySerializer implements JsonSerializer<IItem>, JsonDeserializ
             data.addProperty("imageKey", res.getResourceEntryName(id));
             data.remove("imageId");
         }
-        if (data.has("interactionNameId")) {
-            int id = data.get("interactionNameId").getAsInt();
-            data.addProperty("interactionNameKey", res.getResourceEntryName(id));
-            data.remove("interactionNameId");
-        }
-        if (data.has("interactionResultNameId")) {
-            int id = data.get("interactionResultNameId").getAsInt();
-            data.addProperty("interactionResultNameKey", res.getResourceEntryName(id));
-            data.remove("interactionResultNameId");
-        }
 
         result.add(DATA_FIELD, data);
         return result;
@@ -93,16 +83,6 @@ public class IItemKeySerializer implements JsonSerializer<IItem>, JsonDeserializ
             String key = data.get("imageKey").getAsString();
             data.addProperty("imageId", res.getIdentifier(key, "drawable", this.context.getPackageName()));
             data.remove("imageKey");
-        }
-        if (data.has("interactionNameKey")) {
-            String key = data.get("interactionNameKey").getAsString();
-            data.addProperty("interactionNameId", res.getIdentifier(key, "string", this.context.getPackageName()));
-            data.remove("interactionNameKey");
-        }
-        if (data.has("interactionResultNameKey")) {
-            String key = data.get("interactionResultNameKey").getAsString();
-            data.addProperty("interactionResultNameId", res.getIdentifier(key, "string", this.context.getPackageName()));
-            data.remove("interactionResultNameKey");
         }
 
         Class<? extends IItem> clazz = TYPE_MAP.get(type);

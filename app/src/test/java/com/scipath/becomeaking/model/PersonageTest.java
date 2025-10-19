@@ -3,7 +3,6 @@ package com.scipath.becomeaking.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.scipath.becomeaking.contract.model.ILevel;
-import com.scipath.becomeaking.contract.model.IPersonage;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Title;
 
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class PersonageTest {
 
-    IPersonage personage;
+    Personage personage;
 
 
     @BeforeEach
@@ -149,10 +148,10 @@ public class PersonageTest {
 
     @Test
     void affectHealth_addsValueToHealthWithinBounds() {
-        personage.affectHealth(-50);
-        assertEquals(50, personage.getHealth());
+        personage.affectHealth(-100);
+        assertEquals(25, personage.getHealth());
         personage.affectHealth(200);
-        assertEquals(100, personage.getHealth());
+        assertEquals(125, personage.getHealth());
         personage.affectHealth(-200);
         assertEquals(0, personage.getHealth());
     }

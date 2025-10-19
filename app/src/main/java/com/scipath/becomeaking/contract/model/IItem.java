@@ -3,12 +3,14 @@ package com.scipath.becomeaking.contract.model;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import com.scipath.becomeaking.contract.callback.Callback;
 import com.scipath.becomeaking.model.Personage;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 
 import java.io.Serializable;
 
 
-public interface IItem extends Serializable {
+public interface IItem<State extends Enum<State> & IItemState> extends Serializable {
 
     // Accessors
     int getId();
@@ -17,15 +19,13 @@ public interface IItem extends Serializable {
 
     int getImageId();
 
+    IStats getStats();
+
+    State getState();
+
     int getInteractionNameId();
 
-    int getInteractionResultNameId();
-
-    int getCost();
-
-    boolean isInteracted();
-
-    IStats getStats();
+    ICategory getCategory();
 
 
     // Mutators
@@ -33,11 +33,13 @@ public interface IItem extends Serializable {
 
     void setImageId(int imageId);
 
-    void setCost(int cost);
-
-    void setInteracted(boolean isInteracted);
-
     void setStats(IStats stats);
+
+    void setState(State state);
+
+    void setOnStateChanged(Callback callback);
+
+    void setCategory(ICategory category);
 
 
     // Methods
@@ -65,13 +67,5 @@ public interface IItem extends Serializable {
      */
     String getInteractionName(Context context);
 
-    /**
-     * Item interaction result name resource accessor
-     *
-     * @param context   The Context that provides access to resources
-     * @return          The String that contains the item interaction result name
-     */
-    String getInteractionResultName(Context context);
-
-    int interact(Personage personage);
+    InteractionResult interact(Personage personage);
 }

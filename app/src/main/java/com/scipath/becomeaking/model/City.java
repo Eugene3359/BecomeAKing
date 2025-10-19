@@ -12,6 +12,7 @@ public class City implements ICity {
 
     // Fields
     protected static int idCounter = 0;
+
     protected int id;
     protected int nameId;
     protected Pair<Float, Float> coordinates;

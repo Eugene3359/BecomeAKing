@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.Stats;
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.enums.Title;
@@ -22,11 +23,18 @@ public class WorkTest {
     void setUp() {
         Work.interactionCounter = 0;
         work = new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, new Stats()
-                .add(Stat.HealthImpact, -15)
+                .add(Stat.HealthImpact, -25)
                 .add(Stat.ReputationImpact, 150)
                 .add(Stat.MoneyPerClick, 15)
                 .add(Stat.ReputationRequired, 1000),
                 10);
+    }
+
+
+    // Accessors
+    @Test
+    void getInteractionValue_returnsExpectedValue() {
+        assertEquals(1, work.getInteractionValue()); // Default value
     }
 
     @Test
@@ -34,20 +42,12 @@ public class WorkTest {
         assertEquals(10, work.getExperience()); // Initial value
     }
 
-    @Test
-    void getInteractionNameId_returnsExpectedId() {
-        assertEquals(R.string.start, work.getInteractionNameId()); // Initial value
-    }
 
+    // Mutators
     @Test
-    void getInteractionResultNameId_returnsExpectedId() {
-        assertEquals(R.string.done, work.getInteractionResultNameId()); // Initial value
-    }
-
-    @Test
-    void setCost_doesNothing() {
-        work.setCost(100);
-        assertEquals(0, work.getCost()); // Initial value
+    void setInteractionValue_changesInteractionValue() {
+        work.setInteractionValue(2);
+        assertEquals(2, work.getInteractionValue());
     }
 
     @Test
@@ -62,41 +62,40 @@ public class WorkTest {
         assertEquals(0, work.getExperience());
     }
 
+
+    // Methods
     @Test
-    void interact_withFulfilledRequirementsPersonage_returnsZeroAndModifiesPersonage() {
+    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setReputation(1000);
-        assertEquals(0, work.interact(personage));
-        assertEquals(85, personage.getHealth());
+        assertEquals(InteractionResult.Successful, work.interact(personage));
+        assertEquals(100, personage.getHealth());
         assertEquals(1150, personage.getReputation());
         assertEquals(10, personage.getLevel().getCurrentExperience());
     }
 
     @Test
-    void interact_withNotEnoughReputationPersonage_returnsMinusThreeAndDoNotModifiesPersonage() {
+    void interact_whenWorkLimitExceeded_returnsNoTimeLeftInteractionResultAndDoNotModifiesPersonage() {
+        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
+        personage.setReputation(1000);
+        Work.interactionCounter = 2;
+        assertEquals(InteractionResult.NoTimeLeft, work.interact(personage));
+        assertEquals(125, personage.getHealth());
+        assertEquals(1000, personage.getReputation());
+    }
+
+    @Test
+    void interact_withNotEnoughReputationPersonage_returnsNotEnoughReputationInteractionResultAndDoNotModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setReputation(500);
-        assertEquals(-3, work.interact(personage));
-        assertEquals(100, personage.getHealth());
+        assertEquals(InteractionResult.NotEnoughReputation, work.interact(personage));
+        assertEquals(125, personage.getHealth());
         assertEquals(500, personage.getReputation());
     }
 
     @Test
-    void interact_calledMoreThenTwoTimes_returnsMinusFourAndDoNotModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(1000);
-        work.interact(personage);
-        work.interact(personage);
-        personage.setHealth(100);
-        personage.setReputation(30000);
-        assertEquals(-4, work.interact(personage));
-        assertEquals(100, personage.getHealth());
-        assertEquals(30000, personage.getReputation());
-    }
-
-    @Test
-    void interact_withNull_returnsMinusTen() {
-        assertEquals(-10, work.interact(null));
+    void interact_withNull_returnsNullPersonageInteractionResult() {
+        assertEquals(InteractionResult.NullPersonage, work.interact(null));
     }
 
     @Test
