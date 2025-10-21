@@ -1,3 +1,10 @@
+# Become a King [0.5.6] - 21.10.2025
+
+### Additions
+- Added `Carriages` to the map
+
+---
+
 # Become a King [0.5.5.1] - 19.10.2025
 
 ### Changes
