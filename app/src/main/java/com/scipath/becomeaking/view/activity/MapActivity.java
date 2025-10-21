@@ -124,20 +124,21 @@ public class MapActivity extends BaseActivity {
     private void addMovingMarker(LinearLayout layout, Pair<Float, Float> src, Pair<Float, Float> dest) {
         addMarker(layout, src.first, src.second);
 
-        new CountDownTimer(21000, 25) {
+        new CountDownTimer(20000, 25) {
             int tickCount = 0;
             float x = src.first;
             float y = src.second;
 
             public void onTick(long millisUntilFinished) {
-                x = (src.first * (1 - tickCount / 800.0f)) + (dest.first * (tickCount / 800.0f));
-                y = (src.second * (1 - tickCount / 800.0f)) + (dest.second * (tickCount / 800.0f));
+                float progress = 1f - (millisUntilFinished / 20000f);
+                x = src.first + (dest.first - src.first) * progress;
+                y = src.second + (dest.second - src.second) * progress;
                 moveMarker(layout, x, y);
                 tickCount++;
             }
 
             public void onFinish() {
-                mapContainer.removeView(layout);
+                mapContainer.postDelayed(() -> mapContainer.removeView(layout), 250);
             }
         }.start();
     }
@@ -163,7 +164,7 @@ public class MapActivity extends BaseActivity {
     }
 
     private void addCarriages(Context context) {
-        carriageTimer = new CountDownTimer(5000, 1000) {
+        carriageTimer = new CountDownTimer(60000, 1000) {
             Random random = new Random();
 
             public void onTick(long millisUntilFinished) {

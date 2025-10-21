@@ -1,3 +1,10 @@
+# Become a King [0.5.6.1] - 21.10.2025
+
+### Fixes
+- Fixed an issue where carriages disappear before reaching destination
+
+---
+
 # Become a King [0.5.6] - 21.10.2025
 
 ### Additions
