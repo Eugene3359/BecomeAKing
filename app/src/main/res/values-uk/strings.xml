@@ -266,6 +266,7 @@
     <!-- Finance Fragment -->
     <string name="map">Карта</string>
     <string name="city">Місто</string>
+    <string name="region">Регіон</string>
     <string name="grimshaven">Грімсхейвен</string>
     <string name="farendol">Фарендол</string>
     <string name="thornford">Торнфорд</string>

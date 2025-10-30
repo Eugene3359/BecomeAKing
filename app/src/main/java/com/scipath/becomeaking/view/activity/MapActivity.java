@@ -20,6 +20,7 @@ import com.scipath.becomeaking.data.RegionsList;
 import com.scipath.becomeaking.view.customview.MapRoutesView;
 import com.scipath.becomeaking.view.layout.CarriageLayout;
 import com.scipath.becomeaking.view.layout.CityLayout;
+import com.scipath.becomeaking.view.layout.RegionLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -173,11 +174,10 @@ public class MapActivity extends BaseActivity {
     }
 
     private void addRegion(IRegion region) {
-        LinearLayout regionLayout = new LinearLayout(this);
-        regionLayout.setMinimumWidth((int) (mapWidth * region.getWidth()));
-        regionLayout.setMinimumHeight((int) (mapHeight * region.getHeight()));
-        regionLayout.setBackgroundResource(region.getDrawableId());
-        regionLayout.setVisibility(View.GONE);
+        RegionLayout regionLayout = new RegionLayout(this);
+        regionLayout.setWidth((int) (mapWidth * region.getWidth()));
+        regionLayout.setHeight((int) (mapHeight * region.getHeight()));
+        regionLayout.setImageSrc(region.getDrawableId());
         addMarker(regionLayout, region.getX(), region.getY());
         regionLayout.setOnClickListener(v -> {
             showDialogue(

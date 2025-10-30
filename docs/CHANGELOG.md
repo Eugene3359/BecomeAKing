@@ -1,3 +1,10 @@
+# Become a King [0.5.7.1] - 30.10.2025
+
+### Fixes
+- Fixed an issue where region sizes were incorrect on the map
+
+---
+
 # Become a King [0.5.7] - 30.10.2025
 
 ### Additions

@@ -277,6 +277,7 @@
     <!-- Finance Fragment -->
     <string name="map">Map</string>
     <string name="city">City</string>
+    <string name="region">Region</string>
     <string name="grimshaven">Grimshaven</string>
     <string name="farendol">Farendol</string>
     <string name="thornford">Thornford</string>
