@@ -28,7 +28,7 @@ public class Category implements ICategory {
     protected int imageId;
     protected int backgroundDrawableId;
     protected List<IItem> items;
-    protected IItem selectedItem;
+    protected int selectedItemId;
     protected IStats stats;
     protected boolean isSelectable;
     protected boolean itemsMutated;
@@ -41,7 +41,7 @@ public class Category implements ICategory {
         this.imageId = 0;
         this.backgroundDrawableId = 0;
         this.items = new ArrayList<>();
-        this.selectedItem = null;
+        this.selectedItemId = 0;
         this.stats = new Stats();
         this.isSelectable = isSelectable;
         this.itemsMutated = false;
@@ -85,7 +85,11 @@ public class Category implements ICategory {
 
     @Override
     public IItem getSelectedItem() {
-        return selectedItem;
+        for (IItem item : items) {
+            if (item.getId() == selectedItemId)
+                return item;
+        }
+        return null;
     }
 
     @Override
@@ -144,22 +148,22 @@ public class Category implements ICategory {
     public void setSelectedItem(IItem item) {
         if (!isSelectable ||
             !(item instanceof SelectableItem) ||
-            item == selectedItem ||
+            item.getId() == selectedItemId ||
             !items.contains(item)
         ) return;
         // Deselect old item
-        if (selectedItem instanceof SelectableItem)
-            selectedItem.setState(SelectableItem.State.Bought);
+        if (getSelectedItem() instanceof SelectableItem)
+            getSelectedItem().setState(SelectableItem.State.Bought);
         // Set new selected item and check its state
-        selectedItem = item;
-        if (selectedItem.getState() != SelectableItem.State.Selected)
-            selectedItem.setState(SelectableItem.State.Selected);
+        selectedItemId = item.getId();
+        if (getSelectedItem().getState() != SelectableItem.State.Selected)
+            getSelectedItem().setState(SelectableItem.State.Selected);
     }
 
     @Override
     public void setSelectable(boolean isSelectable) {
         this.isSelectable = isSelectable;
-        if (!isSelectable) selectedItem = null;
+        if (!isSelectable) selectedItemId = 0;
     }
 
 
@@ -181,7 +185,7 @@ public class Category implements ICategory {
 
     @Override
     public IItem getBestItem() {
-        if (isSelectable && selectedItem != null) return selectedItem;
+        if (isSelectable && selectedItemId != 0) return getSelectedItem();
         IItem item;
         for (int i = items.size()-1; i >= 0; i--) {
             item = items.get(i);

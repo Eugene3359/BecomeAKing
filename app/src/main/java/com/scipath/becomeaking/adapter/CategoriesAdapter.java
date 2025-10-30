@@ -114,6 +114,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         ICategory category = categories.get(position);
+        if (category.getId() == 4) {
+            category.getItem(0).setImageId(BecomeAKing.getInstance()
+                    .getCategories().get(1).getSelectedItem().getImageId());
+        }
 
         // Setting values to views
         viewHolder.getNameView().setText(category.getNameId());

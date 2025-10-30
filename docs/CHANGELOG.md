@@ -1,3 +1,14 @@
+# Become a King [0.5.6.2] - 30.10.2025
+
+### Changes
+- The `None` armor item's image is always the selected item's image from the `Cloth` category 
+
+### Fixes
+- Fixed a crash that occurred when clicking `Next Day` or saving game
+- Fixed deselection of selected item when new item was selected after loading game 
+
+---
+
 # Become a King [0.5.6.1] - 21.10.2025
 
 ### Fixes

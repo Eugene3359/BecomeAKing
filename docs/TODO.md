@@ -2,7 +2,6 @@
 
 ## In Progress
 - Update categories and items designs
-- Add more items
 
 ## In Queue
 
