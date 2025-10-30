@@ -14,7 +14,9 @@ import androidx.core.util.Pair;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICity;
+import com.scipath.becomeaking.contract.model.IRegion;
 import com.scipath.becomeaking.data.CitiesList;
+import com.scipath.becomeaking.data.RegionsList;
 import com.scipath.becomeaking.view.customview.MapRoutesView;
 import com.scipath.becomeaking.view.layout.CarriageLayout;
 import com.scipath.becomeaking.view.layout.CityLayout;
@@ -31,10 +33,12 @@ public class MapActivity extends BaseActivity {
 
     // Models
     private ArrayList<ICity> cities;
+    private ArrayList<IRegion> regions;
 
     // Views
     private FrameLayout mapContainer;
     private MapRoutesView mapRoutesView;
+    private ArrayList<LinearLayout> mapRegionsLayouts;
     private ImageButton buttonActive;
     private ImageButton buttonFinance;
     private ImageButton buttonBattle;
@@ -60,15 +64,20 @@ public class MapActivity extends BaseActivity {
         );
 
         cities = CitiesList.getCities();
+        regions = RegionsList.getRegions();
 
         // Views
         mapContainer = findViewById(R.id.map_container);
         mapRoutesView = findViewById(R.id.map_routes);
+        mapRegionsLayouts = new ArrayList<>();
 
         mapContainer.post(() -> {
             mapHeight = mapContainer.getHeight();
             mapWidth = mapContainer.getWidth();
 
+            for (IRegion region : regions) {
+                addRegion(region);
+            }
 
             for (ICity city : cities) {
                 addCity(city);
@@ -163,6 +172,24 @@ public class MapActivity extends BaseActivity {
         }
     }
 
+    private void addRegion(IRegion region) {
+        LinearLayout regionLayout = new LinearLayout(this);
+        regionLayout.setMinimumWidth((int) (mapWidth * region.getWidth()));
+        regionLayout.setMinimumHeight((int) (mapHeight * region.getHeight()));
+        regionLayout.setBackgroundResource(region.getDrawableId());
+        regionLayout.setVisibility(View.GONE);
+        addMarker(regionLayout, region.getX(), region.getY());
+        regionLayout.setOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
+        });
+        mapRegionsLayouts.add(regionLayout);
+    }
+
     private void addCarriages(Context context) {
         carriageTimer = new CountDownTimer(60000, 1000) {
             Random random = new Random();
@@ -205,8 +232,14 @@ public class MapActivity extends BaseActivity {
 
             if (buttonActive == buttonFinance) {
                 mapRoutesView.setVisibility(View.VISIBLE);
+                for (LinearLayout regionLayout : mapRegionsLayouts) {
+                    regionLayout.setVisibility(View.GONE);
+                }
             } else {
                 mapRoutesView.setVisibility(View.GONE);
+                for (LinearLayout regionLayout : mapRegionsLayouts) {
+                    regionLayout.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

@@ -112,7 +112,7 @@ public class CategoryTest {
 
     @Test
     void getSelectedItem_returnsExpectedValue() {
-        category.selectedItem = item1;
+        category.selectedItemId = item1.getId();
         assertEquals(item1, category.getSelectedItem());
     }
 

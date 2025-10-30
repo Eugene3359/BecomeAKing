@@ -1,3 +1,10 @@
+# Become a King [0.5.7] - 30.10.2025
+
+### Additions
+- Added the `Grimshaven` region to the map
+
+---
+
 # Become a King [0.5.6.2] - 30.10.2025
 
 ### Changes
