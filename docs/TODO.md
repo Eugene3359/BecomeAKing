@@ -1,7 +1,6 @@
 # Project Tasks
 
 ## In Progress
-- Add more regions
 - Update categories and items designs
 
 ## In Queue

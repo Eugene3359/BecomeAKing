@@ -1,3 +1,10 @@
+# Become a King [0.5.8] - 01.11.2025
+
+### Additions
+- Added more regions to the map
+
+---
+
 # Become a King [0.5.7.1] - 30.10.2025
 
 ### Fixes
