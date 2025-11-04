@@ -68,6 +68,7 @@
     <string name="meat">Мясо</string>
     <string name="cheese">Сыр</string>
     <string name="vegetables">Овощи</string>
+    <string name="fruits">Фрукти</string>
     <string name="seafood">Морепродукти</string>
     <string name="soup">Суп</string>
     <string name="nourishing_food">Сытный обед</string>
@@ -282,6 +283,14 @@
     <string name="albreston">Альбрестон</string>
     <string name="schaderveld">Шадервельд</string>
     <string name="winterholm">Винтерхолм</string>
-    <string name="fruits">Фрукти</string>
+    <string name="trading">Торговля</string>
+    <string name="market">Ринок</string>
+    <string name="equip">Снарядить</string>
+    <string name="gossips">Сплетни</string>
+    <string name="collect">Собрать</string>
+    <string name="bank">Банк</string>
+    <string name="investments">Вложения</string>
+    <string name="workshops">Мастерские</string>
+    <string name="look">Смотреть</string>
 
 </resources>

@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.view.activity.MapActivity;
+import com.scipath.becomeaking.view.layout.FinanceMenuElementLayout;
 
 
 public class FinanceFragment extends BaseFragment {
@@ -51,6 +52,56 @@ public class FinanceFragment extends BaseFragment {
         buttonMap.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), MapActivity.class);
             startActivity(intent);
+        });
+
+        FinanceMenuElementLayout elementTrading = view.findViewById(R.id.element_trading);
+        elementTrading.setButtonOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
+        });
+
+        FinanceMenuElementLayout elementCaravans = view.findViewById(R.id.element_caravans);
+        elementCaravans.setButtonOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
+        });
+
+        FinanceMenuElementLayout elementGossips = view.findViewById(R.id.element_gossips);
+        elementGossips.setButtonOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
+        });
+
+        FinanceMenuElementLayout elementBank = view.findViewById(R.id.element_bank);
+        elementBank.setButtonOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
+        });
+
+        FinanceMenuElementLayout elementWorkshops = view.findViewById(R.id.element_workshops);
+        elementWorkshops.setButtonOnClickListener(v -> {
+            showDialogue(
+                    R.string.notification,
+                    R.string.in_development,
+                    R.string.got_it,
+                    null
+            );
         });
     }
 }

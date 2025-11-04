@@ -60,37 +60,23 @@
     <!-- Layout Category -->
     <color name="grayish_brown">#FF4F463C</color>
     <color name="brown">#D83D2B14</color>
+    <color name="requirement_light_gray">#B2AAAA</color>
 
     <!-- Layout Item -->
     <color name="item_dark_brown">#FF1C1914</color>
+    <color name="transparent_green">#4D06B01F</color>
+    <color name="purple">#FF34132B</color>
+    <color name="transparent_red">#4DB00606</color>
 
     <!-- Clicker Mini-games -->
     <color name="info_brown">#FF472B11</color>
+    <color name="green_glow">#D005BA20</color>
 
     <!-- Dialogue Fragment -->
     <color name="transparent_dark_brown">#F22D1D0E</color>
     <color name="transparent_light_brown">#F2453D36</color>
 
-    <!-- -->
-
-
-    <color name="transparent_raspberry">#F2381123</color>
-
-    <color name="light_gray">#B2AAAA</color>
-
-    <color name="transparent_green">#4D06B01F</color>
-    <color name="purple">#FF34132B</color>
-    <color name="transparent_red">#4DB00606</color>
-    <color name="button_back_brown">#6D5028</color>
-
-    <color name="green_glow">#D005BA20</color>
-
-    <color name="darkest_brown">#271400</color>
-
-
-
-
-
+    <!-- Layout Finance -->
     <color name="dark_green">#365A1E</color>
 
 </resources>

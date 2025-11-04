@@ -92,12 +92,6 @@ public class GameActivity extends BaseActivity {
         buttonFinance = findViewById(R.id.button_finance);
         buttonFinance.setOnClickListener(view -> {
             switchMenuButton(buttonFinance, new FinanceFragment());
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
         });
 
         buttonBattle = findViewById(R.id.button_battle);

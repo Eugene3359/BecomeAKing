@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/requirement_light_gray"
                 android:textSize="@dimen/font_size_smallest"
                 android:visibility="gone" />
 

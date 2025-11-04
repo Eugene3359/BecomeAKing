@@ -294,5 +294,14 @@
     <string name="albreston">Albreston</string>
     <string name="schaderveld">Schaderveld</string>
     <string name="winterholm">Winterholm</string>
+    <string name="trading">Trading</string>
+    <string name="market">Market</string>
+    <string name="equip">Equip</string>
+    <string name="gossips">Gossips</string>
+    <string name="collect">Collect</string>
+    <string name="bank">Bank</string>
+    <string name="investments">Investments</string>
+    <string name="workshops">Workshops</string>
+    <string name="look">Look</string>
 
 </resources>

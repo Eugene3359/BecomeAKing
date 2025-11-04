@@ -40,4 +40,11 @@
         <attr name="backgroundColor" />
         <attr name="backgroundDrawable" />
     </declare-styleable>
+
+    <declare-styleable name="FinanceMenuElementLayout">
+        <attr name="src" format="reference" />
+        <attr name="text" format="reference" />
+        <attr name="buttonText" format="reference" />
+
+    </declare-styleable>
 </resources>

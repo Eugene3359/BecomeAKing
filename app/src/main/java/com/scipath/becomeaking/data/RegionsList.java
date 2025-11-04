@@ -14,7 +14,7 @@ public class RegionsList {
         regions.add(new Region()
                 .setNameId(R.string.grimshaven)
                 .setDrawableId(R.drawable.vec_grimshaven_region)
-                .setSizes(0.135f, 0.283f)
+                .setSizes(0.136f, 0.284f)
                 .setCoordinates(0.164f, 0.167f)
         );
         regions.add(new Region()

@@ -1,3 +1,10 @@
+# Become a King [0.5.8.1] - 04.11.2025
+
+### Additions
+- Added elements to the `Finance Menu`
+
+---
+
 # Become a King [0.5.8] - 01.11.2025
 
 ### Additions
