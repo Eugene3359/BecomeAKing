@@ -47,7 +47,7 @@
 
             </RadioGroup>
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_change"
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"
@@ -61,7 +61,7 @@
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_back"
                 android:layout_height="@dimen/view_height_big"
                 android:layout_width="@dimen/view_width"

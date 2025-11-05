@@ -26,7 +26,7 @@ import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.Clicker1Activity;
 import com.scipath.becomeaking.view.activity.Clicker2Activity;
 import com.scipath.becomeaking.view.activity.GameActivity;
-import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+import com.scipath.becomeaking.view.view.CustomLinearLayout;
 
 import java.util.List;
 

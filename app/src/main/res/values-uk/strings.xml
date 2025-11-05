@@ -3,6 +3,12 @@
     <string name="test">Тест</string>
     <string name="ad">Реклама</string>
 
+    <!-- Dialogue -->
+    <string name="notification">Сповіщення</string>
+    <string name="got_it">Зрозуміло</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+
     <!-- Main Activity -->
     <string name="in_development">Ця частина знаходиться в розробці</string>
     <string name="new_game">Нова гра</string>
@@ -11,7 +17,6 @@
     <string name="image_of_knights">Зображення рицарів</string>
     <string name="save_not_found">Збереження не знайдено</string>
     <string name="something_went_wrong">Щось пішло не так</string>
-    <string name="got_it">Зрозуміло</string>
 
     <!-- Language Selection Activity -->
     <string name="select_language">Виберіть мову</string>
@@ -257,13 +262,12 @@
     <string name="exit">Вийти</string>
 
     <!-- Game Over -->
-    <string name="notification">Сповіщення</string>
     <string name="game_over">Гра закінчена.</string>
     <string name="negative_health">Все здоров\'я втрачено. Ви мертві.</string>
     <string name="negative_reputation">Ваша репутація впала нижче нуля. Вас вигнали з міста.</string>
     <string name="negative_money">Ви заборгували гроші не тим людям. Вас продали в рабство.</string>
 
-    <!-- Finance Fragment -->
+    <!-- Map -->
     <string name="map">Карта</string>
     <string name="city">Місто</string>
     <string name="region">Регіон</string>
@@ -283,6 +287,11 @@
     <string name="albreston">Альбрестон</string>
     <string name="schaderveld">Шадервельд</string>
     <string name="winterholm">Вінтерхолм</string>
+    <string name="you_are_already_in_this_city">Ви вже знаходитесь в цьому місті.</string>
+    <string name="no_direct_connection">Немає безпосереднього зв\'язку з цим містом.</string>
+    <string name="go_to_city_confirmation">Ви впевнені що хочете відправитись до цього міста?</string>
+
+    <!-- Finance Fragment -->
     <string name="trading">Торговля</string>
     <string name="market">Ринок</string>
     <string name="equip">Екіпірувати</string>

@@ -25,7 +25,7 @@ import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+import com.scipath.becomeaking.view.view.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.ItemsFragment;
 
@@ -174,12 +174,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         viewHolder.getButtonSelect().setOnClickListener(view -> {
             InteractionResult result = work.interact(BecomeAKing.getInstance().getPersonage());
             if (result != InteractionResult.Successful) {
-                DialogueFragment.newInstance(
-                        R.string.notification,
-                        result.getMessageId(),
-                        R.string.got_it
-                ).show(((AppCompatActivity)context)
-                        .getSupportFragmentManager(), "dialogue");
+                DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                        .setHeader(R.string.notification)
+                        .setMessage(result.getMessageId())
+                        .setButton1(R.string.got_it, null)
+                        .build();
+                dialogueFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
             }
         });
     }

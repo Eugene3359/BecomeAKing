@@ -26,7 +26,7 @@ import com.scipath.becomeaking.model.item.Food;
 import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.SelectableItem;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+import com.scipath.becomeaking.view.view.CustomLinearLayout;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.List;
@@ -160,12 +160,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             if (result == InteractionResult.Successful) {
                 callback.call(item);
             } else {
-                DialogueFragment.newInstance(
-                        R.string.notification,
-                        result.getMessageId(),
-                        R.string.got_it
-                ).show(((AppCompatActivity)context)
-                        .getSupportFragmentManager(), "dialogue");
+                DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                        .setHeader(R.string.notification)
+                        .setMessage(result.getMessageId())
+                        .setButton1(R.string.got_it, null)
+                        .build();
+                dialogueFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
             }
         });
     }

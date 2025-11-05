@@ -10,9 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICity;
+import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.view.activity.MapActivity;
+import com.scipath.becomeaking.view.layout.CurrentCityLayout;
 import com.scipath.becomeaking.view.layout.FinanceMenuElementLayout;
 
 
@@ -37,15 +42,18 @@ public class FinanceFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ICity city = BecomeAKing.getInstance().getCity();
+
+        CurrentCityLayout currentCityLayout = view.findViewById(R.id.layout_current_city);
+        ImageView imageViewCity = currentCityLayout.findViewById(R.id.image_view);
+        // TODO: change image src
+        imageViewCity.setContentDescription(getContext().getString(city.getNameId()));
+
         // Buttons
-        Button buttonCity = view.findViewById(R.id.button_city);
+        Button buttonCity = currentCityLayout.findViewById(R.id.button_city);
+        buttonCity.setText(city.getNameId());
         buttonCity.setOnClickListener(v -> {
-            showDialogue(
-                    R.string.drakkenburg,
-                    R.string.placeholder,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
 
         Button buttonMap = view.findViewById(R.id.button_map);
@@ -56,52 +64,27 @@ public class FinanceFragment extends BaseFragment {
 
         FinanceMenuElementLayout elementTrading = view.findViewById(R.id.element_trading);
         elementTrading.setButtonOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
 
         FinanceMenuElementLayout elementCaravans = view.findViewById(R.id.element_caravans);
         elementCaravans.setButtonOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
 
         FinanceMenuElementLayout elementGossips = view.findViewById(R.id.element_gossips);
         elementGossips.setButtonOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
 
         FinanceMenuElementLayout elementBank = view.findViewById(R.id.element_bank);
         elementBank.setButtonOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
 
         FinanceMenuElementLayout elementWorkshops = view.findViewById(R.id.element_workshops);
         elementWorkshops.setButtonOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
     }
 }

@@ -1,3 +1,13 @@
+# Become a King [0.5.8.2] - 05.11.2025
+
+### Additions
+- Personages can now travel between cities
+
+### Changes
+- The initial city is now randomly selected when starting a new game
+
+---
+
 # Become a King [0.5.8.1] - 04.11.2025
 
 ### Additions

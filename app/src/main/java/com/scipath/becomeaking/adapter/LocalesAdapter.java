@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.callback.ObjectCallback;
-import com.scipath.becomeaking.view.customview.CustomRadioButton;
+import com.scipath.becomeaking.view.view.CustomRadioButton;
 
 import java.util.Locale;
 

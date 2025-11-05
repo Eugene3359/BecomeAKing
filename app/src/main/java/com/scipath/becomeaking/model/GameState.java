@@ -10,12 +10,14 @@ public class GameState implements Serializable {
 
     public Personage personage;
     public ArrayList<ICategory> categories;
+    public int cityId;
     public int day;
 
 
-    public GameState(Personage personage, ArrayList<ICategory> categories, int day) {
+    public GameState(Personage personage, ArrayList<ICategory> categories, int cityId, int day) {
         this.personage = personage;
         this.categories = categories;
+        this.cityId = cityId;
         this.day = day;
     }
 }

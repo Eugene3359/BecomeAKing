@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.view.customview;
+package com.scipath.becomeaking.view.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

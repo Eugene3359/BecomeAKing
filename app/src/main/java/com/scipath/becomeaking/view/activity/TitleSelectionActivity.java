@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.TitlesAdapter;
 import com.scipath.becomeaking.model.enums.Title;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
 public class TitleSelectionActivity extends BaseActivity {
@@ -59,7 +60,7 @@ public class TitleSelectionActivity extends BaseActivity {
                 intent.putExtra("title", currentTitle);
                 startActivity(intent);
             } else {
-                showDialogue(R.string.notification, R.string.chose_title, R.string.got_it, null);
+                showNotification(R.string.chose_title);
             }
         });
 

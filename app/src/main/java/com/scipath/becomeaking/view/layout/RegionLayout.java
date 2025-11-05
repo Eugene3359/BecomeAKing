@@ -30,7 +30,7 @@ public class RegionLayout extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context) {
+    private void init(Context context) {
         inflate(context, R.layout.layout_region, this);
         imageViewRegion = findViewById(R.id.image_view_region);
         setVisibility(GONE);

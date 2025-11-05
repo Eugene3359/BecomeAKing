@@ -45,7 +45,7 @@
 
         </LinearLayout>
 
-        <com.scipath.becomeaking.view.customview.CustomLinearLayout
+        <com.scipath.becomeaking.view.view.CustomLinearLayout
             android:id="@+id/layout_experience"
             android:layout_width="143dp"
             android:layout_height="42dp"
@@ -71,9 +71,9 @@
                 android:textStyle="bold"
                 android:textColor="@color/white" />
 
-        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+        </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
-        <com.scipath.becomeaking.view.customview.CustomButton
+        <com.scipath.becomeaking.view.view.CustomButton
             android:id="@+id/button_back"
             android:layout_width="143dp"
             android:layout_height="42dp"

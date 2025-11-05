@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 public class RegionsList {
 
-    public static ArrayList<IRegion> getRegions() {
-        ArrayList<IRegion> regions = new ArrayList<>();
+    private static ArrayList<IRegion> regions;
+
+
+    private static void init() {
+        regions = new ArrayList<>();
 
         regions.add(new Region()
                 .setNameId(R.string.grimshaven)
@@ -107,7 +110,13 @@ public class RegionsList {
                 .setSizes(0.039f, 0.157f)
                 .setCoordinates(0.898f, 0.334f)
         );
+    }
 
+
+    public static ArrayList<IRegion> getRegions() {
+        if (regions == null) {
+            init();
+        }
         return regions;
     }
 }

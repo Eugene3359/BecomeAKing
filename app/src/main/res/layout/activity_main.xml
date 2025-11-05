@@ -34,7 +34,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_new_game"
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"
@@ -47,7 +47,7 @@
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_load"
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"
@@ -61,7 +61,7 @@
                 android:textSize="@dimen/font_size_big"
                 android:textAllCaps="false"/>
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_language"
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"
@@ -76,7 +76,7 @@
                 android:textAllCaps="false" />
 
             <!-- Test button -->
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_test"
                 android:layout_width="@dimen/view_width"
                 android:layout_height="@dimen/view_height_big"

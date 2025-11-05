@@ -21,49 +21,71 @@ public class DialogueFragment extends DialogFragment {
     private int headerId;
     private int messageId;
     private String message;
-    private int buttonTextId;
-    private Callback callback;
+    private int button1TextId;
+    private int button2TextId;
+    private Callback callback1;
+    private Callback callback2;
 
 
-    public static DialogueFragment newInstance(int headerId, int messageId, int buttonTextId) {
-        DialogueFragment fragment = new DialogueFragment();
-        Bundle args = new Bundle();
-        args.putInt("headerId", headerId);
-        args.putInt("messageId", messageId);
-        args.putInt("buttonTextId", buttonTextId);
-        fragment.setArguments(args);
-        return fragment;
+    public static class Builder {
+        private int headerId;
+        private int messageId;
+        private String message;
+        private int button1TextId;
+        private int button2TextId;
+        private Callback callback1;
+        private Callback callback2;
+
+        public Builder setHeader(int headerId) {
+            this.headerId = headerId;
+            return this;
+        }
+
+        public Builder setMessage(int messageId) {
+            this.messageId = messageId;
+            return this;
+        }
+
+        public Builder setMessage(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public Builder setButton1(int textId, @Nullable Callback callback) {
+            this.button1TextId = textId;
+            this.callback1 = callback;
+            return this;
+        }
+
+        public Builder setButton2(int textId, @Nullable Callback callback) {
+            this.button2TextId = textId;
+            this.callback2 = callback;
+            return this;
+        }
+
+        public DialogueFragment build() {
+            DialogueFragment fragment = new DialogueFragment();
+            fragment.headerId = headerId;
+            fragment.messageId = messageId;
+            fragment.message = message;
+            fragment.button1TextId = button1TextId;
+            fragment.button2TextId = button2TextId;
+            fragment.callback1 = callback1;
+            fragment.callback2 = callback2;
+            return fragment;
+        }
     }
 
-    public static DialogueFragment newInstance(int headerId, String message, int buttonTextId) {
-        DialogueFragment fragment = new DialogueFragment();
-        Bundle args = new Bundle();
-        args.putInt("headerId", headerId);
-        args.putString("message", message);
-        args.putInt("buttonTextId", buttonTextId);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            headerId = getArguments().getInt("headerId");
-            messageId = getArguments().getInt("messageId");
-            message = getArguments().getString("message");
-            buttonTextId = getArguments().getInt("buttonTextId");
-        }
         setCancelable(false);
     }
 
-    public void setCallback(Callback callback) {
-        this.callback = callback;
-    }
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialogue2, container, false);
 
@@ -85,17 +107,24 @@ public class DialogueFragment extends DialogFragment {
             textViewMessage.setVisibility(View.GONE);
         }
 
-        // Button
-        Button button = view.findViewById(R.id.button_end_dialogue);
-        button.setText(buttonTextId);
-        button.setOnClickListener(v -> {
-            if (callback != null) {
-                callback.call();
-            }
-            dismiss();
-        });
+        // Buttons
+        setupButton(view.findViewById(R.id.button_1), button1TextId, callback1);
+        setupButton(view.findViewById(R.id.button_2), button2TextId, callback2);
 
         return view;
+    }
+
+    private void setupButton(Button button, int textId, @Nullable Callback callback) {
+        if (button == null) return;
+        if (textId != 0) {
+            button.setText(textId);
+            button.setOnClickListener(v -> {
+                if (callback != null) callback.call();
+                dismiss();
+            });
+        } else {
+            button.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -52,6 +52,7 @@ public class PersonageLayout extends LinearLayout {
         imageViewPersonageIcon = findViewById(R.id.image_view_personage_icon);
     }
 
+
     public void updateAll() {
         updateStats();
         updateImage();

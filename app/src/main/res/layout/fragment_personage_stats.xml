@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content" />
 
             <!-- Age -->
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 app:borderColor="@color/border_brown"
@@ -39,11 +39,11 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_size_small" />
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Age -->
 
             <!-- Button Back -->
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_back"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical" >
 
-                <com.scipath.becomeaking.view.customview.CustomTextView
+                <com.scipath.becomeaking.view.view.CustomTextView
                     android:id="@+id/text_view_level"
                     android:layout_width="0dp"
                     android:layout_height="46dp"
@@ -83,7 +83,7 @@
                     android:src="@drawable/icon_skill_point"
                     android:contentDescription="@string/skill_points" />
 
-                <com.scipath.becomeaking.view.customview.CustomTextView
+                <com.scipath.becomeaking.view.view.CustomTextView
                     android:id="@+id/text_view_experience"
                     android:layout_width="0dp"
                     android:layout_height="46dp"
@@ -100,7 +100,7 @@
             <!-- Level and Experience -->
 
             <!-- Characteristics -->
-            <com.scipath.becomeaking.view.customview.CustomTextView
+            <com.scipath.becomeaking.view.view.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="15dp"
@@ -111,7 +111,7 @@
                 android:textSize="18sp"
                 android:gravity="center" />
 
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -218,11 +218,11 @@
 
                 </LinearLayout>
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Characteristics -->
 
             <!-- Button Save -->
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_save"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/view_height_small"
@@ -238,7 +238,7 @@
             <!-- Button Save -->
 
             <!-- Skill Points -->
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/view_height_small"
                 android:layout_marginTop="10dp"
@@ -262,7 +262,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_size_small" />
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Skill Points -->
 
             <!-- Drop Skill Points -->
@@ -273,7 +273,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical">
 
-                <com.scipath.becomeaking.view.customview.CustomTextView
+                <com.scipath.becomeaking.view.view.CustomTextView
                     android:layout_width="0dp"
                     android:layout_height="@dimen/view_height_small"
                     android:layout_weight="1"

@@ -9,7 +9,8 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.customview.CustomLinearLayout;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.view.CustomLinearLayout;
 
 
 public class Clicker1Activity extends BaseActivity {
@@ -62,13 +63,12 @@ public class Clicker1Activity extends BaseActivity {
 
     protected void onWorkStarted() {
         setClicker();
-
-        showDialogue(
-                R.string.notification,
-                R.string.instruction1,
-                R.string.start,
-                this::startTimer
-        );
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(R.string.instruction1)
+                .setButton1(R.string.start, this::startTimer)
+                .build();
+        showDialogue(dialogueFragment);
     }
 
     private void setClicker() {
@@ -91,14 +91,14 @@ public class Clicker1Activity extends BaseActivity {
     }
 
     protected void onWorkCompleted() {
-        showDialogue(
-                R.string.notification,
-                getString(R.string.you_have_earned_d_coins, moneyEarned),
-                R.string.exit,
-                () -> {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(getString(R.string.you_have_earned_d_coins, moneyEarned))
+                .setButton1(R.string.exit, () -> {
                     BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
                     finish();
-                }
-        );
+                })
+                .build();
+        showDialogue(dialogueFragment);
     }
 }

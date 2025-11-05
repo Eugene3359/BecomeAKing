@@ -15,8 +15,11 @@ import java.util.ArrayList;
 
 public class CategoriesList {
 
-    public static ArrayList<ICategory> getCategories(boolean isMale) {
-        ArrayList<ICategory> categories = new ArrayList<>();
+    private static ArrayList<ICategory> categories;
+
+
+    public static void init(boolean isMale) {
+        categories = new ArrayList<>();
 
         // Nutrition
         categories.add(new Category(R.string.nutrition, false));
@@ -604,8 +607,10 @@ public class CategoriesList {
                 .add(Stat.CoinsPerMight, 3)
                 .add(Stat.ReputationRequired, 8000));
         categories.get(13).addItem(work);
+    }
 
 
+    public static ArrayList<ICategory> getCategories() {
         return categories;
     }
 }

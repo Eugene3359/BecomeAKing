@@ -8,10 +8,10 @@
     tools:context=".view.fragment.DialogueFragment"
     android:orientation="vertical" >
 
-    <com.scipath.becomeaking.view.customview.CustomLinearLayout
+    <com.scipath.becomeaking.view.view.CustomLinearLayout
         android:layout_width="286dp"
         android:layout_height="wrap_content"
-        android:padding="25dp"
+        android:paddingVertical="25dp"
         app:backgroundColor="@color/cloth_brown"
         app:backgroundDrawable="@drawable/bg_cloth"
         android:orientation="vertical"
@@ -21,6 +21,7 @@
             android:id="@+id/layout_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
             android:layout_marginBottom="15dp" >
 
             <TextView
@@ -37,23 +38,44 @@
             android:id="@+id/text_view_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
             android:text="@string/placeholder"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textAlignment="center" />
 
-        <com.scipath.becomeaking.view.customview.CustomButton
-            android:id="@+id/button_end_dialogue"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            app:backgroundColor="@color/transparent_green"
-            android:text="@string/placeholder"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textAllCaps="false" />
+            android:layout_marginTop="25dp" >
 
-    </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            <com.scipath.becomeaking.view.view.CustomButton
+                android:id="@+id/button_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="25dp"
+                app:backgroundColor="@color/transparent_green"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAllCaps="false" />
+
+            <com.scipath.becomeaking.view.view.CustomButton
+                android:id="@+id/button_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="25dp"
+                app:backgroundColor="@color/transparent_green"
+                android:text="@string/placeholder"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
 </FrameLayout>
 

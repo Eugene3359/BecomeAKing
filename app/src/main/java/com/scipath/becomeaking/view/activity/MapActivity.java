@@ -12,12 +12,14 @@ import android.widget.LinearLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IRegion;
 import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.data.RegionsList;
-import com.scipath.becomeaking.view.customview.MapRoutesView;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.view.MapRoutesView;
 import com.scipath.becomeaking.view.layout.CarriageLayout;
 import com.scipath.becomeaking.view.layout.CityLayout;
 import com.scipath.becomeaking.view.layout.RegionLayout;
@@ -35,6 +37,7 @@ public class MapActivity extends BaseActivity {
     // Models
     private ArrayList<ICity> cities;
     private ArrayList<IRegion> regions;
+    private ICity currentCity;
 
     // Views
     private FrameLayout mapContainer;
@@ -56,16 +59,11 @@ public class MapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        showDialogue(
-                R.string.notification,
-                R.string.in_development,
-                R.string.got_it,
-                null
-        );
+        showInDevelopmentNotification();
 
         cities = CitiesList.getCities();
         regions = RegionsList.getRegions();
+        currentCity = BecomeAKing.getInstance().getCity();
 
         // Views
         mapContainer = findViewById(R.id.map_container);
@@ -158,12 +156,7 @@ public class MapActivity extends BaseActivity {
         cityLayout.setName(city.getNameId());
         addMarker(cityLayout, city.getX(), city.getY());
         cityLayout.setOnClickListener(v -> {
-            showDialogue(
-                    city.getNameId(),
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            movePersonage(city);
         });
     }
 
@@ -180,12 +173,7 @@ public class MapActivity extends BaseActivity {
         regionLayout.setImageSrc(region.getDrawableId());
         addMarker(regionLayout, region.getX(), region.getY());
         regionLayout.setOnClickListener(v -> {
-            showDialogue(
-                    R.string.notification,
-                    R.string.in_development,
-                    R.string.got_it,
-                    null
-            );
+            showInDevelopmentNotification();
         });
         mapRegionsLayouts.add(regionLayout);
     }
@@ -220,7 +208,36 @@ public class MapActivity extends BaseActivity {
         }.start();
     }
 
-    public void switchMenuButton(ImageButton pressedButton) {
+    private void movePersonage(ICity city) {
+        if (currentCity == city) {
+            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                    .setHeader(city.getNameId())
+                    .setMessage(R.string.you_are_already_in_this_city)
+                    .setButton1(R.string.got_it, null)
+                    .build();
+            showDialogue(dialogueFragment);
+        } else if (currentCity.getRoutes().contains(city)) {
+            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                    .setHeader(city.getNameId())
+                    .setMessage(R.string.go_to_city_confirmation)
+                    .setButton1(R.string.no, null)
+                    .setButton2(R.string.yes, () -> {
+                        BecomeAKing.getInstance().setCity(city);
+                        currentCity = city;
+                    })
+                    .build();
+            showDialogue(dialogueFragment);
+        } else {
+            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                    .setHeader(city.getNameId())
+                    .setMessage(R.string.no_direct_connection)
+                    .setButton1(R.string.got_it, null)
+                    .build();
+            showDialogue(dialogueFragment);
+        }
+    }
+
+    private void switchMenuButton(ImageButton pressedButton) {
         if (buttonActive != pressedButton) {
             // Make all buttons brown
             buttonFinance.setBackgroundColor(ContextCompat.getColor(this, R.color.game_menu_element));

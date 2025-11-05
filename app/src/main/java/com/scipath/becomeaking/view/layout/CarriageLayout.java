@@ -36,7 +36,7 @@ public class CarriageLayout extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context) {
+    private void init(Context context) {
         inflate(context, R.layout.layout_carriage, this);
         imageViewCarriage = findViewById(R.id.image_view_carriage);
     }

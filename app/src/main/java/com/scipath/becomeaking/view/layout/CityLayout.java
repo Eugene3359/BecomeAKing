@@ -30,10 +30,11 @@ public class CityLayout extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context) {
+    private void init(Context context) {
         inflate(context, R.layout.layout_city, this);
         textViewCityName = findViewById(R.id.text_view_city_name);
     }
+
 
     public void setName(int cityNameId) {
         textViewCityName.setText(cityNameId);

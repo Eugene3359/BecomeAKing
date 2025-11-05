@@ -7,6 +7,12 @@
     <string name="ad">Ad</string>
     <string name="in_development">This part is in development</string>
 
+    <!-- Dialogue -->
+    <string name="notification">Notification</string>
+    <string name="got_it">Got it</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
     <!-- Main Activity -->
     <string name="new_game">New Game</string>
     <string name="load">Load</string>
@@ -14,7 +20,6 @@
     <string name="image_of_knights">Image of knights</string>
     <string name="save_not_found">Save not found</string>
     <string name="something_went_wrong">Something went wrong</string>
-    <string name="got_it">Got it</string>
 
     <!-- Language Selection Activity -->
     <string name="select_language">Select language</string>
@@ -267,14 +272,13 @@
     <string name="exit">Exit</string>
 
     <!-- Game Over -->
-    <string name="notification">Notification</string>
     <string name="s_s" translatable="false">%1$s %2$s</string>
     <string name="game_over">Game over.</string>
     <string name="negative_health">All health lost. You are dead.</string>
     <string name="negative_reputation">Your reputation has dropped below zero. You have been banished from the city.</string>
     <string name="negative_money">You owe money to the wrong people. You have been sold into slavery.</string>
 
-    <!-- Finance Fragment -->
+    <!-- Map -->
     <string name="map">Map</string>
     <string name="city">City</string>
     <string name="region">Region</string>
@@ -294,6 +298,11 @@
     <string name="albreston">Albreston</string>
     <string name="schaderveld">Schaderveld</string>
     <string name="winterholm">Winterholm</string>
+    <string name="you_are_already_in_this_city">You are already in this city.</string>
+    <string name="no_direct_connection">There is no direct connection to this city.</string>
+    <string name="go_to_city_confirmation">Are you sure you want to go to this city?</string>
+
+    <!-- Finance Fragment -->
     <string name="trading">Trading</string>
     <string name="market">Market</string>
     <string name="equip">Equip</string>

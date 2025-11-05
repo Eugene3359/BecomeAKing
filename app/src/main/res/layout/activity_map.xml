@@ -28,7 +28,7 @@
                 android:scaleType="fitXY"
                 android:contentDescription="@string/map" />
 
-            <com.scipath.becomeaking.view.customview.MapRoutesView
+            <com.scipath.becomeaking.view.view.MapRoutesView
                 android:id="@+id/map_routes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,7 +38,7 @@
 
     </HorizontalScrollView>
 
-    <com.scipath.becomeaking.view.customview.CustomButton
+    <com.scipath.becomeaking.view.view.CustomButton
         android:id="@+id/button_back"
         android:layout_width="142dp"
         android:layout_height="38dp"

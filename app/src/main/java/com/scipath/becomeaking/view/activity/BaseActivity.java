@@ -39,22 +39,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void showDialogue(int headerId, int messageId, int buttonTextId, Runnable callback) {
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(
-                headerId,
-                messageId,
-                buttonTextId);
-        dialogueFragment.show(getSupportFragmentManager(), "dialogue");
-        if (callback != null)
-            dialogueFragment.setCallback(callback::run);
+    public void showDialogue(DialogueFragment dialogue) {
+        dialogue.show(getSupportFragmentManager(), "dialogue");
     }
 
-    public void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {
-        DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
-                headerId,
-                message,
-                buttonTextId);
-        dialogueFragmentResult.show(getSupportFragmentManager(), "dialogue");
-        dialogueFragmentResult.setCallback(callback::run);
+    public void showNotification(int message) {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(message)
+                .setButton1(R.string.got_it, null)
+                .build();
+        showDialogue(dialogueFragment);
+    }
+
+    public void showNotification(String message) {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(message)
+                .setButton1(R.string.got_it, null)
+                .build();
+        showDialogue(dialogueFragment);
+    }
+
+    protected void showInDevelopmentNotification() {
+        showNotification(R.string.in_development);
     }
 }

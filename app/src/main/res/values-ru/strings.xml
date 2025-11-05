@@ -3,6 +3,12 @@
     <string name="test">Тест</string>
     <string name="ad">Реклама</string>
 
+    <!-- Dialogue -->
+    <string name="notification">Уведомление</string>
+    <string name="got_it">Понятно</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
     <!-- Main Activity -->
     <string name="in_development">Эта часть находится в разработке</string>
     <string name="new_game">Навая игра</string>
@@ -11,7 +17,6 @@
     <string name="image_of_knights">Изображение рыцарей</string>
     <string name="save_not_found">Сохранение не найдено</string>
     <string name="something_went_wrong">Что-то пошло не так</string>
-    <string name="got_it">Понятно</string>
 
     <!-- Language Selection Activity -->
     <string name="select_language">Выберите язык</string>
@@ -257,13 +262,12 @@
     <string name="exit">Выйти</string>
 
     <!-- Game Over -->
-    <string name="notification">Уведомление</string>
     <string name="game_over">Игра закончилась.</string>
     <string name="negative_health">Потеряно все здоровье. Вы погибли.</string>
     <string name="negative_reputation">Уровень репутации упал ниже нуля. Вас изгнали из города.</string>
     <string name="negative_money">Вы задолжали денег не тем людям. Вас продали в рабство.</string>
 
-    <!-- Finance Fragment -->
+    <!-- Map -->
     <string name="map">Карта</string>
     <string name="city">Город</string>
     <string name="region">Регион</string>
@@ -283,6 +287,11 @@
     <string name="albreston">Альбрестон</string>
     <string name="schaderveld">Шадервельд</string>
     <string name="winterholm">Винтерхолм</string>
+    <string name="you_are_already_in_this_city">Вы уже находитесь в этом городе.</string>
+    <string name="no_direct_connection">Нету непосредственной связи с этим городом.</string>
+    <string name="go_to_city_confirmation">Вы уверены что хотите отправиться к этому городу?</string>
+
+    <!-- Finance Fragment -->
     <string name="trading">Торговля</string>
     <string name="market">Ринок</string>
     <string name="equip">Снарядить</string>

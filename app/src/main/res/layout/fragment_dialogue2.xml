@@ -70,17 +70,37 @@
                 android:textStyle="bold"
                 android:textAlignment="center" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
-                android:id="@+id/button_end_dialogue"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:paddingHorizontal="20dp"
-                app:borderColor="@color/text_almost_white"
-                android:text="@string/placeholder"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:textAllCaps="false" />
+                android:gravity="center" >
+
+                <com.scipath.becomeaking.view.view.CustomButton
+                    android:id="@+id/button_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="20dp"
+                    app:borderColor="@color/text_almost_white"
+                    android:text="@string/placeholder"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false" />
+
+                <com.scipath.becomeaking.view.view.CustomButton
+                    android:id="@+id/button_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="20dp"
+                    app:borderColor="@color/text_almost_white"
+                    android:text="@string/placeholder"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"/>
 
             <!-- Name and Title -->
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -61,7 +61,7 @@
                     android:textSize="24sp"
                     android:textAlignment="center" />
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Name and Title -->
 
             <!-- Reputation -->
@@ -78,7 +78,7 @@
                     android:src="@drawable/icon_civic_crown"
                     android:contentDescription="@string/reputation" />
 
-                <com.scipath.becomeaking.view.customview.CustomTextView
+                <com.scipath.becomeaking.view.view.CustomTextView
                     android:id="@+id/text_view_reputation2"
                     android:layout_width="120dp"
                     android:layout_height="30dp"
@@ -100,7 +100,7 @@
             <!-- Reputation -->
 
             <!-- Day -->
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -136,11 +136,11 @@
                     android:textSize="24sp"
                     android:textAlignment="center" />
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Day -->
 
             <!-- Characteristics -->
-            <com.scipath.becomeaking.view.customview.CustomLinearLayout
+            <com.scipath.becomeaking.view.view.CustomLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -474,7 +474,7 @@
 
                 </LinearLayout>
 
-            </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+            </com.scipath.becomeaking.view.view.CustomLinearLayout>
             <!-- Characteristics -->
 
             <!-- Ad Buttons -->
@@ -485,7 +485,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical" >
 
-                <com.scipath.becomeaking.view.customview.CustomLinearLayout
+                <com.scipath.becomeaking.view.view.CustomLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/view_height_small"
                     android:layout_weight="1"
@@ -509,7 +509,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/font_size_small" />
 
-                </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+                </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
                 <ImageView
                     android:layout_width="50dp"
@@ -527,7 +527,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical">
 
-                <com.scipath.becomeaking.view.customview.CustomLinearLayout
+                <com.scipath.becomeaking.view.view.CustomLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/view_height_small"
                     android:layout_weight="1"
@@ -551,7 +551,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/font_size_small" />
 
-                </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+                </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
                 <ImageView
                     android:layout_width="50dp"
@@ -569,7 +569,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical">
 
-                <com.scipath.becomeaking.view.customview.CustomLinearLayout
+                <com.scipath.becomeaking.view.view.CustomLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/view_height_small"
                     android:layout_weight="1"
@@ -593,7 +593,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/font_size_small" />
 
-                </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+                </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
                 <ImageView
                     android:layout_width="50dp"
@@ -606,7 +606,7 @@
             <!-- Ad Buttons -->
 
             <!-- Buttons -->
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_level"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -620,7 +620,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_family"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -634,7 +634,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_friends"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -648,7 +648,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_caravans"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -662,7 +662,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_setting"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -676,7 +676,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_developer"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -690,7 +690,7 @@
                 android:textSize="24sp"
                 android:textAllCaps="false" />
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_exit"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"

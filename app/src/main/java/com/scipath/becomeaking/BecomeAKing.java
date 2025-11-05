@@ -3,8 +3,10 @@ package com.scipath.becomeaking;
 import android.app.Application;
 
 import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
+import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.manager.SaveManager;
 import com.scipath.becomeaking.model.Stats;
@@ -12,6 +14,7 @@ import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.BaseActivity;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +75,10 @@ public class BecomeAKing extends Application {
                 .orElse(null);
     }
 
+    public ICity getCity() {
+        return CitiesList.getCity(gameState.cityId);
+    }
+
     public int getDay() {
         return gameState.day;
     }
@@ -98,6 +105,10 @@ public class BecomeAKing extends Application {
         stats.add(Stat.CoinsPerDay, coinsPerDay);
 
         return stats;
+    }
+
+    public void setCity(ICity city) {
+        gameState.cityId = city.getId();
     }
 
     public void nextDay() {
@@ -153,16 +164,17 @@ public class BecomeAKing extends Application {
                 activity.getString(R.string.game_over));
 
         // Showing dialogue
-        activity.showDialogue(
-                R.string.notification,
-                message,
-                R.string.got_it,
-                () -> {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(message)
+                .setButton1(R.string.got_it, () -> {
                     // Deleting save file
                     SaveManager.deleteSave(getApplicationContext());
                     clearGameState();
                     activity.finish();
-                });
+                })
+                .build();
+        activity.showDialogue(dialogueFragment);
     }
 
     public void saveGame() {
@@ -179,19 +191,11 @@ public class BecomeAKing extends Application {
                 isLoaded = true;
             } else {
                 // Load error
-                activity.showDialogue(
-                        R.string.notification,
-                        R.string.something_went_wrong,
-                        R.string.got_it,
-                        null);
+                activity.showNotification(R.string.something_went_wrong);
             }
         } else {
             // No save file
-            activity.showDialogue(
-                    R.string.notification,
-                    R.string.save_not_found,
-                    R.string.got_it,
-                    null);
+            activity.showNotification(R.string.save_not_found);
         }
     }
 

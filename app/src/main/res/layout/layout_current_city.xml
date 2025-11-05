@@ -3,55 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="92dp"
+    android:layout_height="150dp"
     android:layout_marginBottom="10dp" >
 
     <ImageView
-        android:id="@+id/image_view_1"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
+        android:id="@+id/image_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/img_items_image_placeholder"
         android:contentDescription="@string/placeholder"/>
 
     <com.scipath.becomeaking.view.view.CustomLinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         app:backgroundColor="@color/brown"
         app:backgroundDrawable="@drawable/bg_wood_wall"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/text_view"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:backgroundColor="@color/grayish_brown"
-            android:text="@string/placeholder"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_size_small"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:gravity="center" />
-
         <com.scipath.becomeaking.view.view.CustomButton
-            android:id="@+id/button"
+            android:id="@+id/button_city"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:backgroundColor="@color/dark_green"
+            android:layout_height="60dp"
+            android:layout_marginVertical="10dp"
+            app:backgroundColor="@color/grayish_brown"
             android:text="@string/placeholder"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_small"
             android:textStyle="bold"
             android:textAllCaps="false" />
 
-    </com.scipath.becomeaking.view.view.CustomLinearLayout>
+        <com.scipath.becomeaking.view.view.CustomButton
+            android:id="@+id/button_map"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:backgroundColor="@color/blue"
+            android:text="@string/map"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_small"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
 
-    <ImageView
-        android:id="@+id/image_view_2"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
-        android:src="@drawable/img_items_image_placeholder"
-        android:contentDescription="@string/placeholder"/>
+    </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
 </LinearLayout>

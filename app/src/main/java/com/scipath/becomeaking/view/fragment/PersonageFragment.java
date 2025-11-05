@@ -102,31 +102,31 @@ public class PersonageFragment extends BaseFragment {
         Button buttonFamily = view.findViewById(R.id.button_family);
         buttonFamily.setOnClickListener(v -> {
             // TODO: Handler
-            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
+            showInDevelopmentNotification();
         });
 
         Button buttonFriends = view.findViewById(R.id.button_friends);
         buttonFriends.setOnClickListener(v -> {
             // TODO: Handler
-            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
+            showInDevelopmentNotification();
         });
 
         Button buttonCaravans = view.findViewById(R.id.button_caravans);
         buttonCaravans.setOnClickListener(v -> {
             // TODO: Handler
-            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
+            showInDevelopmentNotification();
         });
 
         Button buttonSetting = view.findViewById(R.id.button_setting);
         buttonSetting.setOnClickListener(v -> {
             // TODO: Handler
-            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
+            showInDevelopmentNotification();
         });
 
         Button buttonDeveloper = view.findViewById(R.id.button_developer);
         buttonDeveloper.setOnClickListener(v -> {
             // TODO: Handler
-            showDialogue(R.string.notification, R.string.in_development, R.string.got_it, null);
+            showInDevelopmentNotification();
         });
 
         Button buttonExit = view.findViewById(R.id.button_exit);

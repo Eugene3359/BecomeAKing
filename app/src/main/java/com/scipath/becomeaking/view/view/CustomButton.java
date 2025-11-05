@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.view.customview;
+package com.scipath.becomeaking.view.view;
 
 import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
 import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;

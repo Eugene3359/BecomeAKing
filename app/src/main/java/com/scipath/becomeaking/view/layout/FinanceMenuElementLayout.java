@@ -1,21 +1,14 @@
 package com.scipath.becomeaking.view.layout;
 
-import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
-import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;
-
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 
 import com.scipath.becomeaking.R;
 
@@ -43,7 +36,7 @@ public class FinanceMenuElementLayout extends LinearLayout {
         init(context, attrs);
     }
 
-    public void init(Context context) {
+    private void init(Context context) {
         inflate(context, R.layout.layout_finance_menu_element, this);
         imageView1 = findViewById(R.id.image_view_1);
         imageView2 = findViewById(R.id.image_view_2);
@@ -58,6 +51,7 @@ public class FinanceMenuElementLayout extends LinearLayout {
         setText(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_text, R.string.placeholder), context);
         setButtonText(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_buttonText, R.string.placeholder));
     }
+
 
     public void setImageResource(int resId) {
         imageView1.setImageResource(resId);

@@ -20,7 +20,7 @@
         android:layout_height="150dp"
         android:orientation="vertical">
 
-        <com.scipath.becomeaking.view.customview.CustomLinearLayout
+        <com.scipath.becomeaking.view.view.CustomLinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingHorizontal="20dp"
@@ -46,9 +46,9 @@
                 android:textSize="@dimen/font_size_smallest"
                 android:visibility="gone" />
 
-        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+        </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
-        <com.scipath.becomeaking.view.customview.CustomLinearLayout
+        <com.scipath.becomeaking.view.view.CustomLinearLayout
             android:id="@+id/layout_stats"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -66,7 +66,7 @@
                 tools:context=".view.activity.GameActivity"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-            <com.scipath.becomeaking.view.customview.CustomButton
+            <com.scipath.becomeaking.view.view.CustomButton
                 android:id="@+id/button_select"
                 android:layout_width="72dp"
                 android:layout_height="22dp"
@@ -79,7 +79,7 @@
                 android:textAllCaps="false"
                 android:visibility="gone" />
 
-        </com.scipath.becomeaking.view.customview.CustomLinearLayout>
+        </com.scipath.becomeaking.view.view.CustomLinearLayout>
 
     </LinearLayout>
 

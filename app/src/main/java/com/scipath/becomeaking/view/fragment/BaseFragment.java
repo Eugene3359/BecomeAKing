@@ -2,24 +2,34 @@ package com.scipath.becomeaking.view.fragment;
 
 import androidx.fragment.app.Fragment;
 
+import com.scipath.becomeaking.R;
+
+
 public class BaseFragment extends Fragment {
 
-    protected void showDialogue(int headerId, int messageId, int buttonTextId, Runnable callback) {
-        DialogueFragment dialogueFragment = DialogueFragment.newInstance(
-                headerId,
-                messageId,
-                buttonTextId);
-        dialogueFragment.show(getParentFragmentManager(), "dialogue");
-        if (callback != null)
-            dialogueFragment.setCallback(callback::run);
+    protected void showDialogue(DialogueFragment dialogue) {
+        dialogue.show(getParentFragmentManager(), "dialogue");
     }
 
-    protected void showDialogue(int headerId, String message, int buttonTextId, Runnable callback) {
-        DialogueFragment dialogueFragmentResult = DialogueFragment.newInstance(
-                headerId,
-                message,
-                buttonTextId);
-        dialogueFragmentResult.show(getParentFragmentManager(), "dialogue");
-        dialogueFragmentResult.setCallback(callback::run);
+    protected void showNotification(int message) {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(message)
+                .setButton1(R.string.got_it, null)
+                .build();
+        showDialogue(dialogueFragment);
+    }
+
+    protected void showNotification(String message) {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(message)
+                .setButton1(R.string.got_it, null)
+                .build();
+        showDialogue(dialogueFragment);
+    }
+
+    protected void showInDevelopmentNotification() {
+        showNotification(R.string.in_development);
     }
 }

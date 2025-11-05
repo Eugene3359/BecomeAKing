@@ -6,7 +6,8 @@ import android.widget.FrameLayout;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.view.customview.CustomButton;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.view.CustomButton;
 
 import java.util.Random;
 
@@ -36,15 +37,15 @@ public class Clicker2Activity extends Clicker1Activity {
 
     @Override
     protected void onWorkStarted() {
-        showDialogue(
-                R.string.notification,
-                R.string.instruction2,
-                R.string.start,
-                () -> {
+        DialogueFragment dialogueFragment = new DialogueFragment.Builder()
+                .setHeader(R.string.notification)
+                .setMessage(R.string.instruction2)
+                .setButton1(R.string.start, () -> {
                     changeCurrentButton();
                     startTimer();
-                }
-        );
+                })
+                .build();
+        showDialogue(dialogueFragment);
     }
 
     private void changeCurrentButton() {
