@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.scipath.becomeaking.R;
 
 
-public class CarriageLayout extends LinearLayout {
+public class CarriageMarkerLayout extends LinearLayout {
 
     public enum Direction {
         Left,
@@ -21,23 +21,23 @@ public class CarriageLayout extends LinearLayout {
     ImageView imageViewCarriage;
 
 
-    public CarriageLayout(Context context) {
+    public CarriageMarkerLayout(Context context) {
         super(context);
         init(context);
     }
 
-    public CarriageLayout(Context context, @Nullable AttributeSet attrs) {
+    public CarriageMarkerLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public CarriageLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CarriageMarkerLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     private void init(Context context) {
-        inflate(context, R.layout.layout_carriage, this);
+        inflate(context, R.layout.layout_carriage_marker, this);
         imageViewCarriage = findViewById(R.id.image_view_carriage);
     }
 

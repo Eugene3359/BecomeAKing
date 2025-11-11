@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +15,10 @@ import android.widget.ImageView;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.ICity;
-import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.view.activity.MapActivity;
 import com.scipath.becomeaking.view.layout.CurrentCityLayout;
 import com.scipath.becomeaking.view.layout.FinanceMenuElementLayout;
+import com.scipath.becomeaking.viewmodel.CurrentCityViewModel;
 
 
 public class FinanceFragment extends BaseFragment {
@@ -42,18 +42,21 @@ public class FinanceFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ICity city = BecomeAKing.getInstance().getCity();
-
         CurrentCityLayout currentCityLayout = view.findViewById(R.id.layout_current_city);
-        ImageView imageViewCity = currentCityLayout.findViewById(R.id.image_view);
-        // TODO: change image src
-        imageViewCity.setContentDescription(getContext().getString(city.getNameId()));
-
-        // Buttons
-        Button buttonCity = currentCityLayout.findViewById(R.id.button_city);
-        buttonCity.setText(city.getNameId());
-        buttonCity.setOnClickListener(v -> {
-            showInDevelopmentNotification();
+        CurrentCityViewModel currentCityViewModel = new ViewModelProvider(
+            BecomeAKing.getInstance().getViewModelStore(),
+            ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance()
+        )).get(CurrentCityViewModel.class);
+        currentCityViewModel.getCity().observe(getViewLifecycleOwner(), city -> {
+            currentCityLayout.setImageResource(city.getImageId());
+            currentCityLayout.setText(city.getNameId(), requireContext());
+            DialogueFragment dialogue = new DialogueFragment.Builder()
+                    .setHeader(city.getNameId())
+                    .setMessage(city.getDescriptionId())
+                    .setButton1(R.string.got_it, null).build();
+            currentCityLayout.setButtonCityOnClickListener(v -> {
+                showDialogue(dialogue);
+            });
         });
 
         Button buttonMap = view.findViewById(R.id.button_map);

@@ -10,13 +10,14 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.model.ICity;
 
 
 public class CurrentCityLayout extends LinearLayout {
 
-    ImageView imageView;
-    Button buttonCity;
-    Button buttonMap;
+    private ImageView imageView;
+    private Button buttonCity;
+    private Button buttonMap;
 
 
     public CurrentCityLayout(Context context) {
@@ -44,7 +45,7 @@ public class CurrentCityLayout extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         init(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CurrentCityLayout);
-        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.img_logging));
+        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.img_items_image_placeholder));
         setText(typedArray.getResourceId(R.styleable.CurrentCityLayout_text, R.string.placeholder), context);
     }
 

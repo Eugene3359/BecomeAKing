@@ -21,8 +21,8 @@ class CityTest {
     @BeforeEach
     void setUp() {
         City.idCounter = 0;
-        city1 = new City(R.string.grimshaven, 0.135f, 0.245f);
-        city2 = new City(R.string.farendol, 0.175f, 0.405f);
+        city1 = new City(R.string.grimshaven, R.string.grimshaven_description, R.drawable.img_items_image_placeholder, 0.135f, 0.245f);
+        city2 = new City(R.string.farendol, R.string.farendol_description, R.drawable.img_items_image_placeholder, 0.175f, 0.405f);
     }
 
     @Test
@@ -34,6 +34,16 @@ class CityTest {
     @Test
     void getNameId_returnsExpectedId() {
         assertEquals(R.string.grimshaven, city1.getNameId());
+    }
+
+    @Test
+    void getDescriptionId_returnsExpectedId() {
+        assertEquals(R.string.grimshaven_description, city1.getDescriptionId());
+    }
+
+    @Test
+    void getImageId_returnsExpectedId() {
+        assertEquals(R.drawable.img_items_image_placeholder, city1.getImageId());
     }
 
     @Test
@@ -68,6 +78,18 @@ class CityTest {
     void setNameId_changesNameId() {
         city1.setNameId(R.string.thornford);
         assertEquals(R.string.thornford, city1.getNameId());
+    }
+
+    @Test
+    void setDescriptionId_changesDescriptionId() {
+        city1.setDescriptionId(R.string.grimshaven);
+        assertEquals(R.string.grimshaven, city1.getDescriptionId());
+    }
+
+    @Test
+    void setImageId_changesImageId() {
+        city1.setImageId(R.drawable.img_harvesting);
+        assertEquals(R.drawable.img_harvesting, city1.getImageId());
     }
 
     @Test
@@ -121,7 +143,7 @@ class CityTest {
 
     @Test
     void setRoutes_withValidValue_changesRoutesSet() {
-        ICity city3 = new City(R.string.thornford, 0.230f, 0.385f);
+        ICity city3 = new City(R.string.thornford, R.string.thornford_description, R.drawable.img_items_image_placeholder, 0.230f, 0.385f);
         Set<ICity> cities = new HashSet<>();
         cities.add(city2);
         cities.add(city3);

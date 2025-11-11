@@ -11,6 +11,10 @@ public interface ICity {
 
     int getNameId();
 
+    int getDescriptionId();
+
+    int getImageId();
+
     /**
      * City coordinates accessor
      *
@@ -32,6 +36,10 @@ public interface ICity {
 
     // Mutators
     ICity setNameId(int nameId);
+
+    ICity setDescriptionId(int descriptionId);
+
+    ICity setImageId(int imageId);
 
     /**
      * City coordinates mutator

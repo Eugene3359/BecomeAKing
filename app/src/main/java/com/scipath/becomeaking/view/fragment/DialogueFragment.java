@@ -64,15 +64,15 @@ public class DialogueFragment extends DialogFragment {
         }
 
         public DialogueFragment build() {
-            DialogueFragment fragment = new DialogueFragment();
-            fragment.headerId = headerId;
-            fragment.messageId = messageId;
-            fragment.message = message;
-            fragment.button1TextId = button1TextId;
-            fragment.button2TextId = button2TextId;
-            fragment.callback1 = callback1;
-            fragment.callback2 = callback2;
-            return fragment;
+            DialogueFragment dialogue = new DialogueFragment();
+            dialogue.headerId = headerId;
+            dialogue.messageId = messageId;
+            dialogue.message = message;
+            dialogue.button1TextId = button1TextId;
+            dialogue.button2TextId = button2TextId;
+            dialogue.callback1 = callback1;
+            dialogue.callback2 = callback2;
+            return dialogue;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.scipath.becomeaking.view.activity;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,21 +12,27 @@ import android.widget.LinearLayout;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.contract.callback.Callback;
 import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IRegion;
 import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.data.RegionsList;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.layout.PersonageMarkerLayout;
 import com.scipath.becomeaking.view.view.MapRoutesView;
-import com.scipath.becomeaking.view.layout.CarriageLayout;
-import com.scipath.becomeaking.view.layout.CityLayout;
+import com.scipath.becomeaking.view.layout.CarriageMarkerLayout;
+import com.scipath.becomeaking.view.layout.CityMarkerLayout;
 import com.scipath.becomeaking.view.layout.RegionLayout;
+import com.scipath.becomeaking.viewmodel.CurrentCityViewModel;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MapActivity extends BaseActivity {
@@ -47,6 +54,9 @@ public class MapActivity extends BaseActivity {
     private ImageButton buttonFinance;
     private ImageButton buttonBattle;
 
+    // ViewModels
+    private CurrentCityViewModel currentCityViewModel;
+
     // Timer
     private CountDownTimer carriageTimer;
 
@@ -63,7 +73,13 @@ public class MapActivity extends BaseActivity {
 
         cities = CitiesList.getCities();
         regions = RegionsList.getRegions();
-        currentCity = BecomeAKing.getInstance().getCity();
+        currentCityViewModel = new ViewModelProvider(
+            BecomeAKing.getInstance().getViewModelStore(),
+            ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance()
+        )).get(CurrentCityViewModel.class);
+        currentCityViewModel.getCity().observe(this, city -> {
+            currentCity = currentCityViewModel.getCity().getValue();
+        });
 
         // Views
         mapContainer = findViewById(R.id.map_container);
@@ -104,8 +120,8 @@ public class MapActivity extends BaseActivity {
         addCarriages(this);
     }
 
-    private void addMarker(LinearLayout layout, float x, float y) {
-        layout.measure(
+    private void addMarker(LinearLayout marker, float x, float y) {
+        marker.measure(
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         );
@@ -114,26 +130,25 @@ public class MapActivity extends BaseActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
-        params.topMargin = (int) ((mapHeight * y) - (0.5 * layout.getMeasuredHeight()));
-        params.leftMargin = (int) ((mapWidth * x) - (0.5 * layout.getMeasuredWidth()));
+        params.topMargin = (int) ((mapHeight * y) - (0.5 * marker.getMeasuredHeight()));
+        params.leftMargin = (int) ((mapWidth * x) - (0.5 * marker.getMeasuredWidth()));
 
-        layout.setLayoutParams(params);
+        marker.setLayoutParams(params);
 
-        mapContainer.addView(layout);
+        mapContainer.addView(marker);
     }
 
-    private void moveMarker(LinearLayout layout, float x, float y) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) layout.getLayoutParams();
-        params.topMargin = (int) ((mapHeight * y) - (0.5 * layout.getMeasuredHeight()));
-        params.leftMargin = (int) ((mapWidth * x) - (0.5 * layout.getMeasuredWidth()));
-        layout.setLayoutParams(params);
+    private void moveMarker(LinearLayout marker, float x, float y) {
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) marker.getLayoutParams();
+        params.topMargin = (int) ((mapHeight * y) - (0.5 * marker.getMeasuredHeight()));
+        params.leftMargin = (int) ((mapWidth * x) - (0.5 * marker.getMeasuredWidth()));
+        marker.setLayoutParams(params);
     }
 
-    private void addMovingMarker(LinearLayout layout, Pair<Float, Float> src, Pair<Float, Float> dest) {
-        addMarker(layout, src.first, src.second);
+    private void addMovingMarker(LinearLayout marker, Pair<Float, Float> src, Pair<Float, Float> dest) {
+        addMarker(marker, src.first, src.second);
 
         new CountDownTimer(20000, 25) {
-            int tickCount = 0;
             float x = src.first;
             float y = src.second;
 
@@ -141,21 +156,20 @@ public class MapActivity extends BaseActivity {
                 float progress = 1f - (millisUntilFinished / 20000f);
                 x = src.first + (dest.first - src.first) * progress;
                 y = src.second + (dest.second - src.second) * progress;
-                moveMarker(layout, x, y);
-                tickCount++;
+                moveMarker(marker, x, y);
             }
 
             public void onFinish() {
-                mapContainer.postDelayed(() -> mapContainer.removeView(layout), 250);
+                mapContainer.postDelayed(() -> mapContainer.removeView(marker), 250);
             }
         }.start();
     }
 
     private void addCity(ICity city) {
-        CityLayout cityLayout = new CityLayout(this);
-        cityLayout.setName(city.getNameId());
-        addMarker(cityLayout, city.getX(), city.getY());
-        cityLayout.setOnClickListener(v -> {
+        CityMarkerLayout cityMarker = new CityMarkerLayout(this);
+        cityMarker.setName(city.getNameId());
+        addMarker(cityMarker, city.getX(), city.getY());
+        cityMarker.setOnClickListener(v -> {
             movePersonage(city);
         });
     }
@@ -187,15 +201,15 @@ public class MapActivity extends BaseActivity {
                     ICity city1 = cities.get(random.nextInt(cities.size()));
                     ICity city2 = (ICity) city1.getRoutes().toArray()[random.nextInt(city1.getRoutes().size())];
 
-                    CarriageLayout layout = new CarriageLayout(context);
-                    layout.setDirection(
+                    CarriageMarkerLayout marker = new CarriageMarkerLayout(context);
+                    marker.setDirection(
                             city1.getX() > city2.getX() ?
-                            CarriageLayout.Direction.Left :
-                            CarriageLayout.Direction.Right
+                            CarriageMarkerLayout.Direction.Left :
+                            CarriageMarkerLayout.Direction.Right
                     );
 
                     addMovingMarker(
-                            layout,
+                            marker,
                             city1.getCoordinates(),
                             city2.getCoordinates()
                     );
@@ -210,30 +224,33 @@ public class MapActivity extends BaseActivity {
 
     private void movePersonage(ICity city) {
         if (currentCity == city) {
-            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                    .setHeader(city.getNameId())
-                    .setMessage(R.string.you_are_already_in_this_city)
-                    .setButton1(R.string.got_it, null)
-                    .build();
-            showDialogue(dialogueFragment);
+            showNotification(R.string.you_are_already_in_this_city);
         } else if (currentCity.getRoutes().contains(city)) {
+            Callback startTravel = () -> {
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        currentCityViewModel.setCity(city);
+                    }
+                }, 20000);
+
+                addMovingMarker(
+                    new PersonageMarkerLayout(this),
+                    currentCity.getCoordinates(),
+                    city.getCoordinates()
+                );
+            };
+
             DialogueFragment dialogueFragment = new DialogueFragment.Builder()
                     .setHeader(city.getNameId())
                     .setMessage(R.string.go_to_city_confirmation)
                     .setButton1(R.string.no, null)
-                    .setButton2(R.string.yes, () -> {
-                        BecomeAKing.getInstance().setCity(city);
-                        currentCity = city;
-                    })
+                    .setButton2(R.string.yes, startTravel)
                     .build();
             showDialogue(dialogueFragment);
         } else {
-            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                    .setHeader(city.getNameId())
-                    .setMessage(R.string.no_direct_connection)
-                    .setButton1(R.string.got_it, null)
-                    .build();
-            showDialogue(dialogueFragment);
+            showNotification(R.string.no_direct_connection);
         }
     }
 

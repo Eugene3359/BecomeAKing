@@ -2,6 +2,10 @@ package com.scipath.becomeaking;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelStore;
+import androidx.lifecycle.ViewModelStoreOwner;
+
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IItem;
@@ -20,10 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BecomeAKing extends Application {
+public class BecomeAKing extends Application implements ViewModelStoreOwner {
 
     // Fields
     private static BecomeAKing instance;
+    private final ViewModelStore viewModelStore = new ViewModelStore();
     private GameState gameState;
     private boolean isLoaded;
     private final boolean isTest = true;
@@ -39,6 +44,12 @@ public class BecomeAKing extends Application {
 
     public static BecomeAKing getInstance() {
         return instance;
+    }
+
+    @NonNull
+    @Override
+    public ViewModelStore getViewModelStore() {
+        return viewModelStore;
     }
 
 

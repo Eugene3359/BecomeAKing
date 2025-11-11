@@ -1,3 +1,15 @@
+# Become a King [0.5.8.3] - 11.11.2025
+
+### Additions
+- Added information for cities
+- Added the ability to view current city information when the city button in the `Finance Menu` is clicked
+
+### Changes
+- Updated the personage marker on the map
+- The `Finance Menu` now displays the city where the personage is currently located
+
+---
+
 # Become a King [0.5.8.2] - 05.11.2025
 
 ### Additions

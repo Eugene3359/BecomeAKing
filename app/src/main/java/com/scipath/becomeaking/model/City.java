@@ -15,14 +15,18 @@ public class City implements ICity {
 
     protected int id;
     protected int nameId;
+    protected int descriptionId;
+    protected int imageId;
     protected Pair<Float, Float> coordinates;
     protected Set<ICity> routes;
 
 
     // Constructors
-    public City(int nameId, float x, float y) {
+    public City(int nameId, int descriptionId, int imageId, float x, float y) {
         this.id = idCounter++;
         this.nameId = nameId;
+        this.descriptionId = descriptionId;
+        this.imageId = imageId;
         this.coordinates = new Pair<>(x, y);
         this.routes = new HashSet<>();
     }
@@ -37,6 +41,16 @@ public class City implements ICity {
     @Override
     public int getNameId() {
         return nameId;
+    }
+
+    @Override
+    public int getImageId() {
+        return imageId;
+    }
+
+    @Override
+    public int getDescriptionId() {
+        return descriptionId;
     }
 
     @Override
@@ -64,6 +78,18 @@ public class City implements ICity {
     @Override
     public ICity setNameId(int nameId) {
         this.nameId = nameId;
+        return this;
+    }
+
+    @Override
+    public ICity setImageId(int imageId) {
+        this.imageId = imageId;
+        return this;
+    }
+
+    @Override
+    public ICity setDescriptionId(int descriptionId) {
+        this.descriptionId = descriptionId;
         return this;
     }
 
