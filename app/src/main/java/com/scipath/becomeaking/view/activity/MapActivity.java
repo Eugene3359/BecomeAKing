@@ -1,6 +1,5 @@
 package com.scipath.becomeaking.view.activity;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -74,7 +73,7 @@ public class MapActivity extends BaseActivity {
         cities = CitiesList.getCities();
         regions = RegionsList.getRegions();
         currentCityViewModel = new ViewModelProvider(
-            BecomeAKing.getInstance().getViewModelStore(),
+            BecomeAKing.getInstance(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance()
         )).get(CurrentCityViewModel.class);
         currentCityViewModel.getCity().observe(this, city -> {
@@ -119,6 +118,7 @@ public class MapActivity extends BaseActivity {
         switchMenuButton(buttonFinance);
         addCarriages(this);
     }
+
 
     private void addMarker(LinearLayout marker, float x, float y) {
         marker.measure(
@@ -223,22 +223,32 @@ public class MapActivity extends BaseActivity {
     }
 
     private void movePersonage(ICity city) {
+        if (BecomeAKing.getInstance().isTraveling()) {
+            showNotification(R.string.you_are_already_on_your_way);
+            return;
+        }
+
         if (currentCity == city) {
             showNotification(R.string.you_are_already_in_this_city);
-        } else if (currentCity.getRoutes().contains(city)) {
+        } else if (!currentCity.getRoutes().contains(city)) {
+            showNotification(R.string.no_direct_connection);
+        } else {
             Callback startTravel = () -> {
+                BecomeAKing.getInstance().isTraveling(true);
+
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
                         currentCityViewModel.setCity(city);
+                        BecomeAKing.getInstance().isTraveling(false);
                     }
                 }, 20000);
 
                 addMovingMarker(
-                    new PersonageMarkerLayout(this),
-                    currentCity.getCoordinates(),
-                    city.getCoordinates()
+                        new PersonageMarkerLayout(this),
+                        currentCity.getCoordinates(),
+                        city.getCoordinates()
                 );
             };
 
@@ -249,8 +259,6 @@ public class MapActivity extends BaseActivity {
                     .setButton2(R.string.yes, startTravel)
                     .build();
             showDialogue(dialogueFragment);
-        } else {
-            showNotification(R.string.no_direct_connection);
         }
     }
 

@@ -141,11 +141,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
         if (strengthRequired != 0 || reputationRequired != 0) {
-            String requirement = (strengthRequired == 0) ?
-                    Stat.ReputationRequired.getDescription(reputationRequired, context) :
-                    Stat.StrengthRequired.getDescription(strengthRequired, context);
+            String requirement = (strengthRequired != 0) ?
+                    Stat.StrengthRequired.getDescription(strengthRequired, context) :
+                    Stat.ReputationRequired.getDescription(reputationRequired, context);
             textViewRequirement.setVisibility(View.VISIBLE);
             textViewRequirement.setText(requirement);
+        } else {
+            textViewRequirement.setVisibility(View.GONE);
+            textViewRequirement.setText("");
         }
 
         viewHolder.getImageView().setImageResource(item.getImageId());

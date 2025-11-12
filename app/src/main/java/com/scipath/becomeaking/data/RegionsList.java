@@ -2,9 +2,10 @@ package com.scipath.becomeaking.data;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.IRegion;
-import com.scipath.becomeaking.model.item.Region;
+import com.scipath.becomeaking.model.Region;
 
 import java.util.ArrayList;
+
 
 public class RegionsList {
 
@@ -12,6 +13,8 @@ public class RegionsList {
 
 
     private static void init() {
+        if (regions != null) return;
+
         regions = new ArrayList<>();
 
         regions.add(new Region()
@@ -114,9 +117,7 @@ public class RegionsList {
 
 
     public static ArrayList<IRegion> getRegions() {
-        if (regions == null) {
-            init();
-        }
+        init();
         return regions;
     }
 }

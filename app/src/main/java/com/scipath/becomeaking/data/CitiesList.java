@@ -13,6 +13,8 @@ public class CitiesList {
 
 
     private static void init () {
+        if (cities != null) return;
+
         cities = new ArrayList<>();
 
         cities.add(new City(R.string.grimshaven, R.string.grimshaven_description, R.drawable.img_items_image_placeholder, 0.135f, 0.245f));
@@ -76,13 +78,12 @@ public class CitiesList {
 
 
     public static ArrayList<ICity> getCities() {
-        if (cities == null) {
-            init();
-        }
+        init();
         return cities;
     }
 
     public static ICity getCity(int id) {
+        init();
         if (id < 0 || id >= cities.size()) return null;
         return cities.get(id);
     }

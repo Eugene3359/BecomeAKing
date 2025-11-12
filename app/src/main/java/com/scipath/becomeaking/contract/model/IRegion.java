@@ -2,7 +2,6 @@ package com.scipath.becomeaking.contract.model;
 
 import androidx.core.util.Pair;
 
-import com.scipath.becomeaking.model.item.Region;
 
 public interface IRegion {
 
@@ -37,9 +36,9 @@ public interface IRegion {
 
 
     // Mutators
-    Region setNameId(int nameId);
+    IRegion setNameId(int nameId);
 
-    Region setDrawableId(int drawableId);
+    IRegion setDrawableId(int drawableId);
 
     /**
      * Region sizes mutator
@@ -47,7 +46,7 @@ public interface IRegion {
      * @param width a float that contains width in range from 0 to 1
      * @param height a float that contains height coordinate in range from 0 to 1
      */
-    Region setSizes(float width, float height);
+    IRegion setSizes(float width, float height);
 
     /**
      * Region coordinates mutator
@@ -55,5 +54,5 @@ public interface IRegion {
      * @param x a float that contains x-axis coordinate in range from 0 to 1
      * @param y a float that contains y-axis coordinate in range from 0 to 1
      */
-    Region setCoordinates(float x, float y);
+    IRegion setCoordinates(float x, float y);
 }

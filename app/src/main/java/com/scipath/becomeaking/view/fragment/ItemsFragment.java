@@ -22,6 +22,7 @@ import com.scipath.becomeaking.adapter.ItemsAdapter;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.model.item.Item;
+import com.scipath.becomeaking.model.item.SelectableItem;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.Clicker1Activity;
 import com.scipath.becomeaking.view.activity.Clicker2Activity;
@@ -84,7 +85,7 @@ public class ItemsFragment extends BaseFragment {
             if (item instanceof Work) {
                 activity.switchMenuButton(activity.findViewById(R.id.button_personage), new PersonageFragment());
                 startClickerMiniGamer(item);
-            } else if (item instanceof Item){
+            } else if (item instanceof Item || item instanceof SelectableItem){
                 personage.recalculateStats();
                 activity.updateViews();
             }

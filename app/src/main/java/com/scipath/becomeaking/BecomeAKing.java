@@ -31,6 +31,7 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
     private final ViewModelStore viewModelStore = new ViewModelStore();
     private GameState gameState;
     private boolean isLoaded;
+    private boolean isTraveling;
     private final boolean isTest = true;
 
 
@@ -40,6 +41,7 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         instance = this;
         gameState = null;
         isLoaded = false;
+        isTraveling = false;
     }
 
     public static BecomeAKing getInstance() {
@@ -54,12 +56,16 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
 
 
     // Accessors
-    public boolean isTest() {
-        return isTest;
-    }
-
     public boolean isLoaded() {
         return isLoaded;
+    }
+
+    public boolean isTraveling() {
+        return isTraveling;
+    }
+
+    public boolean isTest() {
+        return isTest;
     }
 
     public GameState getGameState() {
@@ -96,8 +102,16 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
 
 
     // Mutators
+    public void isTraveling(boolean isTraveling) {
+        this.isTraveling = isTraveling;
+    }
+
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public void setCity(ICity city) {
+        gameState.cityId = city.getId();
     }
 
 
@@ -116,10 +130,6 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         stats.add(Stat.CoinsPerDay, coinsPerDay);
 
         return stats;
-    }
-
-    public void setCity(ICity city) {
-        gameState.cityId = city.getId();
     }
 
     public void nextDay() {

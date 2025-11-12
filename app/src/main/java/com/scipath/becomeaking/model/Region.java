@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.model.item;
+package com.scipath.becomeaking.model;
 
 import androidx.core.util.Pair;
 
@@ -79,19 +79,19 @@ public class Region implements IRegion {
 
     // Mutators
     @Override
-    public Region setNameId(int nameId) {
+    public IRegion setNameId(int nameId) {
         this.nameId = nameId;
         return this;
     }
 
     @Override
-    public Region setDrawableId(int drawableId) {
+    public IRegion setDrawableId(int drawableId) {
         this.drawableId = drawableId;
         return this;
     }
 
     @Override
-    public Region setSizes(float width, float height) {
+    public IRegion setSizes(float width, float height) {
         width = Math.max(0, Math.min(1, width));
         height = Math.max(0, Math.min(1, height));
         sizes = new Pair<>(width, height);
@@ -99,7 +99,7 @@ public class Region implements IRegion {
     }
 
     @Override
-    public Region setCoordinates(float x, float y) {
+    public IRegion setCoordinates(float x, float y) {
         x = Math.max(0, Math.min(1, x));
         y = Math.max(0, Math.min(1, y));
         coordinates = new Pair<>(x, y);

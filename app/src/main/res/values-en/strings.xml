@@ -317,6 +317,7 @@
     <string name="you_are_already_in_this_city">You are already in this city.</string>
     <string name="no_direct_connection">There is no direct connection to this city.</string>
     <string name="go_to_city_confirmation">Are you sure you want to go to this city?</string>
+    <string name="you_are_already_on_your_way">You are already on your way.</string>
 
     <!-- Finance Fragment -->
     <string name="trading">Trading</string>

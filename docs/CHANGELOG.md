@@ -1,3 +1,13 @@
+# Become a King [0.5.8.4] - 13.11.2025
+
+### Fixes
+- Fixed an issue where the personage’s money amount did not update after buying a selectable item
+- Fixed an issue where requirement text remained visible for items without requirements after scrolling through a category
+- Fixed an issue where the player could start a new travel before the current one had finished
+- Fixed a crash that occurred when opening the `Finance Menu` after loading a saved game
+
+---
+
 # Become a King [0.5.8.3] - 11.11.2025
 
 ### Additions

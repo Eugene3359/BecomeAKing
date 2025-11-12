@@ -306,6 +306,7 @@
     <string name="you_are_already_in_this_city">Ви вже знаходитесь в цьому місті.</string>
     <string name="no_direct_connection">Немає безпосереднього зв\'язку з цим містом.</string>
     <string name="go_to_city_confirmation">Ви впевнені що хочете відправитись до цього міста?</string>
+    <string name="you_are_already_on_your_way">Ви вже в дорозі.</string>
 
     <!-- Finance Fragment -->
     <string name="trading">Торговля</string>

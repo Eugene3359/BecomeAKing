@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,10 +44,11 @@ public class FinanceFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         CurrentCityLayout currentCityLayout = view.findViewById(R.id.layout_current_city);
-        CurrentCityViewModel currentCityViewModel = new ViewModelProvider(
-            BecomeAKing.getInstance().getViewModelStore(),
-            ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance()
-        )).get(CurrentCityViewModel.class);
+        CurrentCityViewModel currentCityViewModel =
+                new ViewModelProvider(
+                        BecomeAKing.getInstance(),
+                        ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance())
+                ).get(CurrentCityViewModel.class);
         currentCityViewModel.getCity().observe(getViewLifecycleOwner(), city -> {
             currentCityLayout.setImageResource(city.getImageId());
             currentCityLayout.setText(city.getNameId(), requireContext());

@@ -19,6 +19,8 @@ public class CategoriesList {
 
 
     public static void init(boolean isMale) {
+        if (categories != null) return;
+
         categories = new ArrayList<>();
 
         // Nutrition
