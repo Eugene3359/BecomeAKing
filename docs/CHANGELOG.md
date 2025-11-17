@@ -1,3 +1,10 @@
+# Become a King [0.5.8.6] - 17.11.2025
+
+### Changes
+- Updated the dialogue shown when confirming travel to another city
+
+---
+
 # Become a King [0.5.8.5] - 17.11.2025
 
 ### Additions

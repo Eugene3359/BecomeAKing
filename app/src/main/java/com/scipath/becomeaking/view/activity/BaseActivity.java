@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.DialogFragment;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.manager.LocaleManager;
@@ -39,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void showDialogue(DialogueFragment dialogue) {
+    public void showDialogue(DialogFragment dialogue) {
         dialogue.show(getSupportFragmentManager(), "dialogue");
     }
 

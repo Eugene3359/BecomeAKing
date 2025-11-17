@@ -8,6 +8,7 @@
     <string name="got_it">Зрозуміло</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
+    <string name="travel">Подорожувати</string>
 
     <!-- Main Activity -->
     <string name="in_development">Ця частина знаходиться в розробці</string>
@@ -305,7 +306,6 @@
     <string name="winterholm_description">Північне місто, розташоване серед пагорбів та лісів, із суворою зимою та міцною оборонною архітектурою. Основний дохід забезпечується полюванням та лісовою промисловістю.</string>
     <string name="you_are_already_in_this_city">Ви вже знаходитесь в цьому місті.</string>
     <string name="no_direct_connection">Немає безпосереднього зв\'язку з цим містом.</string>
-    <string name="go_to_city_confirmation">Ви впевнені що хочете відправитись до цього міста?</string>
     <string name="you_are_already_on_your_way">Ви вже в дорозі.</string>
 
     <!-- Finance Fragment -->

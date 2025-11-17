@@ -21,6 +21,7 @@ import com.scipath.becomeaking.contract.model.IRegion;
 import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.data.RegionsList;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.fragment.TravelDialogueFragment;
 import com.scipath.becomeaking.view.layout.PersonageMarkerLayout;
 import com.scipath.becomeaking.view.view.MapRoutesView;
 import com.scipath.becomeaking.view.layout.CarriageMarkerLayout;
@@ -252,13 +253,11 @@ public class MapActivity extends BaseActivity {
                 );
             };
 
-            DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                    .setHeader(city.getNameId())
-                    .setMessage(R.string.go_to_city_confirmation)
-                    .setButton1(R.string.no, null)
-                    .setButton2(R.string.yes, startTravel)
+            TravelDialogueFragment travelDialogueFragment = new TravelDialogueFragment.Builder()
+                    .setCity(city)
+                    .setCallback(startTravel)
                     .build();
-            showDialogue(dialogueFragment);
+            showDialogue(travelDialogueFragment);
         }
     }
 

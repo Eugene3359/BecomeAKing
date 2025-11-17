@@ -12,6 +12,7 @@
     <string name="got_it">Got it</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="travel">Travel</string>
 
     <!-- Main Activity -->
     <string name="new_game">New Game</string>
@@ -316,7 +317,6 @@
     <string name="winterholm_description">A northern city nestled among hills and forests, with harsh winters and robust defensive architecture. Its main income comes from hunting and the timber industry.</string>
     <string name="you_are_already_in_this_city">You are already in this city.</string>
     <string name="no_direct_connection">There is no direct connection to this city.</string>
-    <string name="go_to_city_confirmation">Are you sure you want to go to this city?</string>
     <string name="you_are_already_on_your_way">You are already on your way.</string>
 
     <!-- Finance Fragment -->
