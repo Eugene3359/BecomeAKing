@@ -1,3 +1,10 @@
+# Become a King [0.5.8.5] - 17.11.2025
+
+### Additions
+- Added individual images and descriptions for each city
+
+---
+
 # Become a King [0.5.8.4] - 13.11.2025
 
 ### Fixes
