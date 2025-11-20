@@ -2,14 +2,19 @@ package com.scipath.becomeaking.view.layout;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.model.enums.Direction;
 
 
 public class PersonageMarkerLayout extends LinearLayout {
+
+    ImageView imageViewPersonage;
+
 
     public PersonageMarkerLayout(Context context) {
         super(context);
@@ -28,5 +33,14 @@ public class PersonageMarkerLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_personage_marker, this);
+        imageViewPersonage = findViewById(R.id.image_view_personage);
+    }
+
+    public void setDirection(Direction direction) {
+        if (direction == Direction.Left) {
+            imageViewPersonage.setImageResource(R.drawable.marker_personage_left);
+        } else {
+            imageViewPersonage.setImageResource(R.drawable.marker_personage_right);
+        }
     }
 }

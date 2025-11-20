@@ -304,6 +304,7 @@
     <string name="schaderveld_description">Юго-восточный город, расположенный на равнинах с редкими лесными массивами. Сильное сельское хозяйство, кузнечное дело и укрепления делают его ключевым пунктом региона.</string>
     <string name="winterholm">Винтерхолм</string>
     <string name="winterholm_description">Северный город, расположенный среди холмов и лесов, с суровой зимой и крепкой оборонительной архитектурой. Основной доход обеспечивается охотой и лесной промышленностью.</string>
+    <string name="on_the_way">В пути</string>
     <string name="you_are_already_in_this_city">Вы уже находитесь в этом городе.</string>
     <string name="no_direct_connection">Нету непосредственной связи с этим городом.</string>
     <string name="you_are_already_on_your_way">Вы уже в пути.</string>

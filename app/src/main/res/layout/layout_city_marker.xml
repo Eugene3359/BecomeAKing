@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="76dp"
-        android:src="@drawable/icon_castle"
+        android:src="@drawable/marker_castle"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:contentDescription="@string/city" />

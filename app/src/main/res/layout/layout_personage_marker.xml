@@ -7,8 +7,8 @@
     <ImageView
         android:id="@+id/image_view_personage"
         android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:src="@drawable/icon_armor"
+        android:layout_height="58dp"
+        android:src="@drawable/marker_personage_right"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:contentDescription="@string/placeholder" />

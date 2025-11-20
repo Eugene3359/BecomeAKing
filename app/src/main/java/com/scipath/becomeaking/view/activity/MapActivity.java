@@ -20,6 +20,7 @@ import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IRegion;
 import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.data.RegionsList;
+import com.scipath.becomeaking.model.enums.Direction;
 import com.scipath.becomeaking.view.fragment.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.TravelDialogueFragment;
 import com.scipath.becomeaking.view.layout.PersonageMarkerLayout;
@@ -205,8 +206,8 @@ public class MapActivity extends BaseActivity {
                     CarriageMarkerLayout marker = new CarriageMarkerLayout(context);
                     marker.setDirection(
                             city1.getX() > city2.getX() ?
-                            CarriageMarkerLayout.Direction.Left :
-                            CarriageMarkerLayout.Direction.Right
+                            Direction.Left :
+                            Direction.Right
                     );
 
                     addMovingMarker(
@@ -236,18 +237,26 @@ public class MapActivity extends BaseActivity {
         } else {
             Callback startTravel = () -> {
                 BecomeAKing.getInstance().isTraveling(true);
+                currentCityViewModel.setCity(BecomeAKing.getInstance().getCity());
 
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        currentCityViewModel.setCity(city);
                         BecomeAKing.getInstance().isTraveling(false);
+                        currentCityViewModel.setCity(city);
                     }
                 }, 20000);
 
+                PersonageMarkerLayout marker = new PersonageMarkerLayout(this);
+                marker.setDirection(
+                        currentCity.getX() > city.getX() ?
+                                Direction.Left :
+                                Direction.Right
+                );
+
                 addMovingMarker(
-                        new PersonageMarkerLayout(this),
+                        marker,
                         currentCity.getCoordinates(),
                         city.getCoordinates()
                 );

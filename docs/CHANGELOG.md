@@ -1,3 +1,16 @@
+# Become a King [0.5.8.7] - 20.11.2025
+
+### Additions
+- The personage’s travel status is now displayed in the `Finance Menu`
+
+### Changes
+- Updated personage marker on the map
+
+### Fixes
+- Fixed the width of the travel confirmation dialogue
+
+---
+
 # Become a King [0.5.8.6] - 17.11.2025
 
 ### Changes

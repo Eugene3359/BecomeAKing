@@ -8,15 +8,10 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.scipath.becomeaking.R;
+import com.scipath.becomeaking.model.enums.Direction;
 
 
 public class CarriageMarkerLayout extends LinearLayout {
-
-    public enum Direction {
-        Left,
-        Right
-    }
-
 
     ImageView imageViewCarriage;
 
@@ -41,12 +36,11 @@ public class CarriageMarkerLayout extends LinearLayout {
         imageViewCarriage = findViewById(R.id.image_view_carriage);
     }
 
-
     public void setDirection(Direction direction) {
         if (direction == Direction.Left) {
-            imageViewCarriage.setImageResource(R.drawable.icon_carriage_left);
+            imageViewCarriage.setImageResource(R.drawable.marker_carriage_left);
         } else {
-            imageViewCarriage.setImageResource(R.drawable.icon_carriage_right);
+            imageViewCarriage.setImageResource(R.drawable.marker_carriage_right);
         }
     }
 }

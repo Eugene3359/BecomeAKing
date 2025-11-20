@@ -81,4 +81,16 @@ public class TravelDialogueFragment extends DialogFragment {
 
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (getDialog() != null && getDialog().getWindow() != null) {
+            getDialog().getWindow().setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+    }
 }

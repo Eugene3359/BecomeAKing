@@ -52,13 +52,18 @@ public class FinanceFragment extends BaseFragment {
         currentCityViewModel.getCity().observe(getViewLifecycleOwner(), city -> {
             currentCityLayout.setImageResource(city.getImageId());
             currentCityLayout.setText(city.getNameId(), requireContext());
-            DialogueFragment dialogue = new DialogueFragment.Builder()
-                    .setHeader(city.getNameId())
-                    .setMessage(city.getDescriptionId())
-                    .setButton1(R.string.got_it, null).build();
-            currentCityLayout.setButtonCityOnClickListener(v -> {
-                showDialogue(dialogue);
-            });
+
+            if (BecomeAKing.getInstance().isTraveling()) {
+                currentCityLayout.setButtonCityOnClickListener(null);
+            } else {
+                DialogueFragment dialogue = new DialogueFragment.Builder()
+                        .setHeader(city.getNameId())
+                        .setMessage(city.getDescriptionId())
+                        .setButton1(R.string.got_it, null).build();
+                currentCityLayout.setButtonCityOnClickListener(v -> {
+                    showDialogue(dialogue);
+                });
+            }
         });
 
         Button buttonMap = view.findViewById(R.id.button_map);

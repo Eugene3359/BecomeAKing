@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class CitiesList {
 
     private static ArrayList<ICity> cities;
+    private static ICity onTheWay;
 
 
     private static void init () {
@@ -86,5 +87,18 @@ public class CitiesList {
         init();
         if (id < 0 || id >= cities.size()) return null;
         return cities.get(id);
+    }
+
+    public static ICity getOnTheWay() {
+        if (onTheWay == null) {
+            onTheWay = new City(
+                    R.string.on_the_way,
+                    0,
+                    R.drawable.img_items_image_placeholder,
+                    0, 0
+            );
+        }
+
+        return onTheWay;
     }
 }

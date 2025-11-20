@@ -304,6 +304,7 @@
     <string name="schaderveld_description">Південно-східне місто розташоване на рівнинах з рідкісними лісовими масивами. Сильне сільське господарство, ковальська справа та зміцнення роблять її ключовим пунктом регіону.</string>
     <string name="winterholm">Вінтерхолм</string>
     <string name="winterholm_description">Північне місто, розташоване серед пагорбів та лісів, із суворою зимою та міцною оборонною архітектурою. Основний дохід забезпечується полюванням та лісовою промисловістю.</string>
+    <string name="on_the_way">В дорозі</string>
     <string name="you_are_already_in_this_city">Ви вже знаходитесь в цьому місті.</string>
     <string name="no_direct_connection">Немає безпосереднього зв\'язку з цим містом.</string>
     <string name="you_are_already_on_your_way">Ви вже в дорозі.</string>

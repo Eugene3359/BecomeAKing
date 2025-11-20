@@ -93,6 +93,7 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
     }
 
     public ICity getCity() {
+        if (isTraveling) return CitiesList.getOnTheWay();
         return CitiesList.getCity(gameState.cityId);
     }
 
@@ -111,7 +112,9 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
     }
 
     public void setCity(ICity city) {
-        gameState.cityId = city.getId();
+        if (city != CitiesList.getOnTheWay()) {
+            gameState.cityId = city.getId();
+        }
     }
 
 

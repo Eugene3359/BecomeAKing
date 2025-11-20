@@ -8,7 +8,7 @@
         android:id="@+id/image_view_carriage"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:src="@drawable/icon_carriage_right"
+        android:src="@drawable/marker_carriage_right"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:contentDescription="@string/placeholder" />
