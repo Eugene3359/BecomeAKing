@@ -71,7 +71,7 @@ public class PersonageFragment extends BaseFragment {
         // Setting Views values
         personageLayout.updateImage();
         textViewName.setText(personage.getName());
-        textViewTitle.setText(personage.getTitle().getNameId());
+        textViewTitle.setText(personage.getTitle().nameId);
         updateViews();
 
         if (categories.get(0).getBestItem() != null) {

@@ -3,7 +3,6 @@ package com.scipath.becomeaking.model.enums;
 import com.scipath.becomeaking.R;
 
 public enum InteractionResult {
-
     Successful(0),
     NotEnoughMoney(R.string.not_enough_money),
     NotEnoughStrength(R.string.not_enough_strength_points),
@@ -13,15 +12,10 @@ public enum InteractionResult {
     NullPersonage(R.string.null_personage_error);
 
 
-    private final int messageId;
+    public final int messageId;
 
 
     InteractionResult(int messageId) {
         this.messageId = messageId;
-    }
-
-
-    public int getMessageId() {
-        return messageId;
     }
 }

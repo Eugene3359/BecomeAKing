@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/img_items_image_placeholder"
+        android:contentDescription="@string/placeholder" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
+        <com.scipath.becomeaking.view.view.CustomLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="5dp"
+            app:backgroundDrawable="@drawable/bg_wood_wall"
+            app:backgroundColor="@color/goods_brown"
+            android:orientation="horizontal"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/text_view_name1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/placeholder"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_view_buy_price"
+                android:layout_width="40dp"
+                android:layout_height="18dp"
+                android:background="@color/goods_price"
+                android:text="@string/_0"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+        <com.scipath.becomeaking.view.view.CustomButton
+            android:id="@+id/button_buy"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:padding="0dp"
+            app:backgroundColor="@color/goods_button_green"
+            android:text="@string/placeholder"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.scipath.becomeaking.view.view.CustomLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="5dp"
+            app:backgroundDrawable="@drawable/bg_wood_wall"
+            app:backgroundColor="@color/goods_brown"
+            android:orientation="horizontal"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/text_view_name2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/placeholder"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_view_sell_price"
+                android:layout_width="40dp"
+                android:layout_height="18dp"
+                android:background="@color/goods_price"
+                android:text="@string/_0"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+        <com.scipath.becomeaking.view.view.CustomButton
+            android:id="@+id/button_sell"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:padding="0dp"
+            app:backgroundColor="@color/goods_button_red"
+            android:text="@string/placeholder"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</LinearLayout>

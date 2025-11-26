@@ -320,4 +320,8 @@
     <string name="workshops">Мастерские</string>
     <string name="look">Смотреть</string>
 
+    <!-- Goods -->
+    <string name="wheat">Пшеница</string>
+    <string name="tools">Инструменты</string>
+
 </resources>

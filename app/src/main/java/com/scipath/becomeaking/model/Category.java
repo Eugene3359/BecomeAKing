@@ -201,6 +201,7 @@ public class Category implements ICategory {
      * This method recalculates stats and sets the image.
      */
     protected void recalculateStats() {
+        // TODO: DEBUG
         imageId = 0;
         stats = new Stats();
         if (items.isEmpty()) return;
@@ -221,7 +222,8 @@ public class Category implements ICategory {
             for (IItem item : items) {
                 if (item.getState() == Item.State.Bought ||
                     item.getState() == SelectableItem.State.Bought ||
-                    item.getState() == Food.State.InRation) {
+                    item.getState() == Food.State.InRation ||
+                    item.getState() == Work.State.Selected) {
                     stats.merge(item.getStats());
                 }
             }

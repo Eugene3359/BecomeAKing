@@ -10,8 +10,8 @@ android {
         applicationId = "com.scipath.becomeaking"
         minSdk = 26
         targetSdk = 35
-        versionCode = 60
-        versionName = "0.5.8.7"
+        versionCode = 61
+        versionName = "0.5.8.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

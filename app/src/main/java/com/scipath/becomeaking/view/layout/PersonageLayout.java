@@ -22,7 +22,7 @@ public class PersonageLayout extends LinearLayout {
     private TextView textViewReputationIncome;
     private ImageView imageViewMoneyIncome;
     private TextView textViewMoneyIncome;
-    private ImageView imageViewPersonageIcon;
+    private ImageView imageViewPersonage;
 
 
     public PersonageLayout(Context context) {
@@ -49,9 +49,9 @@ public class PersonageLayout extends LinearLayout {
         textViewReputationIncome = findViewById(R.id.text_view_reputation_income);
         imageViewMoneyIncome = findViewById(R.id.image_view_money_income);
         textViewMoneyIncome = findViewById(R.id.text_view_money_income);
-        imageViewPersonageIcon = findViewById(R.id.image_view_personage_icon);
-    }
 
+        imageViewPersonage = findViewById(R.id.image_view_personage);
+    }
 
     public void updateAll() {
         updateStats();
@@ -60,6 +60,7 @@ public class PersonageLayout extends LinearLayout {
 
     public void updateStats() {
         IStats statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
+
         int statBonusValue = statBonuses.get(Stat.HealthPerDay);
         imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
@@ -77,7 +78,7 @@ public class PersonageLayout extends LinearLayout {
     }
 
     public void updateImage() {
-        imageViewPersonageIcon.setImageResource(
-                BecomeAKing.getInstance().getCategories().get(1).getImageId());
+        imageViewPersonage.setImageResource(BecomeAKing.getInstance()
+                .getCategories().get(1).getImageId());
     }
 }

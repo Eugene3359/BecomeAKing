@@ -1,6 +1,7 @@
 package com.scipath.becomeaking.view.layout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.Button;
@@ -8,9 +9,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.contract.model.ICity;
+import com.scipath.becomeaking.view.activity.BaseActivity;
+import com.scipath.becomeaking.view.activity.MapActivity;
+import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.viewmodel.CurrentCityViewModel;
 
 
 public class CurrentCityLayout extends LinearLayout {
@@ -45,17 +52,51 @@ public class CurrentCityLayout extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         init(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CurrentCityLayout);
-        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.img_items_image_placeholder));
         setText(typedArray.getResourceId(R.styleable.CurrentCityLayout_text, R.string.placeholder), context);
+        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.img_items_image_placeholder));
     }
 
-    public void setImageResource(int resId) {
-        imageView.setImageResource(resId);
+    public void bind(LifecycleOwner owner) {
+        if (!(getContext() instanceof BaseActivity)) return;
+        BaseActivity activity = (BaseActivity) getContext();
+
+        CurrentCityViewModel viewModel =
+                new ViewModelProvider(
+                        BecomeAKing.getInstance(),
+                        ViewModelProvider.AndroidViewModelFactory.getInstance(BecomeAKing.getInstance())
+                ).get(CurrentCityViewModel.class);
+
+        viewModel.getCity().observe(owner, city -> {
+            setImageResource(city.getImageId());
+            setText(city.getNameId(), activity);
+
+            if (BecomeAKing.getInstance().isTraveling()) {
+                buttonCity.setOnClickListener(null);
+            } else {
+                DialogueFragment dialogue = new DialogueFragment.Builder()
+                        .setHeader(city.getNameId())
+                        .setMessage(city.getDescriptionId())
+                        .setButton1(R.string.got_it, null)
+                        .build();
+                buttonCity.setOnClickListener(v -> {
+                    activity.showDialogue(dialogue);
+                });
+            }
+        });
+
+        buttonMap.setOnClickListener(v -> {
+            Intent intent = new Intent(activity, MapActivity.class);
+            activity.startActivity(intent);
+        });
     }
 
     public void setText(int resId, Context context) {
         buttonCity.setText(resId);
         imageView.setContentDescription(context.getText(resId));
+    }
+
+    public void setImageResource(int resId) {
+        imageView.setImageResource(resId);
     }
 
     public void setButtonCityOnClickListener(OnClickListener listener) {

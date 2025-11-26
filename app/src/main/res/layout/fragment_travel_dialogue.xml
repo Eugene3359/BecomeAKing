@@ -16,14 +16,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/transparent_dark_brown" />
+            android:background="@color/dialogue_dark_brown" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="20dp"
             android:paddingHorizontal="10dp"
-            android:background="@color/transparent_light_brown"
+            android:background="@color/dialogue_light_brown"
             android:orientation="vertical" >
 
             <com.scipath.becomeaking.view.view.CustomButton
@@ -101,7 +101,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/transparent_dark_brown" />
+            android:background="@color/dialogue_dark_brown" />
 
     </LinearLayout>
 

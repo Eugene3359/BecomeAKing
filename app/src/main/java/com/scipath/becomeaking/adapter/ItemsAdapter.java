@@ -159,13 +159,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         viewHolder.updateButtonInteractState(item, context);
         viewHolder.getButtonInteractView().setOnClickListener(view -> {
-            InteractionResult result = item.interact(personage);
-            if (result == InteractionResult.Successful) {
+            InteractionResult interactionResult = item.interact(personage);
+            if (interactionResult == InteractionResult.Successful) {
                 callback.call(item);
             } else {
                 DialogueFragment dialogueFragment = new DialogueFragment.Builder()
                         .setHeader(R.string.notification)
-                        .setMessage(result.getMessageId())
+                        .setMessage(interactionResult.messageId)
                         .setButton1(R.string.got_it, null)
                         .build();
                 dialogueFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");

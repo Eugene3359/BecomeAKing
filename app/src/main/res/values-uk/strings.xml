@@ -320,4 +320,8 @@
     <string name="workshops">Майстерні</string>
     <string name="look">Дивитись</string>
 
+    <!-- Goods -->
+    <string name="wheat">Пшениця</string>
+    <string name="tools">Інструменти</string>
+
 </resources>

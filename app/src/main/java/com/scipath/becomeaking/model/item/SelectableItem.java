@@ -59,9 +59,9 @@ public class SelectableItem extends BaseItem<SelectableItem.State> {
     }
 
     @Override
-    public void setState(SelectableItem.State state) {
+    public void setState(State state) {
         super.setState(state);
-        if (state == SelectableItem.State.Selected && category != null) {
+        if (state == State.Selected && category != null) {
             category.setSelectedItem(this);
         }
     }

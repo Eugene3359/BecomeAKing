@@ -1,3 +1,16 @@
+# Become a King [0.5.8.8] - 26.11.2025
+
+### Additions
+- Added images for `None Items`
+
+### Changes
+- The `Market Button` in the `Finance Menu` is now active
+
+### Fixes
+- Fixed a bug where daily stats from all-day work were not being applied
+
+---
+
 # Become a King [0.5.8.7] - 20.11.2025
 
 ### Additions

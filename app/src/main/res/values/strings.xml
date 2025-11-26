@@ -331,4 +331,8 @@
     <string name="workshops">Workshops</string>
     <string name="look">Look</string>
 
+    <!-- Goods -->
+    <string name="wheat">Wheat</string>
+    <string name="tools">Tools</string>
+
 </resources>

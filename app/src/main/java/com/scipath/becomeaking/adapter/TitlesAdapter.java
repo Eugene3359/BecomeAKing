@@ -66,7 +66,7 @@ public class TitlesAdapter extends RecyclerView.Adapter<TitlesAdapter.ViewHolder
         Title title = dataSet[position];
 
         // Setting values to views
-        viewHolder.getRadioButton().setText(title.getNameId());
+        viewHolder.getRadioButton().setText(title.nameId);
         viewHolder.getRadioButton().setChecked(position == selectedPosition);
         viewHolder.getRadioButton().setOnCheckedChangeListener(
                 (compoundButton, isChecked) -> {

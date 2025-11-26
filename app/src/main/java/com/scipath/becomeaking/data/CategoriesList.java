@@ -153,7 +153,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.entertainment, true));
         categories.get(2).setBackgroundDrawableId(R.drawable.bg_games);
         categories.get(2)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_items_image_placeholder, 0))
+                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_entertainment, 0))
                 .addItem(new SelectableItem(R.string.have_a_drink_at_the_tavern, R.drawable.img_tavern, 20))
                 .addItem(new SelectableItem(R.string.walk_around_the_fair, R.drawable.img_fair, 200))
                 .addItem(new SelectableItem(R.string.watch_the_tournament, R.drawable.img_tournament, 500))
@@ -198,7 +198,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.weapon, true));
         categories.get(3).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(3)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_items_image_placeholder, 0))
+                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_weapon, 0))
                 .addItem(new SelectableItem(R.string.ax, R.drawable.img_ax, 100))
                 .addItem(new SelectableItem(R.string.rusty_sword, R.drawable.img_rusty_sword, 300))
                 .addItem(new SelectableItem(R.string.steel_sword, R.drawable.img_steel_sword, 1000))
@@ -255,7 +255,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.armor, true));
         categories.get(4).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(4)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_items_image_placeholder, 0))
+                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_armor, 0))
                 .addItem(new SelectableItem(R.string.leather_armor, R.drawable.img_leather_armor, 100))
                 .addItem(new SelectableItem(R.string.rusty_armor, R.drawable.img_rusty_armor, 300))
                 .addItem(new SelectableItem(R.string.old_armor, R.drawable.img_old_armor, 1000))
@@ -357,7 +357,7 @@ public class CategoriesList {
         // Furniture
         categories.add(new Category(R.string.furniture, true));
         categories.get(6)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_items_image_placeholder, 0))
+                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_furniture, 0))
                 .addItem(new SelectableItem(R.string.old_furniture, R.drawable.img_old_furniture, 100))
                 .addItem(new SelectableItem(R.string.ordinary_furniture, R.drawable.img_ordinary_furniture, 500))
                 .addItem(new SelectableItem(R.string.new_furniture, R.drawable.img_new_furniture, 1500))
@@ -458,7 +458,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.horse, true));
         categories.get(9).setBackgroundDrawableId(R.drawable.bg_horses);
         categories.get(9)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_items_image_placeholder, 0))
+                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_horse, 0))
                 .addItem(new SelectableItem(R.string.lame_horse, R.drawable.img_lame_horse, 1500))
                 .addItem(new SelectableItem(R.string.young_horse, R.drawable.img_young_horse, 5000))
                 .addItem(new SelectableItem(R.string.fast_horse, R.drawable.img_fast_horse, 10000))

@@ -35,7 +35,7 @@ public class Personage implements IPersonage {
         this.title = title;
         this.level = new Level();
         this.age = 20;
-        this.maxHealth = title.getMaxHealth();
+        this.maxHealth = title.maxHealth;
         this.health = maxHealth;
         this.reputation = 0;
         this.money = 100;
@@ -166,7 +166,7 @@ public class Personage implements IPersonage {
 
     @Override
     public void recalculateStats() {
-        maxHealth = title.getMaxHealth();
+        maxHealth = title.maxHealth;
         BecomeAKing app = BecomeAKing.getInstance();
         if (app != null) {
             IStats stats = app.getCurrentStatBonuses();

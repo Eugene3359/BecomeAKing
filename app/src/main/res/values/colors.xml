@@ -9,6 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- Common Colors -->
+    <color name="dark_green">#365A1E</color>
+
     <!-- Placeholder Color -->
     <color name="placeholder">#7F4B4B4B</color>
 
@@ -73,10 +76,20 @@
     <color name="green_glow">#D005BA20</color>
 
     <!-- Dialogue Fragment -->
-    <color name="transparent_dark_brown">#F22D1D0E</color>
-    <color name="transparent_light_brown">#F2453D36</color>
+    <color name="dialogue_dark_brown">#F22D1D0E</color>
+    <color name="dialogue_light_brown">#F2453D36</color>
 
     <!-- Layout Finance -->
-    <color name="dark_green">#365A1E</color>
+    <color name="goods_dark_brown">#E5221910</color>
+    <color name="goods_brown">#CC482510</color>
+    <color name="goods_price">#FF8C7753</color>
+    <color name="goods_button_green">#FF427521</color>
+    <color name="goods_button_red">#FF732114</color>
 
 </resources>
+
+    <!--
+    100% - FF
+    90% - E5
+    80% - CC
+    -->
