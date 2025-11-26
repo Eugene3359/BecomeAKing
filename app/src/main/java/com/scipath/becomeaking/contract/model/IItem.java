@@ -4,8 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import com.scipath.becomeaking.contract.callback.Callback;
-import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.enums.InteractionResult;
+import com.scipath.becomeaking.model.enums.Stat;
 
 import java.io.Serializable;
 
@@ -21,6 +20,8 @@ public interface IItem<State extends Enum<State> & IItemState> extends Serializa
 
     IStats getStats();
 
+    int getStat(Stat stat);
+
     State getState();
 
     int getInteractionNameId();
@@ -34,6 +35,8 @@ public interface IItem<State extends Enum<State> & IItemState> extends Serializa
     void setImageId(int imageId);
 
     void setStats(IStats stats);
+
+    void setStat(Stat stat, int value);
 
     void setState(State state);
 
@@ -66,6 +69,4 @@ public interface IItem<State extends Enum<State> & IItemState> extends Serializa
      * @return          The String that contains the item interaction name
      */
     String getInteractionName(Context context);
-
-    InteractionResult interact(Personage personage);
 }

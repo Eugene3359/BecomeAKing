@@ -244,7 +244,7 @@
     <string name="not_enough_money">Недостаточно денег</string>
     <string name="not_enough_strength_points">Недостаточно очков силы</string>
     <string name="not_enough_reputation">Недостаточно репутации</string>
-    <string name="null_personage_error">Ошибка. Персонаж отсутствует.</string>
+    <string name="null_item_error">Ошибка. Елемент отсутствует.</string>
     <string name="you_dont_have_a_time">У вас сегодня осталось недостаточно времени для выполнения даной работы</string>
 
     <!-- Item/Category Stats -->

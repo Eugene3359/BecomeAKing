@@ -25,16 +25,4 @@ public class FoodTest {
                 .add(Stat.HealthPerDay, 5)
                 .add(Stat.CoinsPerDay, -1));
     }
-
-    @Test
-    void interact_withPersonage_returnsSuccessfulInteractionResult() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        assertEquals(InteractionResult.Successful, food.interact(personage));
-    }
-
-    @Test
-    void interact_withNull_withNull_returnsNullPersonageInteractionResult() {
-        assertEquals(InteractionResult.NullPersonage, food.interact(null));
-    }
-
 }

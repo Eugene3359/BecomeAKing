@@ -252,7 +252,7 @@
     <string name="not_enough_money">Not enough money</string>
     <string name="not_enough_strength_points">Not enough strength points</string>
     <string name="not_enough_reputation">Not enough reputation</string>
-    <string name="null_personage_error">Error. Character is missing.</string>
+    <string name="null_item_error">Error. Item is missing.</string>
     <string name="you_dont_have_a_time">You don\'t have enough time left to do this job today</string>
 
     <!-- Item/Category Stats -->

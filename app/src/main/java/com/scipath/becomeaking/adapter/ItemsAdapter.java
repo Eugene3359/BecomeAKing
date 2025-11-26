@@ -159,7 +159,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         viewHolder.updateButtonInteractState(item, context);
         viewHolder.getButtonInteractView().setOnClickListener(view -> {
-            InteractionResult interactionResult = item.interact(personage);
+            InteractionResult interactionResult = personage.interact(item);
             if (interactionResult == InteractionResult.Successful) {
                 callback.call(item);
             } else {

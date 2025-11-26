@@ -3,8 +3,6 @@ package com.scipath.becomeaking.model.item;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.IItemState;
 import com.scipath.becomeaking.contract.model.IStats;
-import com.scipath.becomeaking.model.Personage;
-import com.scipath.becomeaking.model.enums.InteractionResult;
 
 
 public class Food extends BaseItem<Food.State> {
@@ -35,23 +33,5 @@ public class Food extends BaseItem<Food.State> {
     public Food(int nameId, int imageId, IStats stats) {
         super(nameId, imageId, stats);
         this.state = State.NotInRation;
-    }
-
-
-    // Methods
-    @Override
-    public InteractionResult interact(Personage personage) {
-        // Check personage for validity
-        if (personage == null)
-            return InteractionResult.NullPersonage;
-
-        // Interact
-        if (state == State.NotInRation) {
-            setState(State.InRation);
-        } else {
-            setState(State.NotInRation);
-        }
-
-        return InteractionResult.Successful;
     }
 }

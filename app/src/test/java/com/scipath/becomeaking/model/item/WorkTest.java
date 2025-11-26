@@ -60,40 +60,4 @@ public class WorkTest {
         work.setExperience(-10);
         assertEquals(0, work.getExperience());
     }
-
-
-    // Methods
-    @Test
-    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(1000);
-        assertEquals(InteractionResult.Successful, work.interact(personage));
-        assertEquals(100, personage.getHealth());
-        assertEquals(1150, personage.getReputation());
-        assertEquals(10, personage.getLevel().getCurrentExperience());
-    }
-
-    @Test
-    void interact_whenWorkLimitExceeded_returnsNoTimeLeftInteractionResultAndDoNotModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(1000);
-        personage.setEnergy(0);
-        assertEquals(InteractionResult.NoTimeLeft, work.interact(personage));
-        assertEquals(125, personage.getHealth());
-        assertEquals(1000, personage.getReputation());
-    }
-
-    @Test
-    void interact_withNotEnoughReputationPersonage_returnsNotEnoughReputationInteractionResultAndDoNotModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(500);
-        assertEquals(InteractionResult.NotEnoughReputation, work.interact(personage));
-        assertEquals(125, personage.getHealth());
-        assertEquals(500, personage.getReputation());
-    }
-
-    @Test
-    void interact_withNull_returnsNullPersonageInteractionResult() {
-        assertEquals(InteractionResult.NullPersonage, work.interact(null));
-    }
 }

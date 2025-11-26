@@ -1,5 +1,6 @@
 package com.scipath.becomeaking.contract.model;
 
+import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Title;
 
@@ -67,5 +68,7 @@ public interface IPersonage extends Serializable {
 
 
     // Methods
+    InteractionResult interact(IItem item);
+
     void recalculateStats();
 }

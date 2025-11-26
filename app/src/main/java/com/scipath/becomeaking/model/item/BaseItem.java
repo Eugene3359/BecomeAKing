@@ -11,6 +11,7 @@ import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IItemState;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.Stats;
+import com.scipath.becomeaking.model.enums.Stat;
 
 import java.util.Objects;
 
@@ -66,6 +67,11 @@ public abstract class BaseItem<State extends Enum<State> & IItemState>  implemen
     }
 
     @Override
+    public int getStat(Stat stat) {
+        return stats.get(stat);
+    }
+
+    @Override
     public State getState() {
         return state;
     }
@@ -95,6 +101,11 @@ public abstract class BaseItem<State extends Enum<State> & IItemState>  implemen
     @Override
     public void setStats(IStats stats) {
         this.stats = Objects.requireNonNullElseGet(stats, Stats::new);
+    }
+
+    @Override
+    public void setStat(Stat stat, int value) {
+        stats.add(stat, value);
     }
 
     @Override

@@ -44,47 +44,4 @@ public class ItemTest {
         item.setCost(2000);
         assertEquals(2000, item.getCost());
     }
-
-
-    // Methods
-    @Test
-    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setMoney(1000);
-        personage.getLevel().affectStrength(2);
-        assertEquals(InteractionResult.Successful, item.interact(personage));
-        assertEquals(0, personage.getMoney());
-    }
-
-    @Test
-    void interact_withFulfillingRequirementsPersonage_returnsSuccessfulInteractionResultAndChangesItemsState() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setMoney(1000);
-        personage.getLevel().affectStrength(2);
-        assertEquals(InteractionResult.Successful, item.interact(personage));
-        assertEquals(Item.State.Bought, item.getState());
-    }
-
-    @Test
-    void interact_withNotEnoughMoneyPersonage_returnsNotEnoughMoneyInteractionResultAndDoNotModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setMoney(500);
-        personage.getLevel().affectStrength(2);
-        assertEquals(InteractionResult.NotEnoughMoney, item.interact(personage));
-        assertEquals(500, personage.getMoney());
-    }
-
-    @Test
-    void interact_withNotEnoughStrengthPersonage_returnsNotEnoughStrengthInteractionResultAndDoNotModifiesPersonage() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setMoney(1000);
-        personage.getLevel().affectStrength(1);
-        assertEquals(InteractionResult.NotEnoughStrength, item.interact(personage));
-        assertEquals(1000, personage.getMoney());
-    }
-
-    @Test
-    void interact_withNull_returnsNullPersonageInteractionResult() {
-        assertEquals(InteractionResult.NullPersonage, item.interact(null));
-    }
 }

@@ -244,7 +244,7 @@
     <string name="not_enough_money">Недостатньо грошей</string>
     <string name="not_enough_strength_points">Недостатньо очок сили</string>
     <string name="not_enough_reputation">Недостатньо репутації</string>
-    <string name="null_personage_error">Помилка. Відсутній персонаж.</string>
+    <string name="null_item_error">Помилка. Елемент відсутній.</string>
     <string name="you_dont_have_a_time">У вас не залишилося достатньо часу, щоб виконати це завдання сьогодні</string>
 
     <!-- Item/Category Stats -->

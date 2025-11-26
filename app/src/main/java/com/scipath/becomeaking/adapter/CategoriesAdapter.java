@@ -172,7 +172,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         work.setOnStateChanged(() -> viewHolder.updateButtonSelectState(work, context));
 
         viewHolder.getButtonSelect().setOnClickListener(view -> {
-            InteractionResult interactionResult = work.interact(BecomeAKing.getInstance().getPersonage());
+            InteractionResult interactionResult = BecomeAKing.getInstance().getPersonage().interact(work);
             if (interactionResult != InteractionResult.Successful) {
                 DialogueFragment dialogueFragment = new DialogueFragment.Builder()
                         .setHeader(R.string.notification)
