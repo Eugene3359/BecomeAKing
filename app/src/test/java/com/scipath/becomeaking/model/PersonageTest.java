@@ -54,12 +54,12 @@ public class PersonageTest {
 
     @Test
     void getMaxHealth_returnsExpectedValue() {
-        assertEquals(Title.Villager.getMaxHealth(), personage.getMaxHealth());
+        assertEquals(Title.Villager.maxHealth, personage.getMaxHealth());
     }
 
     @Test
     void getHealth_returnsExpectedValue() {
-        assertEquals(Title.Villager.getMaxHealth(), personage.getHealth());
+        assertEquals(Title.Villager.maxHealth, personage.getHealth());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class PersonageTest {
     void setTitle_changesTitleAndUpdatesMaxHealth() {
         personage.setTitle(Title.Bandit);
         assertEquals(Title.Bandit, personage.getTitle());
-        assertEquals(Title.Bandit.getMaxHealth(), personage.getMaxHealth());
+        assertEquals(Title.Bandit.maxHealth, personage.getMaxHealth());
     }
 
     @Test

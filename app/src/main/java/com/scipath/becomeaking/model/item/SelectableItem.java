@@ -19,7 +19,7 @@ public class SelectableItem extends BaseItem<SelectableItem.State> {
 
         private final int interactionNameId;
 
-        private State(int interactionNameId) {
+        State(int interactionNameId) {
             this.interactionNameId = interactionNameId;
         }
 

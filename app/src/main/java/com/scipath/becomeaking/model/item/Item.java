@@ -18,7 +18,7 @@ public class Item extends BaseItem<Item.State> {
 
         private final int interactionNameId;
 
-        private State(int interactionNameId) {
+        State(int interactionNameId) {
             this.interactionNameId = interactionNameId;
         }
 

@@ -13,6 +13,7 @@ public class Personage implements IPersonage {
 
     // Fields
     protected static int idCounter = 0;
+    protected final static int maxEnergy = 2;
 
     protected int id;
     protected String name;
@@ -24,6 +25,7 @@ public class Personage implements IPersonage {
     protected int health;
     protected int reputation;
     protected int money;
+    protected int energy;
     protected int might;
 
 
@@ -39,6 +41,7 @@ public class Personage implements IPersonage {
         this.health = maxHealth;
         this.reputation = 0;
         this.money = 100;
+        this.energy = maxEnergy;
         this.might = 0;
     }
 
@@ -95,6 +98,11 @@ public class Personage implements IPersonage {
     }
 
     @Override
+    public int getEnergy() {
+        return energy;
+    }
+
+    @Override
     public int getMight() {
         return might;
     }
@@ -129,7 +137,12 @@ public class Personage implements IPersonage {
 
     @Override
     public void setHealth(int health) {
-        this.health = restrictHealth(health);
+        this.health = restrictValue(health, 0, maxHealth);
+    }
+
+    @Override
+    public void affectHealth(int health) {
+        this.health = restrictValue(this.health + health, 0, maxHealth);
     }
 
     @Override
@@ -137,9 +150,34 @@ public class Personage implements IPersonage {
         this.reputation = reputation;
     }
 
+    @Override
+    public void affectReputation(int reputation) {
+        this.reputation += reputation;
+    }
+
        @Override
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    @Override
+    public void affectMoney(int money) {
+        this.money += money;
+    }
+
+    @Override
+    public void setEnergy(int energy) {
+        this.energy = restrictValue(energy, 0, maxEnergy);
+    }
+
+    @Override
+    public void affectEnergy(int energy) {
+        this.energy = restrictValue(this.energy + energy, 0, maxEnergy);
+    }
+
+    @Override
+    public void renewEnergy() {
+        energy = maxEnergy;
     }
 
     @Override
@@ -150,21 +188,6 @@ public class Personage implements IPersonage {
 
     // Methods
     @Override
-    public void affectHealth(int health) {
-        this.health = restrictHealth(this.health + health);
-    }
-
-    @Override
-    public void affectReputation(int reputation) {
-        this.reputation += reputation;
-    }
-
-    @Override
-    public void affectMoney(int money) {
-        this.money += money;
-    }
-
-    @Override
     public void recalculateStats() {
         maxHealth = title.maxHealth;
         BecomeAKing app = BecomeAKing.getInstance();
@@ -173,11 +196,10 @@ public class Personage implements IPersonage {
             maxHealth = Math.max(maxHealth, stats.get(Stat.MaxHealth));
             might = stats.get(Stat.Might);
         }
-        health = restrictHealth(health);
+        health = restrictValue(health, 0, maxHealth);
     }
 
-    private int restrictHealth(int health) {
-        // Health can't be bellow zero or above maximum health
-        return Math.max(0, Math.min(health, maxHealth));
+    private int restrictValue(int value, int minValue, int maxValue) {
+        return Math.max(minValue, Math.min(value, maxValue));
     }
 }

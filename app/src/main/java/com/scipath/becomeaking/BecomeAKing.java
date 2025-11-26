@@ -156,7 +156,7 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
             }
         }
 
-        if (!isAllDayWorkSelected) Work.refreshInteractionCounter();
+        if (!isAllDayWorkSelected) getPersonage().renewEnergy();
     }
 
     public void checkPersonageForNegativeValues(BaseActivity activity) {

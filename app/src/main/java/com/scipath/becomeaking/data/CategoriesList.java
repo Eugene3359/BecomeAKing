@@ -589,7 +589,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.caravan_protection, false));
         Work work = new Work(R.string.caravan_protection, R.drawable.img_caravan_protection, 0);
         work.setState(Work.State.NotSelected);
-        work.setInteractionValue(2);
+        work.setEnergyConsumption(2);
         work.setStats(new Stats()
                 .add(Stat.HealthPerDay, -80)
                 .add(Stat.ReputationPerDay, 80)
@@ -602,7 +602,7 @@ public class CategoriesList {
         categories.add(new Category(R.string.mercenary_in_the_army, false));
         work = new Work(R.string.mercenary_in_the_army, R.drawable.img_mercenary_in_the_army, 0);
         work.setState(Work.State.NotSelected);
-        work.setInteractionValue(2);
+        work.setEnergyConsumption(2);
         work.setStats(new Stats()
                 .add(Stat.HealthPerDay, -50)
                 .add(Stat.ReputationPerDay, 80)

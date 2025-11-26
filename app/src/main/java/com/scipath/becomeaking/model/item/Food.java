@@ -15,7 +15,7 @@ public class Food extends BaseItem<Food.State> {
 
         private final int interactionNameId;
 
-        private State(int interactionNameId) {
+        State(int interactionNameId) {
             this.interactionNameId = interactionNameId;
         }
 

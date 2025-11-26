@@ -21,7 +21,6 @@ public class WorkTest {
 
     @BeforeEach
     void setUp() {
-        Work.interactionCounter = 0;
         work = new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, new Stats()
                 .add(Stat.HealthImpact, -25)
                 .add(Stat.ReputationImpact, 150)
@@ -34,7 +33,7 @@ public class WorkTest {
     // Accessors
     @Test
     void getInteractionValue_returnsExpectedValue() {
-        assertEquals(1, work.getInteractionValue()); // Default value
+        assertEquals(1, work.getEnergyConsumption()); // Default value
     }
 
     @Test
@@ -46,8 +45,8 @@ public class WorkTest {
     // Mutators
     @Test
     void setInteractionValue_changesInteractionValue() {
-        work.setInteractionValue(2);
-        assertEquals(2, work.getInteractionValue());
+        work.setEnergyConsumption(2);
+        assertEquals(2, work.getEnergyConsumption());
     }
 
     @Test
@@ -78,7 +77,7 @@ public class WorkTest {
     void interact_whenWorkLimitExceeded_returnsNoTimeLeftInteractionResultAndDoNotModifiesPersonage() {
         Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
         personage.setReputation(1000);
-        Work.interactionCounter = 2;
+        personage.setEnergy(0);
         assertEquals(InteractionResult.NoTimeLeft, work.interact(personage));
         assertEquals(125, personage.getHealth());
         assertEquals(1000, personage.getReputation());
@@ -96,24 +95,5 @@ public class WorkTest {
     @Test
     void interact_withNull_returnsNullPersonageInteractionResult() {
         assertEquals(InteractionResult.NullPersonage, work.interact(null));
-    }
-
-    @Test
-    void interact_increasesInteractionCounterByOne() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(1000);
-        assertEquals(0, Work.interactionCounter);
-        work.interact(personage);
-        assertEquals(1, Work.interactionCounter);
-    }
-
-    @Test
-    void refreshInteractionCounter_setsInteractionCounterToZero() {
-        Personage personage = new Personage("Hero", Sex.Male, Title.Villager);
-        personage.setReputation(1000);
-        work.interact(personage);
-        assertEquals(1, Work.interactionCounter);
-        Work.refreshInteractionCounter();
-        assertEquals(0, Work.interactionCounter);
     }
 }

@@ -29,6 +29,8 @@ public interface IPersonage extends Serializable {
 
     int getMoney();
 
+    int getEnergy();
+
     int getMight();
 
 
@@ -45,19 +47,25 @@ public interface IPersonage extends Serializable {
 
     void setHealth(int health);
 
+    void affectHealth(int health);
+
     void setReputation(int reputation);
 
+    void affectReputation(int reputation);
+
     void setMoney(int money);
+
+    void affectMoney(int money);
+
+    void setEnergy(int energy);
+
+    void affectEnergy(int energy);
+
+    void renewEnergy();
 
     void setMight(int might);
 
 
     // Methods
-    void affectHealth(int health);
-
-    void affectReputation(int reputation);
-
-    void affectMoney(int money);
-
     void recalculateStats();
 }
