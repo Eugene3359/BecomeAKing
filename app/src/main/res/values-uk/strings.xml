@@ -68,127 +68,6 @@
     <string name="day">День</string>
     <string name="none">Немає</string>
 
-    <!-- Nutrition -->
-    <string name="nutrition">Харчування</string>
-    <string name="bread">Хліб</string>
-    <string name="meat">М\'ясо</string>
-    <string name="cheese">Сир</string>
-    <string name="vegetables">Овочі</string>
-    <string name="fruits">Фрукти</string>
-    <string name="seafood">Морепродукти</string>
-    <string name="soup">Суп</string>
-    <string name="nourishing_food">Поживний обід</string>
-    <string name="luxurious_food">Розкішна їжа</string>
-    <string name="aristocracy_food">Їжа аристократії</string>
-    <string name="royal_food">Королівська їжа</string>
-
-    <!-- Clothes -->
-    <string name="clothes">Одяг</string>
-    <string name="poor_mans_clothes">Одяг бідняка</string>
-    <string name="peasant_clothes">Одяг селянина</string>
-    <string name="citizen_clothes">Одяг містянина</string>
-    <string name="luxurious_clothes">Розкішний одяг</string>
-    <string name="aristocracy_clothes">Одяг аристократії</string>
-    <string name="earl_clothes">Одяг графа</string>
-    <string name="royal_clothes">Королівський одяг</string>
-
-    <!-- Entertainment -->
-    <string name="entertainment">Розваги</string>
-    <string name="have_a_drink_at_the_tavern">Випити в таверні</string>
-    <string name="walk_around_the_fair">Прогулянка ярмарком</string>
-    <string name="watch_the_tournament">Дивитися турнір</string>
-    <string name="visit_the_theatre">Відвідати театр</string>
-    <string name="organize_a_hunt">Організуйте полювання</string>
-    <string name="throw_a_feast">Влаштуйте бенкет</string>
-
-    <!-- Weapon -->
-    <string name="weapon">Зброя</string>
-    <string name="ax">Сокира</string>
-    <string name="rusty_sword">Іржавий меч</string>
-    <string name="steel_sword">Сталевий меч</string>
-    <string name="two_blades">Два клинки</string>
-    <string name="ax_and_shield">Сокира та щит</string>
-    <string name="sword_and_shield">Меч та щит</string>
-    <string name="ancient_artifacts">Стародавні артефакти</string>
-
-    <!-- Armor -->
-    <string name="armor">Броня</string>
-    <string name="leather_armor">Шкіряна броня</string>
-    <string name="rusty_armor">Іржава броня</string>
-    <string name="old_armor">Стара броня</string>
-    <string name="heavy_armor">Важка броня</string>
-    <string name="good_armor">Хороша броня</string>
-    <string name="luxurious_armor">Розкішна броня</string>
-    <string name="king_armor">Королівська броня</string>
-
-    <!-- Housing -->
-    <string name="housing">Житло</string>
-    <string name="tent">Палатка</string>
-    <string name="hut">Хатина</string>
-    <string name="old_house">Старий будинок</string>
-    <string name="stone_house">Кам\'яний будинок</string>
-    <string name="country_house">Заміський будинок</string>
-    <string name="small_mansion">Маленький особняк</string>
-    <string name="medium_mansion">Середній особняк</string>
-    <string name="large_mansion">Великий особняк</string>
-
-    <!-- Furniture -->
-    <string name="furniture">Меблі</string>
-    <string name="old_furniture">Старі меблі</string>
-    <string name="ordinary_furniture">Звичайні меблі</string>
-    <string name="new_furniture">Нові меблі</string>
-    <string name="luxurious_furniture">Розкішні меблі</string>
-    <string name="royal_furniture">Королівські меблі</string>
-
-    <!-- Books -->
-    <string name="books">Книги</string>
-    <string name="old_book">Стара книга</string>
-    <string name="new_book">Нова книга</string>
-    <string name="science_book">Наукова книга</string>
-    <string name="military_strategy_books">Книги з військової стратегії</string>
-    <string name="small_library">Мала бібліотека</string>
-    <string name="medium_library">Середня бібліотека</string>
-    <string name="huge_library">Велика бібліотека</string>
-    <string name="royal_library">Королівська бібліотека</string>
-
-    <!-- Artworks -->
-    <string name="artworks">Твори мистецтва</string>
-    <string name="workshop_figurine">Фігурка з майстерні</string>
-    <string name="local_painting">Місцевий живопис</string>
-    <string name="painting_by_a_famous_artist">Картина відомого художника</string>
-    <string name="marble_statue">Мармурова статуя</string>
-    <string name="private_museum">Приватний музей</string>
-
-    <!-- Horse -->
-    <string name="horse">Кінь</string>
-    <string name="lame_horse">Кульгавий кінь</string>
-    <string name="young_horse">Молодий кінь</string>
-    <string name="fast_horse">Швидкий кінь</string>
-    <string name="light_armored_horse">Кінь в легкій броні</string>
-    <string name="medium_armored_horse">Кінь в середній броні</string>
-    <string name="heavy_armored_horse">Кінь в важкій броні</string>
-
-    <!-- Work in a village -->
-    <string name="work_in_a_village">Робота в селі</string>
-    <string name="grazing_animals">Випас тварин</string>
-    <string name="harvesting">Збір врожаю</string>
-    <string name="logging">Лісозаготівля</string>
-    <string name="work_in_a_mine">Робота в шахті</string>
-    <string name="unloading_ships">Розвантаження суден</string>
-
-    <!-- Work in a town -->
-    <string name="work_in_a_town">Робота в місті</string>
-    <string name="cart_repair">Ремонт возів</string>
-    <string name="architects_apprentice">Учень архітектора</string>
-    <string name="weavers_apprentice">Учень ткача</string>
-    <string name="craftsmans_apprentice">Учень ремісника</string>
-    <string name="blacksmiths_apprentice">Учень коваля</string>
-    <string name="lords_courtier">Придворний лорда</string>
-
-    <!-- All day long work -->
-    <string name="caravan_protection">Захист каравану</string>
-    <string name="mercenary_in_the_army">Найманець в армії</string>
-
     <!-- Business -->
     <string name="enterprises">Підприємства</string>
 
@@ -272,38 +151,6 @@
     <string name="map">Карта</string>
     <string name="city">Місто</string>
     <string name="region">Регіон</string>
-    <string name="grimshaven">Грімсхейвен</string>
-    <string name="grimshaven_description">Прибережне місто з міцними портовими укріпленнями, оточене скелястими стрімчаками та туманними бухтами. Основний фокус – рибальство та морська торгівля.</string>
-    <string name="farendol">Фарендол</string>
-    <string name="farendol_description">Місто, розташоване серед рівнин із родючими землями. Тут активно розвинена сільськогосподарська торгівля та ремесла, а дороги з\'єднують його із сусідніми фортецями.</string>
-    <string name="thornford">Торнфорд</string>
-    <string name="thornford_description">Фортеця на перетині торгових шляхів, оточена пагорбами та лісами. Вважається важливим військовим та економічним пунктом регіону, з розвиненою ковальською індустрією.</string>
-    <string name="drakkenburg">Драккенбург</string>
-    <string name="drakkenburg_description">Головне центральне місто північного материка розташоване на високих пагорбах з видом на навколишні рівнини. Тут зосереджена адміністрація, великі ринки та військові гарнізони.</string>
-    <string name="steinhart">Стайнхарт</string>
-    <string name="steinhart_description">Місто на південному узбережжі з фортечною цитаделлю, оточене скелями та лісами. Основна спеціалізація - морська торгівля та рибальство, а також видобуток каменю для будівництва.</string>
-    <string name="ravenholm">Равенхольм</string>
-    <string name="ravenholm_description">Місто в центрі материка, оточене лісистими долинами. Відомий своїм ремісничим мистецтвом та укріпленими стінами, що захищають мешканців від нападів із сусідніх територій.</string>
-    <string name="valmir">Вальмір</string>
-    <string name="valmir_description">Гірське місто біля кришталево чистої річки, оточене густими лісами. Вузькі вулички ведуть до ринків та давніх кам\'яних фортець.</string>
-    <string name="tenebris">Тенебріс</string>
-    <string name="tenebris_description">Прибережне місто на західному узбережжі острова з легким доступом до моря. Оточений лісами та пагорбами, відомий рибальством та прихованими портовими укриттями.</string>
-    <string name="wolfengard">Вольфенгард</string>
-    <string name="wolfengard_description">Місто на північно-східному материку серед лісів та пагорбів, з розвиненою мисливською та ремісничою економікою. Служить важливим опорним пунктом північних маршрутів.</string>
-    <string name="kastervik">Кастервік</string>
-    <string name="kastervik_description">Стратегічно важливе місто на перетині торгових шляхів, оточене рівнинами та невисокими пагорбами. Центр торгівлі та сільського господарства регіону, з укріпленими стінами та казармами.</string>
-    <string name="morgenheim">Моргенхейм</string>
-    <string name="morgenheim_description">Прибережне південне місто, оточене лісами та пагорбами. Відомий суднобудуванням, рибальством та торговими зв\'язками з іншими містами материка.</string>
-    <string name="elmyria">Елмірія</string>
-    <string name="elmyria_description">Місто на східному узбережжі материка, оточене гірськими ланцюгами та лісами. Славиться своїми ремісничими майстернями та важливою торговою функцією у регіоні.</string>
-    <string name="blackhollow">Блекхоллоу</string>
-    <string name="blackhollow_description">Місто в центрі материка на рівнинах, з добре розвиненими дорогами до сусідніх міст. Тут зосереджено торгівлю зерном, ремесла та невелику армію для захисту територій.</string>
-    <string name="albreston">Альбрестон</string>
-    <string name="albreston_description">Південне портове місто на узбережжі, оточене скелями та лісами. Основна спеціалізація - морська торгівля, кораблебудування та постачання південних регіонів.</string>
-    <string name="schaderveld">Шадервельд</string>
-    <string name="schaderveld_description">Південно-східне місто розташоване на рівнинах з рідкісними лісовими масивами. Сильне сільське господарство, ковальська справа та зміцнення роблять її ключовим пунктом регіону.</string>
-    <string name="winterholm">Вінтерхолм</string>
-    <string name="winterholm_description">Північне місто, розташоване серед пагорбів та лісів, із суворою зимою та міцною оборонною архітектурою. Основний дохід забезпечується полюванням та лісовою промисловістю.</string>
     <string name="on_the_way">В дорозі</string>
     <string name="you_are_already_in_this_city">Ви вже знаходитесь в цьому місті.</string>
     <string name="no_direct_connection">Немає безпосереднього зв\'язку з цим містом.</string>
@@ -321,7 +168,11 @@
     <string name="look">Дивитись</string>
 
     <!-- Goods -->
+    <string name="buy">Купити</string>
+    <string name="sell">Продати</string>
     <string name="wheat">Пшениця</string>
     <string name="tools">Інструменти</string>
+    <string name="no_good_left">Товару не лишилось на ринку</string>
+    <string name="you_dont_have_this_good">У вас немає цього товару на продаж</string>
 
 </resources>

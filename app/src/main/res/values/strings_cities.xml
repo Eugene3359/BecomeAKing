@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grimshaven">Grimshaven</string>
+    <string name="grimshaven_description">A coastal city with strong port fortifications, surrounded by rocky cliffs and misty bays. Its main focus is fishing and maritime trade.</string>
+    <string name="farendol">Farendol</string>
+    <string name="farendol_description">A city nestled amidst fertile plains, agricultural trade and crafts flourish here, and roads connect it to neighboring fortresses.</string>
+    <string name="thornford">Thornford</string>
+    <string name="thornford_description">A fortress at the crossroads of trade routes, surrounded by hills and forests, it is considered an important military and economic center in the region, with a developed blacksmithing industry.</string>
+    <string name="drakkenburg">Drakkenburg</string>
+    <string name="drakkenburg_description">The main central city of the northern continent, located on high hills overlooking the surrounding plains, is home to the administration, major markets, and military garrisons.</string>
+    <string name="steinhart">Steinhart</string>
+    <string name="steinhart_description">A city on the southern coast with a fortified citadel, surrounded by cliffs and forests. Its main specialization is maritime trade and fishing, as well as stone quarrying for construction.</string>
+    <string name="ravenholm">Ravenholm</string>
+    <string name="ravenholm_description">A city in the center of the continent, surrounded by wooded valleys. It is known for its craftsmanship and fortified walls that protect residents from attacks from neighboring territories.</string>
+    <string name="valmir">Valmir</string>
+    <string name="valmir_description">A mountain town by a crystal-clear river, surrounded by dense forests. Narrow streets lead to markets and ancient stone fortresses.</string>
+    <string name="tenebris">Tenebris</string>
+    <string name="tenebris_description">A coastal town on the island\'s west coast with easy access to the sea. Surrounded by forests and hills, it is known for its fishing and hidden harbor hideaways.</string>
+    <string name="kastervik">Kastervik</string>
+    <string name="kastervik_description">A strategically important city at the crossroads of trade routes, surrounded by plains and low hills, it is the center of trade and agriculture for the region, with fortified walls and barracks.</string>
+    <string name="wolfengard">Wolfengard</string>
+    <string name="wolfengard_description">A city on the northeastern continent, nestled among forests and hills, with a developed hunting and crafts economy. It serves as an important staging point for northern routes.</string>
+    <string name="morgenheim">Morgenheim</string>
+    <string name="morgenheim_description">A southern coastal city surrounded by forests and hills. Known for its shipbuilding, fishing, and trade links with other mainland cities.</string>
+    <string name="albreston">Albreston</string>
+    <string name="albreston_description">A southern port city on the coast, surrounded by cliffs and forests. Its main specialization is maritime trade, shipbuilding, and supplying the southern regions.</string>
+    <string name="blackhollow">Blackhollow</string>
+    <string name="blackhollow_description">A city in the center of the continent, on plains, with well-developed roads to neighboring cities. It is home to grain trade, crafts, and a small army to defend the territory.</string>
+    <string name="elmyria">Elmyria</string>
+    <string name="elmyria_description">A city on the east coast of the mainland, surrounded by mountain ranges and forests, it is renowned for its artisan workshops and its important trading role in the region.</string>
+    <string name="schaderveld">Schaderveld</string>
+    <string name="schaderveld_description">A southeastern city located on plains with sparse forests. Its strong agriculture, blacksmithing, and fortifications make it a key point in the region.</string>
+    <string name="winterholm">Winterholm</string>
+    <string name="winterholm_description">A northern city nestled among hills and forests, with harsh winters and robust defensive architecture. Its main income comes from hunting and the timber industry.</string>
+</resources>

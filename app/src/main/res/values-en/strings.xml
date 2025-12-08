@@ -72,127 +72,6 @@
     <string name="day">Day</string>
     <string name="none">None</string>
 
-    <!-- Nutrition -->
-    <string name="nutrition">Nutrition</string>
-    <string name="bread">Bread</string>
-    <string name="meat">Meat</string>
-    <string name="cheese">Cheese</string>
-    <string name="vegetables">Vegetables</string>
-    <string name="fruits">Fruits</string>
-    <string name="seafood">Seafood</string>
-    <string name="soup">Soup</string>
-    <string name="nourishing_food">Nourishing Lunch</string>
-    <string name="luxurious_food">Luxurious Food</string>
-    <string name="aristocracy_food">Aristocracy Food</string>
-    <string name="royal_food">Royal Food</string>
-
-    <!-- Clothes -->
-    <string name="clothes">Clothes</string>
-    <string name="poor_mans_clothes">Poor Man\'s Clothes</string>
-    <string name="peasant_clothes">Peasant Clothes</string>
-    <string name="citizen_clothes">Citizen Clothes</string>
-    <string name="luxurious_clothes">Luxurious Clothes</string>
-    <string name="aristocracy_clothes">Aristocracy Clothes</string>
-    <string name="earl_clothes">Earl Clothes</string>
-    <string name="royal_clothes">Royal Clothes</string>
-
-    <!-- Entertainment -->
-    <string name="entertainment">Entertainment</string>
-    <string name="have_a_drink_at_the_tavern">Have a Drink at the Tavern</string>
-    <string name="walk_around_the_fair">Walk Around the Fair</string>
-    <string name="watch_the_tournament">Watch the Tournament</string>
-    <string name="visit_the_theatre">Visit the Theatre</string>
-    <string name="organize_a_hunt">Organize a Hunt</string>
-    <string name="throw_a_feast">Throw a Feast</string>
-
-    <!-- Weapon -->
-    <string name="weapon">Weapon</string>
-    <string name="ax">Axe</string>
-    <string name="rusty_sword">Rusty Sword</string>
-    <string name="steel_sword">Steel Sword</string>
-    <string name="two_blades">Two Blades</string>
-    <string name="ax_and_shield">Axe and Shield</string>
-    <string name="sword_and_shield">Sword and Shield</string>
-    <string name="ancient_artifacts">Ancient Artifacts</string>
-
-    <!-- Armor -->
-    <string name="armor">Armor</string>
-    <string name="leather_armor">Leather Armor</string>
-    <string name="rusty_armor">Rusty Armor</string>
-    <string name="old_armor">Old Armor</string>
-    <string name="heavy_armor">Heavy Armor</string>
-    <string name="good_armor">Good Armor</string>
-    <string name="luxurious_armor">Luxurious Armor</string>
-    <string name="king_armor">King\'s Armor</string>
-
-    <!-- Housing -->
-    <string name="housing">Housing</string>
-    <string name="tent">Tent</string>
-    <string name="hut">Hut</string>
-    <string name="old_house">Old House</string>
-    <string name="stone_house">Stone House</string>
-    <string name="country_house">Country House</string>
-    <string name="small_mansion">Small Mansion</string>
-    <string name="medium_mansion">Medium Mansion</string>
-    <string name="large_mansion">Large Mansion</string>
-
-    <!-- Furniture -->
-    <string name="furniture">Furniture</string>
-    <string name="old_furniture">Old Furniture</string>
-    <string name="ordinary_furniture">Ordinary Furniture</string>
-    <string name="new_furniture">New Furniture</string>
-    <string name="luxurious_furniture">Luxurious Furniture</string>
-    <string name="royal_furniture">Royal Furniture</string>
-
-    <!-- Books -->
-    <string name="books">Books</string>
-    <string name="old_book">Old Book</string>
-    <string name="new_book">New Book</string>
-    <string name="science_book">Science Book</string>
-    <string name="military_strategy_books">Military Strategy Books</string>
-    <string name="small_library">Small Library</string>
-    <string name="medium_library">Medium Library</string>
-    <string name="huge_library">Huge Library</string>
-    <string name="royal_library">Royal Library</string>
-
-    <!-- Artworks -->
-    <string name="artworks">Artworks</string>
-    <string name="workshop_figurine">Workshop Figurine</string>
-    <string name="local_painting">Local Painting</string>
-    <string name="painting_by_a_famous_artist">Painting by a Famous Artist</string>
-    <string name="marble_statue">Marble Statue</string>
-    <string name="private_museum">Private Museum</string>
-
-    <!-- Horse -->
-    <string name="horse">Horse</string>
-    <string name="lame_horse">Lame horse</string>
-    <string name="young_horse">Young horse</string>
-    <string name="fast_horse">Fast horse</string>
-    <string name="light_armored_horse">Lightly armored horse</string>
-    <string name="medium_armored_horse">Medium Armored Horse</string>
-    <string name="heavy_armored_horse">Heavy Armored Horse</string>
-
-    <!-- Work in a village -->
-    <string name="work_in_a_village">Work in a Village</string>
-    <string name="grazing_animals">Grazing Animals</string>
-    <string name="harvesting">Harvesting</string>
-    <string name="logging">Logging</string>
-    <string name="work_in_a_mine">Work in a Mine</string>
-    <string name="unloading_ships">Unloading Ships</string>
-
-    <!-- Work in a town -->
-    <string name="work_in_a_town">Work in a Town</string>
-    <string name="cart_repair">Cart Repair</string>
-    <string name="architects_apprentice">Architect\'s Apprentice</string>
-    <string name="weavers_apprentice">Weaver\'s Apprentice</string>
-    <string name="craftsmans_apprentice">Craftsman\'s Apprentice</string>
-    <string name="blacksmiths_apprentice">Blacksmith\'s Apprentice</string>
-    <string name="lords_courtier">Lord\'s Courtier</string>
-
-    <!-- All day long work -->
-    <string name="caravan_protection">Caravan Protection</string>
-    <string name="mercenary_in_the_army">Mercenary in the Army</string>
-
     <!-- Business -->
     <string name="enterprises">Enterprises</string>
 
@@ -283,38 +162,6 @@
     <string name="map">Map</string>
     <string name="city">City</string>
     <string name="region">Region</string>
-    <string name="grimshaven">Grimshaven</string>
-    <string name="grimshaven_description">A coastal city with strong port fortifications, surrounded by rocky cliffs and misty bays. Its main focus is fishing and maritime trade.</string>
-    <string name="farendol">Farendol</string>
-    <string name="farendol_description">A city nestled amidst fertile plains, agricultural trade and crafts flourish here, and roads connect it to neighboring fortresses.</string>
-    <string name="thornford">Thornford</string>
-    <string name="thornford_description">A fortress at the crossroads of trade routes, surrounded by hills and forests, it is considered an important military and economic center in the region, with a developed blacksmithing industry.</string>
-    <string name="drakkenburg">Drakkenburg</string>
-    <string name="drakkenburg_description">The main central city of the northern continent, located on high hills overlooking the surrounding plains, is home to the administration, major markets, and military garrisons.</string>
-    <string name="steinhart">Steinhart</string>
-    <string name="steinhart_description">A city on the southern coast with a fortified citadel, surrounded by cliffs and forests. Its main specialization is maritime trade and fishing, as well as stone quarrying for construction.</string>
-    <string name="ravenholm">Ravenholm</string>
-    <string name="ravenholm_description">A city in the center of the continent, surrounded by wooded valleys. It is known for its craftsmanship and fortified walls that protect residents from attacks from neighboring territories.</string>
-    <string name="valmir">Valmir</string>
-    <string name="valmir_description">A mountain town by a crystal-clear river, surrounded by dense forests. Narrow streets lead to markets and ancient stone fortresses.</string>
-    <string name="tenebris">Tenebris</string>
-    <string name="tenebris_description">A coastal town on the island\'s west coast with easy access to the sea. Surrounded by forests and hills, it is known for its fishing and hidden harbor hideaways.</string>
-    <string name="wolfengard">Wolfengard</string>
-    <string name="wolfengard_description">A city on the northeastern continent, nestled among forests and hills, with a developed hunting and crafts economy. It serves as an important staging point for northern routes.</string>
-    <string name="kastervik">Kastervik</string>
-    <string name="kastervik_description">A strategically important city at the crossroads of trade routes, surrounded by plains and low hills, it is the center of trade and agriculture for the region, with fortified walls and barracks.</string>
-    <string name="morgenheim">Morgenheim</string>
-    <string name="morgenheim_description">A southern coastal city surrounded by forests and hills. Known for its shipbuilding, fishing, and trade links with other mainland cities.</string>
-    <string name="elmyria">Elmyria</string>
-    <string name="elmyria_description">A city on the east coast of the mainland, surrounded by mountain ranges and forests, it is renowned for its artisan workshops and its important trading role in the region.</string>
-    <string name="blackhollow">Blackhollow</string>
-    <string name="blackhollow_description">A city in the center of the continent, on plains, with well-developed roads to neighboring cities. It is home to grain trade, crafts, and a small army to defend the territory.</string>
-    <string name="albreston">Albreston</string>
-    <string name="albreston_description">A southern port city on the coast, surrounded by cliffs and forests. Its main specialization is maritime trade, shipbuilding, and supplying the southern regions.</string>
-    <string name="schaderveld">Schaderveld</string>
-    <string name="schaderveld_description">A southeastern city located on plains with sparse forests. Its strong agriculture, blacksmithing, and fortifications make it a key point in the region.</string>
-    <string name="winterholm">Winterholm</string>
-    <string name="winterholm_description">A northern city nestled among hills and forests, with harsh winters and robust defensive architecture. Its main income comes from hunting and the timber industry.</string>
     <string name="on_the_way">On the way</string>
     <string name="you_are_already_in_this_city">You are already in this city.</string>
     <string name="no_direct_connection">There is no direct connection to this city.</string>
@@ -332,7 +179,11 @@
     <string name="look">Look</string>
 
     <!-- Goods -->
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
     <string name="wheat">Wheat</string>
     <string name="tools">Tools</string>
+    <string name="no_good_left">No good left on the market</string>
+    <string name="you_dont_have_this_good">You don\'t have this good for sell</string>
 
 </resources>

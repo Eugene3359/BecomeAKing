@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.ICity;
+import com.scipath.becomeaking.contract.model.IGoods;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.data.CitiesList;
@@ -29,10 +30,11 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
     // Fields
     private static BecomeAKing instance;
     private final ViewModelStore viewModelStore = new ViewModelStore();
+
     private GameState gameState;
     private boolean isLoaded;
     private boolean isTraveling;
-    private final boolean isTest = true;
+    private final boolean isTestMode = true;
 
 
     @Override
@@ -48,8 +50,7 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         return instance;
     }
 
-    @NonNull
-    @Override
+    @Override @NonNull
     public ViewModelStore getViewModelStore() {
         return viewModelStore;
     }
@@ -64,8 +65,8 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         return isTraveling;
     }
 
-    public boolean isTest() {
-        return isTest;
+    public boolean isTestMode() {
+        return isTestMode;
     }
 
     public GameState getGameState() {
@@ -90,6 +91,10 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
                 .filter(category -> category.getId() == id)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public IGoods getGoodsStorage() {
+        return gameState.goodsStorage;
     }
 
     public ICity getCity() {
@@ -159,14 +164,13 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         if (!isAllDayWorkSelected) getPersonage().renewEnergy();
     }
 
-    public void checkPersonageForNegativeValues(BaseActivity activity) {
+    public void checkPersonageState(BaseActivity activity) {
         if (gameState.personage.getHealth() == 0) gameOver(0, activity);
         if (gameState.personage.getReputation() < 0) gameOver(1, activity);
         if (gameState.personage.getMoney() < 0) gameOver(2, activity);
     }
 
     public void gameOver(int code, BaseActivity activity) {
-        // Forming game-over message
         int reasonId;
         switch (code) {
             case 0:
@@ -196,30 +200,29 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
                     SaveManager.deleteSave(getApplicationContext());
                     clearGameState();
                     activity.finish();
-                })
-                .build();
+                }).build();
         activity.showDialogue(dialogueFragment);
     }
 
+
+    // Save/Load
     public void saveGame() {
         SaveManager.saveGame(gameState, getApplicationContext());
     }
 
     public void loadGame(BaseActivity activity) {
         if (SaveManager.saveExists(getApplicationContext())) {
-            // Save file exists
             GameState gameState = SaveManager.loadGame(getApplicationContext());
             if(gameState != null) {
-                // Successful load
                 this.gameState = gameState;
                 isLoaded = true;
             } else {
-                // Load error
                 activity.showNotification(R.string.something_went_wrong);
+                isLoaded = false;
             }
         } else {
-            // No save file
             activity.showNotification(R.string.save_not_found);
+            isLoaded = false;
         }
     }
 

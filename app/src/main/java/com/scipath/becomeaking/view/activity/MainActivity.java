@@ -12,14 +12,13 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.data.CategoriesList;
-import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.model.GameState;
+import com.scipath.becomeaking.model.Goods;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Title;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class MainActivity extends BaseActivity {
@@ -66,18 +65,18 @@ public class MainActivity extends BaseActivity {
 
         // Button test
         Button buttonTest = findViewById(R.id.button_test);
-        if (BecomeAKing.getInstance().isTest()) buttonTest.setVisibility(View.VISIBLE);
+        if (BecomeAKing.getInstance().isTestMode()) buttonTest.setVisibility(View.VISIBLE);
         buttonTest.setOnClickListener(view -> {
             Personage personage = new Personage("Hero", Sex.Male, Title.Bandit);
             personage.setReputation(8000);
             personage.setMoney(100000);
             CategoriesList.init(true);
             ArrayList<ICategory> categories = CategoriesList.getCategories();
-            BecomeAKing.getInstance().setGameState(
-                    new GameState(personage,
+            BecomeAKing.getInstance().setGameState(new GameState(
+                    personage,
                     categories,
-                    new Random().nextInt(CitiesList.getCities().size()),
-                    0));
+                    new Goods())
+            );
 
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             startActivity(intent);

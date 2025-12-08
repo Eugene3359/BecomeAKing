@@ -47,34 +47,34 @@ public class CitiesList {
         cities.get(7).addRoute(cities.get(3))                   // Tenebris - Drakkenburg
                 .addRoute(cities.get(6));                       // Tenebris - Valmir
 
-        cities.add(new City(R.string.wolfengard, R.string.wolfengard_description, R.drawable.img_wolfengard, 0.675f, 0.165f));
-        cities.get(8).addRoute(cities.get(3));                  // Wolfengard - Drakkenburg
-
         cities.add(new City(R.string.kastervik, R.string.kastervik_description, R.drawable.img_kastervik, 0.655f, 0.280f));
-        cities.get(9).addRoute(cities.get(3))                   // Kastervik - Drakkenburg
-                .addRoute(cities.get(7))                        // Kastervik - Tenebris
-                .addRoute(cities.get(8));                       // Kastervik - Wolfengard
+        cities.get(8).addRoute(cities.get(3))                   // Kastervik - Drakkenburg
+                .addRoute(cities.get(7));                       // Kastervik - Tenebris
+
+        cities.add(new City(R.string.wolfengard, R.string.wolfengard_description, R.drawable.img_wolfengard, 0.675f, 0.165f));
+        cities.get(9).addRoute(cities.get(3))                   // Wolfengard - Drakkenburg
+                .addRoute(cities.get(8));                       // Wolfengard - Kastervik
 
         cities.add(new City(R.string.morgenheim, R.string.morgenheim_description, R.drawable.img_morgenheim, 0.690f, 0.720f));
         cities.get(10).addRoute(cities.get(7));                 // Morgenheim - Tenebris
 
-        cities.add(new City(R.string.elmyria, R.string.elmyria_description, R.drawable.img_elmyria, 0.830f, 0.335f));
-        cities.get(11).addRoute(cities.get(8));                 // Elmyria - Wolfengard
+        cities.add(new City(R.string.albreston, R.string.albreston_description, R.drawable.img_albreston, 0.790f, 0.825f));
+        cities.get(11).addRoute(cities.get(10));                // Albreston - Morgenheim
 
         cities.add(new City(R.string.blackhollow, R.string.blackhollow_description, R.drawable.img_blackhollow, 0.820f, 0.435f));
-        cities.get(12).addRoute(cities.get(9))                  // Blackhollow - Kastervik
+        cities.get(12).addRoute(cities.get(8))                  // Blackhollow - Kastervik
                 .addRoute(cities.get(10));                      // Blackhollow - Morgenheim
 
-        cities.add(new City(R.string.albreston, R.string.albreston_description, R.drawable.img_albreston, 0.790f, 0.825f));
-        cities.get(13).addRoute(cities.get(10));                // Albreston - Morgenheim
+        cities.add(new City(R.string.elmyria, R.string.elmyria_description, R.drawable.img_elmyria, 0.830f, 0.335f));
+        cities.get(13).addRoute(cities.get(9));                 // Elmyria - Wolfengard
 
         cities.add(new City(R.string.schaderveld, R.string.schaderveld_description, R.drawable.img_schaderveld, 0.855f, 0.730f));
-        cities.get(14).addRoute(cities.get(12))                 // Schaderveld - Blackhollow
-                .addRoute(cities.get(13));                      // Schaderveld - Albreston
+        cities.get(14).addRoute(cities.get(11))                 // Schaderveld - Albreston
+                .addRoute(cities.get(12));                      // Schaderveld - Blackhollow
 
         cities.add(new City(R.string.winterholm, R.string.winterholm_description, R.drawable.img_winterholm, 0.905f, 0.380f));
-        cities.get(15).addRoute(cities.get(11))                 // Winterholm - Elmyria
-                .addRoute(cities.get(12));                      // Winterholm - Blackhollow
+        cities.get(15).addRoute(cities.get(12))                 // Winterholm - Blackhollow
+                .addRoute(cities.get(13));                      // Winterholm - Elmyria
     }
 
 

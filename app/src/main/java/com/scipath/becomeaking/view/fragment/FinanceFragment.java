@@ -37,7 +37,7 @@ public class FinanceFragment extends BaseFragment {
         FinanceMenuElementLayout elementTrading = view.findViewById(R.id.element_trading);
         elementTrading.setButtonOnClickListener(v -> {
             requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_frame, new TradeFragment())
+                    .replace(R.id.fragment_frame, new MarketFragment())
                     .addToBackStack(null)
                     .commit();
         });

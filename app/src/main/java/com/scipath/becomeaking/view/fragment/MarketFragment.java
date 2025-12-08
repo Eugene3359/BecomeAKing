@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.adapter.CategoriesAdapter;
+import com.scipath.becomeaking.adapter.GoodsAdapter;
+import com.scipath.becomeaking.data.GoodsList;
+import com.scipath.becomeaking.model.Goods;
+import com.scipath.becomeaking.view.activity.GameActivity;
 import com.scipath.becomeaking.view.layout.CurrentCityLayout;
 
 
-public class TradeFragment extends BaseFragment {
+public class MarketFragment extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class TradeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trade, container, false);
+        return inflater.inflate(R.layout.fragment_market, container, false);
     }
 
     @Override
@@ -40,6 +43,10 @@ public class TradeFragment extends BaseFragment {
         CurrentCityLayout currentCityLayout = view.findViewById(R.id.layout_current_city);
         currentCityLayout.bind(getViewLifecycleOwner());
 
+        Goods goods = GoodsList.getDefaultGoods();
         RecyclerView recyclerView = view.findViewById(R.id.goods_list);
+        GoodsAdapter goodsAdapter = new GoodsAdapter(goods, (GameActivity) requireActivity());
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(goodsAdapter);
     }
 }

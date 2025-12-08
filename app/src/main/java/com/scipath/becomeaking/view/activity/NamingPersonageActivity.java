@@ -9,15 +9,13 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.data.CategoriesList;
-import com.scipath.becomeaking.data.CitiesList;
 import com.scipath.becomeaking.model.GameState;
+import com.scipath.becomeaking.model.Goods;
 import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Title;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class NamingPersonageActivity extends BaseActivity {
@@ -46,11 +44,11 @@ public class NamingPersonageActivity extends BaseActivity {
                 Personage personage = new Personage(personageName, sex, title);
                 CategoriesList.init(sex == Sex.Male);
                 ArrayList<ICategory> categories = CategoriesList.getCategories();
-                BecomeAKing.getInstance().setGameState(
-                        new GameState(personage,
-                                categories,
-                                new Random().nextInt(CitiesList.getCities().size()),
-                                0));
+                BecomeAKing.getInstance().setGameState(new GameState(
+                        personage,
+                        categories,
+                        new Goods())
+                );
 
                 Intent intent = new Intent(NamingPersonageActivity.this, GameActivity.class);
                 startActivity(intent);

@@ -1,3 +1,13 @@
+# Become a King [0.5.8.11] - 09.12.2025
+
+### Additions
+- Added goods to the market
+
+### Changes
+- The game now starts on day 1
+
+---
+
 # Become a King [0.5.8.8] - 26.11.2025
 
 ### Additions

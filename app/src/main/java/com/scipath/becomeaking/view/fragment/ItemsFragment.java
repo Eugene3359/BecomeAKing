@@ -87,7 +87,7 @@ public class ItemsFragment extends BaseFragment {
                 startClickerMiniGamer(item);
             } else if (item instanceof Item || item instanceof SelectableItem){
                 personage.recalculateStats();
-                activity.updateViews();
+                activity.updateAll();
             }
         }, view.getContext());
 

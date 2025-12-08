@@ -11,7 +11,7 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 63
-        versionName = "0.5.8.10"
+        versionName = "0.5.8.11"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,17 +62,25 @@ tasks.withType<Test>().configureEach {
 }
 
 tasks.register("copyEnglishStrings") {
-    val defaultStrings = file("src/main/res/values/strings.xml")
-    val enStrings = file("src/main/res/values-en/strings.xml")
+    val files = listOf(
+        "strings.xml",
+        "strings_categories.xml",
+        "strings_cities.xml"
+    )
 
-    inputs.file(defaultStrings)
-    outputs.file(enStrings)
+    inputs.files(files.map { file("src/main/res/values/$it") })
+    outputs.files(files.map { file("src/main/res/values-en/$it") })
 
     doLast {
-        if (defaultStrings.exists()) {
-            enStrings.parentFile.mkdirs()
-            enStrings.writeText(defaultStrings.readText())
-            println("Copied values/strings.xml → values-en/strings.xml")
+        files.forEach { name ->
+            val src = file("src/main/res/values/$name")
+            val dest = file("src/main/res/values-en/$name")
+
+            if (src.exists()) {
+                dest.parentFile.mkdirs()
+                dest.writeText(src.readText())
+                println("Copied values/$name → values-en/$name")
+            }
         }
     }
 }

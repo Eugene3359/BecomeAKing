@@ -155,7 +155,7 @@
                 android:contentDescription="@string/property" />
 
             <ImageButton
-                android:id="@+id/button_job"
+                android:id="@+id/button_work"
                 android:layout_width="0dp"
                 android:layout_height="68dp"
                 android:layout_weight="1"

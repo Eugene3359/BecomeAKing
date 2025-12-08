@@ -138,14 +138,14 @@ public class PersonageFragment extends BaseFragment {
         LinearLayout layoutHealthForAd = view.findViewById(R.id.layout_health_for_ad);
         layoutHealthForAd.setOnClickListener(v -> {
             personage.affectHealth(300);
-            ((GameActivity)requireActivity()).updateViews();
+            ((GameActivity)requireActivity()).updateHealth();
             AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
 
         LinearLayout layoutReputationForAd = view.findViewById(R.id.layout_reputation_for_ad);
         layoutReputationForAd.setOnClickListener(v -> {
             personage.affectReputation(500);
-            ((GameActivity)requireActivity()).updateViews();
+            ((GameActivity)requireActivity()).updateReputation();
             textViewReputation.setText(String.valueOf(personage.getReputation()));
             AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
@@ -153,7 +153,7 @@ public class PersonageFragment extends BaseFragment {
         LinearLayout layoutMoneyForAd = view.findViewById(R.id.layout_money_for_ad);
         layoutMoneyForAd.setOnClickListener(v -> {
             personage.affectMoney(1000);
-            ((GameActivity)requireActivity()).updateViews();
+            ((GameActivity)requireActivity()).updateMoney();
             AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
     }
