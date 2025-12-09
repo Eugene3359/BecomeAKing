@@ -8,7 +8,7 @@
         android:id="@+id/image_view_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/vec_grimshaven_region"
+        android:src="@drawable/region_grimshaven"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:contentDescription="@string/city" />

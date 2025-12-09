@@ -1,3 +1,11 @@
+# Become a King [0.5.8.12] - 09.12.2025
+
+### Additions
+- Added 3 new goods
+- Added an image for `Architect's Apprentice Work`
+
+---
+
 # Become a King [0.5.8.11] - 09.12.2025
 
 ### Additions

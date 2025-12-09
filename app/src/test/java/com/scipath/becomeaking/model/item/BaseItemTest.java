@@ -24,7 +24,7 @@ public class BaseItemTest {
     @BeforeEach
     void setUp() {
         Item.idCounter = 0;
-        item = new Item(R.string.steel_sword, R.drawable.img_steel_sword, 1000, new Stats()
+        item = new Item(R.string.steel_sword, R.drawable.weapon_steel_sword, 1000, new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
                 .add(Stat.CoinsPerDay, -20)
@@ -36,7 +36,7 @@ public class BaseItemTest {
     @Test
     void getId_returnsExpectedId() {
         assertEquals(0, item.getId());
-        assertEquals(1, new Item(R.string.two_blades, R.drawable.img_two_blades, 2000).getId());
+        assertEquals(1, new Item(R.string.two_blades, R.drawable.weapon_two_blades, 2000).getId());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BaseItemTest {
 
     @Test
     void getImageId_returnsExpectedId() {
-        assertEquals(R.drawable.img_steel_sword, item.getImageId());
+        assertEquals(R.drawable.weapon_steel_sword, item.getImageId());
     }
 
     @Test
@@ -86,8 +86,8 @@ public class BaseItemTest {
 
     @Test
     void setImageId_changesItemsImageId() {
-        item.setImageId(R.drawable.img_two_blades);
-        assertEquals(R.drawable.img_two_blades, item.getImageId());
+        item.setImageId(R.drawable.weapon_two_blades);
+        assertEquals(R.drawable.weapon_two_blades, item.getImageId());
     }
 
     @Test

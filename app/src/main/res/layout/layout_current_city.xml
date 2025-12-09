@@ -10,7 +10,7 @@
         android:id="@+id/image_view"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/img_items_image_placeholder"
+        android:src="@drawable/item_placeholder"
         android:contentDescription="@string/placeholder"/>
 
     <com.scipath.becomeaking.view.view.CustomLinearLayout

@@ -10,7 +10,7 @@
         android:id="@+id/image_view_1"
         android:layout_width="92dp"
         android:layout_height="92dp"
-        android:src="@drawable/img_items_image_placeholder"
+        android:src="@drawable/item_placeholder"
         android:contentDescription="@string/placeholder"/>
 
     <com.scipath.becomeaking.view.view.CustomLinearLayout
@@ -51,7 +51,7 @@
         android:id="@+id/image_view_2"
         android:layout_width="92dp"
         android:layout_height="92dp"
-        android:src="@drawable/img_items_image_placeholder"
+        android:src="@drawable/item_placeholder"
         android:contentDescription="@string/placeholder"/>
 
 </LinearLayout>

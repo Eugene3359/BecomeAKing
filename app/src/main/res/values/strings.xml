@@ -70,7 +70,6 @@
     <string name="title">Title</string>
     <string name="decorative_element">Decorative Element</string>
     <string name="day">Day</string>
-    <string name="none">None</string>
 
     <!-- Business -->
     <string name="enterprises">Enterprises</string>
@@ -181,8 +180,6 @@
     <!-- Goods -->
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
-    <string name="wheat">Wheat</string>
-    <string name="tools">Tools</string>
     <string name="no_good_left">No good left on the market</string>
     <string name="you_dont_have_this_good">You don\'t have this good for sell</string>
 

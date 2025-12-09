@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="none">Нету</string>
+
     <!-- Nutrition -->
     <string name="nutrition">Питание</string>
     <string name="bread">Хлеб</string>
@@ -51,7 +53,7 @@
     <string name="heavy_armor">Тяжелая броня</string>
     <string name="good_armor">Качественная броня</string>
     <string name="luxurious_armor">Роскошная броня</string>
-    <string name="king_armor">Броня короля</string>
+    <string name="kings_armor">Броня короля</string>
 
     <!-- Housing -->
     <string name="housing">Жилье</string>
@@ -76,7 +78,7 @@
     <string name="books">Книги</string>
     <string name="old_book">Старая книга</string>
     <string name="new_book">Новая книга</string>
-    <string name="science_book">Научная книга</string>
+    <string name="scientific_book">Научная книга</string>
     <string name="military_strategy_books">Книги о военной стратегии</string>
     <string name="small_library">Небольшая библиотека</string>
     <string name="medium_library">Средняя библиотека</string>

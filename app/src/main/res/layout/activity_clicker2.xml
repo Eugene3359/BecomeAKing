@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="17dp"
             app:isSquare="true"
-            android:src="@drawable/img_items_image_placeholder"
+            android:src="@drawable/item_placeholder"
             android:contentDescription="@string/placeholder"/>
 
         <LinearLayout

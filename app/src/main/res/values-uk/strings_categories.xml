@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="none">Немає</string>
+
     <!-- Nutrition -->
     <string name="nutrition">Харчування</string>
     <string name="bread">Хліб</string>
@@ -51,7 +53,7 @@
     <string name="heavy_armor">Важка броня</string>
     <string name="good_armor">Хороша броня</string>
     <string name="luxurious_armor">Розкішна броня</string>
-    <string name="king_armor">Королівська броня</string>
+    <string name="kings_armor">Королівська броня</string>
 
     <!-- Housing -->
     <string name="housing">Житло</string>
@@ -76,7 +78,7 @@
     <string name="books">Книги</string>
     <string name="old_book">Стара книга</string>
     <string name="new_book">Нова книга</string>
-    <string name="science_book">Наукова книга</string>
+    <string name="scientific_book">Наукова книга</string>
     <string name="military_strategy_books">Книги з військової стратегії</string>
     <string name="small_library">Мала бібліотека</string>
     <string name="medium_library">Середня бібліотека</string>

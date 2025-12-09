@@ -66,7 +66,6 @@
     <string name="title">Титул</string>
     <string name="decorative_element">Стріла</string>
     <string name="day">День</string>
-    <string name="none">Немає</string>
 
     <!-- Business -->
     <string name="enterprises">Підприємства</string>
@@ -170,8 +169,6 @@
     <!-- Goods -->
     <string name="buy">Купити</string>
     <string name="sell">Продати</string>
-    <string name="wheat">Пшениця</string>
-    <string name="tools">Інструменти</string>
     <string name="no_good_left">Товару не лишилось на ринку</string>
     <string name="you_dont_have_this_good">У вас немає цього товару на продаж</string>
 

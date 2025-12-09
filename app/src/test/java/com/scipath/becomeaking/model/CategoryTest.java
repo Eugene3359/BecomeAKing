@@ -33,13 +33,13 @@ public class CategoryTest {
         category = new Category(R.string.weapon, true);
         category.setBackgroundDrawableId(R.drawable.bg_metal_wall);
 
-        item1 = new SelectableItem(R.string.steel_sword, R.drawable.img_steel_sword, 1000);
+        item1 = new SelectableItem(R.string.steel_sword, R.drawable.weapon_steel_sword, 1000);
         item1.setStats(new Stats()
                 .add(Stat.Might, 40)
                 .add(Stat.ReputationPerDay, 20)
                 .add(Stat.CoinsPerDay, -20)
                 .add(Stat.StrengthRequired, 2));
-        item2 = new SelectableItem(R.string.two_blades, R.drawable.img_two_blades, 3000);
+        item2 = new SelectableItem(R.string.two_blades, R.drawable.weapon_two_blades, 3000);
         item2.setStats(new Stats()
                 .add(Stat.Might, 80)
                 .add(Stat.ReputationPerDay, 50)
@@ -182,7 +182,7 @@ public class CategoryTest {
 
     @Test
     void addItem_withValidItem_addsItemToItemsList() {
-        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
+        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.weapon_ancient_artifacts, 30000);
         category.addItem(item3);
         assertEquals(3, category.getItems().size());
         assertEquals(item3, category.getItem(2));
@@ -210,7 +210,7 @@ public class CategoryTest {
     @Test
     void setItems_withValidItemsList_changesItemsList() {
         List<IItem> items = new ArrayList<>();
-        items.add(new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000));
+        items.add(new SelectableItem(R.string.ancient_artifacts, R.drawable.weapon_ancient_artifacts, 30000));
         category.setItems(items);
         assertEquals(1, category.getItems().size());
         assertEquals(items, category.getItems());
@@ -239,7 +239,7 @@ public class CategoryTest {
     // Methods
     @Test
     void containsItem_checksIfCategoryContainsItem() {
-        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000);
+        IItem item3 = new SelectableItem(R.string.ancient_artifacts, R.drawable.weapon_ancient_artifacts, 30000);
         assertTrue(category.containsItem(item1));
         assertFalse(category.containsItem(item3));
     }

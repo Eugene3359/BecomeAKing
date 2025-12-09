@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="none">None</string>
+
     <!-- Nutrition -->
     <string name="nutrition">Nutrition</string>
     <string name="bread">Bread</string>
@@ -51,7 +53,7 @@
     <string name="heavy_armor">Heavy Armor</string>
     <string name="good_armor">Good Armor</string>
     <string name="luxurious_armor">Luxurious Armor</string>
-    <string name="king_armor">King\'s Armor</string>
+    <string name="kings_armor">King\'s Armor</string>
 
     <!-- Housing -->
     <string name="housing">Housing</string>
@@ -76,7 +78,7 @@
     <string name="books">Books</string>
     <string name="old_book">Old Book</string>
     <string name="new_book">New Book</string>
-    <string name="science_book">Science Book</string>
+    <string name="scientific_book">Science Book</string>
     <string name="military_strategy_books">Military Strategy Books</string>
     <string name="small_library">Small Library</string>
     <string name="medium_library">Medium Library</string>

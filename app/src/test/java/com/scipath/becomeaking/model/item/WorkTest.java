@@ -3,12 +3,8 @@ package com.scipath.becomeaking.model.item;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.Stats;
-import com.scipath.becomeaking.model.enums.InteractionResult;
-import com.scipath.becomeaking.model.enums.Sex;
 import com.scipath.becomeaking.model.enums.Stat;
-import com.scipath.becomeaking.model.enums.Title;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +17,7 @@ public class WorkTest {
 
     @BeforeEach
     void setUp() {
-        work = new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, new Stats()
+        work = new Work(R.string.craftsmans_apprentice, R.drawable.work_craftsmans_apprentice, new Stats()
                 .add(Stat.HealthImpact, -25)
                 .add(Stat.ReputationImpact, 150)
                 .add(Stat.MoneyPerClick, 15)

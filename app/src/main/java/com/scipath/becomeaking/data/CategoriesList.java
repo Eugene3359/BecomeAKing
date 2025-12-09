@@ -27,17 +27,17 @@ public class CategoriesList {
         categories.add(new Category(R.string.nutrition, false));
         categories.get(0).setBackgroundDrawableId(R.drawable.bg_food);
         categories.get(0)
-                .addItem(new Food(R.string.bread, R.drawable.img_bread))
-                .addItem(new Food(R.string.meat, R.drawable.img_meat))
-                .addItem(new Food(R.string.cheese, R.drawable.img_cheese))
-                .addItem(new Food(R.string.vegetables, R.drawable.img_vegetables))
-                .addItem(new Food(R.string.fruits, R.drawable.img_fruits))
-                .addItem(new Food(R.string.seafood, R.drawable.img_seafood))
-                .addItem(new Food(R.string.soup, R.drawable.img_soup))
-                .addItem(new Food(R.string.nourishing_food, R.drawable.img_nourishing_food))
-                .addItem(new Food(R.string.luxurious_food, R.drawable.img_luxury_food))
-                .addItem(new Food(R.string.aristocracy_food, R.drawable.img_nobleman_food))
-                .addItem(new Food(R.string.royal_food, R.drawable.img_royal_food));
+                .addItem(new Food(R.string.bread, R.drawable.food_bread))
+                .addItem(new Food(R.string.meat, R.drawable.food_meat))
+                .addItem(new Food(R.string.cheese, R.drawable.food_cheese))
+                .addItem(new Food(R.string.vegetables, R.drawable.food_vegetables))
+                .addItem(new Food(R.string.fruits, R.drawable.food_fruits))
+                .addItem(new Food(R.string.seafood, R.drawable.food_seafood))
+                .addItem(new Food(R.string.soup, R.drawable.food_soup))
+                .addItem(new Food(R.string.nourishing_food, R.drawable.food_nourishing))
+                .addItem(new Food(R.string.luxurious_food, R.drawable.food_luxury))
+                .addItem(new Food(R.string.aristocracy_food, R.drawable.food_nobleman))
+                .addItem(new Food(R.string.royal_food, R.drawable.food_royal));
         // Bread
         categories.get(0).getItem(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5)
@@ -100,19 +100,19 @@ public class CategoriesList {
         categories.get(1).setBackgroundDrawableId(R.drawable.bg_carpet);
         categories.get(1)
                 .addItem(new SelectableItem(R.string.poor_mans_clothes, isMale ?
-                        R.drawable.img_poor_man_clothes : R.drawable.img_poor_woman_clothes, 10))
+                        R.drawable.clothes_m_poor_man : R.drawable.clothes_w_poor_woman, 10))
                 .addItem(new SelectableItem(R.string.peasant_clothes, isMale ?
-                        R.drawable.img_peasant_clothes : R.drawable.img_peasant_clothes_w, 50))
+                        R.drawable.clothes_m_peasant : R.drawable.clothes_w_peasant, 50))
                 .addItem(new SelectableItem(R.string.citizen_clothes, isMale ?
-                        R.drawable.img_citizen_clothes_m : R.drawable.img_citizen_clothes_w, 120))
+                        R.drawable.clothes_m_citizen : R.drawable.clothes_w_citizen, 120))
                 .addItem(new SelectableItem(R.string.luxurious_clothes, isMale ?
-                        R.drawable.img_luxurious_clothes_m : R.drawable.img_luxurious_clothes_w, 450))
+                        R.drawable.clothes_m_luxurious : R.drawable.clothes_w_luxurious, 450))
                 .addItem(new SelectableItem(R.string.aristocracy_clothes, isMale ?
-                        R.drawable.img_aristocracy_clothes_m : R.drawable.img_aristocracy_clothes_w, 2000))
+                        R.drawable.clothes_m_aristocracy : R.drawable.clothes_w_aristocracy, 2000))
                 .addItem(new SelectableItem(R.string.earl_clothes, isMale ?
-                        R.drawable.img_earl_clothes_m : R.drawable.img_earl_clothes_w, 8000))
+                        R.drawable.clothes_m_earl : R.drawable.clothes_w_earl, 8000))
                 .addItem(new SelectableItem(R.string.royal_clothes, isMale ?
-                        R.drawable.img_royal_clothes_m : R.drawable.img_royal_clothes_w, 40000));
+                        R.drawable.clothes_m_royal : R.drawable.clothes_w_royal, 40000));
         // Poor man/woman clothes
         categories.get(1).getItem(0).setStats(new Stats()
                 .add(Stat.HealthPerDay, 5));
@@ -153,13 +153,13 @@ public class CategoriesList {
         categories.add(new Category(R.string.entertainment, true));
         categories.get(2).setBackgroundDrawableId(R.drawable.bg_games);
         categories.get(2)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_entertainment, 0))
-                .addItem(new SelectableItem(R.string.have_a_drink_at_the_tavern, R.drawable.img_tavern, 20))
-                .addItem(new SelectableItem(R.string.walk_around_the_fair, R.drawable.img_fair, 200))
-                .addItem(new SelectableItem(R.string.watch_the_tournament, R.drawable.img_tournament, 500))
-                .addItem(new SelectableItem(R.string.visit_the_theatre, R.drawable.img_theatre, 1200))
-                .addItem(new SelectableItem(R.string.organize_a_hunt, R.drawable.img_hunt, 4500))
-                .addItem(new SelectableItem(R.string.throw_a_feast, R.drawable.img_feast, 30000));
+                .addItem(new SelectableItem(R.string.none, R.drawable.entertainment_none, 0))
+                .addItem(new SelectableItem(R.string.have_a_drink_at_the_tavern, R.drawable.entertainment_tavern, 20))
+                .addItem(new SelectableItem(R.string.walk_around_the_fair, R.drawable.entertainment_fair, 200))
+                .addItem(new SelectableItem(R.string.watch_the_tournament, R.drawable.entertainment_tournament, 500))
+                .addItem(new SelectableItem(R.string.visit_the_theatre, R.drawable.entertainment_theatre, 1200))
+                .addItem(new SelectableItem(R.string.organize_a_hunt, R.drawable.entertainment_hunt, 4500))
+                .addItem(new SelectableItem(R.string.throw_a_feast, R.drawable.entertainment_feast, 30000));
         // None
         categories.get(2).setSelectedItem(categories.get(2).getItem(0));
         // Tavern
@@ -198,14 +198,14 @@ public class CategoriesList {
         categories.add(new Category(R.string.weapon, true));
         categories.get(3).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(3)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_weapon, 0))
-                .addItem(new SelectableItem(R.string.ax, R.drawable.img_ax, 100))
-                .addItem(new SelectableItem(R.string.rusty_sword, R.drawable.img_rusty_sword, 300))
-                .addItem(new SelectableItem(R.string.steel_sword, R.drawable.img_steel_sword, 1000))
-                .addItem(new SelectableItem(R.string.two_blades, R.drawable.img_two_blades, 3000))
-                .addItem(new SelectableItem(R.string.ax_and_shield, R.drawable.img_ax_and_shield, 8000))
-                .addItem(new SelectableItem(R.string.sword_and_shield, R.drawable.img_sword_and_shield, 15000))
-                .addItem(new SelectableItem(R.string.ancient_artifacts, R.drawable.img_ancient_artifacts, 30000));
+                .addItem(new SelectableItem(R.string.none, R.drawable.weapon_none, 0))
+                .addItem(new SelectableItem(R.string.ax, R.drawable.weapon_ax, 100))
+                .addItem(new SelectableItem(R.string.rusty_sword, R.drawable.weapon_rusty_sword, 300))
+                .addItem(new SelectableItem(R.string.steel_sword, R.drawable.weapon_steel_sword, 1000))
+                .addItem(new SelectableItem(R.string.two_blades, R.drawable.weapon_two_blades, 3000))
+                .addItem(new SelectableItem(R.string.ax_and_shield, R.drawable.weapon_ax_and_shield, 8000))
+                .addItem(new SelectableItem(R.string.sword_and_shield, R.drawable.weapon_sword_and_shield, 15000))
+                .addItem(new SelectableItem(R.string.ancient_artifacts, R.drawable.weapon_ancient_artifacts, 30000));
         // None
         categories.get(3).setSelectedItem(categories.get(3).getItem(0));
         // Ax
@@ -255,14 +255,14 @@ public class CategoriesList {
         categories.add(new Category(R.string.armor, true));
         categories.get(4).setBackgroundDrawableId(R.drawable.bg_metal_wall);
         categories.get(4)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_armor, 0))
-                .addItem(new SelectableItem(R.string.leather_armor, R.drawable.img_leather_armor, 100))
-                .addItem(new SelectableItem(R.string.rusty_armor, R.drawable.img_rusty_armor, 300))
-                .addItem(new SelectableItem(R.string.old_armor, R.drawable.img_old_armor, 1000))
-                .addItem(new SelectableItem(R.string.heavy_armor, R.drawable.img_heavy_armor, 3000))
-                .addItem(new SelectableItem(R.string.good_armor, R.drawable.img_good_armor, 8000))
-                .addItem(new SelectableItem(R.string.luxurious_armor, R.drawable.img_luxury_armor, 15000))
-                .addItem(new SelectableItem(R.string.king_armor, R.drawable.img_king_armor, 30000));
+                .addItem(new SelectableItem(R.string.none, R.drawable.armor_none, 0))
+                .addItem(new SelectableItem(R.string.leather_armor, R.drawable.armor_leather, 100))
+                .addItem(new SelectableItem(R.string.rusty_armor, R.drawable.armor_rusty, 300))
+                .addItem(new SelectableItem(R.string.old_armor, R.drawable.armor_old, 1000))
+                .addItem(new SelectableItem(R.string.heavy_armor, R.drawable.armor_heavy, 3000))
+                .addItem(new SelectableItem(R.string.good_armor, R.drawable.armor_good, 8000))
+                .addItem(new SelectableItem(R.string.luxurious_armor, R.drawable.armor_luxury, 15000))
+                .addItem(new SelectableItem(R.string.kings_armor, R.drawable.armor_kings, 30000));
         // None
         categories.get(4).setSelectedItem(categories.get(4).getItem(0));
         // Leather armor
@@ -311,14 +311,14 @@ public class CategoriesList {
         // House
         categories.add(new Category(R.string.housing, true));
         categories.get(5)
-                .addItem(new SelectableItem(R.string.tent, R.drawable.img_tent, 0))
-                .addItem(new SelectableItem(R.string.hut, R.drawable.img_hut, 1000))
-                .addItem(new SelectableItem(R.string.old_house, R.drawable.img_old_house, 3000))
-                .addItem(new SelectableItem(R.string.stone_house, R.drawable.img_stone_house, 6000))
-                .addItem(new SelectableItem(R.string.country_house, R.drawable.img_country_house, 12000))
-                .addItem(new SelectableItem(R.string.small_mansion, R.drawable.img_small_mansion, 30000))
-                .addItem(new SelectableItem(R.string.medium_mansion, R.drawable.img_medium_mansion, 45000))
-                .addItem(new SelectableItem(R.string.large_mansion, R.drawable.img_large_mansion, 60000));
+                .addItem(new SelectableItem(R.string.tent, R.drawable.housing_tent, 0))
+                .addItem(new SelectableItem(R.string.hut, R.drawable.housing_hut, 1000))
+                .addItem(new SelectableItem(R.string.old_house, R.drawable.housing_old_house, 3000))
+                .addItem(new SelectableItem(R.string.stone_house, R.drawable.housing_stone_house, 6000))
+                .addItem(new SelectableItem(R.string.country_house, R.drawable.housing_country_house, 12000))
+                .addItem(new SelectableItem(R.string.small_mansion, R.drawable.housing_small_mansion, 30000))
+                .addItem(new SelectableItem(R.string.medium_mansion, R.drawable.housing_medium_mansion, 45000))
+                .addItem(new SelectableItem(R.string.large_mansion, R.drawable.housing_large_mansion, 60000));
         // Tent
         categories.get(5).getItem(0).setStats(new Stats()
                 .add(Stat.MaxHealth, 100)
@@ -357,12 +357,12 @@ public class CategoriesList {
         // Furniture
         categories.add(new Category(R.string.furniture, true));
         categories.get(6)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_furniture, 0))
-                .addItem(new SelectableItem(R.string.old_furniture, R.drawable.img_old_furniture, 100))
-                .addItem(new SelectableItem(R.string.ordinary_furniture, R.drawable.img_ordinary_furniture, 500))
-                .addItem(new SelectableItem(R.string.new_furniture, R.drawable.img_new_furniture, 1500))
-                .addItem(new SelectableItem(R.string.luxurious_furniture, R.drawable.img_luxurious_furniture, 3000))
-                .addItem(new SelectableItem(R.string.royal_furniture, R.drawable.img_royal_furniture, 10000));
+                .addItem(new SelectableItem(R.string.none, R.drawable.furniture_none, 0))
+                .addItem(new SelectableItem(R.string.old_furniture, R.drawable.furniture_old, 100))
+                .addItem(new SelectableItem(R.string.ordinary_furniture, R.drawable.furniture_ordinary, 500))
+                .addItem(new SelectableItem(R.string.new_furniture, R.drawable.furniture_new, 1500))
+                .addItem(new SelectableItem(R.string.luxurious_furniture, R.drawable.furniture_luxurious, 3000))
+                .addItem(new SelectableItem(R.string.royal_furniture, R.drawable.furniture_royal, 10000));
         // None
         categories.get(6).setSelectedItem(categories.get(6).getItem(0));
         // Old furniture
@@ -396,14 +396,14 @@ public class CategoriesList {
         categories.add(new Category(R.string.books, false));
         categories.get(7).setBackgroundDrawableId(R.drawable.bg_books);
         categories.get(7)
-                .addItem(new Item(R.string.old_book, R.drawable.img_old_book, 200))
-                .addItem(new Item(R.string.new_book, R.drawable.img_new_book, 600))
-                .addItem(new Item(R.string.science_book, R.drawable.img_science_book, 1200))
-                .addItem(new Item(R.string.military_strategy_books, R.drawable.img_military_strategy_books, 8000))
-                .addItem(new Item(R.string.small_library, R.drawable.img_small_library, 12000))
-                .addItem(new Item(R.string.medium_library, R.drawable.img_medium_library, 20000))
-                .addItem(new Item(R.string.huge_library, R.drawable.img_huge_library, 50000))
-                .addItem(new Item(R.string.royal_library, R.drawable.img_royal_library, 100000));
+                .addItem(new Item(R.string.old_book, R.drawable.book_old, 200))
+                .addItem(new Item(R.string.new_book, R.drawable.book_new, 600))
+                .addItem(new Item(R.string.scientific_book, R.drawable.book_scientific, 1200))
+                .addItem(new Item(R.string.military_strategy_books, R.drawable.book_military_strategy, 8000))
+                .addItem(new Item(R.string.small_library, R.drawable.book_small_library, 12000))
+                .addItem(new Item(R.string.medium_library, R.drawable.book_medium_library, 20000))
+                .addItem(new Item(R.string.huge_library, R.drawable.book_huge_library, 50000))
+                .addItem(new Item(R.string.royal_library, R.drawable.book_royal_library, 100000));
         // Old book
         categories.get(7).getItem(0).setStats(new Stats()
                 .add(Stat.ReputationImpact, 10));
@@ -432,11 +432,11 @@ public class CategoriesList {
         categories.add(new Category(R.string.artworks, false));
         categories.get(8).setBackgroundDrawableId(R.drawable.bg_art);
         categories.get(8)
-                .addItem(new Item(R.string.workshop_figurine, R.drawable.img_figurine_from_the_workshop, 300))
-                .addItem(new Item(R.string.local_painting, R.drawable.img_local_painting, 800))
-                .addItem(new Item(R.string.painting_by_a_famous_artist, R.drawable.img_painting_by_a_famous_artist, 1500))
-                .addItem(new Item(R.string.marble_statue, R.drawable.img_marble_statue, 4000))
-                .addItem(new Item(R.string.private_museum, R.drawable.img_private_museum, 15000));
+                .addItem(new Item(R.string.workshop_figurine, R.drawable.artwork_figurine_from_the_workshop, 300))
+                .addItem(new Item(R.string.local_painting, R.drawable.artwork_local_painting, 800))
+                .addItem(new Item(R.string.painting_by_a_famous_artist, R.drawable.artwork_painting_by_a_famous_artist, 1500))
+                .addItem(new Item(R.string.marble_statue, R.drawable.artwork_marble_statue, 4000))
+                .addItem(new Item(R.string.private_museum, R.drawable.artwork_private_museum, 15000));
         // Figurine from the workshop
         categories.get(8).getItem(0).setStats(new Stats()
                 .add(Stat.ReputationImpact, 30));
@@ -458,13 +458,13 @@ public class CategoriesList {
         categories.add(new Category(R.string.horse, true));
         categories.get(9).setBackgroundDrawableId(R.drawable.bg_horses);
         categories.get(9)
-                .addItem(new SelectableItem(R.string.none, R.drawable.img_no_horse, 0))
-                .addItem(new SelectableItem(R.string.lame_horse, R.drawable.img_lame_horse, 1500))
-                .addItem(new SelectableItem(R.string.young_horse, R.drawable.img_young_horse, 5000))
-                .addItem(new SelectableItem(R.string.fast_horse, R.drawable.img_fast_horse, 10000))
-                .addItem(new SelectableItem(R.string.light_armored_horse, R.drawable.img_light_armored_horse, 20000))
-                .addItem(new SelectableItem(R.string.medium_armored_horse, R.drawable.img_medium_armored_horse, 30000))
-                .addItem(new SelectableItem(R.string.heavy_armored_horse, R.drawable.img_heavy_armored_horse, 50000));
+                .addItem(new SelectableItem(R.string.none, R.drawable.horse_none, 0))
+                .addItem(new SelectableItem(R.string.lame_horse, R.drawable.horse_lame, 1500))
+                .addItem(new SelectableItem(R.string.young_horse, R.drawable.horse_young, 5000))
+                .addItem(new SelectableItem(R.string.fast_horse, R.drawable.horse_fast, 10000))
+                .addItem(new SelectableItem(R.string.light_armored_horse, R.drawable.horse_light_armored, 20000))
+                .addItem(new SelectableItem(R.string.medium_armored_horse, R.drawable.horse_medium_armored, 30000))
+                .addItem(new SelectableItem(R.string.heavy_armored_horse, R.drawable.horse_heavy_armored, 50000));
         // None
         categories.get(9).setSelectedItem(categories.get(9).getItem(0));
         // Lame horse
@@ -502,11 +502,11 @@ public class CategoriesList {
         // Work in village
         categories.add(new Category(R.string.work_in_a_village, false));
         categories.get(10)
-                .addItem(new Work(R.string.grazing_animals, R.drawable.img_to_graze_animals, 5))
-                .addItem(new Work(R.string.harvesting, R.drawable.img_harvesting, 10))
-                .addItem(new Work(R.string.logging, R.drawable.img_logging, 15))
-                .addItem(new Work(R.string.work_in_a_mine, R.drawable.img_work_in_a_mine, 20))
-                .addItem(new Work(R.string.unloading_ships, R.drawable.img_unloading_ships, 25));
+                .addItem(new Work(R.string.grazing_animals, R.drawable.work_to_graze_animals, 5))
+                .addItem(new Work(R.string.harvesting, R.drawable.work_harvesting, 10))
+                .addItem(new Work(R.string.logging, R.drawable.work_logging, 15))
+                .addItem(new Work(R.string.work_in_a_mine, R.drawable.work_in_a_mine, 20))
+                .addItem(new Work(R.string.unloading_ships, R.drawable.work_unloading_ships, 25));
         // To graze animals
         categories.get(10).getItem(0).setStats(new Stats()
                 .add(Stat.HealthImpact, -20)
@@ -541,12 +541,12 @@ public class CategoriesList {
         // Work in town
         categories.add(new Category(R.string.work_in_a_town, false));
         categories.get(11)
-                .addItem(new Work(R.string.cart_repair, R.drawable.img_cart_repair, 25))
-                .addItem(new Work(R.string.architects_apprentice, R.drawable.bg_placeholder, 30))
-                .addItem(new Work(R.string.weavers_apprentice, R.drawable.img_weavers_apprentice, 35))
-                .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.img_craftsmans_apprentice, 40))
-                .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.img_blacksmiths_apprentice, 45))
-                .addItem(new Work(R.string.lords_courtier, R.drawable.img_lords_courtier, 50));
+                .addItem(new Work(R.string.cart_repair, R.drawable.work_cart_repair, 25))
+                .addItem(new Work(R.string.architects_apprentice, R.drawable.work_architects_apprentice, 30))
+                .addItem(new Work(R.string.weavers_apprentice, R.drawable.work_weavers_apprentice, 35))
+                .addItem(new Work(R.string.craftsmans_apprentice, R.drawable.work_craftsmans_apprentice, 40))
+                .addItem(new Work(R.string.blacksmiths_apprentice, R.drawable.work_blacksmiths_apprentice, 45))
+                .addItem(new Work(R.string.lords_courtier, R.drawable.work_lords_courtier, 50));
         // Cart repair
         categories.get(11).getItem(0).setStats(new Stats()
                 .add(Stat.HealthImpact, -20)
@@ -587,7 +587,7 @@ public class CategoriesList {
 
         // Caravan protection
         categories.add(new Category(R.string.caravan_protection, false));
-        Work work = new Work(R.string.caravan_protection, R.drawable.img_caravan_protection, 0);
+        Work work = new Work(R.string.caravan_protection, R.drawable.work_caravan_protection, 0);
         work.setState(Work.State.NotSelected);
         work.setEnergyConsumption(2);
         work.setStats(new Stats()
@@ -600,7 +600,7 @@ public class CategoriesList {
 
         // Mercenary in the army
         categories.add(new Category(R.string.mercenary_in_the_army, false));
-        work = new Work(R.string.mercenary_in_the_army, R.drawable.img_mercenary_in_the_army, 0);
+        work = new Work(R.string.mercenary_in_the_army, R.drawable.work_mercenary_in_the_army, 0);
         work.setState(Work.State.NotSelected);
         work.setEnergyConsumption(2);
         work.setStats(new Stats()

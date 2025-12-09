@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/img_items_image_placeholder"
+            android:src="@drawable/item_placeholder"
             android:adjustViewBounds="true"
             android:contentDescription="@string/placeholder"/>
 

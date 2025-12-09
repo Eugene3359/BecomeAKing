@@ -47,7 +47,7 @@ public class FinanceMenuElementLayout extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         init(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FinanceMenuElementLayout);
-        setImageResource(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_src, R.drawable.img_items_image_placeholder));
+        setImageResource(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_src, R.drawable.item_placeholder));
         setText(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_text, R.string.placeholder), context);
         setButtonText(typedArray.getResourceId(R.styleable.FinanceMenuElementLayout_buttonText, R.string.placeholder));
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wheat">Пшениця</string>
+    <string name="tools">Інструменти</string>
+    <string name="spices">Спеції</string>
+    <string name="fish">Риба</string>
+    <string name="jewelry">Прикраси</string>
+
+</resources>

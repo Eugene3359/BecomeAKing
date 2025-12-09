@@ -11,7 +11,7 @@
         android:id="@+id/image_view_good"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/img_items_image_placeholder"
+        android:src="@drawable/item_placeholder"
         android:contentDescription="@string/placeholder" />
 
     <LinearLayout

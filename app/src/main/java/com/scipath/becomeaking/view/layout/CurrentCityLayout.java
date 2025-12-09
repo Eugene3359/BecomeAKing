@@ -53,7 +53,7 @@ public class CurrentCityLayout extends LinearLayout {
         init(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CurrentCityLayout);
         setText(typedArray.getResourceId(R.styleable.CurrentCityLayout_text, R.string.placeholder), context);
-        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.img_items_image_placeholder));
+        setImageResource(typedArray.getResourceId(R.styleable.CurrentCityLayout_src, R.drawable.item_placeholder));
     }
 
     public void bind(LifecycleOwner owner) {
