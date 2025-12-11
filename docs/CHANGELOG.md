@@ -1,3 +1,10 @@
+# Become a King [0.5.9] - 11.12.2025
+
+### Additions
+- Added 13 new goods
+
+---
+
 # Become a King [0.5.8.12] - 09.12.2025
 
 ### Additions

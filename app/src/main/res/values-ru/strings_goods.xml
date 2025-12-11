@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wheat">Пшеница</string>
-    <string name="tools">Инструменты</string>
-    <string name="spices">Специи</string>
     <string name="fish">Рыба</string>
+    <string name="spices">Специи</string>
+    <string name="honey">Мёд</string>
+    <string name="beer">Пиво</string>
+    <string name="vine">Вино</string>
+    <string name="wool">Шерсть</string>
+    <string name="velvet">Бархат</string>
+    <string name="silk">Шёлк</string>
+    <string name="dishes">Посуда</string>
     <string name="jewelry">Украшения</string>
+    <string name="building_materials">Стройматериалы</string>
+    <string name="tools">Инструменты</string>
+    <string name="medicine">Лекарства</string>
 
 </resources>

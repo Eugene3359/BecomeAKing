@@ -20,19 +20,19 @@ public class Good implements IGood {
     // Constructors
     public Good(GoodType type, int amount) {
         this.type = type;
-        this.amount = amount;
+        setAmount(amount);
     }
 
     public Good(GoodType type, int minPrice, int maxPrice) {
         this.type = type;
-        this.minPrice = minPrice;
-        this.maxPrice = maxPrice;
+        setMinPrice(minPrice);
+        setMaxPrice(maxPrice);
         recalculatePrices();
     }
 
     public Good(GoodType type, int amount, int minPrice, int maxPrice) {
         this(type, minPrice, maxPrice);
-        this.amount = amount;
+        setAmount(amount);
     }
 
 
@@ -84,12 +84,12 @@ public class Good implements IGood {
 
     @Override
     public void setMinPrice(int price) {
-        this.minPrice = price;
+        minPrice = Math.max(price, 0);
     }
 
     @Override
     public void setMaxPrice(int price) {
-        this.maxPrice = price;
+        maxPrice = Math.max(price, 0);
     }
 
 

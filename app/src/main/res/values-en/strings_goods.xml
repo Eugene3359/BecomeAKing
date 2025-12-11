@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="wheat">Wheat</string>
-    <string name="tools">Tools</string>
-    <string name="spices">Spices</string>
     <string name="fish">Fish</string>
+    <string name="spices">Spices</string>
+    <string name="honey">Honey</string>
+    <string name="beer">Beer</string>
+    <string name="vine">Vine</string>
+    <string name="wool">Wool</string>
+    <string name="velvet">Velvet</string>
+    <string name="silk">Silk</string>
+    <string name="dishes">Dishes</string>
     <string name="jewelry">Jewelry</string>
+    <string name="building_materials">Building Materials</string>
+    <string name="tools">Tools</string>
+    <string name="medicine">Medicine</string>
 
 </resources>
