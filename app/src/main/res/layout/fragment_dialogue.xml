@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.dialogue.DialogueFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent" >
+
+        <TextView
+            style="@style/DialogueStrip" />
+
+        <LinearLayout
+            android:id="@+id/layout_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="2.5dp"
+            android:paddingHorizontal="20dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/dialogue_light_brown" >
+
+            <LinearLayout
+                android:id="@+id/layout_header"
+                style="@style/DialogueHeaderContainer" >
+
+                <ImageView
+                    android:contentDescription="@string/decorative_element"
+                    style="@style/DialogueCoinImage" />
+
+                <TextView
+                    android:id="@+id/text_header"
+                    style="@style/DialogueText.Header" />
+
+                <ImageView
+                    android:contentDescription="@string/decorative_element"
+                    style="@style/DialogueCoinImage" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/DialogueStrip" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -86,6 +86,15 @@
     <color name="goods_button_green">#FF427521</color>
     <color name="goods_button_red">#FF732114</color>
 
+    <!-- Bank Fragment -->
+    <color name="bank_brown">#311F09</color>
+    <color name="bank_yellow">#B08C54</color>
+    <color name="bank_text_red">#652413</color>
+    <color name="bank_text_green">#274E16</color>
+    <color name="bank_button1">#2B1748</color>
+    <color name="bank_button2">#371964</color>
+    <color name="slider_brown">#271400</color>
+
 </resources>
 
     <!--

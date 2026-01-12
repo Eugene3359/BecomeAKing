@@ -27,7 +27,7 @@ import com.scipath.becomeaking.model.item.Item;
 import com.scipath.becomeaking.model.item.SelectableItem;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.view.CustomLinearLayout;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 
 import java.util.List;
 
@@ -63,15 +63,15 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         }
 
         public TextView getNameView() {
-            return layout.findViewById(R.id.text_view_item);
+            return layout.findViewById(R.id.text_item);
         }
 
         public TextView getRequirementView() {
-            return layout.findViewById(R.id.text_view_requirement);
+            return layout.findViewById(R.id.text_requirement);
         }
 
         public ImageView getImageView() {
-            return layout.findViewById(R.id.image_view_item);
+            return layout.findViewById(R.id.image_item);
         }
 
         public RecyclerView getStatsView() {
@@ -137,18 +137,18 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         viewHolder.getNameView().setText(item.getNameId());
 
-        TextView textViewRequirement = viewHolder.getRequirementView();
+        TextView textRequirement = viewHolder.getRequirementView();
         int strengthRequired = item.getStats().get(Stat.StrengthRequired);
         int reputationRequired = item.getStats().get(Stat.ReputationRequired);
         if (strengthRequired != 0 || reputationRequired != 0) {
             String requirement = (strengthRequired != 0) ?
                     Stat.StrengthRequired.getDescription(strengthRequired, context) :
                     Stat.ReputationRequired.getDescription(reputationRequired, context);
-            textViewRequirement.setVisibility(View.VISIBLE);
-            textViewRequirement.setText(requirement);
+            textRequirement.setVisibility(View.VISIBLE);
+            textRequirement.setText(requirement);
         } else {
-            textViewRequirement.setVisibility(View.GONE);
-            textViewRequirement.setText("");
+            textRequirement.setVisibility(View.GONE);
+            textRequirement.setText("");
         }
 
         viewHolder.getImageView().setImageResource(item.getImageId());
@@ -164,10 +164,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 callback.call(item);
             } else {
                 DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                        .setHeader(R.string.notification)
-                        .setMessage(interactionResult.messageId)
-                        .setButton1(R.string.got_it, null)
-                        .build();
+                        .addHeader(R.string.notification)
+                        .addMessage(interactionResult.messageId)
+                        .addButton(R.string.got_it, null)
+                        .getDialogue();
                 dialogueFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
             }
         });

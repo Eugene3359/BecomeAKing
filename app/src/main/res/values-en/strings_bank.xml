@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="take_a_loan">Take a loan</string>
+
+    <string name="take">Take</string>
+    <string name="contract">Contract</string>
+    <string name="your_limit">Your limit %1d/%2d</string>
+    <string name="loan_contract_terms">If you fail to repay the loan, your property may be seized and you may be sold into slavery.</string>
+    <string name="sign">Sign</string>
+
+    <string name="repay">Repay</string>
+    <string name="loan_repayment">Loan repayment</string>
+    <string name="loan_amount">Loan amount %d</string>
+    <string name="loan_repayment_instructions">Select the amount you want to contribute to repay the loan.</string>
+
+</resources>

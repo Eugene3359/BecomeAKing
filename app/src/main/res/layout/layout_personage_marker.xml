@@ -5,7 +5,7 @@
     android:layout_height="wrap_content" >
 
     <ImageView
-        android:id="@+id/image_view_personage"
+        android:id="@+id/image_personage"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
         android:src="@drawable/marker_personage_right"

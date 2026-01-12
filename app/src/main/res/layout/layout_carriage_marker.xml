@@ -5,7 +5,7 @@
     android:layout_height="wrap_content" >
 
     <ImageView
-        android:id="@+id/image_view_carriage"
+        android:id="@+id/image_carriage"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:src="@drawable/marker_carriage_right"

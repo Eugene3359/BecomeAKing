@@ -3,6 +3,7 @@ package com.scipath.becomeaking.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -13,23 +14,13 @@ import android.graphics.drawable.LayerDrawable;
 
 public class DrawableUtility {
 
-    /**
-     * The method makes Drawable tiled
-     *
-     * @param drawable  The Drawable that must be tiled
-     * @return          The tiled Drawable
-     */
-    public static Drawable createTiledDrawable(Context context, Drawable drawable) {
+    public static BitmapDrawable makeBitmapDrawable(Drawable drawable, Context context) {
         if (drawable == null) return null;
-
-        // If drawable is color - return drawable
-        if (drawable instanceof ColorDrawable) return drawable;
 
         BitmapDrawable bitmapDrawable;
         if (drawable instanceof BitmapDrawable) {
             bitmapDrawable = (BitmapDrawable) drawable;
         } else {
-            // Convert any drawable to a bitmap first
             int width = drawable.getIntrinsicWidth() > 0 ? drawable.getIntrinsicWidth() : 1;
             int height = drawable.getIntrinsicHeight() > 0 ? drawable.getIntrinsicHeight() : 1;
             Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
@@ -39,54 +30,50 @@ public class DrawableUtility {
             bitmapDrawable = new BitmapDrawable(context.getResources(), bitmap);
         }
 
-        // Make bitmapDrawable repeatable
-        bitmapDrawable.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-
         return bitmapDrawable;
     }
 
-
-    /**
-     * The method creates Drawable with set borderColor and backgroundColor
-     *
-     * @param borderColor       The int that contains colors id
-     * @param backgroundColor   The int that contains colors id
-     * @return                  The Drawable with set borderColor and backgroundColor
-     */
-    public static Drawable createBorderDrawable(Context context, int borderColor, int backgroundColor) {
-        // Create a GradientDrawable for the border
+    public static GradientDrawable makeGradientDrawable(int backgroundColor, int borderColor, float cornerRadius, Context context) {
         GradientDrawable drawable = new GradientDrawable();
-        // Set shape
         drawable.setShape(GradientDrawable.RECTANGLE);
-        // Set border
-        if (borderColor != 0) {
-            // Convert 2dp to px
-            int width = (int) (2 * context.getResources().getDisplayMetrics().density);
-            // Set 2dp border
-            drawable.setStroke(width, borderColor);
-        }
-        // Set background color
         drawable.setColor(backgroundColor);
-
+        if (borderColor != Color.TRANSPARENT) {
+            drawable.setStroke(dp(2, context), borderColor);
+        }
+        drawable.setCornerRadius(cornerRadius);
         return drawable;
     }
 
+    public static Drawable makeDrawableTiled(Drawable drawable, Context context) {
+        if (drawable == null) return null;
+        if (drawable instanceof ColorDrawable) return drawable;
 
-    /**
-     * The method creates Drawable with set borderColor, backgroundColor and backgroundDrawable
-     *
-     * @param borderColor           The int that contains colors id
-     * @param backgroundColor       The int that contains color id
-     * @param backgroundDrawable    The Drawable that must be used as background
-     * @return                      The Drawable with set borderColor, backgroundColor and backgroundDrawable
-     */
-    public static Drawable createBorderDrawable(Context context, int borderColor, int backgroundColor, Drawable backgroundDrawable) {
-        // Create a GradientDrawable with set border color
-        GradientDrawable borderDrawable = (GradientDrawable) createBorderDrawable(context, borderColor, backgroundColor);
+        BitmapDrawable bitmapDrawable = makeBitmapDrawable(drawable, context);
+        bitmapDrawable.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        return bitmapDrawable;
+    }
 
-        // Combine backgroundDrawable and borderDrawable in LayerDrawable
-        Drawable[] layers = new Drawable[]{backgroundDrawable, borderDrawable};
+    public static Drawable applyCornerRadius(Drawable drawable, float radius, Context context) {
+        if (drawable == null) return null;
+        if (radius == 0f) return drawable;
 
+        // TODO: BUGFIX
+        /*
+        if (drawable instanceof BitmapDrawable) {
+            RoundedBitmapDrawable rounded = RoundedBitmapDrawableFactory
+                    .create(context.getResources(), ((BitmapDrawable)drawable).getBitmap());
+            rounded.setCornerRadius(radius);
+            return rounded;
+        }*/
+        return drawable;
+    }
+
+    public static Drawable mergeLayers(Drawable backgroundDrawable, GradientDrawable gradientDrawable, Context context) {
+        Drawable[] layers = new Drawable[] { backgroundDrawable, gradientDrawable };
         return new LayerDrawable(layers);
+    }
+
+    private static int dp(float value, Context context) {
+        return (int) (value * context.getResources().getDisplayMetrics().density);
     }
 }

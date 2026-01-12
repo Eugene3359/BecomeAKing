@@ -10,6 +10,7 @@
     <!-- Dialogue -->
     <string name="notification">Notification</string>
     <string name="got_it">Got it</string>
+    <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="travel">Travel</string>
@@ -177,7 +178,7 @@
     <string name="workshops">Workshops</string>
     <string name="look">Look</string>
 
-    <!-- Goods -->
+    <!-- Market Fragment -->
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
     <string name="no_good_left">No good left on the market</string>

@@ -13,7 +13,7 @@ import com.scipath.becomeaking.model.enums.Direction;
 
 public class CarriageMarkerLayout extends LinearLayout {
 
-    ImageView imageViewCarriage;
+    ImageView imageCarriage;
 
 
     public CarriageMarkerLayout(Context context) {
@@ -33,14 +33,14 @@ public class CarriageMarkerLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_carriage_marker, this);
-        imageViewCarriage = findViewById(R.id.image_view_carriage);
+        imageCarriage = findViewById(R.id.image_carriage);
     }
 
     public void setDirection(Direction direction) {
         if (direction == Direction.Left) {
-            imageViewCarriage.setImageResource(R.drawable.marker_carriage_left);
+            imageCarriage.setImageResource(R.drawable.marker_carriage_left);
         } else {
-            imageViewCarriage.setImageResource(R.drawable.marker_carriage_right);
+            imageCarriage.setImageResource(R.drawable.marker_carriage_right);
         }
     }
 }

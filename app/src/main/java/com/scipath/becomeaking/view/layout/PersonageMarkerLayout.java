@@ -13,7 +13,7 @@ import com.scipath.becomeaking.model.enums.Direction;
 
 public class PersonageMarkerLayout extends LinearLayout {
 
-    ImageView imageViewPersonage;
+    ImageView imagePersonage;
 
 
     public PersonageMarkerLayout(Context context) {
@@ -33,14 +33,14 @@ public class PersonageMarkerLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_personage_marker, this);
-        imageViewPersonage = findViewById(R.id.image_view_personage);
+        imagePersonage = findViewById(R.id.image_personage);
     }
 
     public void setDirection(Direction direction) {
         if (direction == Direction.Left) {
-            imageViewPersonage.setImageResource(R.drawable.marker_personage_left);
+            imagePersonage.setImageResource(R.drawable.marker_personage_left);
         } else {
-            imageViewPersonage.setImageResource(R.drawable.marker_personage_right);
+            imagePersonage.setImageResource(R.drawable.marker_personage_right);
         }
     }
 }

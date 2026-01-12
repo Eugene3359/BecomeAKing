@@ -6,6 +6,7 @@
     <!-- Dialogue -->
     <string name="notification">Сповіщення</string>
     <string name="got_it">Зрозуміло</string>
+    <string name="cancel">Відмінити</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="travel">Подорожувати</string>
@@ -166,7 +167,7 @@
     <string name="workshops">Майстерні</string>
     <string name="look">Дивитись</string>
 
-    <!-- Goods -->
+    <!-- Market Fragment -->
     <string name="buy">Купити</string>
     <string name="sell">Продати</string>
     <string name="no_good_left">Товару не лишилось на ринку</string>

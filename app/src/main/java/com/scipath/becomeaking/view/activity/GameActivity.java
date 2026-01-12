@@ -21,9 +21,9 @@ public class GameActivity extends BaseActivity {
     private Personage personage;
 
     // Views
-    private TextView textViewHealth;
-    private TextView textViewReputation;
-    private TextView textViewMoney;
+    private TextView textHealth;
+    private TextView textReputation;
+    private TextView textMoney;
     private ImageButton buttonActive;
     private ImageButton buttonPersonage;
     private ImageButton buttonShop;
@@ -45,9 +45,9 @@ public class GameActivity extends BaseActivity {
         personage = BecomeAKing.getInstance().getPersonage();
 
         // Views
-        textViewHealth = findViewById(R.id.text_view_health);
-        textViewReputation = findViewById(R.id.text_view_reputation);
-        textViewMoney = findViewById(R.id.text_view_money);
+        textHealth = findViewById(R.id.text_health);
+        textReputation = findViewById(R.id.text_reputation);
+        textMoney = findViewById(R.id.text_money);
         updateAll();
 
         // Menu Buttons
@@ -132,15 +132,15 @@ public class GameActivity extends BaseActivity {
 
 
     public void updateHealth() {
-        textViewHealth.setText(String.valueOf(personage.getHealth()));
+        textHealth.setText(String.valueOf(personage.getHealth()));
     }
 
     public void updateReputation() {
-        textViewReputation.setText(String.valueOf(personage.getReputation()));
+        textReputation.setText(String.valueOf(personage.getReputation()));
     }
 
     public void updateMoney() {
-        textViewMoney.setText(String.valueOf(personage.getMoney()));
+        textMoney.setText(String.valueOf(personage.getMoney()));
     }
 
     public void updateAll() {

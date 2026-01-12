@@ -13,6 +13,7 @@ public class GameState implements Serializable {
     public Personage personage;
     public ArrayList<ICategory> categories;
     public Goods goodsStorage;
+    public Bank bank;
     public int cityId;
     public int day;
 
@@ -21,6 +22,7 @@ public class GameState implements Serializable {
         this.personage = personage;
         this.categories = categories;
         this.goodsStorage = goodsStorage;
+        this.bank = Bank.getInstance();
         this.cityId = new Random().nextInt(CitiesList.getCities().size());
         this.day = 1;
     }

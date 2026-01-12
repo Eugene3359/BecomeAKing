@@ -55,11 +55,11 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
         }
 
         public ImageView getStatImageView() {
-            return layout.findViewById(R.id.image_view_stat);
+            return layout.findViewById(R.id.image_stat);
         }
 
         public TextView getStatTextView() {
-            return layout.findViewById(R.id.text_view_stat);
+            return layout.findViewById(R.id.text_stat);
         }
     }
 

@@ -26,7 +26,7 @@ import com.scipath.becomeaking.model.enums.InteractionResult;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.view.CustomLinearLayout;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 import com.scipath.becomeaking.view.fragment.ItemsFragment;
 
 import java.util.ArrayList;
@@ -61,15 +61,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         }
 
         public TextView getNameView() {
-            return layout.findViewById(R.id.text_view_name);
+            return layout.findViewById(R.id.text_name);
         }
 
         public TextView getRequirementView() {
-            return layout.findViewById(R.id.text_view_requirement);
+            return layout.findViewById(R.id.text_requirement);
         }
 
         public ImageView getImageView() {
-            return layout.findViewById(R.id.image_view_category);
+            return layout.findViewById(R.id.image_category);
         }
 
         public CustomLinearLayout getStatsLayout() {
@@ -175,10 +175,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             InteractionResult interactionResult = BecomeAKing.getInstance().getPersonage().interact(work);
             if (interactionResult != InteractionResult.Successful) {
                 DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                        .setHeader(R.string.notification)
-                        .setMessage(interactionResult.messageId)
-                        .setButton1(R.string.got_it, null)
-                        .build();
+                        .addHeader(R.string.notification)
+                        .addMessage(interactionResult.messageId)
+                        .addButton(R.string.got_it, null)
+                        .getDialogue();
                 dialogueFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "dialogue");
             }
         });

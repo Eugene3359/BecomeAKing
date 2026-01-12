@@ -8,7 +8,7 @@
     android:layout_marginBottom="10dp" >
 
     <ImageView
-        android:id="@+id/image_view_good"
+        android:id="@+id/image_good"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/item_placeholder"
@@ -32,7 +32,7 @@
             android:gravity="center_vertical" >
 
             <TextView
-                android:id="@+id/text_view_name1"
+                android:id="@+id/text_name1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -42,7 +42,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/text_view_buy_price"
+                android:id="@+id/text_buy_price"
                 android:layout_width="40dp"
                 android:layout_height="18dp"
                 android:background="@color/goods_price"
@@ -85,7 +85,7 @@
             android:gravity="center_vertical" >
 
             <TextView
-                android:id="@+id/text_view_name2"
+                android:id="@+id/text_name2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/text_view_sell_price"
+                android:id="@+id/text_sell_price"
                 android:layout_width="40dp"
                 android:layout_height="18dp"
                 android:background="@color/goods_price"

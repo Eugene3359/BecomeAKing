@@ -1,4 +1,4 @@
-package com.scipath.becomeaking.view.fragment;
+package com.scipath.becomeaking.view.dialogue;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,6 +26,7 @@ public class TravelDialogueFragment extends DialogFragment {
     public static class Builder {
         private ICity city;
         private Callback callback;
+
 
         public TravelDialogueFragment.Builder setCity(ICity city) {
             this.city = city;
@@ -60,12 +61,12 @@ public class TravelDialogueFragment extends DialogFragment {
         if (city == null) return view;
 
         // Views
-        TextView textViewCityName = view.findViewById(R.id.text_view_city_name);
-        textViewCityName.setText(city.getNameId());
-        TextView textViewCityDescription = view.findViewById(R.id.text_view_city_description);
-        textViewCityDescription.setText(city.getDescriptionId());
-        ImageView imageViewCity = view.findViewById(R.id.image_view_city);
-        imageViewCity.setImageResource(city.getImageId());
+        TextView textCityName = view.findViewById(R.id.text_city_name);
+        textCityName.setText(city.getNameId());
+        TextView textCityDescription = view.findViewById(R.id.text_city_description);
+        textCityDescription.setText(city.getDescriptionId());
+        ImageView imageCity = view.findViewById(R.id.image_city);
+        imageCity.setImageResource(city.getImageId());
 
         // Buttons
         Button buttonBack = view.findViewById(R.id.button_back);

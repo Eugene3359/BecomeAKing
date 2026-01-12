@@ -1,10 +1,13 @@
 package com.scipath.becomeaking.view.view;
 
-import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
-import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.applyCornerRadius;
+import static com.scipath.becomeaking.util.DrawableUtility.makeGradientDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeDrawableTiled;
+import static com.scipath.becomeaking.util.DrawableUtility.mergeLayers;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
@@ -17,10 +20,20 @@ import com.scipath.becomeaking.R;
 public class CustomButton extends AppCompatButton {
 
     // Constructor
+    public CustomButton(Context context) {
+        super(context);
+    }
+
     public CustomButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
+
+    public CustomButton(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
+
 
     // Custom attributes initialization
     private void init(Context context, AttributeSet attrs) {
@@ -28,8 +41,9 @@ public class CustomButton extends AppCompatButton {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomButton);
 
-        int borderColor = typedArray.getColor(R.styleable.CustomButton_borderColor, 0x00000000); // Default: null
-        int backgroundColor = typedArray.getColor(R.styleable.CustomButton_backgroundColor, 0x00000000); // Default: null
+        int borderColor = typedArray.getColor(R.styleable.CustomButton_borderColor, Color.TRANSPARENT); // Default: TRANSPARENT
+        float cornerRadius = typedArray.getDimension(R.styleable.CustomButton_cornerRadius, 0f); // Default: no rounding
+        int backgroundColor = typedArray.getColor(R.styleable.CustomButton_backgroundColor, Color.TRANSPARENT); // Default: TRANSPARENT
         int backgroundColorPressed = typedArray.getColor(R.styleable.CustomButton_backgroundColorPressed, backgroundColor); // Default: backgroundColor
         Drawable backgroundDrawable = typedArray.getDrawable(R.styleable.CustomButton_backgroundDrawable);
         Drawable backgroundDrawablePressed = typedArray.getDrawable(R.styleable.CustomButton_backgroundDrawablePressed);
@@ -37,24 +51,29 @@ public class CustomButton extends AppCompatButton {
 
         typedArray.recycle();
 
-        // Make drawables repeatable
         if (backgroundDrawable != null) {
-            backgroundDrawable = createTiledDrawable(context, backgroundDrawable);
+            backgroundDrawable = makeDrawableTiled(backgroundDrawable, context);
+            backgroundDrawable = applyCornerRadius(backgroundDrawable, cornerRadius, context);
         }
         if (backgroundDrawablePressed != null) {
-            backgroundDrawablePressed = createTiledDrawable(context, backgroundDrawablePressed);
+            backgroundDrawablePressed = makeDrawableTiled(backgroundDrawablePressed, context);
+            backgroundDrawablePressed = applyCornerRadius(backgroundDrawablePressed, cornerRadius, context);
         }
 
-        // Create default and pressed states
-        Drawable defaultBackground = createBorderDrawable(context, borderColor, backgroundColor, backgroundDrawable);
-        Drawable pressedBackground = createBorderDrawable(context, borderColor, backgroundColorPressed, backgroundDrawablePressed);
+        backgroundDrawable = mergeLayers(
+                backgroundDrawable,
+                makeGradientDrawable(backgroundColor, borderColor, cornerRadius, context),
+                context);
+        backgroundDrawablePressed = mergeLayers(
+                backgroundDrawablePressed,
+                makeGradientDrawable(backgroundColorPressed, borderColor, cornerRadius, context),
+                context);
 
         // Create a selector using StateListDrawable
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressedBackground);
-        stateListDrawable.addState(new int[]{}, defaultBackground); // Default state
+        stateListDrawable.addState(new int[] { android.R.attr.state_pressed }, backgroundDrawablePressed);
+        stateListDrawable.addState(new int[] {}, backgroundDrawable); // Default state
 
-        // Set the background to the layered drawable
         setBackground(stateListDrawable);
     }
 }

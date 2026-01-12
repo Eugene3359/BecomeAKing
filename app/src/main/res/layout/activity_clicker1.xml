@@ -21,7 +21,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/text_view_work"
+            android:id="@+id/text_work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/placeholder"
@@ -43,7 +43,7 @@
                 android:contentDescription="@string/money" />
 
             <TextView
-                android:id="@+id/text_view_money_earned"
+                android:id="@+id/text_money_earned"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
@@ -65,7 +65,7 @@
         android:gravity="center">
 
         <com.scipath.becomeaking.view.view.CustomImageView
-            android:id="@+id/image_view_work"
+            android:id="@+id/image_work"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="17dp"
@@ -92,7 +92,7 @@
             android:contentDescription="@string/money" />
 
         <TextView
-            android:id="@+id/text_view_money_per_click"
+            android:id="@+id/text_money_per_click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"
@@ -118,7 +118,7 @@
             android:contentDescription="@string/watch" />
 
         <TextView
-            android:id="@+id/text_view_timer"
+            android:id="@+id/text_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"

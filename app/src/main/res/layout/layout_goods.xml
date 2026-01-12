@@ -8,8 +8,8 @@
     android:paddingTop="15dp"
     android:paddingHorizontal="10dp"
     android:paddingBottom="5dp"
-    app:backgroundDrawable="@drawable/bg_wood_wall"
-    app:backgroundColor="@color/goods_dark_brown">
+    app:backgroundColor="@color/goods_dark_brown"
+    app:backgroundDrawable="@drawable/bg_wood_wall" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/goods_list"

@@ -29,7 +29,7 @@
             android:background="@color/border_brown" >
 
             <ImageView
-                android:id="@+id/image_view_health_income"
+                android:id="@+id/image_health_income"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginRight="1dp"
@@ -38,7 +38,7 @@
                 android:contentDescription="@string/health" />
 
             <TextView
-                android:id="@+id/text_view_health_income"
+                android:id="@+id/text_health_income"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:background="@color/game_menu_element"
@@ -58,7 +58,7 @@
             android:background="@color/border_brown" >
 
             <ImageView
-                android:id="@+id/image_view_reputation_income"
+                android:id="@+id/image_reputation_income"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginRight="1dp"
@@ -67,7 +67,7 @@
                 android:contentDescription="@string/reputation" />
 
             <TextView
-                android:id="@+id/text_view_reputation_income"
+                android:id="@+id/text_reputation_income"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:background="@color/game_menu_element"
@@ -86,7 +86,7 @@
             android:background="@color/border_brown" >
 
             <ImageView
-                android:id="@+id/image_view_money_income"
+                android:id="@+id/image_money_income"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginRight="1dp"
@@ -95,7 +95,7 @@
                 android:contentDescription="@string/money" />
 
             <TextView
-                android:id="@+id/text_view_money_income"
+                android:id="@+id/text_money_income"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@color/game_menu_element"
@@ -116,7 +116,7 @@
         android:layout_marginBottom="15dp" >
 
         <ImageView
-            android:id="@+id/image_view_personage"
+            android:id="@+id/image_personage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintWidth_percent="0.65"

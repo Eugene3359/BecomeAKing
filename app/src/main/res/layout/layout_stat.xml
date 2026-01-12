@@ -10,7 +10,7 @@
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
-        android:id="@+id/image_view_stat"
+        android:id="@+id/image_stat"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginRight="10dp"
@@ -18,7 +18,7 @@
         android:contentDescription="@string/placeholder"/>
 
     <TextView
-        android:id="@+id/text_view_stat"
+        android:id="@+id/text_stat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/placeholder"

@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.manager.LocaleManager;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -46,19 +46,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void showNotification(int message) {
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(message)
-                .setButton1(R.string.got_it, null)
-                .build();
+                .addHeader(R.string.notification)
+                .addMessage(message)
+                .addButton(R.string.got_it, null)
+                .getDialogue();
         showDialogue(dialogueFragment);
     }
 
     public void showNotification(String message) {
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(message)
-                .setButton1(R.string.got_it, null)
-                .build();
+                .addHeader(R.string.notification)
+                .addMessage(message)
+                .addButton(R.string.got_it, null)
+                .getDialogue();
         showDialogue(dialogueFragment);
     }
 

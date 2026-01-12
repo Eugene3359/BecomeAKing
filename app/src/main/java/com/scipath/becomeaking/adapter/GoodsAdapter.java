@@ -41,10 +41,10 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final LinearLayout layout;
         private final ImageView image;
-        private final TextView textViewName1;
-        private final TextView textViewName2;
-        private final TextView textViewBuyPrice;
-        private final TextView textViewSellPrice;
+        private final TextView textName1;
+        private final TextView textName2;
+        private final TextView textBuyPrice;
+        private final TextView textSellPrice;
         private final CustomButton buttonBuy;
         private final CustomButton buttonSell;
 
@@ -52,11 +52,11 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.layout);
-            image = layout.findViewById(R.id.image_view_good);
-            textViewName1 = layout.findViewById(R.id.text_view_name1);
-            textViewName2 = layout.findViewById(R.id.text_view_name2);
-            textViewBuyPrice = layout.findViewById(R.id.text_view_buy_price);
-            textViewSellPrice = layout.findViewById(R.id.text_view_sell_price);
+            image = layout.findViewById(R.id.image_good);
+            textName1 = layout.findViewById(R.id.text_name1);
+            textName2 = layout.findViewById(R.id.text_name2);
+            textBuyPrice = layout.findViewById(R.id.text_buy_price);
+            textSellPrice = layout.findViewById(R.id.text_sell_price);
             buttonBuy = layout.findViewById(R.id.button_buy);
             buttonSell = layout.findViewById(R.id.button_sell);
         }
@@ -77,10 +77,10 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         public void bind(IGood good, Context context) {
             image.setImageResource(good.getType().imageId);
             image.setContentDescription(context.getString(good.getType().nameId));
-            textViewName1.setText(good.getType().nameId);
-            textViewName2.setText(good.getType().nameId);
-            textViewBuyPrice.setText(String.valueOf(good.getBuyPrice()));
-            textViewSellPrice.setText(String.valueOf(good.getSellPrice()));
+            textName1.setText(good.getType().nameId);
+            textName2.setText(good.getType().nameId);
+            textBuyPrice.setText(String.valueOf(good.getBuyPrice()));
+            textSellPrice.setText(String.valueOf(good.getSellPrice()));
         }
 
         public void refreshButtonsStates(IGood good, IPersonage personage, IGoods storage, Context context) {

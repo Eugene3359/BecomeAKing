@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="take_a_loan">Взять в долг</string>
+
+    <string name="take">Взять</string>
+    <string name="contract">Договор</string>
+    <string name="your_limit">Ваш лимит %1d/%2d</string>
+    <string name="loan_contract_terms">Если вы не вернете долг, ваше имущество может быть изъято, а вы — проданы в рабство.</string>
+    <string name="sign">Подписать</string>
+
+    <string name="repay">Вернуть</string>
+    <string name="loan_repayment">Возврат долга</string>
+    <string name="loan_amount">Сума долга %d</string>
+    <string name="loan_repayment_instructions">Выберите сумму, которую вы хотите внести для погашения долга.</string>
+
+</resources>

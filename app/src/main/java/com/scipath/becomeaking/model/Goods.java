@@ -1,5 +1,6 @@
 package com.scipath.becomeaking.model;
 
+import com.scipath.becomeaking.contract.model.IGood;
 import com.scipath.becomeaking.contract.model.IGoods;
 import com.scipath.becomeaking.model.enums.GoodType;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class Goods implements IGoods {
 
-    private final List<Good> goods;
+    private final List<IGood> goods;
 
 
     public Goods() {
@@ -18,18 +19,18 @@ public class Goods implements IGoods {
 
 
     @Override
-    public Good get(int position) {
+    public IGood get(int position) {
         if (position < 0 || position >= goods.size()) return null;
         return goods.get(position);
     }
 
     @Override
-    public Good get(GoodType type) {
+    public IGood get(GoodType type) {
         return get(find(type));
     }
 
     @Override
-    public IGoods add(Good good) {
+    public IGoods add(IGood good) {
         int position = find(good.getType());
         if (position == -1) {
             goods.add(good);

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelStore;
 import androidx.lifecycle.ViewModelStoreOwner;
 
+import com.scipath.becomeaking.contract.model.IBank;
 import com.scipath.becomeaking.contract.model.ICategory;
 import com.scipath.becomeaking.contract.model.ICity;
 import com.scipath.becomeaking.contract.model.IGoods;
@@ -19,7 +20,7 @@ import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
 import com.scipath.becomeaking.view.activity.BaseActivity;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +98,10 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
         return gameState.goodsStorage;
     }
 
+    public IBank getBank() {
+        return gameState.bank;
+    }
+
     public ICity getCity() {
         if (isTraveling) return CitiesList.getOnTheWay();
         return CitiesList.getCity(gameState.cityId);
@@ -143,11 +148,13 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
     public void nextDay() {
         gameState.day++;
 
+        // Affecting personage stat bonuses
         IStats statBonuses = getCurrentStatBonuses();
         gameState.personage.affectHealth(statBonuses.get(Stat.HealthPerDay));
         gameState.personage.affectReputation(statBonuses.get(Stat.ReputationPerDay));
         gameState.personage.affectMoney(statBonuses.get(Stat.CoinsPerDay));
 
+        // Affecting available works
         boolean isAllDayWorkSelected = false;
         for (ICategory category : gameState.categories) {
             List<IItem> items = category.getItems();
@@ -161,7 +168,11 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
             }
         }
 
+        // Renewing energy
         if (!isAllDayWorkSelected) getPersonage().renewEnergy();
+
+        // Charging bank interest
+        getBank().chargeInterests();
     }
 
     public void checkPersonageState(BaseActivity activity) {
@@ -193,14 +204,14 @@ public class BecomeAKing extends Application implements ViewModelStoreOwner {
 
         // Showing dialogue
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(message)
-                .setButton1(R.string.got_it, () -> {
+                .addHeader(R.string.notification)
+                .addMessage(message)
+                .addButton(R.string.got_it, d -> {
                     // Deleting save file
                     SaveManager.deleteSave(getApplicationContext());
                     clearGameState();
                     activity.finish();
-                }).build();
+                }).getDialogue();
         activity.showDialogue(dialogueFragment);
     }
 

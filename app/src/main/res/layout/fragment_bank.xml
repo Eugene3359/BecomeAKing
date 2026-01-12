@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.BankFragment" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.scipath.becomeaking.view.view.CustomButton
+                android:id="@+id/button_back"
+                android:layout_marginBottom="10dp"
+                style="@style/ButtonBack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp" >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/img_loan"
+                    android:contentDescription="@string/take_a_loan" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:text="@string/take_a_loan"
+                        style="@style/BankServiceTitle" />
+
+                    <com.scipath.becomeaking.view.view.CustomLinearLayout
+                        style="@style/BankServiceContainer" >
+
+                        <com.scipath.becomeaking.view.view.CustomLinearLayout
+                            style="@style/BankOperationContainer" >
+
+                            <ImageView
+                                android:contentDescription="@string/money"
+                                style="@style/BankCoinImage" />
+
+                            <TextView
+                                android:id="@+id/text_loan1"
+                                style="@style/BankAmount.Red" />
+
+                            <com.scipath.becomeaking.view.view.CustomButton
+                                android:id="@+id/button_take_loan"
+                                android:text="@string/take"
+                                style="@style/BankButton.Dark" />
+
+                        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+                        <com.scipath.becomeaking.view.view.CustomLinearLayout
+                            style="@style/BankOperationContainer" >
+
+                            <ImageView
+                                android:contentDescription="@string/money"
+                                style="@style/BankCoinImage" />
+
+                            <TextView
+                                android:id="@+id/text_loan2"
+                                style="@style/BankAmount.Red" />
+
+                            <com.scipath.becomeaking.view.view.CustomButton
+                                android:id="@+id/button_return_loan"
+                                android:text="@string/repay"
+                                style="@style/BankButton.Light" />
+
+                        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+                    </com.scipath.becomeaking.view.view.CustomLinearLayout>
+                    
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -1,10 +1,12 @@
 package com.scipath.becomeaking.view.view;
 
-import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
-import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeGradientDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeDrawableTiled;
+import static com.scipath.becomeaking.util.DrawableUtility.mergeLayers;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
@@ -12,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.util.DrawableUtility;
 
 
 public class CustomTextView extends AppCompatTextView {
@@ -23,26 +24,28 @@ public class CustomTextView extends AppCompatTextView {
         init(context, attrs);
     }
 
+
     // Custom attributes initialization
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView);
 
-        int borderColor = typedArray.getColor(R.styleable.CustomTextView_borderColor, 0x00000000); // Default: null
-        int backgroundColor = typedArray.getColor(R.styleable.CustomTextView_backgroundColor, 0x00000000); // Default: null
+        int borderColor = typedArray.getColor(R.styleable.CustomTextView_borderColor, Color.TRANSPARENT); // Default: TRANSPARENT
+        int backgroundColor = typedArray.getColor(R.styleable.CustomTextView_backgroundColor, Color.TRANSPARENT); // Default: TRANSPARENT
         Drawable backgroundDrawable = typedArray.getDrawable(R.styleable.CustomTextView_backgroundDrawable);
 
         typedArray.recycle();
 
-        // Make background
         Drawable background;
         if (backgroundDrawable != null) {
-            backgroundDrawable = createTiledDrawable(context, backgroundDrawable);
-            background = createBorderDrawable(context, borderColor, backgroundColor, backgroundDrawable);
+            backgroundDrawable = makeDrawableTiled(backgroundDrawable, context);
+            background = mergeLayers(
+                    backgroundDrawable,
+                    makeGradientDrawable(backgroundColor, borderColor, 0f, context),
+                    context);
         } else {
-            background = DrawableUtility.createBorderDrawable(context, borderColor, backgroundColor);
+            background = makeGradientDrawable(backgroundColor, borderColor, 0f, context);
         }
 
-        // Set the background to the layered drawable
         setBackground(background);
     }
 }

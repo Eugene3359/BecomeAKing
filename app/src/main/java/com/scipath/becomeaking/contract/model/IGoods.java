@@ -1,18 +1,15 @@
 package com.scipath.becomeaking.contract.model;
 
-import com.scipath.becomeaking.model.Good;
 import com.scipath.becomeaking.model.enums.GoodType;
 
-import java.io.Serializable;
 
+public interface IGoods {
 
-public interface IGoods extends Serializable {
+    IGood get(int position);
 
-    Good get(int position);
+    IGood get(GoodType type);
 
-    Good get(GoodType type);
-
-    IGoods add(Good good);
+    IGoods add(IGood good);
 
     IGoods remove(int position);
 

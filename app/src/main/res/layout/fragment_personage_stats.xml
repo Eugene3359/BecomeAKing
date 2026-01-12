@@ -31,7 +31,7 @@
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/text_view_age"
+                    android:id="@+id/text_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
@@ -64,7 +64,7 @@
                 android:gravity="center_vertical" >
 
                 <com.scipath.becomeaking.view.view.CustomTextView
-                    android:id="@+id/text_view_level"
+                    android:id="@+id/text_level"
                     android:layout_width="0dp"
                     android:layout_height="46dp"
                     android:layout_weight="1"
@@ -84,7 +84,7 @@
                     android:contentDescription="@string/skill_points" />
 
                 <com.scipath.becomeaking.view.view.CustomTextView
-                    android:id="@+id/text_view_experience"
+                    android:id="@+id/text_experience"
                     android:layout_width="0dp"
                     android:layout_height="46dp"
                     android:layout_weight="1"
@@ -255,7 +255,7 @@
                     android:contentDescription="@string/skill_points"/>
 
                 <TextView
-                    android:id="@+id/text_view_skill_points"
+                    android:id="@+id/text_skill_points"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/skill_points_d"

@@ -7,9 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,18 +30,13 @@ public class PersonageFragment extends BaseFragment {
 
     // Views
     private PersonageLayout personageLayout;
-    private TextView textViewReputation;
-    private TextView textViewDay;
+    private TextView textReputation;
+    private TextView textDay;
 
-
-    public static PersonageFragment newInstance() {
-        return new PersonageFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_personage, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_personage;
     }
 
     @Override
@@ -56,38 +49,38 @@ public class PersonageFragment extends BaseFragment {
 
         // Views
         personageLayout = view.findViewById(R.id.layout_personage);
-        TextView textViewName = view.findViewById(R.id.text_view_name);
-        TextView textViewTitle = view.findViewById(R.id.text_view_title);
-        textViewDay = view.findViewById(R.id.text_view_day);
-        textViewReputation = view.findViewById(R.id.text_view_reputation2);
+        TextView textName = view.findViewById(R.id.text_name);
+        TextView textTitle = view.findViewById(R.id.text_title);
+        textDay = view.findViewById(R.id.text_day);
+        textReputation = view.findViewById(R.id.text_reputation2);
 
-        TextView textViewNutrition = view.findViewById(R.id.text_view_nutrition);
-        TextView textViewClothes = view.findViewById(R.id.text_view_clothes);
-        TextView textViewHousing = view.findViewById(R.id.text_view_housing);
-        TextView textViewHorse = view.findViewById(R.id.text_view_horse);
-        TextView textViewMaxHealth = view.findViewById(R.id.text_view_max_health);
-        TextView textViewMight = view.findViewById(R.id.text_view_might);
+        TextView textNutrition = view.findViewById(R.id.text_nutrition);
+        TextView textClothes = view.findViewById(R.id.text_clothes);
+        TextView textHousing = view.findViewById(R.id.text_housing);
+        TextView textHorse = view.findViewById(R.id.text_horse);
+        TextView textMaxHealth = view.findViewById(R.id.text_max_health);
+        TextView textMight = view.findViewById(R.id.text_might);
 
         // Setting Views values
         personageLayout.updateImage();
-        textViewName.setText(personage.getName());
-        textViewTitle.setText(personage.getTitle().nameId);
+        textName.setText(personage.getName());
+        textTitle.setText(personage.getTitle().nameId);
         updateViews();
 
         if (categories.get(0).getBestItem() != null) {
-            textViewNutrition.setText(categories.get(0).getBestItem().getNameId());
+            textNutrition.setText(categories.get(0).getBestItem().getNameId());
         }
         if (categories.get(1).getBestItem() != null) {
-            textViewClothes.setText(categories.get(1).getBestItem().getNameId());
+            textClothes.setText(categories.get(1).getBestItem().getNameId());
         }
         if (categories.get(5).getBestItem() != null) {
-            textViewHousing.setText(categories.get(5).getBestItem().getNameId());
+            textHousing.setText(categories.get(5).getBestItem().getNameId());
         }
         if (categories.get(9).getBestItem() != null) {
-            textViewHorse.setText(categories.get(9).getBestItem().getNameId());
+            textHorse.setText(categories.get(9).getBestItem().getNameId());
         }
-        textViewMaxHealth.setText(String.valueOf(personage.getMaxHealth()));
-        textViewMight.setText(String.valueOf(personage.getMight()));
+        textMaxHealth.setText(String.valueOf(personage.getMaxHealth()));
+        textMight.setText(String.valueOf(personage.getMight()));
 
         // Buttons
         Button buttonLevel = view.findViewById(R.id.button_level);
@@ -146,7 +139,7 @@ public class PersonageFragment extends BaseFragment {
         layoutReputationForAd.setOnClickListener(v -> {
             personage.affectReputation(500);
             ((GameActivity)requireActivity()).updateReputation();
-            textViewReputation.setText(String.valueOf(personage.getReputation()));
+            textReputation.setText(String.valueOf(personage.getReputation()));
             AdManagerMock.showAd((AppCompatActivity) requireActivity());
         });
 
@@ -163,7 +156,7 @@ public class PersonageFragment extends BaseFragment {
         personageLayout.updateStats();
 
         // Day number and personage reputation
-        textViewDay.setText(String.valueOf(BecomeAKing.getInstance().getDay()));
-        textViewReputation.setText(String.valueOf(personage.getReputation()));
+        textDay.setText(String.valueOf(BecomeAKing.getInstance().getDay()));
+        textReputation.setText(String.valueOf(personage.getReputation()));
     }
 }

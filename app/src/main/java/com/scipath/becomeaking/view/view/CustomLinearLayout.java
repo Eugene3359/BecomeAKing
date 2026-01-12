@@ -1,10 +1,12 @@
 package com.scipath.becomeaking.view.view;
 
-import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
-import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeGradientDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeDrawableTiled;
+import static com.scipath.becomeaking.util.DrawableUtility.mergeLayers;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
@@ -13,7 +15,6 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.util.DrawableUtility;
 
 
 public class CustomLinearLayout extends LinearLayoutCompat {
@@ -21,6 +22,7 @@ public class CustomLinearLayout extends LinearLayoutCompat {
     // Fields
     private boolean isSquare;
     private int borderColor;
+    private float cornerRadius;
     private int backgroundColor;
     private Drawable backgroundDrawable;
 
@@ -31,13 +33,15 @@ public class CustomLinearLayout extends LinearLayoutCompat {
         init(context, attrs);
     }
 
+
     // Custom attributes initialization
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomLinearLayout);
 
         isSquare = typedArray.getBoolean(R.styleable.CustomLinearLayout_isSquare, false); // Default: false
-        borderColor = typedArray.getColor(R.styleable.CustomLinearLayout_borderColor, 0x00000000); // Default: null
-        backgroundColor = typedArray.getColor(R.styleable.CustomTextView_backgroundColor, 0x00000000); // Default: null
+        borderColor = typedArray.getColor(R.styleable.CustomLinearLayout_borderColor, Color.TRANSPARENT); // Default: TRANSPARENT
+        cornerRadius = typedArray.getDimension(R.styleable.CustomLinearLayout_cornerRadius, 0); // Default: no rounding
+        backgroundColor = typedArray.getColor(R.styleable.CustomTextView_backgroundColor, Color.TRANSPARENT); // Default: TRANSPARENT
         backgroundDrawable = typedArray.getDrawable(R.styleable.CustomLinearLayout_backgroundDrawable);
 
         typedArray.recycle();
@@ -45,24 +49,27 @@ public class CustomLinearLayout extends LinearLayoutCompat {
         applyAttributes();
     }
 
+
     public void setBackgroundDrawable(int resId) {
         backgroundDrawable = AppCompatResources.getDrawable(getContext(), resId);
         applyAttributes();
     }
 
     protected void applyAttributes() {
-        // Make background
         Drawable background;
         if (backgroundDrawable != null) {
-            backgroundDrawable = createTiledDrawable(getContext(), backgroundDrawable);
-            background = createBorderDrawable(getContext(), borderColor, backgroundColor, backgroundDrawable);
+            backgroundDrawable = makeDrawableTiled(backgroundDrawable, getContext());
+            background = mergeLayers(
+                    backgroundDrawable,
+                    makeGradientDrawable(backgroundColor, borderColor, cornerRadius, getContext()),
+                    getContext());
         } else {
-            background = DrawableUtility.createBorderDrawable(getContext(), borderColor, backgroundColor);
+            background = makeGradientDrawable(backgroundColor, borderColor, cornerRadius, getContext());
         }
 
-        // Set the background to the layered drawable
         setBackground(background);
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

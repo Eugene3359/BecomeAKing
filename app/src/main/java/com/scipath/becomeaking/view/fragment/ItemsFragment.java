@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -43,22 +41,12 @@ public class ItemsFragment extends BaseFragment {
 
     // Views
     LinearLayoutManager layoutManager;
-    TextView textViewExperience;
+    TextView textExperience;
 
-
-    public static ItemsFragment newInstance() {
-        return new ItemsFragment();
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_items, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_items;
     }
 
     @Override
@@ -72,9 +60,9 @@ public class ItemsFragment extends BaseFragment {
         isWorkCategory = items.get(0) instanceof Work;
 
         // Views
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_items);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_items);
         CustomLinearLayout layoutExperience = view.findViewById(R.id.layout_experience);
-        textViewExperience = view.findViewById(R.id.text_view_experience);
+        textExperience = view.findViewById(R.id.text_experience);
         ImageButton buttonPreviousItem = view.findViewById(R.id.button_previous_item);
         ImageButton buttonNextItem = view.findViewById(R.id.button_next_item);
         Button buttonBack = view.findViewById(R.id.button_back);
@@ -151,7 +139,7 @@ public class ItemsFragment extends BaseFragment {
     }
 
     public void setItemsExperience(int position) {
-        textViewExperience.setText(getString(
+        textExperience.setText(getString(
                 R.string.c_d,
                 '+',
                 ((Work)items.get(position)).getExperience()));

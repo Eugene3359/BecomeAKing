@@ -1,3 +1,10 @@
+# Become a King [0.5.10] - 12.01.2026
+
+- The `Button` button in the `Finance Menu` is now active
+- Added loan functionality to the bank
+
+---
+
 # Become a King [0.5.9] - 11.12.2025
 
 ### Additions
@@ -29,7 +36,7 @@
 - Added images for `None Items`
 
 ### Changes
-- The `Market Button` in the `Finance Menu` is now active
+- The `Market` button in the `Finance Menu` is now active
 
 ### Fixes
 - Fixed a bug where daily stats from all-day work were not being applied
@@ -245,7 +252,7 @@
 # Become a King [0.5.0] - 09.09.2025
 
 ### Additions
-- `buttonFinance` is now active
+- The `Finance` button is now active
 - Added a map
 
 ---
@@ -440,7 +447,7 @@
 
 ### Additions
 - Implemented `Save/Load Game` logic
-- `buttonLoad` is now active
+- The `Load` button is now active
 
 ### Changes
 - Changed click zone in `Clicker1` mini-game`  
@@ -456,7 +463,7 @@
 ### Additions
 - Implemented `Next Day` logic
 - Implemented `Game Over` logic
-- `buttonNextDay` is now active
+- The `Next Day` button is now active
 
 ---
 
@@ -475,17 +482,17 @@
 
 ### Changes
 - Daily changes to `Health`, `Reputation`, and `Money` are now displayed
-- `buttonJob` is now active
+- The `Job` button is now active
 
 ### Fixes
-- Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ `buttonBuy` appeared disabled even though they hadn't been purchased
+- Fixed a bug in `ItemsFragment` where, after scrolling through the list of items, some items’ the `Buy` button appeared disabled even though they hadn't been purchased
 
 ---
 
 # Become a King [0.1.2.1] - 22.05.2025
 
 ### Fixes
-- Fixed crash on `buttonBack` click in `ItemsFragment`
+- Fixed crash on the `Back` button click in `ItemsFragment`
 
 ---
 
@@ -495,7 +502,7 @@
 - Added empty categories
 
 ### Changes
-- `buttonHousing` is now active
+- The `Housing` button is now active
 
 ### Fixes
 - Fixed `CategoryAdapter` incorrectly replacing a placeholder on `CategoryImageView` when `imageId` equals `0`

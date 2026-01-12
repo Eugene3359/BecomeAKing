@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.adapter.TitlesAdapter;
 import com.scipath.becomeaking.model.enums.Title;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
 
 
 public class TitleSelectionActivity extends BaseActivity {

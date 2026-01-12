@@ -10,8 +10,8 @@ android {
         applicationId = "com.scipath.becomeaking"
         minSdk = 26
         targetSdk = 35
-        versionCode = 66
-        versionName = "0.5.9"
+        versionCode = 67
+        versionName = "0.5.10"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,6 +64,7 @@ tasks.withType<Test>().configureEach {
 tasks.register("copyEnglishStrings") {
     val files = listOf(
         "strings.xml",
+        "strings_bank.xml",
         "strings_categories.xml",
         "strings_cities.xml",
         "strings_goods.xml"

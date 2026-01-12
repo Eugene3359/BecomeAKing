@@ -1,7 +1,8 @@
 package com.scipath.becomeaking.view.view;
 
-import static com.scipath.becomeaking.util.DrawableUtility.createBorderDrawable;
-import static com.scipath.becomeaking.util.DrawableUtility.createTiledDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeGradientDrawable;
+import static com.scipath.becomeaking.util.DrawableUtility.makeDrawableTiled;
+import static com.scipath.becomeaking.util.DrawableUtility.mergeLayers;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -32,6 +33,8 @@ public class CustomRadioButton extends AppCompatRadioButton {
         init(context, attrs);
     }
 
+
+    // Custom attributes initialization
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRadioButton);
 
@@ -46,39 +49,51 @@ public class CustomRadioButton extends AppCompatRadioButton {
 
         // Make drawables repeatable
         if (backgroundDrawable != null) {
-            backgroundDrawable = createTiledDrawable(context, backgroundDrawable);
+            backgroundDrawable = makeDrawableTiled(backgroundDrawable, context);
         }
         if (backgroundDrawableSelected != null) {
-            backgroundDrawableSelected = createTiledDrawable(context, backgroundDrawableSelected);
+            backgroundDrawableSelected = makeDrawableTiled(backgroundDrawableSelected, context);
         }
 
         // Create default and selected states
-        defaultBackground = createBorderDrawable(context, borderColor, backgroundColor, backgroundDrawable);
-        selectedBackground = createBorderDrawable(context, borderColor, backgroundColorSelected, backgroundDrawableSelected);
+        defaultBackground = mergeLayers(
+                backgroundDrawable,
+                makeGradientDrawable(backgroundColor, borderColor, 0, context),
+                context);
+        selectedBackground = mergeLayers(
+                backgroundDrawableSelected,
+                makeGradientDrawable(backgroundColorSelected, borderColor, 0, context),
+                context);
 
         applyAttributes();
     }
 
+
     @Override
     public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
-        defaultBackground = createBorderDrawable(getContext(), borderColor, backgroundColor, backgroundDrawable);
+        defaultBackground = mergeLayers(
+                backgroundDrawable,
+                makeGradientDrawable(backgroundColor, borderColor, 0, getContext()),
+                getContext());
         applyAttributes();
     }
 
     public void setBackgroundColorSelected(int backgroundColorSelected) {
         this.backgroundColorSelected = backgroundColorSelected;
-        selectedBackground = createBorderDrawable(getContext(), borderColor, backgroundColorSelected, backgroundDrawableSelected);
+        selectedBackground = mergeLayers(
+                backgroundDrawableSelected,
+                makeGradientDrawable(backgroundColorSelected, borderColor, 0, getContext()),
+                getContext());
         applyAttributes();
     }
 
     protected void applyAttributes() {
         // Create a selector using StateListDrawable
         StateListDrawable stateListDrawable = new StateListDrawable();
-        stateListDrawable.addState(new int[]{android.R.attr.state_checked}, selectedBackground);
-        stateListDrawable.addState(new int[]{}, defaultBackground); // Default state
+        stateListDrawable.addState(new int[] { android.R.attr.state_checked }, selectedBackground);
+        stateListDrawable.addState(new int[] {}, defaultBackground); // Default state
 
-        // Set the background to the layered drawable
         setBackground(stateListDrawable);
     }
 }

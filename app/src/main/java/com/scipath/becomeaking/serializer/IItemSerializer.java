@@ -27,6 +27,7 @@ public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<
     private static final String DATA_FIELD = "data";
 
     private static final Map<String, Class<? extends IItem>> TYPE_MAP = new HashMap<>();
+
     static {
         TYPE_MAP.put("item", Item.class);
         TYPE_MAP.put("selectable_item", SelectableItem.class);
@@ -69,6 +70,7 @@ public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<
         return result;
     }
 
+
     @Override
     public IItem deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
@@ -94,6 +96,7 @@ public class IItemSerializer implements JsonSerializer<IItem>, JsonDeserializer<
 
         return context.deserialize(data, clazz);
     }
+
 
     private String getTypeName(IItem iItem) {
         for (Map.Entry<String, Class<? extends IItem>> entry : TYPE_MAP.entrySet()) {

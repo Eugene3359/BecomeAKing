@@ -9,7 +9,7 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.model.enums.Stat;
 import com.scipath.becomeaking.model.item.Work;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 import com.scipath.becomeaking.view.view.CustomLinearLayout;
 
 
@@ -22,11 +22,11 @@ public class Clicker1Activity extends BaseActivity {
     protected int moneyPerClick = 0;
 
     // Views
-    protected TextView textViewWork = null;
-    protected ImageView imageViewWork = null;
-    protected TextView textViewMoneyEarned = null;
-    protected TextView textViewMoneyPerClick = null;
-    protected TextView textViewTimer = null;
+    protected TextView textWork = null;
+    protected ImageView imageWork = null;
+    protected TextView textMoneyEarned = null;
+    protected TextView textMoneyPerClick = null;
+    protected TextView textTimer = null;
 
 
     @Override
@@ -47,27 +47,27 @@ public class Clicker1Activity extends BaseActivity {
     }
 
     protected void setViews(Work work) {
-        textViewWork = findViewById(R.id.text_view_work);
-        imageViewWork = findViewById(R.id.image_view_work);
-        textViewMoneyEarned = findViewById(R.id.text_view_money_earned);
-        textViewMoneyPerClick = findViewById(R.id.text_view_money_per_click);
-        textViewTimer = findViewById(R.id.text_view_timer);
+        textWork = findViewById(R.id.text_work);
+        imageWork = findViewById(R.id.image_work);
+        textMoneyEarned = findViewById(R.id.text_money_earned);
+        textMoneyPerClick = findViewById(R.id.text_money_per_click);
+        textTimer = findViewById(R.id.text_timer);
 
-        textViewWork.setText(work.getNameId());
-        imageViewWork.setImageResource(work.getImageId());
-        imageViewWork.setContentDescription(work.getName(this));
-        textViewMoneyEarned.setText(String.valueOf(moneyEarned));
-        textViewMoneyPerClick.setText(String.valueOf(moneyPerClick));
-        textViewTimer.setText(R.string._10);
+        textWork.setText(work.getNameId());
+        imageWork.setImageResource(work.getImageId());
+        imageWork.setContentDescription(work.getName(this));
+        textMoneyEarned.setText(String.valueOf(moneyEarned));
+        textMoneyPerClick.setText(String.valueOf(moneyPerClick));
+        textTimer.setText(R.string._10);
     }
 
     protected void onWorkStarted() {
         setClicker();
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(R.string.instruction1)
-                .setButton1(R.string.start, this::startTimer)
-                .build();
+                .addHeader(R.string.notification)
+                .addMessage(R.string.instruction1)
+                .addButton(R.string.start, d -> startTimer())
+                .getDialogue();
         showDialogue(dialogueFragment);
     }
 
@@ -75,14 +75,14 @@ public class Clicker1Activity extends BaseActivity {
         CustomLinearLayout linearLayoutClick = findViewById(R.id.container_clicker);
         linearLayoutClick.setOnClickListener(view -> {
             moneyEarned += moneyPerClick;
-            textViewMoneyEarned.setText(String.valueOf(moneyEarned));
+            textMoneyEarned.setText(String.valueOf(moneyEarned));
         });
     }
 
     protected void startTimer() {
         new CountDownTimer(WORK_DURATION_MS, TICK_INTERVAL_MS) {
             public void onTick(long millisUntilFinished) {
-                textViewTimer.setText(String.valueOf(millisUntilFinished / 1000));
+                textTimer.setText(String.valueOf(millisUntilFinished / 1000));
             }
             public void onFinish() {
                 onWorkCompleted();
@@ -92,13 +92,13 @@ public class Clicker1Activity extends BaseActivity {
 
     protected void onWorkCompleted() {
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(getString(R.string.you_have_earned_d_coins, moneyEarned))
-                .setButton1(R.string.exit, () -> {
+                .addHeader(R.string.notification)
+                .addMessage(getString(R.string.you_have_earned_d_coins, moneyEarned))
+                .addButton(R.string.exit, d -> {
                     BecomeAKing.getInstance().getPersonage().affectMoney(moneyEarned);
                     finish();
                 })
-                .build();
+                .getDialogue();
         showDialogue(dialogueFragment);
     }
 }

@@ -16,13 +16,13 @@ import com.scipath.becomeaking.model.enums.Stat;
 
 public class PersonageLayout extends LinearLayout {
 
-    private ImageView imageViewHealthIncome;
-    private TextView textViewHealthIncome;
-    private ImageView imageViewReputationIncome;
-    private TextView textViewReputationIncome;
-    private ImageView imageViewMoneyIncome;
-    private TextView textViewMoneyIncome;
-    private ImageView imageViewPersonage;
+    private ImageView imageHealthIncome;
+    private TextView textHealthIncome;
+    private ImageView imageReputationIncome;
+    private TextView textReputationIncome;
+    private ImageView imageMoneyIncome;
+    private TextView textMoneyIncome;
+    private ImageView imagePersonage;
 
 
     public PersonageLayout(Context context) {
@@ -43,14 +43,14 @@ public class PersonageLayout extends LinearLayout {
     private void init(Context context) {
         inflate(context, R.layout.layout_personage, this);
 
-        imageViewHealthIncome = findViewById(R.id.image_view_health_income);
-        textViewHealthIncome = findViewById(R.id.text_view_health_income);
-        imageViewReputationIncome = findViewById(R.id.image_view_reputation_income);
-        textViewReputationIncome = findViewById(R.id.text_view_reputation_income);
-        imageViewMoneyIncome = findViewById(R.id.image_view_money_income);
-        textViewMoneyIncome = findViewById(R.id.text_view_money_income);
+        imageHealthIncome = findViewById(R.id.image_health_income);
+        textHealthIncome = findViewById(R.id.text_health_income);
+        imageReputationIncome = findViewById(R.id.image_reputation_income);
+        textReputationIncome = findViewById(R.id.text_reputation_income);
+        imageMoneyIncome = findViewById(R.id.image_money_income);
+        textMoneyIncome = findViewById(R.id.text_money_income);
 
-        imageViewPersonage = findViewById(R.id.image_view_personage);
+        imagePersonage = findViewById(R.id.image_personage);
     }
 
     public void updateAll() {
@@ -62,23 +62,23 @@ public class PersonageLayout extends LinearLayout {
         IStats statBonuses = BecomeAKing.getInstance().getCurrentStatBonuses();
 
         int statBonusValue = statBonuses.get(Stat.HealthPerDay);
-        imageViewHealthIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
+        imageHealthIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewHealthIncome.setText(String.valueOf(statBonusValue));
+        textHealthIncome.setText(String.valueOf(statBonusValue));
 
         statBonusValue = statBonuses.get(Stat.ReputationPerDay);
-        imageViewReputationIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
+        imageReputationIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewReputationIncome.setText(String.valueOf(statBonusValue));
+        textReputationIncome.setText(String.valueOf(statBonusValue));
 
         statBonusValue = statBonuses.get(Stat.CoinsPerDay);
-        imageViewMoneyIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
+        imageMoneyIncome.setBackgroundColor(ContextCompat.getColor(getContext(),
                 statBonusValue < 0 ? R.color.icon_red : R.color.icon_green));
-        textViewMoneyIncome.setText(String.valueOf(statBonusValue));
+        textMoneyIncome.setText(String.valueOf(statBonusValue));
     }
 
     public void updateImage() {
-        imageViewPersonage.setImageResource(BecomeAKing.getInstance()
+        imagePersonage.setImageResource(BecomeAKing.getInstance()
                 .getCategories().get(1).getImageId());
     }
 }

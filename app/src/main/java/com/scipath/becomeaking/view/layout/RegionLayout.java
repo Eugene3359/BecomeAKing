@@ -12,7 +12,7 @@ import com.scipath.becomeaking.R;
 
 public class RegionLayout extends LinearLayout {
 
-    ImageView imageViewRegion;
+    ImageView imageRegion;
 
 
     public RegionLayout(Context context) {
@@ -32,24 +32,24 @@ public class RegionLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_region, this);
-        imageViewRegion = findViewById(R.id.image_view_region);
+        imageRegion = findViewById(R.id.image_region);
         setVisibility(GONE);
     }
 
 
     public void setWidth(int width) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageViewRegion.getLayoutParams();
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageRegion.getLayoutParams();
         params.width = width;
-        imageViewRegion.setLayoutParams(params);
+        imageRegion.setLayoutParams(params);
     }
 
     public void setHeight(int height) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageViewRegion.getLayoutParams();
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageRegion.getLayoutParams();
         params.height = height;
-        imageViewRegion.setLayoutParams(params);
+        imageRegion.setLayoutParams(params);
     }
 
     public void setImageSrc(int drawableId) {
-        imageViewRegion.setImageResource(drawableId);
+        imageRegion.setImageResource(drawableId);
     }
 }

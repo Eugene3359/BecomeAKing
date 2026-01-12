@@ -5,12 +5,14 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.scipath.becomeaking.contract.model.ICategory;
+import com.scipath.becomeaking.contract.model.IGood;
 import com.scipath.becomeaking.contract.model.ILevel;
 import com.scipath.becomeaking.contract.model.IPersonage;
 import com.scipath.becomeaking.contract.model.IStats;
 import com.scipath.becomeaking.model.GameState;
 import com.scipath.becomeaking.contract.model.IItem;
 import com.scipath.becomeaking.serializer.ICategorySerializer;
+import com.scipath.becomeaking.serializer.IGoodSerializer;
 import com.scipath.becomeaking.serializer.IItemSerializer;
 import com.scipath.becomeaking.serializer.ILevelSerializer;
 import com.scipath.becomeaking.serializer.IPersonageSerializer;
@@ -31,6 +33,7 @@ public class SaveManager {
     public static void saveGame(GameState gameState, Context context) {
         try {
             Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(IGood.class, new IGoodSerializer())
                     .registerTypeAdapter(IStats.class, new IStatsSerializer())
                     .registerTypeAdapter(IItem.class, new IItemSerializer(context))
                     .registerTypeAdapter(ICategory.class, new ICategorySerializer(context))
@@ -51,6 +54,7 @@ public class SaveManager {
             try (FileInputStream fis = context.openFileInput(FILE_NAME)) {
                 InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
                 Gson gson = new GsonBuilder()
+                        .registerTypeAdapter(IGood.class, new IGoodSerializer())
                         .registerTypeAdapter(IStats.class, new IStatsSerializer())
                         .registerTypeAdapter(IItem.class, new IItemSerializer(context))
                         .registerTypeAdapter(ICategory.class, new ICategorySerializer(context))

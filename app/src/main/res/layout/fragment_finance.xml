@@ -38,14 +38,6 @@
                 app:buttonText="@string/equip" />
 
             <com.scipath.becomeaking.view.layout.FinanceMenuElementLayout
-                android:id="@+id/element_gossips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:src="@drawable/img_gossips"
-                app:text="@string/gossips"
-                app:buttonText="@string/collect" />
-
-            <com.scipath.becomeaking.view.layout.FinanceMenuElementLayout
                 android:id="@+id/element_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,6 +53,13 @@
                 app:text="@string/workshops"
                 app:buttonText="@string/look" />
 
+            <com.scipath.becomeaking.view.layout.FinanceMenuElementLayout
+                android:id="@+id/element_gossips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:src="@drawable/img_gossips"
+                app:text="@string/gossips"
+                app:buttonText="@string/collect"/>
         </LinearLayout>
 
     </ScrollView>

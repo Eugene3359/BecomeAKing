@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.scipath.becomeaking.R;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 import com.scipath.becomeaking.view.view.CustomButton;
 
 import java.util.Random;
@@ -38,13 +38,13 @@ public class Clicker2Activity extends Clicker1Activity {
     @Override
     protected void onWorkStarted() {
         DialogueFragment dialogueFragment = new DialogueFragment.Builder()
-                .setHeader(R.string.notification)
-                .setMessage(R.string.instruction2)
-                .setButton1(R.string.start, () -> {
+                .addHeader(R.string.notification)
+                .addMessage(R.string.instruction2)
+                .addButton(R.string.start, d -> {
                     changeCurrentButton();
                     startTimer();
                 })
-                .build();
+                .getDialogue();
         showDialogue(dialogueFragment);
     }
 
@@ -63,27 +63,27 @@ public class Clicker2Activity extends Clicker1Activity {
         currentFrame.setBackground(AppCompatResources.getDrawable(this, R.drawable.shape_green_glow));
         currentButton.setOnClickListener(view -> {
             moneyEarned += moneyPerClick;
-            textViewMoneyEarned.setText(String.valueOf(moneyEarned));
+            textMoneyEarned.setText(String.valueOf(moneyEarned));
             changeCurrentButton();
         });
     }
 
     private void initButtons() {
         frames = new FrameLayout[] {
-                findViewById(R.id.frame_1),
-                findViewById(R.id.frame_2),
-                findViewById(R.id.frame_3),
-                findViewById(R.id.frame_4),
-                findViewById(R.id.frame_5),
-                findViewById(R.id.frame_6),
-                findViewById(R.id.frame_7),
-                findViewById(R.id.frame_8),
-                findViewById(R.id.frame_9)
+                findViewById(R.id.frame1),
+                findViewById(R.id.frame2),
+                findViewById(R.id.frame3),
+                findViewById(R.id.frame4),
+                findViewById(R.id.frame5),
+                findViewById(R.id.frame6),
+                findViewById(R.id.frame7),
+                findViewById(R.id.frame8),
+                findViewById(R.id.frame9)
         };
 
         buttons = new CustomButton[] {
-                findViewById(R.id.button_1),
-                findViewById(R.id.button_2),
+                findViewById(R.id.button1),
+                findViewById(R.id.button2),
                 findViewById(R.id.button_3),
                 findViewById(R.id.button_4),
                 findViewById(R.id.button_5),

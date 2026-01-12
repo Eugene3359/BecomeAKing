@@ -7,9 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -23,16 +21,11 @@ import com.scipath.becomeaking.model.Personage;
 import com.scipath.becomeaking.view.layout.PersonageLayout;
 
 
-public class PersonageStatsFragment extends Fragment {
-
-    public static PersonageStatsFragment newInstance() {
-        return new PersonageStatsFragment();
-    }
+public class PersonageStatsFragment extends BaseFragment {
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_personage_stats, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_personage_stats;
     }
 
     @Override
@@ -47,35 +40,35 @@ public class PersonageStatsFragment extends Fragment {
         PersonageLayout personageLayout = view.findViewById(R.id.layout_personage);
         personageLayout.updateAll();
 
-        TextView textViewAge = view.findViewById(R.id.text_view_age);
-        TextView textViewLevel = view.findViewById(R.id.text_view_level);
-        TextView textViewExperience = view.findViewById(R.id.text_view_experience);
-        TextView textViewSkillPoints = view.findViewById(R.id.text_view_skill_points);
+        TextView textAge = view.findViewById(R.id.text_age);
+        TextView textLevel = view.findViewById(R.id.text_level);
+        TextView textExperience = view.findViewById(R.id.text_experience);
+        TextView textSkillPoints = view.findViewById(R.id.text_skill_points);
 
         // Setting Views values
-        textViewAge.setText(requireActivity().getString(
+        textAge.setText(requireActivity().getString(
                 R.string.age_d,
                 personage.getAge()));
-        textViewLevel.setText(requireActivity().getString(
+        textLevel.setText(requireActivity().getString(
                 R.string.level_d,
                 level.getValue()));
-        textViewExperience.setText(requireActivity().getString(
+        textExperience.setText(requireActivity().getString(
                 R.string.d_d,
                 level.getCurrentExperience(),
                 level.getNeededExperience()));
-        textViewSkillPoints.setText(requireActivity().getString(
+        textSkillPoints.setText(requireActivity().getString(
                 R.string.skill_points_d,
                 level.getAvailableSkillPoints()));
 
         // Strength
-        TextView textViewStrength = view.findViewById(R.id.strength);
-        textViewStrength.setText(String.valueOf(level.getStrength()));
+        TextView textStrength = view.findViewById(R.id.strength);
+        textStrength.setText(String.valueOf(level.getStrength()));
         ImageButton imageButtonIncreaseStrength = view.findViewById(R.id.increase_strength);
         imageButtonIncreaseStrength.setOnClickListener(v -> {
             if (level.getAvailableSkillPoints() > 0) {
                 level.affectStrength(1);
-                textViewStrength.setText(String.valueOf(level.getStrength()));
-                textViewSkillPoints.setText(requireActivity().getString(
+                textStrength.setText(String.valueOf(level.getStrength()));
+                textSkillPoints.setText(requireActivity().getString(
                         R.string.skill_points_d,
                         level.getAvailableSkillPoints()));
             }
@@ -84,22 +77,22 @@ public class PersonageStatsFragment extends Fragment {
         imageButtonDecreaseStrength.setOnClickListener(v -> {
             if (level.getStrength() > personage.getLevel().getStrength()) {
                 level.affectStrength(-1);
-                textViewStrength.setText(String.valueOf(level.getStrength()));
-                textViewSkillPoints.setText(requireActivity().getString(
+                textStrength.setText(String.valueOf(level.getStrength()));
+                textSkillPoints.setText(requireActivity().getString(
                         R.string.skill_points_d,
                         level.getAvailableSkillPoints()));
             }
         });
 
         // Luck
-        TextView textViewLuck = view.findViewById(R.id.luck);
-        textViewLuck.setText(String.valueOf(level.getLuck()));
+        TextView textLuck = view.findViewById(R.id.luck);
+        textLuck.setText(String.valueOf(level.getLuck()));
         ImageButton imageButtonIncreaseLuck = view.findViewById(R.id.increase_luck);
         imageButtonIncreaseLuck.setOnClickListener(v -> {
             if (level.getAvailableSkillPoints() > 0) {
                 level.affectLuck(1);
-                textViewLuck.setText(String.valueOf(level.getLuck()));
-                textViewSkillPoints.setText(requireActivity().getString(
+                textLuck.setText(String.valueOf(level.getLuck()));
+                textSkillPoints.setText(requireActivity().getString(
                         R.string.skill_points_d,
                         level.getAvailableSkillPoints()));
             }
@@ -108,8 +101,8 @@ public class PersonageStatsFragment extends Fragment {
         imageButtonDecreaseLuck.setOnClickListener(v -> {
             if (level.getLuck() > personage.getLevel().getLuck()) {
                 level.affectLuck(-1);
-                textViewLuck.setText(String.valueOf(level.getLuck()));
-                textViewSkillPoints.setText(requireActivity().getString(
+                textLuck.setText(String.valueOf(level.getLuck()));
+                textSkillPoints.setText(requireActivity().getString(
                         R.string.skill_points_d,
                         level.getAvailableSkillPoints()));
             }
@@ -138,9 +131,9 @@ public class PersonageStatsFragment extends Fragment {
         LinearLayout layoutDropSkillPoints = view.findViewById(R.id.layout_drop_skill_points);
         layoutDropSkillPoints.setOnClickListener(v -> {
             level.dropSkillPoints();
-            textViewStrength.setText(String.valueOf(level.getStrength()));
-            textViewLuck.setText(String.valueOf(level.getLuck()));
-            textViewSkillPoints.setText(requireActivity().getString(
+            textStrength.setText(String.valueOf(level.getStrength()));
+            textLuck.setText(String.valueOf(level.getLuck()));
+            textSkillPoints.setText(requireActivity().getString(
                     R.string.skill_points_d,
                     level.getAvailableSkillPoints()));
             AdManagerMock.showAd((AppCompatActivity) requireActivity());

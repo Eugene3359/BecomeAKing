@@ -9,7 +9,7 @@
     android:layout_marginBottom="10dp" >
 
     <ImageView
-        android:id="@+id/image_view_category"
+        android:id="@+id/image_category"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/item_placeholder"
@@ -29,7 +29,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/text_view_name"
+                android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder"
@@ -38,7 +38,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/text_view_requirement"
+                android:id="@+id/text_requirement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder"

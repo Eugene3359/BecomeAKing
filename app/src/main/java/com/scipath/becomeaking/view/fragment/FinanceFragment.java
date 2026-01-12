@@ -5,9 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.view.layout.CurrentCityLayout;
@@ -17,14 +15,8 @@ import com.scipath.becomeaking.view.layout.FinanceMenuElementLayout;
 public class FinanceFragment extends BaseFragment {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_finance, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_finance;
     }
 
     @Override
@@ -47,18 +39,21 @@ public class FinanceFragment extends BaseFragment {
             showInDevelopmentNotification();
         });
 
-        FinanceMenuElementLayout elementGossips = view.findViewById(R.id.element_gossips);
-        elementGossips.setButtonOnClickListener(v -> {
-            showInDevelopmentNotification();
-        });
-
         FinanceMenuElementLayout elementBank = view.findViewById(R.id.element_bank);
         elementBank.setButtonOnClickListener(v -> {
-            showInDevelopmentNotification();
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_frame, new BankFragment())
+                    .addToBackStack(null)
+                    .commit();
         });
 
         FinanceMenuElementLayout elementWorkshops = view.findViewById(R.id.element_workshops);
         elementWorkshops.setButtonOnClickListener(v -> {
+            showInDevelopmentNotification();
+        });
+
+        FinanceMenuElementLayout elementGossips = view.findViewById(R.id.element_gossips);
+        elementGossips.setButtonOnClickListener(v -> {
             showInDevelopmentNotification();
         });
     }

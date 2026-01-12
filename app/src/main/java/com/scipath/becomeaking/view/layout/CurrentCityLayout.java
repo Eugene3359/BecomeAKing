@@ -16,13 +16,13 @@ import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
 import com.scipath.becomeaking.view.activity.BaseActivity;
 import com.scipath.becomeaking.view.activity.MapActivity;
-import com.scipath.becomeaking.view.fragment.DialogueFragment;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 import com.scipath.becomeaking.viewmodel.CurrentCityViewModel;
 
 
 public class CurrentCityLayout extends LinearLayout {
 
-    private ImageView imageView;
+    private ImageView image;
     private Button buttonCity;
     private Button buttonMap;
 
@@ -44,7 +44,7 @@ public class CurrentCityLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_current_city, this);
-        imageView = findViewById(R.id.image_view);
+        image = findViewById(R.id.image);
         buttonCity = findViewById(R.id.button_city);
         buttonMap = findViewById(R.id.button_map);
     }
@@ -74,10 +74,10 @@ public class CurrentCityLayout extends LinearLayout {
                 buttonCity.setOnClickListener(null);
             } else {
                 DialogueFragment dialogue = new DialogueFragment.Builder()
-                        .setHeader(city.getNameId())
-                        .setMessage(city.getDescriptionId())
-                        .setButton1(R.string.got_it, null)
-                        .build();
+                        .addHeader(city.getNameId())
+                        .addMessage(city.getDescriptionId())
+                        .addButton(R.string.got_it, null)
+                        .getDialogue();
                 buttonCity.setOnClickListener(v -> {
                     activity.showDialogue(dialogue);
                 });
@@ -92,11 +92,11 @@ public class CurrentCityLayout extends LinearLayout {
 
     public void setText(int resId, Context context) {
         buttonCity.setText(resId);
-        imageView.setContentDescription(context.getText(resId));
+        image.setContentDescription(context.getText(resId));
     }
 
     public void setImageResource(int resId) {
-        imageView.setImageResource(resId);
+        image.setImageResource(resId);
     }
 
     public void setButtonCityOnClickListener(OnClickListener listener) {

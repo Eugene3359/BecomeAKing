@@ -1,9 +1,7 @@
 package com.scipath.becomeaking.view.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -22,14 +20,8 @@ import com.scipath.becomeaking.view.layout.CurrentCityLayout;
 public class MarketFragment extends BaseFragment {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_market, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_market;
     }
 
     @Override

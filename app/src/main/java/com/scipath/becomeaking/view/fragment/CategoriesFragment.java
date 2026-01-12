@@ -7,9 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.scipath.becomeaking.BecomeAKing;
 import com.scipath.becomeaking.R;
@@ -21,14 +19,9 @@ import java.util.ArrayList;
 
 public class CategoriesFragment extends BaseFragment {
 
-    public static CategoriesFragment newInstance() {
-        return new CategoriesFragment();
-    }
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_categories, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_categories;
     }
 
     @Override

@@ -18,7 +18,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/text_view_item"
+            android:id="@+id/text_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -29,7 +29,7 @@
             android:gravity="center"/>
 
         <TextView
-            android:id="@+id/text_view_requirement"
+            android:id="@+id/text_requirement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -47,7 +47,7 @@
         android:background="@color/item_dark_brown" >
 
         <ImageView
-            android:id="@+id/image_view_item"
+            android:id="@+id/image_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

@@ -15,9 +15,9 @@ import com.scipath.becomeaking.R;
 
 public class FinanceMenuElementLayout extends LinearLayout {
 
-    ImageView imageView1;
-    ImageView imageView2;
-    TextView textView;
+    ImageView image1;
+    ImageView image2;
+    TextView text;
     Button button;
 
 
@@ -38,9 +38,9 @@ public class FinanceMenuElementLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_finance_menu_element, this);
-        imageView1 = findViewById(R.id.image_view_1);
-        imageView2 = findViewById(R.id.image_view_2);
-        textView = findViewById(R.id.text_view);
+        image1 = findViewById(R.id.image1);
+        image2 = findViewById(R.id.image2);
+        text = findViewById(R.id.text);
         button = findViewById(R.id.button);
     }
 
@@ -54,14 +54,14 @@ public class FinanceMenuElementLayout extends LinearLayout {
 
 
     public void setImageResource(int resId) {
-        imageView1.setImageResource(resId);
-        imageView2.setImageResource(resId);
+        image1.setImageResource(resId);
+        image2.setImageResource(resId);
     }
 
     public void setText(int resId, Context context) {
-        textView.setText(resId);
-        imageView1.setContentDescription(context.getText(resId));
-        imageView2.setContentDescription(context.getText(resId));
+        text.setText(resId);
+        image1.setContentDescription(context.getText(resId));
+        image2.setContentDescription(context.getText(resId));
     }
 
     public void setButtonText(int resId) {

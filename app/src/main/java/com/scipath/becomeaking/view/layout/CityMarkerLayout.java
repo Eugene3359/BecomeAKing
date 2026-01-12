@@ -12,7 +12,7 @@ import com.scipath.becomeaking.R;
 
 public class CityMarkerLayout extends LinearLayout {
 
-    TextView textViewCityName;
+    TextView textCityName;
 
 
     public CityMarkerLayout(Context context) {
@@ -32,11 +32,11 @@ public class CityMarkerLayout extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.layout_city_marker, this);
-        textViewCityName = findViewById(R.id.text_view_city_name);
+        textCityName = findViewById(R.id.text_city_name);
     }
 
 
     public void setName(int cityNameId) {
-        textViewCityName.setText(cityNameId);
+        textCityName.setText(cityNameId);
     }
 }

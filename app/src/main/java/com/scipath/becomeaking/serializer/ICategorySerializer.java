@@ -25,6 +25,7 @@ public class ICategorySerializer implements JsonSerializer<ICategory>, JsonDeser
     private static final String DATA_FIELD = "data";
 
     private static final Map<String, Class<? extends ICategory>> TYPE_MAP = new HashMap<>();
+
     static {
         TYPE_MAP.put("category", Category.class);
     }
@@ -64,6 +65,7 @@ public class ICategorySerializer implements JsonSerializer<ICategory>, JsonDeser
         return result;
     }
 
+
     @Override
     public ICategory deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
@@ -94,6 +96,7 @@ public class ICategorySerializer implements JsonSerializer<ICategory>, JsonDeser
 
         return result;
     }
+
 
     private String getTypeName(ICategory iCategory) {
         for (Map.Entry<String, Class<? extends ICategory>> entry : TYPE_MAP.entrySet()) {

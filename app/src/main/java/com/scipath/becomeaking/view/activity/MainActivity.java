@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Making knights image monochrome
-        ImageView imageview = findViewById(R.id.image_view_knights);
+        ImageView imageview = findViewById(R.id.image_knights);
         ColorMatrix matrix = new ColorMatrix();
         matrix.setSaturation(0);
         ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
