@@ -22,17 +22,17 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp" >
+                android:layout_height="160dp" >
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
                     android:src="@drawable/img_loan"
                     android:contentDescription="@string/take_a_loan" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="160dp"
                     android:orientation="vertical" >
 
                     <TextView
@@ -77,6 +77,11 @@
                                 style="@style/BankButton.Light" />
 
                         </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+                        <TextView
+                            android:id="@+id/text_loan_terms"
+                            android:text="@string/loan_terms"
+                            style="@style/BankTerms" />
 
                     </com.scipath.becomeaking.view.view.CustomLinearLayout>
                     

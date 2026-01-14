@@ -13,4 +13,6 @@
     <string name="loan_amount">Сума долга %d</string>
     <string name="loan_repayment_instructions">Выберите сумму, которую вы хотите внести для погашения долга.</string>
 
+    <string name="loan_terms">Сумма долга будет увеличиваться каждый день на +%d%%</string>
+
 </resources>

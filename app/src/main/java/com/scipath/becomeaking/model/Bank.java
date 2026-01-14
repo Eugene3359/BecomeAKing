@@ -6,16 +6,12 @@ import com.scipath.becomeaking.contract.model.IBank;
 public class Bank implements IBank {
 
     private static Bank instance;
-    protected static double loanInterestRate = 1.01;
+    protected static double loanInterestRate = 1.02;
     protected static double depositInterestRate = 1.01;
     protected double loanBalance;
     protected double depositBalance;
-    protected int loanLimit;
+    protected int loanLimit = 1000;
 
-
-    private Bank() {
-        loanLimit = 1000;
-    }
 
     public static Bank getInstance() {
         if (instance == null) {
@@ -24,6 +20,16 @@ public class Bank implements IBank {
         return instance;
     }
 
+
+    @Override
+    public double getLoanInterestRate() {
+        return loanInterestRate;
+    }
+
+    @Override
+    public double getDepositInterestRate() {
+        return depositInterestRate;
+    }
 
     @Override
     public int getLoanBalance() {

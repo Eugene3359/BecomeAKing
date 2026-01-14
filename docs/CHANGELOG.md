@@ -1,5 +1,13 @@
+# Become a King [0.5.10.1] - 14.01.2026
+
+### Additions
+- Add loan terms text in `Bank Menu`
+
+---
+
 # Become a King [0.5.10] - 12.01.2026
 
+### Additions
 - The `Button` button in the `Finance Menu` is now active
 - Added loan functionality to the bank
 

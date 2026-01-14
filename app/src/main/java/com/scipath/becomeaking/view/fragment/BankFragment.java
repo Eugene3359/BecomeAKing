@@ -97,6 +97,10 @@ public class BankFragment extends BaseFragment {
             }
             showDialogue(builder.getDialogue());
         });
+
+        TextView textLoanTerms = view.findViewById(R.id.text_loan_terms);
+        long interest = Math.round((bank.getLoanInterestRate() - 1) * 100);
+        textLoanTerms.setText(String.format(getString(R.string.loan_terms), interest));
     }
 
     private void updateLoanValue() {

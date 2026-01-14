@@ -11,6 +11,8 @@
     <string name="repay">Repay</string>
     <string name="loan_repayment">Loan repayment</string>
     <string name="loan_amount">Loan amount %d</string>
-    <string name="loan_repayment_instructions">Select the amount you want to contribute to repay the loan.</string>
+    <string name="loan_repayment_instructions">Select the amount you want to contribute to repay the debt.</string>
+
+    <string name="loan_terms">The debt amount will increase every day by +%d%%</string>
 
 </resources>

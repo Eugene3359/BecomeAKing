@@ -2,6 +2,10 @@ package com.scipath.becomeaking.contract.model;
 
 public interface IBank {
 
+    double getLoanInterestRate();
+
+    double getDepositInterestRate();
+
     int getLoanBalance();
 
     int getDepositBalance();

@@ -11,6 +11,8 @@
     <string name="repay">Повернути</string>
     <string name="loan_repayment">Повернення позики</string>
     <string name="loan_amount">Сума позики %d</string>
-    <string name="loan_repayment_instructions">Виберіть суму, яку ви хочете внести для погашення займу.</string>
+    <string name="loan_repayment_instructions">Виберіть суму, яку ви хочете внести для погашення боргу.</string>
+
+    <string name="loan_terms">Сума боргу збільшуватиметься щодня на +%d%%</string>
 
 </resources>
