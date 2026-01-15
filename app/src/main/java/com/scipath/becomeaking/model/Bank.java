@@ -11,6 +11,7 @@ public class Bank implements IBank {
     protected double loanBalance;
     protected double depositBalance;
     protected int loanLimit = 1000;
+    protected int depositLimit = 100000;
 
 
     public static Bank getInstance() {
@@ -47,6 +48,11 @@ public class Bank implements IBank {
     }
 
     @Override
+    public int getDepositLimit() {
+        return depositLimit;
+    }
+
+    @Override
     public void takeLoan(int value) {
         loanBalance += Math.abs(value);
     }
@@ -71,6 +77,11 @@ public class Bank implements IBank {
     @Override
     public void setLoanLimit(int limit) {
         if (limit >= 0) loanLimit = limit;
+    }
+
+    @Override
+    public void setDepositLimit(int limit) {
+        if (limit >= 0) depositLimit = limit;
     }
 
     @Override

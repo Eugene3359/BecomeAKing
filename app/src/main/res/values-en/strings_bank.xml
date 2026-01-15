@@ -15,4 +15,16 @@
 
     <string name="loan_terms">The debt amount will increase every day by +%d%%</string>
 
+
+    <string name="deposit">Deposit</string>
+
+    <string name="put">Put</string>
+
+    <string name="withdraw">Withdraw</string>
+    <string name="withdrawal">Withdrawal</string>
+    <string name="deposit_amount">Deposit amount %d</string>
+    <string name="deposit_withdrawal_instructions">Select the amount you want to withdraw from the deposit.</string>
+
+    <string name="deposit_terms">The deposit brings +%d%% of the amount every day</string>
+
 </resources>

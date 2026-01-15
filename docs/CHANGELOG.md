@@ -1,3 +1,10 @@
+# Become a King [0.5.11] - 15.01.2026
+
+### Additions
+- Added deposit functionality to the bank
+
+---
+
 # Become a King [0.5.10.1] - 14.01.2026
 
 ### Additions

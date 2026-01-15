@@ -25,6 +25,8 @@ public class BankFragment extends BaseFragment {
     // Views
     TextView textLoan1;
     TextView textLoan2;
+    TextView textDeposit1;
+    TextView textDeposit2;
 
 
     @Override
@@ -99,12 +101,76 @@ public class BankFragment extends BaseFragment {
         });
 
         TextView textLoanTerms = view.findViewById(R.id.text_loan_terms);
-        long interest = Math.round((bank.getLoanInterestRate() - 1) * 100);
-        textLoanTerms.setText(String.format(getString(R.string.loan_terms), interest));
+        long loanInterest = Math.round((bank.getLoanInterestRate() - 1) * 100);
+        textLoanTerms.setText(String.format(getString(R.string.loan_terms), loanInterest));
+
+        textDeposit1 = view.findViewById(R.id.text_deposit1);
+        textDeposit2 = view.findViewById(R.id.text_deposit2);
+        updateDepositValue();
+
+        Button buttonTopUpDeposit = view.findViewById(R.id.button_top_up_deposit);
+        buttonTopUpDeposit.setOnClickListener(view1 -> {
+            int maxDeposit = Math.min(personage.getMoney(),
+                    bank.getDepositLimit() - bank.getDepositBalance());
+            DialogueFragment.Builder builder = new DialogueFragment.Builder()
+                    .addHeader(R.string.contract)
+                    .addMessage(String.format(
+                            getString(R.string.your_limit),
+                            bank.getDepositBalance(),
+                            bank.getDepositBalance()))
+                    .addInput(maxDeposit);
+            if (bank.getDepositBalance() >= bank.getDepositLimit()) {
+                builder.addButton(R.string.got_it, null);
+            } else {
+                builder.addButton(R.string.cancel, null);
+                builder.addButton(R.string.sign, d -> {
+                    int value = d.getInputValue();
+                    personage.affectMoney(-value);
+                    bank.putDeposit(value);
+                    ((GameActivity) getActivity()).updateMoney();
+                    updateDepositValue();
+                });
+            }
+            showDialogue(builder.getDialogue());
+        });
+
+        Button buttonWithdrawDeposit = view.findViewById(R.id.button_withdraw_deposit);
+        buttonWithdrawDeposit.setOnClickListener(v -> {
+            int maxWithdrawal = bank.getDepositBalance();
+            DialogueFragment.Builder builder = new DialogueFragment.Builder()
+                    .addHeader(R.string.withdrawal)
+                    .addMessage(String.format(
+                            getString(R.string.deposit_amount),
+                            maxWithdrawal))
+                    .addInput(maxWithdrawal)
+                    .addMessage(R.string.deposit_withdrawal_instructions);
+            if (bank.getDepositBalance() == 0) {
+                builder.addButton(R.string.got_it, null);
+            } else {
+                builder.addButton(R.string.cancel, null);
+                builder.addButton(R.string.withdraw, d -> {
+                    int value = d.getInputValue();
+                    bank.withdrawDeposit(value);
+                    personage.affectMoney(value);
+                    ((GameActivity) getActivity()).updateMoney();
+                    updateDepositValue();
+                });
+            }
+            showDialogue(builder.getDialogue());
+        });
+
+         TextView textDepositTerms = view.findViewById(R.id.text_deposit_terms);
+         long depositInterest = Math.round((bank.getDepositInterestRate() - 1) * 100);
+         textDepositTerms.setText(String.format(getString(R.string.deposit_terms), depositInterest));
     }
 
     private void updateLoanValue() {
         textLoan1.setText(String.valueOf(bank.getLoanBalance()));
         textLoan2.setText(String.valueOf(bank.getLoanBalance()));
+    }
+
+    private void updateDepositValue() {
+        textDeposit1.setText(String.valueOf(bank.getDepositBalance()));
+        textDeposit2.setText(String.valueOf(bank.getDepositBalance()));
     }
 }

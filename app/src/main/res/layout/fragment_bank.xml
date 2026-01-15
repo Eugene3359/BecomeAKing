@@ -22,7 +22,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="160dp" >
+                android:layout_height="160dp"
+                android:layout_marginBottom="10dp">
 
                 <ImageView
                     android:layout_width="160dp"
@@ -85,6 +86,76 @@
 
                     </com.scipath.becomeaking.view.view.CustomLinearLayout>
                     
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/img_deposit"
+                    android:contentDescription="@string/deposit" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:text="@string/deposit"
+                        style="@style/BankServiceTitle" />
+
+                    <com.scipath.becomeaking.view.view.CustomLinearLayout
+                        style="@style/BankServiceContainer" >
+
+                        <com.scipath.becomeaking.view.view.CustomLinearLayout
+                            style="@style/BankOperationContainer" >
+
+                            <ImageView
+                                android:contentDescription="@string/money"
+                                style="@style/BankCoinImage" />
+
+                            <TextView
+                                android:id="@+id/text_deposit1"
+                                style="@style/BankAmount.Green" />
+
+                            <com.scipath.becomeaking.view.view.CustomButton
+                                android:id="@+id/button_top_up_deposit"
+                                android:text="@string/put"
+                                style="@style/BankButton.Dark" />
+
+                        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+                        <com.scipath.becomeaking.view.view.CustomLinearLayout
+                            style="@style/BankOperationContainer" >
+
+                            <ImageView
+                                android:contentDescription="@string/money"
+                                style="@style/BankCoinImage" />
+
+                            <TextView
+                                android:id="@+id/text_deposit2"
+                                style="@style/BankAmount.Green" />
+
+                            <com.scipath.becomeaking.view.view.CustomButton
+                                android:id="@+id/button_withdraw_deposit"
+                                android:text="@string/withdraw"
+                                style="@style/BankButton.Light" />
+
+                        </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
+                        <TextView
+                            android:id="@+id/text_deposit_terms"
+                            android:text="@string/deposit_terms"
+                            style="@style/BankTerms" />
+
+                    </com.scipath.becomeaking.view.view.CustomLinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>

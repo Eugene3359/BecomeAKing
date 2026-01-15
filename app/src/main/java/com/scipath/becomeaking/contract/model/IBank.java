@@ -11,6 +11,8 @@ public interface IBank {
     int getDepositBalance();
 
     int getLoanLimit();
+    
+    int getDepositLimit();
 
     void takeLoan(int value);
 
@@ -21,6 +23,8 @@ public interface IBank {
     void withdrawDeposit(int value);
 
     void setLoanLimit(int limit);
+
+    void setDepositLimit(int limit);
 
     void chargeInterests();
 }

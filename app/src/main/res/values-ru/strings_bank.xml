@@ -15,4 +15,16 @@
 
     <string name="loan_terms">Сумма долга будет увеличиваться каждый день на +%d%%</string>
 
+
+    <string name="deposit">Внести депозит</string>
+
+    <string name="put">Внести</string>
+
+    <string name="withdraw">Снять</string>
+    <string name="withdrawal">Снятие</string>
+    <string name="deposit_amount">Сума депозита %d</string>
+    <string name="deposit_withdrawal_instructions">Выберите сумму, которую вы хотите снять с депозита.</string>
+
+    <string name="deposit_terms">Вклад приносит +%d%% от суммы каждый день</string>
+
 </resources>
