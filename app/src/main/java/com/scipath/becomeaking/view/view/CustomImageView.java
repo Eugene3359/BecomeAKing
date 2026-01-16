@@ -33,7 +33,7 @@ public class CustomImageView extends AppCompatImageView {
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomImageView);
 
-        isSquare = typedArray.getBoolean(R.styleable.CustomLinearLayout_isSquare, false); // Default: false
+        isSquare = typedArray.getBoolean(R.styleable.CustomImageView_isSquare, false); // Default: false
         int borderColor = typedArray.getColor(R.styleable.CustomImageView_borderColor, Color.TRANSPARENT); // Default: TRANSPARENT
         int backgroundColor = typedArray.getColor(R.styleable.CustomImageView_backgroundColor, Color.TRANSPARENT); // Default: TRANSPARENT
         Drawable backgroundDrawable = typedArray.getDrawable(R.styleable.CustomImageView_backgroundDrawable);

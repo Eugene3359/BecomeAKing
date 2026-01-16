@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +19,7 @@ import com.scipath.becomeaking.contract.model.IPersonage;
 import com.scipath.becomeaking.model.Good;
 import com.scipath.becomeaking.model.enums.GoodType;
 import com.scipath.becomeaking.view.activity.GameActivity;
+import com.scipath.becomeaking.view.dialogue.DialogueFragment;
 import com.scipath.becomeaking.view.view.CustomButton;
 
 
@@ -126,15 +126,25 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
             } else if (personage.getMoney() < good.getBuyPrice()) {
                 context.showNotification(R.string.not_enough_money);
             } else {
-                personage.affectMoney(-good.getBuyPrice());
-                context.updateMoney();
-                good.affectAmount(-1);
-                if (storage.get(type) == null) {
-                    storage.add(new Good(type, 1));
-                } else {
-                    storage.get(type).affectAmount(1);
-                }
-                holder.refreshButtonsStates(good, personage, storage, context);
+                int maxAmount = Math.min(good.getAmount(),
+                        personage.getMoney() / good.getBuyPrice());
+                DialogueFragment.Builder builder = new DialogueFragment.Builder()
+                        .addHeader(R.string.market)
+                        .addInput(maxAmount)
+                        .addButton(R.string.cancel, null)
+                        .addButton(R.string.buy, d -> {
+                            int amount = d.getInputValue();
+                            personage.affectMoney(-good.getBuyPrice() * amount);
+                            good.affectAmount(-amount);
+                            if (storage.get(type) == null) {
+                                storage.add(new Good(type, amount));
+                            } else {
+                                storage.get(type).affectAmount(amount);
+                            }
+                            context.updateMoney();
+                            holder.refreshButtonsStates(good, personage, storage, context);
+                        });
+                context.showDialogue(builder.getDialogue());
             }
         });
 
@@ -143,14 +153,28 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
             if (storage.get(type) == null) {
                 context.showNotification(R.string.you_dont_have_this_good);
             } else {
-                personage.affectMoney(good.getSellPrice());
-                context.updateMoney();
-                good.affectAmount(1);
-                storage.get(type).affectAmount(-1);
-                if (storage.get(type).getAmount() == 0) {
-                    storage.remove(type);
-                }
-                holder.refreshButtonsStates(good, personage, storage, context);
+                int maxAmount = storage.get(good.getType()).getAmount();
+                DialogueFragment.Builder builder = new DialogueFragment.Builder()
+                        .addHeader(R.string.market)
+                        .addInput(maxAmount)
+                        .addButton(R.string.cancel, null)
+                        .addButton(R.string.sell, d -> {
+                            int amount = d.getInputValue();
+                            storage.get(type).affectAmount(-amount);
+                            if (storage.get(type).getAmount() == 0) {
+                                storage.remove(type);
+                            }
+                            personage.affectMoney(good.getSellPrice() * amount);
+                            good.affectAmount(amount);
+                            if (storage.get(type) == null) {
+                                storage.add(new Good(type, amount));
+                            } else {
+                                storage.get(type).affectAmount(amount);
+                            }
+                            context.updateMoney();
+                            holder.refreshButtonsStates(good, personage, storage, context);
+                        });
+                context.showDialogue(builder.getDialogue());
             }
         });
     }

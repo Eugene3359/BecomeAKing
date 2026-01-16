@@ -1,3 +1,13 @@
+# Become a King [0.5.11.1] - 16.01.2026
+
+### Additions
+- Added an amount-selection dialogue when buying or selling goods in the market
+
+### Fixes
+- Fixed incorrect display of the `Clicker Minigames`
+
+---
+
 # Become a King [0.5.11] - 15.01.2026
 
 ### Additions
